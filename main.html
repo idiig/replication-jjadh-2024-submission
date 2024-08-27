@@ -6,6 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Xudong Chen">
+<meta name="author" content="‪Bor Hodošček‬">
+<meta name="author" content="Hilofumi Yamamoto">
+<meta name="dcterms.date" content="2024-09-01">
 
 <title>古今和歌集の現代日本語訳の分析 - 追加率と拡張意味単位の観点から</title>
 <style>
@@ -20,41 +24,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="main_files/libs/clipboard/clipboard.min.js"></script>
@@ -71,8 +61,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -103,11 +107,92 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
-<main class="content" id="quarto-document-content">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目次</h2>
+   
+  <ul>
+  <li><a href="#はじめに" id="toc-はじめに" class="nav-link active" data-scroll-target="#はじめに"><span class="header-section-number">1</span> はじめに</a>
+  <ul class="collapse">
+  <li><a href="#目的と結論" id="toc-目的と結論" class="nav-link" data-scroll-target="#目的と結論"><span class="header-section-number">1.1</span> 目的と結論</a></li>
+  <li><a href="#背景" id="toc-背景" class="nav-link" data-scroll-target="#背景"><span class="header-section-number">1.2</span> 背景</a>
+  <ul class="collapse">
+  <li><a href="#和歌と和歌における非明示的要素" id="toc-和歌と和歌における非明示的要素" class="nav-link" data-scroll-target="#和歌と和歌における非明示的要素"><span class="header-section-number">1.2.1</span> 和歌と和歌における非明示的要素</a></li>
+  <li><a href="#現代語訳に基づく非明示的要素の可視化" id="toc-現代語訳に基づく非明示的要素の可視化" class="nav-link" data-scroll-target="#現代語訳に基づく非明示的要素の可視化"><span class="header-section-number">1.2.2</span> 現代語訳に基づく非明示的要素の可視化</a></li>
+  <li><a href="#本稿の意義" id="toc-本稿の意義" class="nav-link" data-scroll-target="#本稿の意義"><span class="header-section-number">1.2.3</span> 本稿の意義</a></li>
+  <li><a href="#問題意識と本稿の構成" id="toc-問題意識と本稿の構成" class="nav-link" data-scroll-target="#問題意識と本稿の構成"><span class="header-section-number">1.2.4</span> 問題意識と本稿の構成</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#データとその位置づけ和歌古今集注釈現代語訳" id="toc-データとその位置づけ和歌古今集注釈現代語訳" class="nav-link" data-scroll-target="#データとその位置づけ和歌古今集注釈現代語訳"><span class="header-section-number">2</span> データとその位置づけ：和歌、古今集、注釈、現代語訳</a>
+  <ul class="collapse">
+  <li><a href="#和歌" id="toc-和歌" class="nav-link" data-scroll-target="#和歌"><span class="header-section-number">2.1</span> 和歌</a></li>
+  <li><a href="#古今集" id="toc-古今集" class="nav-link" data-scroll-target="#古今集"><span class="header-section-number">2.2</span> 古今集</a></li>
+  <li><a href="#注釈と翻訳" id="toc-注釈と翻訳" class="nav-link" data-scroll-target="#注釈と翻訳"><span class="header-section-number">2.3</span> 注釈と翻訳</a></li>
+  <li><a href="#データ" id="toc-データ" class="nav-link" data-scroll-target="#データ"><span class="header-section-number">2.4</span> データ</a></li>
+  <li><a href="#データフォーマット" id="toc-データフォーマット" class="nav-link" data-scroll-target="#データフォーマット"><span class="header-section-number">2.5</span> データフォーマット</a></li>
+  </ul></li>
+  <li><a href="#方法" id="toc-方法" class="nav-link" data-scroll-target="#方法"><span class="header-section-number">3</span> 方法</a>
+  <ul class="collapse">
+  <li><a href="#文献調査による翻訳観の分類" id="toc-文献調査による翻訳観の分類" class="nav-link" data-scroll-target="#文献調査による翻訳観の分類"><span class="header-section-number">3.1</span> 文献調査による翻訳観の分類</a></li>
+  <li><a href="#追加率の計算" id="toc-追加率の計算" class="nav-link" data-scroll-target="#追加率の計算"><span class="header-section-number">3.2</span> 追加率の計算</a></li>
+  <li><a href="#翻訳観と追加率の関係に関する統計モデリング" id="toc-翻訳観と追加率の関係に関する統計モデリング" class="nav-link" data-scroll-target="#翻訳観と追加率の関係に関する統計モデリング"><span class="header-section-number">3.3</span> 翻訳観と追加率の関係に関する統計モデリング</a></li>
+  <li><a href="#拡張意味単位モデル-extended-unit-of-meaning" id="toc-拡張意味単位モデル-extended-unit-of-meaning" class="nav-link" data-scroll-target="#拡張意味単位モデル-extended-unit-of-meaning"><span class="header-section-number">3.4</span> 拡張意味単位モデル (extended unit of meaning)</a>
+  <ul class="collapse">
+  <li><a href="#拡張意味単位モデル" id="toc-拡張意味単位モデル" class="nav-link" data-scroll-target="#拡張意味単位モデル"><span class="header-section-number">3.4.1</span> 拡張意味単位モデル</a></li>
+  <li><a href="#本稿のアダプテーション" id="toc-本稿のアダプテーション" class="nav-link" data-scroll-target="#本稿のアダプテーション"><span class="header-section-number">3.4.2</span> 本稿のアダプテーション</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#結果" id="toc-結果" class="nav-link" data-scroll-target="#結果"><span class="header-section-number">4</span> 結果</a>
+  <ul class="collapse">
+  <li><a href="#現代語訳の整理と分類" id="toc-現代語訳の整理と分類" class="nav-link" data-scroll-target="#現代語訳の整理と分類"><span class="header-section-number">4.1</span> 現代語訳の整理と分類</a>
+  <ul class="collapse">
+  <li><a href="#分類" id="toc-分類" class="nav-link" data-scroll-target="#分類"><span class="header-section-number">4.1.1</span> 分類</a></li>
+  <li><a href="#分類ごとの翻訳観の詳細" id="toc-分類ごとの翻訳観の詳細" class="nav-link" data-scroll-target="#分類ごとの翻訳観の詳細"><span class="header-section-number">4.1.2</span> 分類ごとの翻訳観の詳細</a></li>
+  </ul></li>
+  <li><a href="#追加率の計算結果" id="toc-追加率の計算結果" class="nav-link" data-scroll-target="#追加率の計算結果"><span class="header-section-number">4.2</span> 追加率の計算結果</a></li>
+  <li><a href="#統計モデルの推定結果" id="toc-統計モデルの推定結果" class="nav-link" data-scroll-target="#統計モデルの推定結果"><span class="header-section-number">4.3</span> 統計モデルの推定結果</a>
+  <ul class="collapse">
+  <li><a href="#翻訳観による追加率の違い" id="toc-翻訳観による追加率の違い" class="nav-link" data-scroll-target="#翻訳観による追加率の違い"><span class="header-section-number">4.3.1</span> 翻訳観による追加率の違い</a></li>
+  <li><a href="#和歌のランダム効果" id="toc-和歌のランダム効果" class="nav-link" data-scroll-target="#和歌のランダム効果"><span class="header-section-number">4.3.2</span> 和歌のランダム効果</a></li>
+  <li><a href="#訳者のランダム効果" id="toc-訳者のランダム効果" class="nav-link" data-scroll-target="#訳者のランダム効果"><span class="header-section-number">4.3.3</span> 訳者のランダム効果</a></li>
+  </ul></li>
+  <li><a href="#拡張意味単位の対応立田の場合" id="toc-拡張意味単位の対応立田の場合" class="nav-link" data-scroll-target="#拡張意味単位の対応立田の場合"><span class="header-section-number">4.4</span> 拡張意味単位の対応：「立田」の場合</a>
+  <ul class="collapse">
+  <li><a href="#立田の拡張意味単位立田自然物余韻結び" id="toc-立田の拡張意味単位立田自然物余韻結び" class="nav-link" data-scroll-target="#立田の拡張意味単位立田自然物余韻結び"><span class="header-section-number">4.4.1</span> 「立田」の拡張意味単位：「立田+自然物+余韻結び」</a></li>
+  <li><a href="#辞書の対応" id="toc-辞書の対応" class="nav-link" data-scroll-target="#辞書の対応"><span class="header-section-number">4.4.2</span> 辞書の対応</a></li>
+  <li><a href="#現代語訳の対応" id="toc-現代語訳の対応" class="nav-link" data-scroll-target="#現代語訳の対応"><span class="header-section-number">4.4.3</span> 現代語訳の対応</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#考察" id="toc-考察" class="nav-link" data-scroll-target="#考察"><span class="header-section-number">5</span> 考察</a>
+  <ul class="collapse">
+  <li><a href="#追加率には翻訳観に左右されない部分がある" id="toc-追加率には翻訳観に左右されない部分がある" class="nav-link" data-scroll-target="#追加率には翻訳観に左右されない部分がある"><span class="header-section-number">5.1</span> 追加率には翻訳観に左右されない部分がある</a></li>
+  <li><a href="#現代語訳によるノンリテラル要素の可視化が十分考えられる" id="toc-現代語訳によるノンリテラル要素の可視化が十分考えられる" class="nav-link" data-scroll-target="#現代語訳によるノンリテラル要素の可視化が十分考えられる"><span class="header-section-number">5.2</span> 現代語訳によるノンリテラル要素の可視化が十分考えられる</a></li>
+  <li><a href="#拡張意味単位の現代語訳の可視化としてのシステム" id="toc-拡張意味単位の現代語訳の可視化としてのシステム" class="nav-link" data-scroll-target="#拡張意味単位の現代語訳の可視化としてのシステム"><span class="header-section-number">5.3</span> 拡張意味単位の現代語訳の可視化としてのシステム</a></li>
+  <li><a href="#分類体系の有用性" id="toc-分類体系の有用性" class="nav-link" data-scroll-target="#分類体系の有用性"><span class="header-section-number">5.4</span> 分類体系の有用性</a></li>
+  </ul></li>
+  <li><a href="#結論" id="toc-結論" class="nav-link" data-scroll-target="#結論"><span class="header-section-number">6</span> 結論</a>
+  <ul class="collapse">
+  <li><a href="#libraries" id="toc-libraries" class="nav-link" data-scroll-target="#libraries"><span class="header-section-number">6.1</span> Libraries</a></li>
+  <li><a href="#data-and-preprocess" id="toc-data-and-preprocess" class="nav-link" data-scroll-target="#data-and-preprocess"><span class="header-section-number">6.2</span> Data and preprocess</a></li>
+  <li><a href="#hachidai-db" id="toc-hachidai-db" class="nav-link" data-scroll-target="#hachidai-db"><span class="header-section-number">6.3</span> Hachidai DB</a></li>
+  </ul></li>
+  <li><a href="#collocation" id="toc-collocation" class="nav-link" data-scroll-target="#collocation"><span class="header-section-number">7</span> Collocation</a>
+  <ul class="collapse">
+  <li><a href="#all" id="toc-all" class="nav-link" data-scroll-target="#all"><span class="header-section-number">7.1</span> All</a></li>
+  <li><a href="#content-words" id="toc-content-words" class="nav-link" data-scroll-target="#content-words"><span class="header-section-number">7.2</span> Content words</a></li>
+  <li><a href="#tatsuta" id="toc-tatsuta" class="nav-link" data-scroll-target="#tatsuta"><span class="header-section-number">7.3</span> Tatsuta</a></li>
+  <li><a href="#collocation-term-frequency" id="toc-collocation-term-frequency" class="nav-link" data-scroll-target="#collocation-term-frequency"><span class="header-section-number">7.4</span> Collocation (Term frequency)</a></li>
+  <li><a href="#collocation-document-frequency" id="toc-collocation-document-frequency" class="nav-link" data-scroll-target="#collocation-document-frequency"><span class="header-section-number">7.5</span> Collocation (Document frequency)</a></li>
+  <li><a href="#colligation-term-frequency" id="toc-colligation-term-frequency" class="nav-link" data-scroll-target="#colligation-term-frequency"><span class="header-section-number">7.6</span> Colligation (Term frequency)</a></li>
+  <li><a href="#semantic-preference" id="toc-semantic-preference" class="nav-link" data-scroll-target="#semantic-preference"><span class="header-section-number">7.7</span> Semantic preference</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -115,10 +200,51 @@ window.Quarto = {
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Xudong Chen <a href="mailto:xchen@shs.ens.titech.ac.jp" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-4542-2878" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://www.titech.ac.jp/english/">
+            Tokyo Institute of Technology
+            </a>
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">‪Bor Hodošček‬ <a href="mailto:hodoscek.bor.hmt@osaka-u.ac.jp" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0003-2246-8774" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://www.osaka-u.ac.jp/en">
+            Osaka University
+            </a>
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Hilofumi Yamamoto <a href="mailto:yamagen@lia.titech.ac.jp" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-6876-139X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://www.titech.ac.jp/english/">
+            Tokyo Institute of Technology
+            </a>
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta">
 
-    
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 1, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -127,31 +253,103 @@ window.Quarto = {
 
 </header>
 
-
-<div id="cell-2" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>R</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>UsageError: Cell magic `%%R` not found.</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
+<nav id="TOC-body" role="doc-toc">
+    <h2 id="toc-title">目次</h2>
+   
+  <ul>
+  <li><a href="#はじめに" id="toc-はじめに"><span class="header-section-number">1</span> はじめに</a>
+  <ul>
+  <li><a href="#目的と結論" id="toc-目的と結論"><span class="header-section-number">1.1</span> 目的と結論</a></li>
+  <li><a href="#背景" id="toc-背景"><span class="header-section-number">1.2</span> 背景</a>
+  <ul>
+  <li><a href="#和歌と和歌における非明示的要素" id="toc-和歌と和歌における非明示的要素"><span class="header-section-number">1.2.1</span> 和歌と和歌における非明示的要素</a></li>
+  <li><a href="#現代語訳に基づく非明示的要素の可視化" id="toc-現代語訳に基づく非明示的要素の可視化"><span class="header-section-number">1.2.2</span> 現代語訳に基づく非明示的要素の可視化</a></li>
+  <li><a href="#本稿の意義" id="toc-本稿の意義"><span class="header-section-number">1.2.3</span> 本稿の意義</a></li>
+  <li><a href="#問題意識と本稿の構成" id="toc-問題意識と本稿の構成"><span class="header-section-number">1.2.4</span> 問題意識と本稿の構成</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#データとその位置づけ和歌古今集注釈現代語訳" id="toc-データとその位置づけ和歌古今集注釈現代語訳"><span class="header-section-number">2</span> データとその位置づけ：和歌、古今集、注釈、現代語訳</a>
+  <ul>
+  <li><a href="#和歌" id="toc-和歌"><span class="header-section-number">2.1</span> 和歌</a></li>
+  <li><a href="#古今集" id="toc-古今集"><span class="header-section-number">2.2</span> 古今集</a></li>
+  <li><a href="#注釈と翻訳" id="toc-注釈と翻訳"><span class="header-section-number">2.3</span> 注釈と翻訳</a></li>
+  <li><a href="#データ" id="toc-データ"><span class="header-section-number">2.4</span> データ</a></li>
+  <li><a href="#データフォーマット" id="toc-データフォーマット"><span class="header-section-number">2.5</span> データフォーマット</a></li>
+  </ul></li>
+  <li><a href="#方法" id="toc-方法"><span class="header-section-number">3</span> 方法</a>
+  <ul>
+  <li><a href="#文献調査による翻訳観の分類" id="toc-文献調査による翻訳観の分類"><span class="header-section-number">3.1</span> 文献調査による翻訳観の分類</a></li>
+  <li><a href="#追加率の計算" id="toc-追加率の計算"><span class="header-section-number">3.2</span> 追加率の計算</a></li>
+  <li><a href="#翻訳観と追加率の関係に関する統計モデリング" id="toc-翻訳観と追加率の関係に関する統計モデリング"><span class="header-section-number">3.3</span> 翻訳観と追加率の関係に関する統計モデリング</a></li>
+  <li><a href="#拡張意味単位モデル-extended-unit-of-meaning" id="toc-拡張意味単位モデル-extended-unit-of-meaning"><span class="header-section-number">3.4</span> 拡張意味単位モデル (extended unit of meaning)</a>
+  <ul>
+  <li><a href="#拡張意味単位モデル" id="toc-拡張意味単位モデル"><span class="header-section-number">3.4.1</span> 拡張意味単位モデル</a></li>
+  <li><a href="#本稿のアダプテーション" id="toc-本稿のアダプテーション"><span class="header-section-number">3.4.2</span> 本稿のアダプテーション</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#結果" id="toc-結果"><span class="header-section-number">4</span> 結果</a>
+  <ul>
+  <li><a href="#現代語訳の整理と分類" id="toc-現代語訳の整理と分類"><span class="header-section-number">4.1</span> 現代語訳の整理と分類</a>
+  <ul>
+  <li><a href="#分類" id="toc-分類"><span class="header-section-number">4.1.1</span> 分類</a></li>
+  <li><a href="#分類ごとの翻訳観の詳細" id="toc-分類ごとの翻訳観の詳細"><span class="header-section-number">4.1.2</span> 分類ごとの翻訳観の詳細</a></li>
+  </ul></li>
+  <li><a href="#追加率の計算結果" id="toc-追加率の計算結果"><span class="header-section-number">4.2</span> 追加率の計算結果</a></li>
+  <li><a href="#統計モデルの推定結果" id="toc-統計モデルの推定結果"><span class="header-section-number">4.3</span> 統計モデルの推定結果</a>
+  <ul>
+  <li><a href="#翻訳観による追加率の違い" id="toc-翻訳観による追加率の違い"><span class="header-section-number">4.3.1</span> 翻訳観による追加率の違い</a></li>
+  <li><a href="#和歌のランダム効果" id="toc-和歌のランダム効果"><span class="header-section-number">4.3.2</span> 和歌のランダム効果</a></li>
+  <li><a href="#訳者のランダム効果" id="toc-訳者のランダム効果"><span class="header-section-number">4.3.3</span> 訳者のランダム効果</a></li>
+  </ul></li>
+  <li><a href="#拡張意味単位の対応立田の場合" id="toc-拡張意味単位の対応立田の場合"><span class="header-section-number">4.4</span> 拡張意味単位の対応：「立田」の場合</a>
+  <ul>
+  <li><a href="#立田の拡張意味単位立田自然物余韻結び" id="toc-立田の拡張意味単位立田自然物余韻結び"><span class="header-section-number">4.4.1</span> 「立田」の拡張意味単位：「立田+自然物+余韻結び」</a></li>
+  <li><a href="#辞書の対応" id="toc-辞書の対応"><span class="header-section-number">4.4.2</span> 辞書の対応</a></li>
+  <li><a href="#現代語訳の対応" id="toc-現代語訳の対応"><span class="header-section-number">4.4.3</span> 現代語訳の対応</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#考察" id="toc-考察"><span class="header-section-number">5</span> 考察</a>
+  <ul>
+  <li><a href="#追加率には翻訳観に左右されない部分がある" id="toc-追加率には翻訳観に左右されない部分がある"><span class="header-section-number">5.1</span> 追加率には翻訳観に左右されない部分がある</a></li>
+  <li><a href="#現代語訳によるノンリテラル要素の可視化が十分考えられる" id="toc-現代語訳によるノンリテラル要素の可視化が十分考えられる"><span class="header-section-number">5.2</span> 現代語訳によるノンリテラル要素の可視化が十分考えられる</a></li>
+  <li><a href="#拡張意味単位の現代語訳の可視化としてのシステム" id="toc-拡張意味単位の現代語訳の可視化としてのシステム"><span class="header-section-number">5.3</span> 拡張意味単位の現代語訳の可視化としてのシステム</a></li>
+  <li><a href="#分類体系の有用性" id="toc-分類体系の有用性"><span class="header-section-number">5.4</span> 分類体系の有用性</a></li>
+  </ul></li>
+  <li><a href="#結論" id="toc-結論"><span class="header-section-number">6</span> 結論</a>
+  <ul>
+  <li><a href="#libraries" id="toc-libraries"><span class="header-section-number">6.1</span> Libraries</a></li>
+  <li><a href="#data-and-preprocess" id="toc-data-and-preprocess"><span class="header-section-number">6.2</span> Data and preprocess</a></li>
+  <li><a href="#hachidai-db" id="toc-hachidai-db"><span class="header-section-number">6.3</span> Hachidai DB</a></li>
+  </ul></li>
+  <li><a href="#collocation" id="toc-collocation"><span class="header-section-number">7</span> Collocation</a>
+  <ul>
+  <li><a href="#all" id="toc-all"><span class="header-section-number">7.1</span> All</a></li>
+  <li><a href="#content-words" id="toc-content-words"><span class="header-section-number">7.2</span> Content words</a></li>
+  <li><a href="#tatsuta" id="toc-tatsuta"><span class="header-section-number">7.3</span> Tatsuta</a></li>
+  <li><a href="#collocation-term-frequency" id="toc-collocation-term-frequency"><span class="header-section-number">7.4</span> Collocation (Term frequency)</a></li>
+  <li><a href="#collocation-document-frequency" id="toc-collocation-document-frequency"><span class="header-section-number">7.5</span> Collocation (Document frequency)</a></li>
+  <li><a href="#colligation-term-frequency" id="toc-colligation-term-frequency"><span class="header-section-number">7.6</span> Colligation (Term frequency)</a></li>
+  <li><a href="#semantic-preference" id="toc-semantic-preference"><span class="header-section-number">7.7</span> Semantic preference</a></li>
+  </ul></li>
+  </ul>
+</nav>
+<div class="callout callout-style-default callout-important callout-titled" title="要旨">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+要旨
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that there are five types of callouts, including: <code>note</code>, <code>tip</code>, <code>warning</code>, <code>caution</code>, and <code>important</code>.</p>
+<p>test</p>
 </div>
 </div>
-<section id="はじめに" class="level1">
-<h1>はじめに</h1>
-<section id="目的と結論" class="level2">
-<h2 class="anchored" data-anchor-id="目的と結論">目的と結論</h2>
+<section id="はじめに" class="level1 page-columns page-full" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> はじめに</h1>
+<section id="目的と結論" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="目的と結論"><span class="header-section-number">1.1</span> 目的と結論</h2>
 <p>はじめに本論文の目的は、原文との一致率の計算と意味拡張単位の翻訳という二つの側面から、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、和歌辞典とは異なる解釈材料として、和歌の非字義的な情報を補足説明するために使用できることを示すことである。</p>
 <p>本研究の貢献は以下にある（仮）。</p>
 <ol type="1">
@@ -163,35 +361,35 @@ Note
 </ol>
 <p>以上により、現代語訳をノンリテラルレベルの可視化に応用すると考えられる。</p>
 </section>
-<section id="背景" class="level2">
-<h2 class="anchored" data-anchor-id="背景">背景</h2>
-<section id="和歌と和歌における非明示的要素" class="level3">
-<h3 class="anchored" data-anchor-id="和歌と和歌における非明示的要素">和歌と和歌における非明示的要素</h3>
+<section id="背景" class="level2 page-columns page-full" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="背景"><span class="header-section-number">1.2</span> 背景</h2>
+<section id="和歌と和歌における非明示的要素" class="level3 page-columns page-full" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="和歌と和歌における非明示的要素"><span class="header-section-number">1.2.1</span> 和歌と和歌における非明示的要素</h3>
 <p>古今和歌集仮名序にあるように、歌人が「心に思ふもの」を自然界の物事に託しており、和歌を字義通り理解したところでその「心に思ふもの」には直接アクセスしているとはいえない。古今集の恋の歌を例にあげよう：</p>
 <blockquote class="blockquote">
 <p>初雁の鳴きこそわたれ世の中の人の心の秋しうければ (古今・恋五・貫之)</p>
 </blockquote>
-<p>このテキストを読むとして、それぞれの語の字義的・リテラルな意味がわかれば、文字通り<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>には理解できる。しかし、歌ことば辞典で「秋【あき】」<span class="citation" data-cites="katagiri1983Uta">[@katagiri1983Uta, 3]</span> を調べると、リテラルな意味だけでは読まれていない情報があることに気付く。</p>
-<blockquote class="blockquote">
+<p>このテキストを読むとして、それぞれの語の字義的・リテラルな意味がわかれば、文字通り<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>には理解できる。しかし、歌ことば辞典で「秋【あき】」<span class="citation" data-cites="katagiri1983Uta">(<a href="#ref-katagiri1983Uta" role="doc-biblioref">片桐 1983, 3</a>)</span> を調べると、リテラルな意味だけでは読まれていない情報があることに気付く。</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;初雁が鳴いて渡ってくるのだが、人の心の秋が来るのが悲しいので（筆者訳）。</p></div></div><blockquote class="blockquote">
 <p>秋【あき】 […]「秋」と「飽」を掛け、過ぎ去ってゆく秋と過ぎ去ってゆく愛を惜しむことが多かった。【脚注】[雁の]「鳴く」を人が「泣く」と同列にしか把握しない […]</p>
 </blockquote>
 <p>この記述に従い読み解いていけば、恋人の心が「飽き（秋）」て、歌人が「泣（鳴）」いている「失恋」の話であろうと推測される。このように「秋」から読み取る「飽きる恋」の情報は、原文の文脈（周辺語）では非明示的、つまりノンリテラルであるため、語の文字通りの意味だけでは読み取れない。</p>
 </section>
-<section id="現代語訳に基づく非明示的要素の可視化" class="level3">
-<h3 class="anchored" data-anchor-id="現代語訳に基づく非明示的要素の可視化">現代語訳に基づく非明示的要素の可視化</h3>
-<p>以上のような非明示的要素の可視化システムの開発は、筆者が所属する山元研究室がこれまでに、現代語訳との相対化に基づく可視化システムを検討してきた <span class="citation" data-cites="Yamamoto2005Mathematical yamamoto2006Uta chin2022Tango Chen2024TranslationBased">[@Yamamoto2005Mathematical; @yamamoto2006Uta; @chin2022Tango; @Chen2024TranslationBased]</span>。</p>
-<p>現代語訳との相対化というのは、現代語の要素の集合から和歌の原文の要素を取り除き現代語にしか存在しない要素を引き立てることである。この考えが <span class="citation" data-cites="kondo2001Ngram">@kondo2001Ngram</span>, <span class="citation" data-cites="kondo2011">@kondo2011</span> では「引き算」と称している。しかし、引き算で残った要素は、つまり、現代語訳で追加された要素はどのような性格であるか、明確にする必要がある。</p>
-<p>翻訳における要素の追加などの処理と操作に関して、<span class="citation" data-cites="Koller2004">@Koller2004 [p. 249]</span> では翻訳者による「介入 (Eingriff)」として、「無害」とされる介入には、目的言語の読者の不足している背景知識や、デノテーション・コノテーション面の情報、そして、言語内的、社会文化的、間テキスト的な情報の損失を補うための注釈付き翻訳手法の結果としての追加が含まれていると指摘している。翻訳が注釈・辞書同様に、解釈資料として非明示的な情報の抽出に有効な材料と認識できる。</p>
-<p>ただし、翻訳における追加は読者の理解力を過大評価・過小評価した産物にもありうる <span class="citation" data-cites="Nida1964 Koller2004">[@Nida1964, p. 155; @Koller2004, pp249--250]</span>。この点においては、翻訳の insertation の多様性が伺える。 古今和歌集の歌語の解釈資料としての現代語訳については、<span class="citation" data-cites="Chen2024TranslationBased">@Chen2024TranslationBased</span> では触れたものの、その多様性について十分説明していない。10 種類の現代語のコンテキストや、翻訳者の翻訳観を踏まえ再検討する余地がある。</p>
+<section id="現代語訳に基づく非明示的要素の可視化" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="現代語訳に基づく非明示的要素の可視化"><span class="header-section-number">1.2.2</span> 現代語訳に基づく非明示的要素の可視化</h3>
+<p>以上のような非明示的要素の可視化システムの開発は、筆者が所属する山元研究室がこれまでに、現代語訳との相対化に基づく可視化システムを検討してきた <span class="citation" data-cites="Yamamoto2005Mathematical yamamoto2006Uta chin2022Tango Chen2024TranslationBased">(<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">Yamamoto 2005</a>; <a href="#ref-yamamoto2006Uta" role="doc-biblioref"><strong>yamamoto2006Uta?</strong></a>; <a href="#ref-chin2022Tango" role="doc-biblioref">陳, ホドシチェク, and 山元 2022</a>; <a href="#ref-Chen2024TranslationBased" role="doc-biblioref"><strong>Chen2024TranslationBased?</strong></a>)</span>。</p>
+<p>現代語訳との相対化というのは、現代語の要素の集合から和歌の原文の要素を取り除き現代語にしか存在しない要素を引き立てることである。この考えが <span class="citation" data-cites="kondo2001Ngram">近藤 and 近藤 (<a href="#ref-kondo2001Ngram" role="doc-biblioref">2001</a>)</span>, <span class="citation" data-cites="kondo2011">(<a href="#ref-kondo2011" role="doc-biblioref"><strong>kondo2011?</strong></a>)</span> では「引き算」と称している。しかし、引き算で残った要素は、つまり、現代語訳で追加された要素はどのような性格であるか、明確にする必要がある。</p>
+<p>翻訳における要素の追加などの処理と操作に関して、<span class="citation" data-cites="Koller2004">(<a href="#ref-Koller2004" role="doc-biblioref"><strong>Koller2004?</strong></a>)</span> では翻訳者による「介入 (Eingriff)」として、「無害」とされる介入には、目的言語の読者の不足している背景知識や、デノテーション・コノテーション面の情報、そして、言語内的、社会文化的、間テキスト的な情報の損失を補うための注釈付き翻訳手法の結果としての追加が含まれていると指摘している。翻訳が注釈・辞書同様に、解釈資料として非明示的な情報の抽出に有効な材料と認識できる。</p>
+<p>ただし、翻訳における追加は読者の理解力を過大評価・過小評価した産物にもありうる <span class="citation" data-cites="Nida1964 Koller2004">(<a href="#ref-Nida1964" role="doc-biblioref"><strong>Nida1964?</strong></a>; <a href="#ref-Koller2004" role="doc-biblioref"><strong>Koller2004?</strong></a>)</span>。この点においては、翻訳の insertation の多様性が伺える。 古今和歌集の歌語の解釈資料としての現代語訳については、<span class="citation" data-cites="Chen2024TranslationBased">(<a href="#ref-Chen2024TranslationBased" role="doc-biblioref"><strong>Chen2024TranslationBased?</strong></a>)</span> では触れたものの、その多様性について十分説明していない。10 種類の現代語のコンテキストや、翻訳者の翻訳観を踏まえ再検討する余地がある。</p>
 </section>
-<section id="本稿の意義" class="level3">
-<h3 class="anchored" data-anchor-id="本稿の意義">本稿の意義</h3>
+<section id="本稿の意義" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="本稿の意義"><span class="header-section-number">1.2.3</span> 本稿の意義</h3>
 <p>現代語訳の作成者はいずれも、和歌の原文に対する理解や解釈に独自の視点を持っており、それぞれ比較することによって、和歌の現代語訳の追加要素の性格のカテゴリ化、および、その普遍性を明確できる。</p>
 <p>前述にあったように、翻訳における追加は読者の理解力の過大評価・過小評価に基づき生成した産物である可能性があるため、異なる訳者において和歌の情報をどこまで現代読者に開示すべきか、あるいは開示できるか、それぞれ打算があるはずである。訳者の意識を整理し、その異同を明確にする、そして、彼らの実践としての翻訳にはそれぞれ意識している方針を守っているかを客観的に分析することで、翻訳の普遍的な課題と限界を考察することができよう。</p>
 <p>最終的に以上の知見を踏まえ、非明示的要素の可視化システムの根拠をより明確にでき、その改善の方向性をも明確できる。</p>
 </section>
-<section id="問題意識と本稿の構成" class="level3">
-<h3 class="anchored" data-anchor-id="問題意識と本稿の構成">問題意識と本稿の構成</h3>
+<section id="問題意識と本稿の構成" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="問題意識と本稿の構成"><span class="header-section-number">1.2.4</span> 問題意識と本稿の構成</h3>
 <p>本稿では、古今和歌集の現代語訳の歴史的変遷を辿り、古今集の現代語訳の訳者のそれぞれの翻訳観を提示し、3つの問題意識に対し考察を行う：</p>
 <ol type="1">
 <li>直訳を意識した訳者がほとんどか</li>
@@ -216,26 +414,23 @@ Note
 </section>
 </section>
 </section>
-<section id="データとその位置づけ和歌古今集注釈現代語訳" class="level1">
-<h1>データとその位置づけ：和歌、古今集、注釈、現代語訳</h1>
+<section id="データとその位置づけ和歌古今集注釈現代語訳" class="level1 page-columns page-full" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> データとその位置づけ：和歌、古今集、注釈、現代語訳</h1>
 <p>本節では、材料である古今和歌集の説明に併せ、和歌、古今集、注釈と、その現代語訳について概観する。</p>
-<section id="和歌" class="level2">
-<h2 class="anchored" data-anchor-id="和歌">和歌</h2>
+<section id="和歌" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="和歌"><span class="header-section-number">2.1</span> 和歌</h2>
 <p>和歌は「歌」「詠む」と言われるだけあって、本来は、宮廷で、声を上げて歌われていたものであるから、基本的に当時の話しことばである。 古今集はその名前が示すように、それ以前の古代の歌と当時の歌を集めたものである。 古代の和歌は、主に『万葉集』に収められた和歌を指し、7世紀から8世紀の和歌も収録され、山部赤人、柿本人麻呂、額田王など和歌の歴史上重要な歌も仮名で収められている。</p>
 </section>
-<section id="古今集" class="level2">
-<h2 class="anchored" data-anchor-id="古今集">古今集</h2>
+<section id="古今集" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="古今集"><span class="header-section-number">2.2</span> 古今集</h2>
 <p>古今集は、その後の勅撰（天皇命令による）和歌集、二十一代集の冒頭に成立し、その後の勅撰和歌集の基本的な形式を確立したものである。 その序章には、編者、紀貫之による古今和歌集仮名序が記載されており、和歌の理論書として位置付けられている。 和歌文学の研究資料として、のちの本歌取りの元歌の前提とされている、「源氏物語」、「土佐日記」、「伊勢物語」ほか、数々の作品に掲載されている、など日本文学の基本的な資料としても重要である。 また、前述のように、話しことばの特徴を持つため、日本語の歴史的変遷を知る上でも重要な資料となっている。</p>
 </section>
-<section id="注釈と翻訳" class="level2">
-<h2 class="anchored" data-anchor-id="注釈と翻訳">注釈と翻訳</h2>
-<p>日本古典文学の歴史において、古今集は数多くの注釈書を生み出し、その注釈書はそれ自体の歴史ができるほどである <span class="citation" data-cites="kubota1960">[@kubota1960, 319]</span>。 注釈書に見られる多くの現代語訳は読者の和歌の理解を助けるために書かれており、翻訳家の翻訳目的は主に和歌の解釈を伝えるためである。 近代については、必ずしも現代語とは言えないが、無視するわけにはいかないので、近代までの古今集の注釈の歴史を簡略に説明し、明治以後、注釈書掲載の現代語訳について考察する。</p>
-<p>近代 (1868年) 以前は多くの古今集の注釈書が出版された。近代前（1600年–1868年）の間に、70以上の注釈書が出版されている <span class="citation" data-cites="kojima1989">[@kojima1989, 447--450]</span>。表 <a href="#tbl-annotation" class="quarto-xref">Table&nbsp;1</a> は近代前の著名な注釈書名を５つ示す。</p>
-<div id="tbl-annotation" class="quarto-float anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-annotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: 近代前（1600–1868）の古今集の代表的な注釈書
-</figcaption>
+<section id="注釈と翻訳" class="level2 page-columns page-full" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="注釈と翻訳"><span class="header-section-number">2.3</span> 注釈と翻訳</h2>
+<p>日本古典文学の歴史において、古今集は数多くの注釈書を生み出し、その注釈書はそれ自体の歴史ができるほどである <span class="citation" data-cites="kubota1960">(<a href="#ref-kubota1960" role="doc-biblioref"><strong>kubota1960?</strong></a>)</span>。 注釈書に見られる多くの現代語訳は読者の和歌の理解を助けるために書かれており、翻訳家の翻訳目的は主に和歌の解釈を伝えるためである。 近代については、必ずしも現代語とは言えないが、無視するわけにはいかないので、近代までの古今集の注釈の歴史を簡略に説明し、明治以後、注釈書掲載の現代語訳について考察する。</p>
+<p>近代 (1868年) 以前は多くの古今集の注釈書が出版された。近代前（1600年–1868年）の間に、70以上の注釈書が出版されている <span class="citation" data-cites="kojima1989">(<a href="#ref-kojima1989" role="doc-biblioref"><strong>kojima1989?</strong></a>)</span>。表 <a href="#tbl-annotation" class="quarto-xref">Table&nbsp;1</a> は近代前の著名な注釈書名を５つ示す。</p>
+<div id="tbl-annotation" class="quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-float-tbl figure page-columns page-full">
 <div aria-describedby="tbl-annotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
 <thead>
@@ -274,12 +469,15 @@ Table&nbsp;1: 近代前（1600–1868）の古今集の代表的な注釈書
 </tbody>
 </table>
 </div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-tbl margin-caption" id="tbl-annotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: 近代前（1600–1868）の古今集の代表的な注釈書
+</figcaption>
 </figure>
 </div>
 <p>北村季吟の八代集抄は108巻（50冊）からなる八代集<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>の注釈書である。</p>
-<p>契沖（1640–1701）の古今和歌集余材抄は最初の実践的な古今集の研究書である<span class="citation" data-cites="ozawa1971">[@ozawa1971, p. 36]</span>。賀茂真淵（1697–1767）による古今和歌集打聴は基本的に契沖のものを継承したものである。しかし、賀茂真淵は新しい歌よりも万葉集のような古今以前の歌に焦点を当てている。</p>
-<p>本居宣長の古今和歌集遠鏡はすべての和歌を当時の口語に翻訳する試みである<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。香川景樹（1768–1843）は「古今和歌集正義」でそれ以前の注釈書をかなり強い調子で批判している <span class="citation" data-cites="ozawa1971 matsuda1968">[@ozawa1971, p. 36; @matsuda1968, p. 58]</span>。とはいえ、1868年以来の多くの注釈書は上記の注釈書の影響を多かれ少なかれ受けていることは確かである。</p>
-<p>現代になって正確にはわからないが、重版、改訂などを含めて古今集の注釈書は30あまり出版されているようである。</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;八代集とは古今集、後撰集、拾遺集、後拾遺集、金葉集、詞花集、千載集、新古今集の8つの勅撰集である。</p></div></div><p>契沖（1640–1701）の古今和歌集余材抄は最初の実践的な古今集の研究書である<span class="citation" data-cites="ozawa1971">(<a href="#ref-ozawa1971" role="doc-biblioref"><strong>ozawa1971?</strong></a>)</span>。賀茂真淵（1697–1767）による古今和歌集打聴は基本的に契沖のものを継承したものである。しかし、賀茂真淵は新しい歌よりも万葉集のような古今以前の歌に焦点を当てている。</p>
+<p>本居宣長の古今和歌集遠鏡はすべての和歌を当時の口語に翻訳する試みである<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。香川景樹（1768–1843）は「古今和歌集正義」でそれ以前の注釈書をかなり強い調子で批判している <span class="citation" data-cites="ozawa1971 matsuda1968">(<a href="#ref-ozawa1971" role="doc-biblioref"><strong>ozawa1971?</strong></a>; <a href="#ref-matsuda1968" role="doc-biblioref"><strong>matsuda1968?</strong></a>)</span>。とはいえ、1868年以来の多くの注釈書は上記の注釈書の影響を多かれ少なかれ受けていることは確かである。</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;しかしながら、本居の翻訳意図は他の現代語の翻訳者のものとは少々異なっている。本居の意図は、古今集の注釈としてではなくて、純粋に人々に古今集がおもしろく価値のある文学であることを伝えようとしたところにあり、このことから本研究においてこの翻訳を他の翻訳者と同等に扱うことはできない。さらに、<span class="citation" data-cites="shiozawa">(<a href="#ref-shiozawa" role="doc-biblioref"><strong>shiozawa?</strong></a>)</span> によると、遠鏡で使われている口語表現の実態、すなわち、どんな単語が使われているのか、どういう意味なのかがはっきりわかっているわけではないし、江戸時代の口語表現それ自身についても明らかになっているわけではないので、本研究で取り扱うことはできない。</p></div></div><p>現代になって正確にはわからないが、重版、改訂などを含めて古今集の注釈書は30あまり出版されているようである。</p>
 <p>以下に提示したように、古今集の注釈書、現代語訳に関連する著作は多数出版されている：</p>
 <ol type="1">
 <li>古今和歌集 岩波文庫 佐伯 梅友 – 1981/1/16</li>
@@ -299,14 +497,11 @@ Table&nbsp;1: 近代前（1600–1868）の古今集の代表的な注釈書
 <li>古今和歌集 (角川文庫 黄 46-1) 窪田 章一郎 – 1973/1/30</li>
 </ol>
 </section>
-<section id="データ" class="level2">
-<h2 class="anchored" data-anchor-id="データ">データ</h2>
+<section id="データ" class="level2 page-columns page-full" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="データ"><span class="header-section-number">2.4</span> データ</h2>
 <p>2000年代に入っても、多数出版されているが、これまでの可視化システムの研究において整備できたものは、比較的近代以後に出版された古今集の現代語訳である <a href="#tbl-CT-data" class="quarto-xref">Table&nbsp;2</a>。</p>
-<div id="tbl-CT-data" class="quarto-float anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-CT-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
-</figcaption>
+<div id="tbl-CT-data" class="quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-float-tbl figure page-columns page-full">
 <div aria-describedby="tbl-CT-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
 <colgroup>
@@ -333,7 +528,7 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 <tr class="odd">
 <td>1</td>
 <td>KNK</td>
-<td><span class="citation" data-cites="kaneko1933Kokin">@kaneko1933Kokin</span></td>
+<td><span class="citation" data-cites="kaneko1933Kokin">金子 (<a href="#ref-kaneko1933Kokin" role="doc-biblioref">1933</a>)</span></td>
 <td>定家</td>
 <td style="text-align: right;">42,439</td>
 <td style="text-align: right;">3,356</td>
@@ -342,7 +537,7 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 <tr class="even">
 <td>2</td>
 <td>KBT</td>
-<td><span class="citation" data-cites="kubota1960Kokin">@kubota1960Kokin</span></td>
+<td><span class="citation" data-cites="kubota1960Kokin">窪田 (<a href="#ref-kubota1960Kokin" role="doc-biblioref">1960</a>)</span></td>
 <td>定家</td>
 <td style="text-align: right;">32,210</td>
 <td style="text-align: right;">2,701</td>
@@ -351,7 +546,7 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 <tr class="odd">
 <td>3</td>
 <td>MTD</td>
-<td><span class="citation" data-cites="matsuda1968Shinshaku">@matsuda1968Shinshaku</span></td>
+<td><span class="citation" data-cites="matsuda1968Shinshaku">松田 (<a href="#ref-matsuda1968Shinshaku" role="doc-biblioref">1968</a>)</span></td>
 <td>定家</td>
 <td style="text-align: right;">31,860</td>
 <td style="text-align: right;">3,007</td>
@@ -360,7 +555,7 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 <tr class="even">
 <td>4</td>
 <td>OZW</td>
-<td><span class="citation" data-cites="ozawa1971Kikon">@ozawa1971Kikon</span></td>
+<td><span class="citation" data-cites="ozawa1971Kikon">小沢 (<a href="#ref-ozawa1971Kikon" role="doc-biblioref">1971</a>)</span></td>
 <td>定家</td>
 <td style="text-align: right;">36,173</td>
 <td style="text-align: right;">3,384</td>
@@ -369,7 +564,7 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 <tr class="odd">
 <td>5</td>
 <td>TKOK</td>
-<td><span class="citation" data-cites="takeoka1976Kokin">@takeoka1976Kokin</span></td>
+<td><span class="citation" data-cites="takeoka1976Kokin">竹岡 (<a href="#ref-takeoka1976Kokin" role="doc-biblioref">1976</a>)</span></td>
 <td>定家</td>
 <td style="text-align: right;">29,844</td>
 <td style="text-align: right;">2,861</td>
@@ -378,7 +573,7 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 <tr class="even">
 <td>6</td>
 <td>OKMR</td>
-<td><span class="citation" data-cites="okumura1978Kokin">@okumura1978Kokin</span></td>
+<td><span class="citation" data-cites="okumura1978Kokin">奥村 (<a href="#ref-okumura1978Kokin" role="doc-biblioref">1978</a>)</span></td>
 <td>定家</td>
 <td style="text-align: right;">32,321</td>
 <td style="text-align: right;">3,153</td>
@@ -387,7 +582,7 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 <tr class="odd">
 <td>7</td>
 <td>KSJ</td>
-<td><span class="citation" data-cites="kyusoshin1979Kokin">@kyusoshin1979Kokin</span></td>
+<td><span class="citation" data-cites="kyusoshin1979Kokin">久曽神 (<a href="#ref-kyusoshin1979Kokin" role="doc-biblioref">1979</a>)</span></td>
 <td>定家</td>
 <td style="text-align: right;">34,050</td>
 <td style="text-align: right;">2,770</td>
@@ -396,7 +591,7 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 <tr class="even">
 <td>8</td>
 <td>KMCY</td>
-<td><span class="citation" data-cites="komachiya1982Kokin">@komachiya1982Kokin</span></td>
+<td><span class="citation" data-cites="komachiya1982Kokin">小町谷 (<a href="#ref-komachiya1982Kokin" role="doc-biblioref">1982</a>)</span></td>
 <td>定家</td>
 <td style="text-align: right;">30,869</td>
 <td style="text-align: right;">2,692</td>
@@ -405,7 +600,7 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 <tr class="odd">
 <td>9</td>
 <td>K&amp;A</td>
-<td><span class="citation" data-cites="kojima1989Kokin">@kojima1989Kokin</span></td>
+<td><span class="citation" data-cites="kojima1989Kokin">小島 and 新井 (<a href="#ref-kojima1989Kokin" role="doc-biblioref">1989</a>)</span></td>
 <td>定家</td>
 <td style="text-align: right;">33,867</td>
 <td style="text-align: right;">2,955</td>
@@ -414,7 +609,7 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 <tr class="even">
 <td>10</td>
 <td>KTGR</td>
-<td><span class="citation" data-cites="katagiri1998Kokinhyoshaku">@katagiri1998Kokinhyoshaku</span></td>
+<td><span class="citation" data-cites="katagiri1998Kokinhyoshaku">片桐 (<a href="#ref-katagiri1998Kokinhyoshaku" role="doc-biblioref">1998</a>)</span></td>
 <td>定家</td>
 <td style="text-align: right;">36,362</td>
 <td style="text-align: right;">2,882</td>
@@ -432,27 +627,30 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 </tbody>
 </table>
 </div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-tbl margin-caption" id="tbl-CT-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
+</figcaption>
 </figure>
 </div>
-<p>残念ながら、古今集は905年頃成立と言えども、これらの注釈書から文字化されたデータは和歌の現代語訳の著作権は、もちろんのこと、校訂著作権、翻刻著作権などがあり、公にできず、それぞれの注釈書著者が古今集ついていかなる考え方に基づいて執筆したのかは、十分に述べられておらず、それら現代語訳の特徴について、詳細な分析は行なわれていない。本稿では、そのうち、著作権の消滅した <span class="citation" data-cites="kaneko1933Kokin">@kaneko1933Kokin</span> のデータを公開し、現代語 10 種を対象にその特徴を比較する。</p>
+<p>残念ながら、古今集は905年頃成立と言えども、これらの注釈書から文字化されたデータは和歌の現代語訳の著作権は、もちろんのこと、校訂著作権、翻刻著作権などがあり、公にできず、それぞれの注釈書著者が古今集ついていかなる考え方に基づいて執筆したのかは、十分に述べられておらず、それら現代語訳の特徴について、詳細な分析は行なわれていない。本稿では、そのうち、著作権の消滅した <span class="citation" data-cites="kaneko1933Kokin">金子 (<a href="#ref-kaneko1933Kokin" role="doc-biblioref">1933</a>)</span> のデータを公開し、現代語 10 種を対象にその特徴を比較する。</p>
 </section>
-<section id="データフォーマット" class="level2">
-<h2 class="anchored" data-anchor-id="データフォーマット">データフォーマット</h2>
+<section id="データフォーマット" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="データフォーマット"><span class="header-section-number">2.5</span> データフォーマット</h2>
 </section>
 </section>
-<section id="方法" class="level1">
-<h1>方法</h1>
-<section id="文献調査による翻訳観の分類" class="level2">
-<h2 class="anchored" data-anchor-id="文献調査による翻訳観の分類">文献調査による翻訳観の分類</h2>
-<p>前節で提示した 20 世紀の古今集の注釈書の著者の注釈方法、現代語訳執筆方針について文献調査を行い整理する。 <span class="citation" data-cites="yamamoto2005">@yamamoto2005 [p. 102]</span> では、訳者の理論的考えを踏まえつつ、それぞれの現代語訳を実際に観察し、「逐語訳」「作者の意思の尊重」「字句を補う」「語順・語法を変える」「不詳」のように分類しているが、「作者の意思の尊重」は目標であり、その他は具体的な訳し方である、分類の視座が統一されていないため、本稿では、コミュニケーションの観点から翻訳の力点の置き方の分類を行う。それぞれの翻訳観に基づいて、意訳と直訳の意識についてまとめる。</p>
+<section id="方法" class="level1 page-columns page-full" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 方法</h1>
+<section id="文献調査による翻訳観の分類" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="文献調査による翻訳観の分類"><span class="header-section-number">3.1</span> 文献調査による翻訳観の分類</h2>
+<p>前節で提示した 20 世紀の古今集の注釈書の著者の注釈方法、現代語訳執筆方針について文献調査を行い整理する。 <span class="citation" data-cites="yamamoto2005">(<a href="#ref-yamamoto2005" role="doc-biblioref"><strong>yamamoto2005?</strong></a>)</span> では、訳者の理論的考えを踏まえつつ、それぞれの現代語訳を実際に観察し、「逐語訳」「作者の意思の尊重」「字句を補う」「語順・語法を変える」「不詳」のように分類しているが、「作者の意思の尊重」は目標であり、その他は具体的な訳し方である、分類の視座が統一されていないため、本稿では、コミュニケーションの観点から翻訳の力点の置き方の分類を行う。それぞれの翻訳観に基づいて、意訳と直訳の意識についてまとめる。</p>
 </section>
-<section id="追加率の計算" class="level2">
-<h2 class="anchored" data-anchor-id="追加率の計算">追加率の計算</h2>
-<p>それぞれの訳者が自身の翻訳方針にどこまで一貫して訳しているかについて、実際の歌語と訳語の一致率 で計算する。一致率の計算は、要素の順序と重複を考慮しない集合演算による方法と、要素の順序と重複アライメントによる方法はあるが、ここではアライメントによる方法を用いる。具体的な手順は <span class="citation" data-cites="Yamamoto2005Mathematical">@Yamamoto2005Mathematical</span> と <span class="citation" data-cites="Yamamoto2019Analysis">@Yamamoto2019Analysis</span> に詳しいが、本稿では先行研究で曖昧な部分を含め、計算のプロセスを明確にする。</p>
+<section id="追加率の計算" class="level2 page-columns page-full" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="追加率の計算"><span class="header-section-number">3.2</span> 追加率の計算</h2>
+<p>それぞれの訳者が自身の翻訳方針にどこまで一貫して訳しているかについて、実際の歌語と訳語の一致率 で計算する。一致率の計算は、要素の順序と重複を考慮しない集合演算による方法と、要素の順序と重複アライメントによる方法はあるが、ここではアライメントによる方法を用いる。具体的な手順は <span class="citation" data-cites="Yamamoto2005Mathematical">Yamamoto (<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">2005</a>)</span> と <span class="citation" data-cites="Yamamoto2019Analysis">Yamamoto and Hodošček (<a href="#ref-Yamamoto2019Analysis" role="doc-biblioref">2019</a>)</span> に詳しいが、本稿では先行研究で曖昧な部分を含め、計算のプロセスを明確にする。</p>
 <section id="旧分類語彙表番号-旧wlsp-に基づくマッチングのカテゴリー化" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="旧分類語彙表番号-旧wlsp-に基づくマッチングのカテゴリー化">旧分類語彙表番号 (旧WLSP) に基づくマッチングのカテゴリー化</h4>
-<p>歌語と現代語訳語の「一致・不一致」は、次の式のように、二語のメタコード（旧 WLSP 番号）の Longest common subsequence <span class="citation" data-cites="Traum2000">[@Traum2000]</span> の長さで <span class="math inline">\(U\)</span>（不一致）, <span class="math inline">\(G\)</span>（グループマッチ）, <span class="math inline">\(F\)</span>（フィールドマッチ）, <span class="math inline">\(E\)</span>（正確マッチ） 4 つにカテゴリ化ーする。</p>
-<p><span class="math display">\[
+<p>歌語と現代語訳語の「一致・不一致」は、次の式のように、二語のメタコード（旧 WLSP 番号）の Longest common subsequence <span class="citation" data-cites="Traum2000">(<a href="#ref-Traum2000" role="doc-biblioref"><strong>Traum2000?</strong></a>)</span> の長さで <span class="math inline">U</span>（不一致）, <span class="math inline">G</span>（グループマッチ）, <span class="math inline">F</span>（フィールドマッチ）, <span class="math inline">E</span>（正確マッチ） 4 つにカテゴリ化ーする。</p>
+<p><span class="math display">
 \text{match}(s,t) \in
 \begin{cases}
 U, &amp; \text{if } \text{LCS}(s,t) &lt; 10 \\
@@ -460,44 +658,44 @@ G, &amp; \text{if } 10 \leq \text{LCS}(s,t) &lt; 13 \\
 F, &amp; \text{if } 13 \leq \text{LCS}(s,t) &lt; 17 \\
 E, &amp; \text{if } \text{LCS}(s,t) \geq 17 \\
 \end{cases}
-\]</span></p>
-<p>この式では、<span class="math inline">\(s\)</span> はソーステキスト（和歌）における語のメタコードであり、<span class="math inline">\(t\)</span> はターゲットテキスト（現代語訳）における語のメタコードである。<span class="math inline">\(\text{LCS}(s,t)\)</span> は <span class="math inline">\(s\)</span>, <span class="math inline">\(t\)</span> 二語のメタコードの Longest common subsequence <span class="citation" data-cites="Traum2000">[@Traum2000]</span> である。以下具体の分類例である。</p>
+</span></p>
+<p>この式では、<span class="math inline">s</span> はソーステキスト（和歌）における語のメタコードであり、<span class="math inline">t</span> はターゲットテキスト（現代語訳）における語のメタコードである。<span class="math inline">\text{LCS}(s,t)</span> は <span class="math inline">s</span>, <span class="math inline">t</span> 二語のメタコードの Longest common subsequence <span class="citation" data-cites="Traum2000">(<a href="#ref-Traum2000" role="doc-biblioref"><strong>Traum2000?</strong></a>)</span> である。以下具体の分類例である。</p>
 <ol type="1">
-<li><strong>Unmatch</strong> (<span class="math inline">\(\text{match}(s,t) \in U\)</span>; <span class="math inline">\(\text{LCS}(s,t)=4\)</span>):</li>
+<li><strong>Unmatch</strong> (<span class="math inline">\text{match}(s,t) \in U</span>; <span class="math inline">\text{LCS}(s,t)=4</span>):</li>
 </ol>
 <ul>
-<li><span class="math inline">\(s=\)</span> <code>[BG-0]1-5520-20-0401</code> 梅 (plum)</li>
-<li><span class="math inline">\(t=\)</span> <code>[BG-0]8-0061-07-010-A</code> の (of, genetive case)</li>
+<li><span class="math inline">s=</span> <code>[BG-0]1-5520-20-0401</code> 梅 (plum)</li>
+<li><span class="math inline">t=</span> <code>[BG-0]8-0061-07-010-A</code> の (of, genetive case)</li>
 </ul>
 <ol start="2" type="1">
-<li><strong>Group match</strong> (<span class="math inline">\(\text{match}(s,t) \in G\)</span>; <span class="math inline">\(\text{LCS}(s,t)=11\)</span>):</li>
+<li><strong>Group match</strong> (<span class="math inline">\text{match}(s,t) \in G</span>; <span class="math inline">\text{LCS}(s,t)=11</span>):</li>
 </ol>
 <ul>
-<li><span class="math inline">\(s=\)</span> <code>[BG-01-5520-]20-0401</code> 梅 (plum)</li>
-<li><span class="math inline">\(t=\)</span> <code>[BG-01-5520-]19-115-A</code> 秋萩 (autumn <em>Lespedeza</em>)</li>
+<li><span class="math inline">s=</span> <code>[BG-01-5520-]20-0401</code> 梅 (plum)</li>
+<li><span class="math inline">t=</span> <code>[BG-01-5520-]19-115-A</code> 秋萩 (autumn <em>Lespedeza</em>)</li>
 </ul>
 <ol start="3" type="1">
-<li><strong>Field match</strong> (<span class="math inline">\(\text{match}(s,t) \in F\)</span>; <span class="math inline">\(\text{LCS}(s,t)=11\)</span>):</li>
+<li><strong>Field match</strong> (<span class="math inline">\text{match}(s,t) \in F</span>; <span class="math inline">\text{LCS}(s,t)=11</span>):</li>
 </ol>
 <ul>
-<li><span class="math inline">\(s=\)</span> <code>[BG-01-2030-01-]0300</code> 神 (god)</li>
-<li><span class="math inline">\(t=\)</span> <code>[BG-01-2030-01-]030-A</code> 仏 (Buddha)</li>
+<li><span class="math inline">s=</span> <code>[BG-01-2030-01-]0300</code> 神 (god)</li>
+<li><span class="math inline">t=</span> <code>[BG-01-2030-01-]030-A</code> 仏 (Buddha)</li>
 </ul>
 <ol start="4" type="1">
-<li><strong>Exact match</strong> (<span class="math inline">\(\text{match}(s,t) \in E\)</span>; <span class="math inline">\(\text{LCS}(s,t)=17\)</span>):</li>
+<li><strong>Exact match</strong> (<span class="math inline">\text{match}(s,t) \in E</span>; <span class="math inline">\text{LCS}(s,t)=17</span>):</li>
 </ol>
 <ul>
-<li><span class="math inline">\(s=\)</span> <code>[BG-01-5520-20-040]1</code> 梅 (plum)</li>
-<li><span class="math inline">\(t=\)</span> <code>[BG-01-5520-20-040]-A</code> 梅 (plum)</li>
+<li><span class="math inline">s=</span> <code>[BG-01-5520-20-040]1</code> 梅 (plum)</li>
+<li><span class="math inline">t=</span> <code>[BG-01-5520-20-040]-A</code> 梅 (plum)</li>
 </ul>
 </section>
-<section id="バッグ法による追加率の計算" class="level4 unnumbered">
+<section id="バッグ法による追加率の計算" class="level4 unnumbered page-columns page-full">
 <h4 class="unnumbered anchored" data-anchor-id="バッグ法による追加率の計算">バッグ法による追加率の計算</h4>
-<p>バッグ法による追加率（現代語訳における和歌原文に対する追加要素の割合）は、2 つのテキストを 2 つの集合と見做し、それらの集合における一致語の量をもとに計算する。ソーステキスト（和歌）<span class="math inline">\(S=(s_i)_{i \in \mathbb{Z}}\)</span> とターゲットテキスト（現代語訳） <span class="math inline">\(T=(t_i)_{i \in \mathbb{Z}}\)</span> が与えられた時、2 テキストのターゲットテキストにおける追加率の計算は下記に従う。</p>
+<p>バッグ法による追加率（現代語訳における和歌原文に対する追加要素の割合）は、2 つのテキストを 2 つの集合と見做し、それらの集合における一致語の量をもとに計算する。ソーステキスト（和歌）<span class="math inline">S=(s_i)_{i \in \mathbb{Z}}</span> とターゲットテキスト（現代語訳） <span class="math inline">T=(t_i)_{i \in \mathbb{Z}}</span> が与えられた時、2 テキストのターゲットテキストにおける追加率の計算は下記に従う。</p>
 <p>$$ _{T}(S,T) = 1 - </p>
 <p><em>{T}(S,T) = </em>{i}^{|S|}_{j}^{|T|} (s_i, t_j) $$</p>
-<p><span class="math inline">\(\text{agreement}_{T}(S,T)\)</span> は、ターゲットテキストに対しての 2 テキストの一致語の割合である。これを一致率と定義する。この一致率は、以下のスコーア関数 <span class="math inline">\(\text{score}(s,t)\)</span><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> に基づいて計算される。ここではどのレベルにも原文の要素と対応のないの要素の追加率を計算するので、2 語がいずれのレベルに一致すれば 1 とカウントする（下記参照）。</p>
-<p><span class="math display">\[
+<p><span class="math inline">\text{agreement}_{T}(S,T)</span> は、ターゲットテキストに対しての 2 テキストの一致語の割合である。これを一致率と定義する。この一致率は、以下のスコーア関数 <span class="math inline">\text{score}(s,t)</span><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> に基づいて計算される。ここではどのレベルにも原文の要素と対応のないの要素の追加率を計算するので、2 語がいずれのレベルに一致すれば 1 とカウントする（下記参照）。</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;本稿では、1/0 の 2 値として定義する。「2 語の一致」の 3 つのカテゴリーの中でどのレベルで一致と見るか、といった一致率の計算の厳しさを調整できる。</p></div></div><p><span class="math display">
 \text{score}(s,t) =
 \begin{cases}
 0, &amp; \text{if } \text{match}(s,t) \in U \\
@@ -505,14 +703,14 @@ E, &amp; \text{if } \text{LCS}(s,t) \geq 17 \\
 1, &amp; \text{if } \text{match}(s,t) \in F \\
 1, &amp; \text{if } \text{match}(s,t) \in E \\
 \end{cases}
-\]</span></p>
-<p><span class="math inline">\(|T|\)</span> はターゲットテキストの長さを指し、<span class="math inline">\(s_i\)</span>, <span class="math inline">\(t_i\)</span> はそれぞれソーステキスト、ターゲットテキストの <span class="math inline">\(i\)</span> 番目と <span class="math inline">\(j\)</span> 番目の要素を意味する。追加率は <span class="math inline">\(1 - \text{agreement}\)</span> で計算する。</p>
+</span></p>
+<p><span class="math inline">|T|</span> はターゲットテキストの長さを指し、<span class="math inline">s_i</span>, <span class="math inline">t_i</span> はそれぞれソーステキスト、ターゲットテキストの <span class="math inline">i</span> 番目と <span class="math inline">j</span> 番目の要素を意味する。追加率は <span class="math inline">1 - \text{agreement}</span> で計算する。</p>
 <p>バッグ法で計算された追加率は、統計分析に用いる（詳しくは次節参照）。</p>
 </section>
-<section id="整列法による追加率の計算" class="level4 unnumbered">
+<section id="整列法による追加率の計算" class="level4 unnumbered page-columns page-full">
 <h4 class="unnumbered anchored" data-anchor-id="整列法による追加率の計算">整列法による追加率の計算</h4>
 <p>整列法について説明する。整列法は、動的計画法に基づく。本稿では、動的計画法を用いて 2 つのシーケンス間のアライメントを計算するためのスコーア関数の具体的な式は以下の通りである。</p>
-<p><span class="math display">\[
+<p><span class="math display">
 \text{S}_{\text{DP}}(i, j) =
 \begin{cases}
 0 &amp; \text{if } i = 0 \text{ or } j = 0 \\
@@ -523,59 +721,56 @@ E, &amp; \text{if } \text{LCS}(s,t) \geq 17 \\
 \text{S}_{\text{DP}}(i, j-1) + \text{gap}
 \end{cases} &amp; i &gt; 0 \text{ and } j &gt; 0
 \end{cases}
-\]</span></p>
-<p>ソーステキストのシーケンス <span class="math inline">\(S\)</span> とターゲットテキストのシーケンス <span class="math inline">\(T\)</span> の部分列を用いて、位置 <span class="math inline">\(i\)</span> および <span class="math inline">\(j\)</span> までの最適なアライメントスコア $_{}(i, j) $ を再帰的に計算する。スコーア関数 <span class="math inline">\(\text{score}(s, t)\)</span> はバッグ法と同様に設定する。gap はギャップ（空白）を挿入する際に加算されるペナルティ (gap panelty) であり、ここでは便宜上 <span class="math inline">\(-1\)</span> と設定する。この式に基づき、プログラムは最尤なアライメントを探索する。整列した結果の例は次のようになる。ソーステキストにギャップが挿入さら、一致する語同士が配列される。</p>
+</span></p>
+<p>ソーステキストのシーケンス <span class="math inline">S</span> とターゲットテキストのシーケンス <span class="math inline">T</span> の部分列を用いて、位置 <span class="math inline">i</span> および <span class="math inline">j</span> までの最適なアライメントスコア $_{}(i, j) $ を再帰的に計算する。スコーア関数 <span class="math inline">\text{score}(s, t)</span> はバッグ法と同様に設定する。gap はギャップ（空白）を挿入する際に加算されるペナルティ (gap panelty) であり、ここでは便宜上 <span class="math inline">-1</span> と設定する。この式に基づき、プログラムは最尤なアライメントを探索する。整列した結果の例は次のようになる。ソーステキストにギャップが挿入さら、一致する語同士が配列される。</p>
 <blockquote class="blockquote">
 <p>立田姫ーー手向けるーーーー神のあれば【こそ】ーーー秋の木の葉のーーー幣とーーー散るーーーーらめ [Kokinshu 298]</p>
 </blockquote>
 <blockquote class="blockquote">
-<p>竜田姫は、手向けをするべき神があるので、そのつかさどる秋の木の葉が、幣のように散るのであろうよ。<span class="citation" data-cites="kubota">[@kubota]</span></p>
+<p>竜田姫は、手向けをするべき神があるので、そのつかさどる秋の木の葉が、幣のように散るのであろうよ。<span class="citation" data-cites="kubota">(<a href="#ref-kubota" role="doc-biblioref"><strong>kubota?</strong></a>)</span></p>
 </blockquote>
-<p>この基礎の上で、一致率と追加率を計算する。整列後の <span class="math inline">\(S^{\prime}\)</span> と <span class="math inline">\(T^{\prime}\)</span> がある<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>として、整列法による一致率 <span class="math inline">\(\text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime})\)</span> の計算は次に示す。</p>
-<p><span class="math display">\[
+<p>この基礎の上で、一致率と追加率を計算する。整列後の <span class="math inline">S^{\prime}</span> と <span class="math inline">T^{\prime}</span> がある<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>として、整列法による一致率 <span class="math inline">\text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime})</span> の計算は次に示す。</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;ここでは、もちろん <span class="math inline">|S^{\prime}| = |T^{\prime}</span>|</p></div></div><p><span class="math display">
 \text{U}^{\prime}_{T}(S,T) = 1-\text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime})
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 \text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime}) = \frac{1}{|T|}\sum_{i}^{|T|} \text{score}(s^{\prime}_i, t^{\prime}_i)
-\]</span></p>
-<p>うち、prime (<span class="math inline">\(\prime\)</span>) 記号がついているものは整列後のテキストにおけるものである。動的計画法が和歌の翻訳における語順の交換などの site swap に弱いため、整列法で計算される追加率は、全体的に統計的に分析せず、ケーススターディの説明において提示する。</p>
+</span></p>
+<p>うち、prime (<span class="math inline">\prime</span>) 記号がついているものは整列後のテキストにおけるものである。動的計画法が和歌の翻訳における語順の交換などの site swap に弱いため、整列法で計算される追加率は、全体的に統計的に分析せず、ケーススターディの説明において提示する。</p>
 </section>
 </section>
-<section id="翻訳観と追加率の関係に関する統計モデリング" class="level2">
-<h2 class="anchored" data-anchor-id="翻訳観と追加率の関係に関する統計モデリング">翻訳観と追加率の関係に関する統計モデリング</h2>
+<section id="翻訳観と追加率の関係に関する統計モデリング" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="翻訳観と追加率の関係に関する統計モデリング"><span class="header-section-number">3.3</span> 翻訳観と追加率の関係に関する統計モデリング</h2>
 <p>先行研究では概念・フィールド・同義レベルの一致率（言い換え率）、理論的・実験的追加率などの多くの指標を計算しているが、本稿では、実験的追加率をを対象に、前節の分類結果に基づきより精緻な統計分析を行う。</p>
 <p>訳者の翻訳観が実践に移り、実際の現代語訳における追加率に影響を与えているかどうかを確認するために、統計モデリングを行った。具体的には、翻訳観（<code>policy</code>）が追加率（<code>additional_rate</code>）<sup>[ここでは、バッグ法によって算出された追加率を用いる。]に与える影響を検討するために、ベータ分布</sup>[被説明変数がベータ分布に近似すると観測されている。]に基づく回帰モデルを採用した。このモデルは、訳者（<code>translator</code>）と歌（<code>poem</code>）のランダム効果も考慮し、これらの要因が追加率に与える潜在的な影響を制御するものである。</p>
-<p><span class="math display">\[
+<p><span class="math display">
 y_i \sim \text{Beta}(\mu_i \phi, (1 - \mu_i) \phi)
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 \mu_i = \text{logit}^{-1}(\eta_i) = \frac{1}{1 + e^{-\eta_i}}
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 \eta_i = \beta_0 + \beta_{\text{policy}} \cdot \text{policy}_i + u_{\text{translator}_i} + u_{\text{poem}_i}
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 \beta_0, \beta_{\text{policy}} \sim \mathcal{N}(0, 1)
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 u_{\text{translator}_i} \sim \mathcal{N}(0, \sigma_{\text{translator}}^2)
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 u_{\text{poem}_i} \sim \mathcal{N}(0, \sigma_{\text{poem}}^2)
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 \sigma_{\text{translator}}, \sigma_{\text{poem}} \sim \text{Cauchy}(0, 1)
-\]</span> <span class="math display">\[
+</span> <span class="math display">
 \phi \sim \text{Cauchy}(0, 1)
-\]</span></p>
-<p>ここで： - <span class="math inline">\(y_i\)</span> は追加率であり、ベータ分布に従う。 - <span class="math inline">\(\mu_i\)</span> は応答変数の平均値であり、線形予測子 <span class="math inline">\(\eta_i\)</span> をロジスティック変換することで得られる。 - <span class="math inline">\(\eta_i\)</span> は線形予測子であり、翻訳観の固定効果、訳者、歌のランダム効果を含む。 - <span class="math inline">\(\beta_0\)</span> は切片であり、追加率の平均を示す。 - <span class="math inline">\(\beta_{\text{policy}}\)</span> は翻訳観の回帰係数であり、翻訳観が追加率に与える固定効果を評価する。 - <span class="math inline">\(u_{\text{translator}_i}\)</span> は訳者のランダム効果であり、訳者間の変動を制御する。これは正規分布に従うと仮定する。 - <span class="math inline">\(u_{\text{poem}_i}\)</span> は歌のランダム効果であり、歌間の変動を制御する。これは正規分布に従うと仮定する。 - <span class="math inline">\(\sigma_{\text{translator}}\)</span>, <span class="math inline">\(\sigma_{\text{poem}}\)</span> は訳者および歌のランダム効果の標準偏差であり、コーシー分布に従う。 - <span class="math inline">\(\phi\)</span> はベータ分布の精度パラメータであり、コーシー分布に従う。</p>
+</span></p>
+<p>ここで： - <span class="math inline">y_i</span> は追加率であり、ベータ分布に従う。 - <span class="math inline">\mu_i</span> は応答変数の平均値であり、線形予測子 <span class="math inline">\eta_i</span> をロジスティック変換することで得られる。 - <span class="math inline">\eta_i</span> は線形予測子であり、翻訳観の固定効果、訳者、歌のランダム効果を含む。 - <span class="math inline">\beta_0</span> は切片であり、追加率の平均を示す。 - <span class="math inline">\beta_{\text{policy}}</span> は翻訳観の回帰係数であり、翻訳観が追加率に与える固定効果を評価する。 - <span class="math inline">u_{\text{translator}_i}</span> は訳者のランダム効果であり、訳者間の変動を制御する。これは正規分布に従うと仮定する。 - <span class="math inline">u_{\text{poem}_i}</span> は歌のランダム効果であり、歌間の変動を制御する。これは正規分布に従うと仮定する。 - <span class="math inline">\sigma_{\text{translator}}</span>, <span class="math inline">\sigma_{\text{poem}}</span> は訳者および歌のランダム効果の標準偏差であり、コーシー分布に従う。 - <span class="math inline">\phi</span> はベータ分布の精度パラメータであり、コーシー分布に従う。</p>
 <p>モデルの推定は、ベイズ推論に基づくMarkov Chain Monte Carlo (MCMC) 法を用いて実施する。具体的には、4 つのチェーンを使用し、各チェーンで 4000 回のイテレーションを行い、そのうち 1000 回をウォームアップ (burn-in) 期間として設定する。<code>brms</code>パッケージを用いてモデルを実装し、事後分布の収束性は R-hat 指標および有効サンプルサイズ (ESS) によって診断する。モデル結果では、翻訳観が追加率に与える影響を示し、事後平均、95%事後最狭信用区間 (posterior highest credible interval) 報告する。</p>
 </section>
-<section id="拡張意味単位モデル-extended-unit-of-meaning" class="level2">
-<h2 class="anchored" data-anchor-id="拡張意味単位モデル-extended-unit-of-meaning">拡張意味単位モデル (extended unit of meaning)</h2>
+<section id="拡張意味単位モデル-extended-unit-of-meaning" class="level2 page-columns page-full" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="拡張意味単位モデル-extended-unit-of-meaning"><span class="header-section-number">3.4</span> 拡張意味単位モデル (extended unit of meaning)</h2>
 <p>和歌に対する現代語訳は、なんらかの言い換えと追加を行っていることが分っても、その追加要素や言い換え要素の性格がわかっているわけではない。</p>
-<p>これら要素の性格は、コーパス言語学の視点から分析する。本稿では <span class="citation" data-cites="Sinclair1996Search">@Sinclair1996Search</span> の拡張意味単位モデルの視座を採用し、和歌の原文に観測されている拡意味単位モデルが現代語訳でどのように処理されているか、辞書の記述とどのように異なるかを確認する。</p>
-<section id="拡張意味単位モデル" class="level3">
-<h3 class="anchored" data-anchor-id="拡張意味単位モデル">拡張意味単位モデル</h3>
-<p>意味の拡張単位モデルでは、意味の単位を以下の五つの要素に分けている <span class="citation" data-cites="Sinclair1996Search">[@Sinclair1996Search]</span>。<span class="citation" data-cites="Sinclair1996">@Sinclair1996</span> は <em>true feeling</em> から「(not) [EXPRESS] [one’s] <em>true feeling</em>」といった意味の拡張単位を抽出している例とりあげているので、この例で要素について <a href="#tbl-EUoM" class="quarto-xref">Table&nbsp;3</a> にまとめ説明する:</p>
-<div id="tbl-EUoM" class="quarto-float anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-EUoM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;3: 拡張意味単位の要素、説明、事例、操作例
-</figcaption>
+<p>これら要素の性格は、コーパス言語学の視点から分析する。本稿では <span class="citation" data-cites="Sinclair1996Search">Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> の拡張意味単位モデルの視座を採用し、和歌の原文に観測されている拡意味単位モデルが現代語訳でどのように処理されているか、辞書の記述とどのように異なるかを確認する。</p>
+<section id="拡張意味単位モデル" class="level3 page-columns page-full" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="拡張意味単位モデル"><span class="header-section-number">3.4.1</span> 拡張意味単位モデル</h3>
+<p>意味の拡張単位モデルでは、意味の単位を以下の五つの要素に分けている <span class="citation" data-cites="Sinclair1996Search">(<a href="#ref-Sinclair1996Search" role="doc-biblioref">Sinclair 1996</a>)</span>。<span class="citation" data-cites="Sinclair1996">(<a href="#ref-Sinclair1996" role="doc-biblioref"><strong>Sinclair1996?</strong></a>)</span> は <em>true feeling</em> から「(not) [EXPRESS] [one’s] <em>true feeling</em>」といった意味の拡張単位を抽出している例とりあげているので、この例で要素について <a href="#tbl-EUoM" class="quarto-xref">Table&nbsp;3</a> にまとめ説明する:</p>
+<div id="tbl-EUoM" class="quarto-float anchored page-columns page-full">
+<figure class="quarto-float quarto-float-tbl figure page-columns page-full">
 <div aria-describedby="tbl-EUoM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
 <colgroup>
@@ -603,7 +798,7 @@ Table&nbsp;3: 拡張意味単位の要素、説明、事例、操作例
 <td style="text-align: left;">コロケーション（collocation）</td>
 <td style="text-align: left;">コアと語の共出現</td>
 <td style="text-align: left;">高頻度共出現語 (<em>their</em>, <em>express</em>, <em>hide</em>, <em>reveal</em>) + <em>true feeling</em></td>
-<td style="text-align: left;">span <span class="math inline">\(\pm\)</span> 4、出現率50%以上。</td>
+<td style="text-align: left;">span <span class="math inline">\pm</span> 4、出現率50%以上。</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">類連結（colligation）</td>
@@ -626,19 +821,22 @@ Table&nbsp;3: 拡張意味単位の要素、説明、事例、操作例
 </tbody>
 </table>
 </div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-tbl margin-caption" id="tbl-EUoM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: 拡張意味単位の要素、説明、事例、操作例
+</figcaption>
 </figure>
 </div>
 <ol type="1">
-<li>コア（core）は拡張意味単位における不変の成分である <span class="citation" data-cites="Sinclair2004">[@Sinclair2004, p. 204]</span>。<em>true feeling</em> がこの例におけるコアであり、検索語として使用されている。<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
-<li>コロケーション（collocation）：コアと語の共出現関係である（<span class="citation" data-cites="Sinclair1970:15">@Sinclair1970:15</span>）。<em>true feeling</em> のコンテキストでは、<em>their</em>, <em>express</em>, <em>hide</em>, <em>reveal</em> などがあげられる。<span class="citation" data-cites="Sinclair1996Search">@Sinclair1996Search</span> では、コンテキストのウィンドーは 4 に、閾値は 50% の出現率に設定されている。<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
-<li>類連結（colligation）はコアとグラマティカル・パターンとの共出現関係である [cf., <span class="citation" data-cites="Firth1968">@Firth1968</span>, 183; Sinclair1996Search, 11; Sinclair2003, 171]。例えば、<em>true feeling</em> の前方共出現に <em>thier/his/her/our</em> が多く、それらの性質は所有格形容詞であるため、所有格形容詞が <em>true feeling</em> の類連接と認める。この類連接は直接の観測ができないため、コンコーダンス・コロケーションリストによる観測・帰納に基づく。</li>
-<li>意味的志向（semantic preference）はコアと特定の意味の語群（semantic set）との共出現関係 <span class="citation" data-cites="Sinclair2003">[@Sinclair2003, 178]</span>。例えば、<em>express/hide/reveal/conceal</em> など <strong>EXPRESS</strong> まとは <strong>EXPRESS</strong> の否定のグループが常に <em>true feeling</em> のコンテキストに生起している。この意味的志向も類連接同様、コンコーダンス・コロケーションリストによる観測・帰納に基づく。</li>
+<li>コア（core）は拡張意味単位における不変の成分である <span class="citation" data-cites="Sinclair2004">(<a href="#ref-Sinclair2004" role="doc-biblioref"><strong>Sinclair2004?</strong></a>)</span>。<em>true feeling</em> がこの例におけるコアであり、検索語として使用されている。<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
+<li>コロケーション（collocation）：コアと語の共出現関係である（<span class="citation" data-cites="Sinclair1970:15">(<a href="#ref-Sinclair1970:15" role="doc-biblioref"><strong>Sinclair1970:15?</strong></a>)</span>）。<em>true feeling</em> のコンテキストでは、<em>their</em>, <em>express</em>, <em>hide</em>, <em>reveal</em> などがあげられる。<span class="citation" data-cites="Sinclair1996Search">Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> では、コンテキストのウィンドーは 4 に、閾値は 50% の出現率に設定されている。<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
+<li>類連結（colligation）はコアとグラマティカル・パターンとの共出現関係である [cf., <span class="citation" data-cites="Firth1968">(<a href="#ref-Firth1968" role="doc-biblioref"><strong>Firth1968?</strong></a>)</span>, 183; Sinclair1996Search, 11; Sinclair2003, 171]。例えば、<em>true feeling</em> の前方共出現に <em>thier/his/her/our</em> が多く、それらの性質は所有格形容詞であるため、所有格形容詞が <em>true feeling</em> の類連接と認める。この類連接は直接の観測ができないため、コンコーダンス・コロケーションリストによる観測・帰納に基づく。</li>
+<li>意味的志向（semantic preference）はコアと特定の意味の語群（semantic set）との共出現関係 <span class="citation" data-cites="Sinclair2003">(<a href="#ref-Sinclair2003" role="doc-biblioref"><strong>Sinclair2003?</strong></a>)</span>。例えば、<em>express/hide/reveal/conceal</em> など <strong>EXPRESS</strong> まとは <strong>EXPRESS</strong> の否定のグループが常に <em>true feeling</em> のコンテキストに生起している。この意味的志向も類連接同様、コンコーダンス・コロケーションリストによる観測・帰納に基づく。</li>
 <li>談話韻律（discourse prosody）は拡張意味単位全体の評価・態度・語用論的意味 [Sinclair2004Trust, 174]である。<strong>EXPRESS</strong>の左には<em>less/not</em>などの否定が頻繁に出現するため、<em>true feeling</em> については「客観的・主観的に表現できない」（reluctance/inability）といったネガティブな談話韻律が推測される。これも同様、コンコーダンス・コロケーションリストによる観測・帰納による。</li>
 </ol>
-<p>コア、コロケーションから談話韻律へと、直接な観測ができなくなり、明示的でなくなっていく <span class="citation" data-cites="Stubbs2001Phrase">[@Stubbs2001Phrase, pp. 87--88]</span>。</p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;<span class="citation" data-cites="Sinclair1996Search">Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> の例では、コアは実際には検索語に相当するものである。</p></div><div id="fn7"><p><sup>7</sup>&nbsp;KollerMautner2004はにすべきであるとしている。</p></div></div><p>コア、コロケーションから談話韻律へと、直接な観測ができなくなり、明示的でなくなっていく <span class="citation" data-cites="Stubbs2001Phrase">(<a href="#ref-Stubbs2001Phrase" role="doc-biblioref"><strong>Stubbs2001Phrase?</strong></a>)</span>。</p>
 </section>
-<section id="本稿のアダプテーション" class="level3">
-<h3 class="anchored" data-anchor-id="本稿のアダプテーション">本稿のアダプテーション</h3>
+<section id="本稿のアダプテーション" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="本稿のアダプテーション"><span class="header-section-number">3.4.2</span> 本稿のアダプテーション</h3>
 <p>本稿では、和歌の性質とデータの量の問題点を踏まえいくつかのアダプテーションをする：</p>
 <ol type="1">
 <li>順序の設定はしない。57577の制限の中で、語の順番の入れ替えが多く、コアを中心とする線形配列がまれであり、open frame が望ましい。</li>
@@ -648,41 +846,41 @@ Table&nbsp;3: 拡張意味単位の要素、説明、事例、操作例
 </section>
 </section>
 </section>
-<section id="結果" class="level1">
-<h1>結果</h1>
-<section id="現代語訳の整理と分類" class="level2">
-<h2 class="anchored" data-anchor-id="現代語訳の整理と分類">現代語訳の整理と分類</h2>
-<section id="分類" class="level3">
-<h3 class="anchored" data-anchor-id="分類">分類</h3>
+<section id="結果" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 結果</h1>
+<section id="現代語訳の整理と分類" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="現代語訳の整理と分類"><span class="header-section-number">4.1</span> 現代語訳の整理と分類</h2>
+<section id="分類" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="分類"><span class="header-section-number">4.1.1</span> 分類</h3>
 <p>注釈書に記されている翻訳の方針に基づき、10 人の翻訳観をコミュニケーションの主体への視座の置き方に基づき、3 類に分類された：</p>
 <ol type="1">
-<li>テキストの字義を重視する方針：<span class="citation" data-cites="kaneko1933Kokin">@kaneko1933Kokin</span>; <span class="citation" data-cites="kubota1960">@kubota1960</span>; <span class="citation" data-cites="katagiri1998">@katagiri1998</span></li>
-<li>作者の意図を重視する方針：<span class="citation" data-cites="okumura1978Kokin">@okumura1978Kokin</span>; <span class="citation" data-cites="takeoka1976">@takeoka1976</span></li>
-<li>読者の理解を重視する方針：<span class="citation" data-cites="ozawa1971">@ozawa1971</span>; <span class="citation" data-cites="kyusojin1979">@kyusojin1979</span></li>
-<li>不明・その他の方針：<span class="citation" data-cites="matsuda1968">@matsuda1968</span>; <span class="citation" data-cites="kojima1989">@kojima1989</span>; <span class="citation" data-cites="komachiya1982">@komachiya1982</span></li>
+<li>テキストの字義を重視する方針：<span class="citation" data-cites="kaneko1933Kokin">金子 (<a href="#ref-kaneko1933Kokin" role="doc-biblioref">1933</a>)</span>; <span class="citation" data-cites="kubota1960">(<a href="#ref-kubota1960" role="doc-biblioref"><strong>kubota1960?</strong></a>)</span>; <span class="citation" data-cites="katagiri1998">(<a href="#ref-katagiri1998" role="doc-biblioref"><strong>katagiri1998?</strong></a>)</span></li>
+<li>作者の意図を重視する方針：<span class="citation" data-cites="okumura1978Kokin">奥村 (<a href="#ref-okumura1978Kokin" role="doc-biblioref">1978</a>)</span>; <span class="citation" data-cites="takeoka1976">(<a href="#ref-takeoka1976" role="doc-biblioref"><strong>takeoka1976?</strong></a>)</span></li>
+<li>読者の理解を重視する方針：<span class="citation" data-cites="ozawa1971">(<a href="#ref-ozawa1971" role="doc-biblioref"><strong>ozawa1971?</strong></a>)</span>; <span class="citation" data-cites="kyusojin1979">(<a href="#ref-kyusojin1979" role="doc-biblioref"><strong>kyusojin1979?</strong></a>)</span></li>
+<li>不明・その他の方針：<span class="citation" data-cites="matsuda1968">(<a href="#ref-matsuda1968" role="doc-biblioref"><strong>matsuda1968?</strong></a>)</span>; <span class="citation" data-cites="kojima1989">(<a href="#ref-kojima1989" role="doc-biblioref"><strong>kojima1989?</strong></a>)</span>; <span class="citation" data-cites="komachiya1982">(<a href="#ref-komachiya1982" role="doc-biblioref"><strong>komachiya1982?</strong></a>)</span></li>
 </ol>
 <p>この中で、原文の字義を重視する翻訳観は、もっとも逐語訳に拘っている。作者の意図・感受を重視する・読者の理解を重視する翻訳観では、多少の語と語順の入れ替え、語句の補いを許容しているように述べている。</p>
 </section>
-<section id="分類ごとの翻訳観の詳細" class="level3">
-<h3 class="anchored" data-anchor-id="分類ごとの翻訳観の詳細">分類ごとの翻訳観の詳細</h3>
-<section id="text-orientated" class="level4 unbumbered">
-<h4 class="unbumbered anchored" data-anchor-id="text-orientated">Text-orientated</h4>
-<p>原文に忠実に翻訳することを重視し、できるだけ語順や意味を変えずに翻訳を行う。 <span class="citation" data-cites="kaneko1933">@kaneko1933</span> は「逐語訳」に徹し、語を加えたり、削除することを避けており、慎重に翻訳していると述べている。金子 (1933) は歌の意をそこねたり、調をあやまったりすることを恐れて、鏡花水月の訳法（あからさまに説明せず、ただその姿を眼前に思い浮ばせるようにする漢文の表現法）に従ひ、きわめて小心に、一字一語の出入をもゆるがせにせぬことを期したことを述べている。また、文体的には、金子の翻訳調はたとえば「くずをれる」のような古めかしいことばをわざと翻訳に入れるところなど、本居宣長の「遠鏡」に似ている。 <span class="citation" data-cites="kubota1960">@kubota1960</span> は、現代語訳の方針について、逐語訳にこだわり、語順を変えたり、新しい語を加えることを避けていると述べている。 <span class="citation" data-cites="katagiri1998">@katagiri1998</span> も同様に、逐語訳を行い、和歌の省略や長大な増補を避け、可能な限り忠実に現代語訳している。</p>
+<section id="分類ごとの翻訳観の詳細" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="分類ごとの翻訳観の詳細"><span class="header-section-number">4.1.2</span> 分類ごとの翻訳観の詳細</h3>
+<section id="text-orientated" class="level4 unbumbered" data-number="4.1.2.1">
+<h4 class="unbumbered anchored" data-number="4.1.2.1" data-anchor-id="text-orientated"><span class="header-section-number">4.1.2.1</span> Text-orientated</h4>
+<p>原文に忠実に翻訳することを重視し、できるだけ語順や意味を変えずに翻訳を行う。 <span class="citation" data-cites="kaneko1933">(<a href="#ref-kaneko1933" role="doc-biblioref"><strong>kaneko1933?</strong></a>)</span> は「逐語訳」に徹し、語を加えたり、削除することを避けており、慎重に翻訳していると述べている。金子 (1933) は歌の意をそこねたり、調をあやまったりすることを恐れて、鏡花水月の訳法（あからさまに説明せず、ただその姿を眼前に思い浮ばせるようにする漢文の表現法）に従ひ、きわめて小心に、一字一語の出入をもゆるがせにせぬことを期したことを述べている。また、文体的には、金子の翻訳調はたとえば「くずをれる」のような古めかしいことばをわざと翻訳に入れるところなど、本居宣長の「遠鏡」に似ている。 <span class="citation" data-cites="kubota1960">(<a href="#ref-kubota1960" role="doc-biblioref"><strong>kubota1960?</strong></a>)</span> は、現代語訳の方針について、逐語訳にこだわり、語順を変えたり、新しい語を加えることを避けていると述べている。 <span class="citation" data-cites="katagiri1998">(<a href="#ref-katagiri1998" role="doc-biblioref"><strong>katagiri1998?</strong></a>)</span> も同様に、逐語訳を行い、和歌の省略や長大な増補を避け、可能な限り忠実に現代語訳している。</p>
 </section>
 <section id="intension-orientated" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="intension-orientated">Intension-orientated</h4>
-<p>このグループでは、逐語訳に拘らず、表面的な意味よりも、原文の意図と感受性を重視する群である。 <span class="citation" data-cites="okumura1978">@okumura1978 [p. 7]</span> は「口語訳は、原歌の言葉づかいや言い廻しを尊重し、一首の意味を厳密に解釈するより、基本的な作意をまず感じとってもらうことに重点をおいた」としている。原文の意図の理解を重視し、逐語訳よりも作意を優先して翻訳している。 <span class="citation" data-cites="takeoka1976">@takeoka1976 [p. 21]</span> は、訳(口語訳)は原文の「筋」の紹介や解説の類ではなく，作者の認識のしかた・感じ方をあらゆる面より明らかにしたのち、それ現代語に存在する同じあるいは極力それに近似した認識のしかた、感じ方の表現にそっくりうつしかえることをいう。つまり、原作の逐語的に訳すのではまく、感受性の保持に重点を置きながら言い換えを積極的に用いる。具体的な現代語訳の方針としては、<span class="citation" data-cites="takeoka1976">@takeoka1976 [pp. 11--12]</span> は、次のような独自の理論を提案している。 <span class="math display">\[
+<p>このグループでは、逐語訳に拘らず、表面的な意味よりも、原文の意図と感受性を重視する群である。 <span class="citation" data-cites="okumura1978">(<a href="#ref-okumura1978" role="doc-biblioref"><strong>okumura1978?</strong></a>)</span> は「口語訳は、原歌の言葉づかいや言い廻しを尊重し、一首の意味を厳密に解釈するより、基本的な作意をまず感じとってもらうことに重点をおいた」としている。原文の意図の理解を重視し、逐語訳よりも作意を優先して翻訳している。 <span class="citation" data-cites="takeoka1976">(<a href="#ref-takeoka1976" role="doc-biblioref"><strong>takeoka1976?</strong></a>)</span> は、訳(口語訳)は原文の「筋」の紹介や解説の類ではなく，作者の認識のしかた・感じ方をあらゆる面より明らかにしたのち、それ現代語に存在する同じあるいは極力それに近似した認識のしかた、感じ方の表現にそっくりうつしかえることをいう。つまり、原作の逐語的に訳すのではまく、感受性の保持に重点を置きながら言い換えを積極的に用いる。具体的な現代語訳の方針としては、<span class="citation" data-cites="takeoka1976">(<a href="#ref-takeoka1976" role="doc-biblioref"><strong>takeoka1976?</strong></a>)</span> は、次のような独自の理論を提案している。 <span class="math display">
   S=\left[\left(a+b+c+\dots+n\right)\times X \right]\times Y
-  \]</span> ただし、<span class="math inline">\(S\)</span> は翻訳された文、<span class="math inline">\(a, b, c, \dots, n\)</span> のそれぞれは単語、<span class="math inline">\(X\)</span> は翻訳に含まれる要素、<span class="math inline">\(Y\)</span> は翻訳に効果的に加えられた要素である。<span class="math inline">\(a,b,c, \dots, n\)</span> それぞれの一般的普遍的意義は辞書で理解でき、それぞれの <span class="math inline">\(+\)</span> のしかたに相当するものは文法書を参照すれば了解できる」としている。<span class="citation" data-cites="takeoka1976">@takeoka1976 [p. 11]</span> は <span class="math inline">\(Y\)</span> はふつうは 0 の値であるが、和歌にはいくつか効果的な要素が含まれる時、翻訳者は <span class="math inline">\(Y\)</span> に何らかの値、たとえば終助詞（わ、ね、よ）のようなものを付け加わえる。したがって、現代語訳作成のための重要な変数は <span class="math inline">\(X\)</span> となる。その <span class="math inline">\(X\)</span> は、語句の分割、対応する適切な現代語、語順、助詞・接続詞を含めた訳語、文の構造、話の流れ（談話）、場面の７つに分類されるとしている。 注釈書は「校訂」「釈」「訳」「評」「古注」で構成されている。契沖の「古今和歌集余材抄」以来のの 7 種の注釈書の注を統合したはじめてのものである。竹岡はこの注釈書にて文学研究に分析的アプローチを組み込んでいる。竹岡は賀茂真淵、香川景樹の仕事を分析に根拠がないとして同意できないとしている一方で、契沖、本居宣長、富士谷成章 (1738–79) らの注釈を評価している。加えて、特に古典文法、語彙の観点から 7 種すべての古注間の違いについて慎重に議論している。</p>
+  </span> ただし、<span class="math inline">S</span> は翻訳された文、<span class="math inline">a, b, c, \dots, n</span> のそれぞれは単語、<span class="math inline">X</span> は翻訳に含まれる要素、<span class="math inline">Y</span> は翻訳に効果的に加えられた要素である。<span class="math inline">a,b,c, \dots, n</span> それぞれの一般的普遍的意義は辞書で理解でき、それぞれの <span class="math inline">+</span> のしかたに相当するものは文法書を参照すれば了解できる」としている。<span class="citation" data-cites="takeoka1976">(<a href="#ref-takeoka1976" role="doc-biblioref"><strong>takeoka1976?</strong></a>)</span> は <span class="math inline">Y</span> はふつうは 0 の値であるが、和歌にはいくつか効果的な要素が含まれる時、翻訳者は <span class="math inline">Y</span> に何らかの値、たとえば終助詞（わ、ね、よ）のようなものを付け加わえる。したがって、現代語訳作成のための重要な変数は <span class="math inline">X</span> となる。その <span class="math inline">X</span> は、語句の分割、対応する適切な現代語、語順、助詞・接続詞を含めた訳語、文の構造、話の流れ（談話）、場面の７つに分類されるとしている。 注釈書は「校訂」「釈」「訳」「評」「古注」で構成されている。契沖の「古今和歌集余材抄」以来のの 7 種の注釈書の注を統合したはじめてのものである。竹岡はこの注釈書にて文学研究に分析的アプローチを組み込んでいる。竹岡は賀茂真淵、香川景樹の仕事を分析に根拠がないとして同意できないとしている一方で、契沖、本居宣長、富士谷成章 (1738–79) らの注釈を評価している。加えて、特に古典文法、語彙の観点から 7 種すべての古注間の違いについて慎重に議論している。</p>
 </section>
 <section id="readability-orientated" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="readability-orientated">Readability-orientated</h4>
-<p>このグループの訳者は、原文に忠実であることよりも、内容の理解や解釈を読者に伝えることを重視している。そのため、語順を変えたり、新しい語を加えることもある。 <span class="citation" data-cites="ozawa1971">@ozawa1971</span> は原作の語順・語法を変更することをいとわず、読者が理解しやすいように内容を優先した翻訳を行っている。<span class="citation" data-cites="ozawa1971">@ozawa1971 [p. 46]</span> は「口語訳はそれだけ独立しても意味がよくわかるように努めたので、時には原作の語順・語法を変えている」と述べており、逐語訳よりも内容の理解の方に力点が置かれている。 <span class="citation" data-cites="kyusojin1979">@kyusojin1979</span> は、平易な口語訳を採用し、必要に応じて語句を補っており、解釈を重視した翻訳を行っている。現代語訳の方針としては「歌意は、歌句に基づく平易な口語訳としたが、必要と思われる場合は字句を補った」と述べている [p.6]。</p>
+<p>このグループの訳者は、原文に忠実であることよりも、内容の理解や解釈を読者に伝えることを重視している。そのため、語順を変えたり、新しい語を加えることもある。 <span class="citation" data-cites="ozawa1971">(<a href="#ref-ozawa1971" role="doc-biblioref"><strong>ozawa1971?</strong></a>)</span> は原作の語順・語法を変更することをいとわず、読者が理解しやすいように内容を優先した翻訳を行っている。<span class="citation" data-cites="ozawa1971">(<a href="#ref-ozawa1971" role="doc-biblioref"><strong>ozawa1971?</strong></a>)</span> は「口語訳はそれだけ独立しても意味がよくわかるように努めたので、時には原作の語順・語法を変えている」と述べており、逐語訳よりも内容の理解の方に力点が置かれている。 <span class="citation" data-cites="kyusojin1979">(<a href="#ref-kyusojin1979" role="doc-biblioref"><strong>kyusojin1979?</strong></a>)</span> は、平易な口語訳を採用し、必要に応じて語句を補っており、解釈を重視した翻訳を行っている。現代語訳の方針としては「歌意は、歌句に基づく平易な口語訳としたが、必要と思われる場合は字句を補った」と述べている [p.6]。</p>
 </section>
 <section id="不詳" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="不詳">不詳</h4>
-<p>現代語訳の方針について、<span class="citation" data-cites="komachiya1982">@komachiya1982</span>, <span class="citation" data-cites="matsuda1968">@matsuda1968</span>, <span class="citation" data-cites="kojima1989">@kojima1989</span> は明確に述べていない。</p>
-<p>うち、<span class="citation" data-cites="matsuda1968">@matsuda1968</span> の現代語訳は他の 10 名の共同執筆者によって作られている。この注釈書冒頭のの解説には、現代語訳は今までの研究にしたがって作られたとは述べているものの、10 名の共著者の間での翻訳の共通認識、作成方針は明らかに述べられていない。また、松田は古今集の和歌について、歌人の感情についてだけでなく、選者の編集意識についても、解釈にも含めようとしていると述べている <span class="citation" data-cites="matsuda1968">[@matsuda1968, p. 9]</span>。各歌の後に、順次、「通釈」「語釈」「古注」「評」の項目を設け、解釈・鑑賞などが記されている。 <span class="citation" data-cites="kojima1989">@kojima1989</span> の特色の一つは注釈は江戸期 (1600–1868) だけでなく、これまでの注釈書では無視されてきた中世期 (1392–1600) に作られた注釈も取り入れていることである (pp.&nbsp;481–482)。また、万葉集の和歌と用語が対比されて引用されている (小島・新井 1989: 480)。各歌の注釈としては「歌番号」「大意」「語句の注」「参考事項」の順で述べられている。他の注釈本と比べてさほど量的に違いはないが、付録にはさまざまな資料が含まれており、付録だけで本の 30 パーセントを占めているほどである。</p>
+<p>現代語訳の方針について、<span class="citation" data-cites="komachiya1982">(<a href="#ref-komachiya1982" role="doc-biblioref"><strong>komachiya1982?</strong></a>)</span>, <span class="citation" data-cites="matsuda1968">(<a href="#ref-matsuda1968" role="doc-biblioref"><strong>matsuda1968?</strong></a>)</span>, <span class="citation" data-cites="kojima1989">(<a href="#ref-kojima1989" role="doc-biblioref"><strong>kojima1989?</strong></a>)</span> は明確に述べていない。</p>
+<p>うち、<span class="citation" data-cites="matsuda1968">(<a href="#ref-matsuda1968" role="doc-biblioref"><strong>matsuda1968?</strong></a>)</span> の現代語訳は他の 10 名の共同執筆者によって作られている。この注釈書冒頭のの解説には、現代語訳は今までの研究にしたがって作られたとは述べているものの、10 名の共著者の間での翻訳の共通認識、作成方針は明らかに述べられていない。また、松田は古今集の和歌について、歌人の感情についてだけでなく、選者の編集意識についても、解釈にも含めようとしていると述べている <span class="citation" data-cites="matsuda1968">(<a href="#ref-matsuda1968" role="doc-biblioref"><strong>matsuda1968?</strong></a>)</span>。各歌の後に、順次、「通釈」「語釈」「古注」「評」の項目を設け、解釈・鑑賞などが記されている。 <span class="citation" data-cites="kojima1989">(<a href="#ref-kojima1989" role="doc-biblioref"><strong>kojima1989?</strong></a>)</span> の特色の一つは注釈は江戸期 (1600–1868) だけでなく、これまでの注釈書では無視されてきた中世期 (1392–1600) に作られた注釈も取り入れていることである (pp.&nbsp;481–482)。また、万葉集の和歌と用語が対比されて引用されている (小島・新井 1989: 480)。各歌の注釈としては「歌番号」「大意」「語句の注」「参考事項」の順で述べられている。他の注釈本と比べてさほど量的に違いはないが、付録にはさまざまな資料が含まれており、付録だけで本の 30 パーセントを占めているほどである。</p>
 </section>
 <section id="まとめ" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="まとめ">まとめ</h4>
@@ -690,1286 +888,150 @@ Table&nbsp;3: 拡張意味単位の要素、説明、事例、操作例
 </section>
 </section>
 </section>
-<section id="追加率の計算結果" class="level2">
-<h2 class="anchored" data-anchor-id="追加率の計算結果">追加率の計算結果</h2>
+<section id="追加率の計算結果" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="追加率の計算結果"><span class="header-section-number">4.2</span> 追加率の計算結果</h2>
 </section>
-<section id="統計モデルの推定結果" class="level2">
-<h2 class="anchored" data-anchor-id="統計モデルの推定結果">統計モデルの推定結果</h2>
-<section id="翻訳観による追加率の違い" class="level3">
-<h3 class="anchored" data-anchor-id="翻訳観による追加率の違い">翻訳観による追加率の違い</h3>
+<section id="統計モデルの推定結果" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="統計モデルの推定結果"><span class="header-section-number">4.3</span> 統計モデルの推定結果</h2>
+<section id="翻訳観による追加率の違い" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="翻訳観による追加率の違い"><span class="header-section-number">4.3.1</span> 翻訳観による追加率の違い</h3>
 </section>
-<section id="和歌のランダム効果" class="level3">
-<h3 class="anchored" data-anchor-id="和歌のランダム効果">和歌のランダム効果</h3>
+<section id="和歌のランダム効果" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="和歌のランダム効果"><span class="header-section-number">4.3.2</span> 和歌のランダム効果</h3>
 </section>
-<section id="訳者のランダム効果" class="level3">
-<h3 class="anchored" data-anchor-id="訳者のランダム効果">訳者のランダム効果</h3>
-</section>
-</section>
-<section id="拡張意味単位の対応立田の場合" class="level2">
-<h2 class="anchored" data-anchor-id="拡張意味単位の対応立田の場合">拡張意味単位の対応：「立田」の場合</h2>
-<section id="立田の拡張意味単位立田自然物余韻結び" class="level3">
-<h3 class="anchored" data-anchor-id="立田の拡張意味単位立田自然物余韻結び">「立田」の拡張意味単位：「立田+自然物+余韻結び」</h3>
-<section id="コロケーション" class="level4">
-<h4 class="anchored" data-anchor-id="コロケーション">コロケーション</h4>
-</section>
-<section id="コリゲーション" class="level4">
-<h4 class="anchored" data-anchor-id="コリゲーション">コリゲーション</h4>
-</section>
-<section id="意味的志向" class="level4">
-<h4 class="anchored" data-anchor-id="意味的志向">意味的志向</h4>
-</section>
-<section id="談話韻律" class="level4">
-<h4 class="anchored" data-anchor-id="談話韻律">談話韻律</h4>
+<section id="訳者のランダム効果" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="訳者のランダム効果"><span class="header-section-number">4.3.3</span> 訳者のランダム効果</h3>
 </section>
 </section>
-<section id="辞書の対応" class="level3">
-<h3 class="anchored" data-anchor-id="辞書の対応">辞書の対応</h3>
+<section id="拡張意味単位の対応立田の場合" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="拡張意味単位の対応立田の場合"><span class="header-section-number">4.4</span> 拡張意味単位の対応：「立田」の場合</h2>
+<section id="立田の拡張意味単位立田自然物余韻結び" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="立田の拡張意味単位立田自然物余韻結び"><span class="header-section-number">4.4.1</span> 「立田」の拡張意味単位：「立田+自然物+余韻結び」</h3>
+<section id="コロケーション" class="level4" data-number="4.4.1.1">
+<h4 data-number="4.4.1.1" class="anchored" data-anchor-id="コロケーション"><span class="header-section-number">4.4.1.1</span> コロケーション</h4>
 </section>
-<section id="現代語訳の対応" class="level3">
-<h3 class="anchored" data-anchor-id="現代語訳の対応">現代語訳の対応</h3>
+<section id="コリゲーション" class="level4" data-number="4.4.1.2">
+<h4 data-number="4.4.1.2" class="anchored" data-anchor-id="コリゲーション"><span class="header-section-number">4.4.1.2</span> コリゲーション</h4>
 </section>
+<section id="意味的志向" class="level4" data-number="4.4.1.3">
+<h4 data-number="4.4.1.3" class="anchored" data-anchor-id="意味的志向"><span class="header-section-number">4.4.1.3</span> 意味的志向</h4>
 </section>
-</section>
-<section id="考察" class="level1">
-<h1>考察</h1>
-<section id="追加率には翻訳観に左右されない部分がある" class="level2">
-<h2 class="anchored" data-anchor-id="追加率には翻訳観に左右されない部分がある">追加率には翻訳観に左右されない部分がある</h2>
-</section>
-<section id="現代語訳によるノンリテラル要素の可視化が十分考えられる" class="level2">
-<h2 class="anchored" data-anchor-id="現代語訳によるノンリテラル要素の可視化が十分考えられる">現代語訳によるノンリテラル要素の可視化が十分考えられる</h2>
-</section>
-<section id="拡張意味単位の現代語訳の可視化としてのシステム" class="level2">
-<h2 class="anchored" data-anchor-id="拡張意味単位の現代語訳の可視化としてのシステム">拡張意味単位の現代語訳の可視化としてのシステム</h2>
-</section>
-<section id="分類体系の有用性" class="level2">
-<h2 class="anchored" data-anchor-id="分類体系の有用性">分類体系の有用性</h2>
+<section id="談話韻律" class="level4" data-number="4.4.1.4">
+<h4 data-number="4.4.1.4" class="anchored" data-anchor-id="談話韻律"><span class="header-section-number">4.4.1.4</span> 談話韻律</h4>
 </section>
 </section>
-<section id="結論" class="level1">
-<h1>結論</h1>
-<section id="libraries" class="level2">
-<h2 class="anchored" data-anchor-id="libraries">Libraries</h2>
-<div id="cell-25" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-outputid="7ea141f5-5e0f-4b8a-ccef-cc4b705c3ffb">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>apt install plotutils</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-The following additional packages will be installed:
-  libplot2c2
-Suggested packages:
-  gsfonts
-The following NEW packages will be installed:
-  libplot2c2 plotutils
-0 upgraded, 2 newly installed, 0 to remove and 45 not upgraded.
-Need to get 1,117 kB of archives.
-After this operation, 4,139 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libplot2c2 amd64 2.6-11 [506 kB]
-Get:2 http://archive.ubuntu.com/ubuntu jammy/universe amd64 plotutils amd64 2.6-11 [611 kB]
-Fetched 1,117 kB in 1s (779 kB/s)
-Selecting previously unselected package libplot2c2:amd64.
-(Reading database ... 123594 files and directories currently installed.)
-Preparing to unpack .../libplot2c2_2.6-11_amd64.deb ...
-Unpacking libplot2c2:amd64 (2.6-11) ...
-Selecting previously unselected package plotutils.
-Preparing to unpack .../plotutils_2.6-11_amd64.deb ...
-Unpacking plotutils (2.6-11) ...
-Setting up libplot2c2:amd64 (2.6-11) ...
-Setting up plotutils (2.6-11) ...
-Processing triggers for man-db (2.10.2-1) ...
-Processing triggers for libc-bin (2.35-0ubuntu3.4) ...
-/sbin/ldconfig.real: /usr/local/lib/libur_adapter_opencl.so.0 is not a symbolic link
-
-/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc_proxy.so.2 is not a symbolic link
-
-/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_0.so.3 is not a symbolic link
-
-/sbin/ldconfig.real: /usr/local/lib/libur_loader.so.0 is not a symbolic link
-
-/sbin/ldconfig.real: /usr/local/lib/libtbb.so.12 is not a symbolic link
-
-/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc.so.2 is not a symbolic link
-
-/sbin/ldconfig.real: /usr/local/lib/libtbbbind.so.3 is not a symbolic link
-
-/sbin/ldconfig.real: /usr/local/lib/libur_adapter_level_zero.so.0 is not a symbolic link
-
-/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_5.so.3 is not a symbolic link
-</code></pre>
-</div>
-</div>
-<div id="cell-26" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> SVG, display</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="辞書の対応" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="辞書の対応"><span class="header-section-number">4.4.2</span> 辞書の対応</h3>
 </section>
-<section id="data-and-preprocess" class="level2">
-<h2 class="anchored" data-anchor-id="data-and-preprocess">Data and preprocess</h2>
-<div id="cell-28" class="cell" data-outputid="e42548ca-af2d-468c-a961-9c5517ad4e9f">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># !wget -O hachidai_raw.db -c https://github.com/yamagen/hachidaishu/raw/main/hachidai.db</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget <span class="op">-</span>O dictionaryconverter.py <span class="op">-</span>c https:<span class="op">//</span>raw.githubusercontent.com<span class="op">/</span>yamagen<span class="op">/</span>hachidaishu<span class="op">/</span>main<span class="op">/</span>dictionaryconverter.py</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget <span class="op">-</span>O hachidaishu.py <span class="op">-</span>c https:<span class="op">//</span>raw.githubusercontent.com<span class="op">/</span>yamagen<span class="op">/</span>hachidaishu<span class="op">/</span>main<span class="op">/</span>hachidaishu.py</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>wget <span class="op">-</span>O hachidai.db <span class="op">-</span>c https:<span class="op">//</span>raw.githubusercontent.com<span class="op">/</span>yamagen<span class="op">/</span>hachidaishu<span class="op">/</span>main<span class="op">/</span>hachidai.db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>--2024-08-20 13:08:08--  https://raw.githubusercontent.com/yamagen/hachidaishu/main/dictionaryconverter.py
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 15745 (15K) [text/plain]
-Saving to: ‘dictionaryconverter.py’
-
-dictionaryconverter 100%[===================&gt;]  15.38K  --.-KB/s    in 0.001s  
-
-2024-08-20 13:08:08 (22.6 MB/s) - ‘dictionaryconverter.py’ saved [15745/15745]
-
---2024-08-20 13:08:09--  https://raw.githubusercontent.com/yamagen/hachidaishu/main/hachidaishu.py
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 8341 (8.1K) [text/plain]
-Saving to: ‘hachidaishu.py’
-
-hachidaishu.py      100%[===================&gt;]   8.15K  --.-KB/s    in 0s      
-
-2024-08-20 13:08:09 (55.7 MB/s) - ‘hachidaishu.py’ saved [8341/8341]
-
---2024-08-20 13:08:09--  https://raw.githubusercontent.com/yamagen/hachidaishu/main/hachidai.db
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 15181150 (14M) [text/plain]
-Saving to: ‘hachidai.db’
-
-hachidai.db         100%[===================&gt;]  14.48M  --.-KB/s    in 0.09s   
-
-2024-08-20 13:08:10 (162 MB/s) - ‘hachidai.db’ saved [15181150/15181150]
-</code></pre>
-</div>
-</div>
-<div id="cell-29" class="cell" data-outputid="bdabc999-c3b7-4357-96ef-36031d6e17a5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>head hachidai.db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>01:000001:0001 A00 BG-01-1630-01-0100 02 年 年 とし 年 とし 
-01:000001:0001 A10 BG-01-1911-03-1800 02 年 年 とし 年 とし 
-01:000001:0002 A00 BG-08-0061-07-0100 61 の の の の の 
-01:000001:0003 A00 BG-01-1770-01-0300 02 内 内 うち 内 うち 
-01:000001:0004 A00 BG-08-0061-05-0100 61 に に に に に 
-01:000001:0005 A00 BG-01-1624-02-0100 02 春 春 はる 春 はる 
-01:000001:0006 A00 BG-08-0065-07-0100 65 は は は は は 
-01:000001:0007 A00 BG-02-1527-01-0102 47 き 来 く 来 き 
-01:000001:0008 A00 BG-03-1200-02-0900 74 に ぬ ぬ に に 
-01:000001:0008 A10 BG-09-0010-01-0101 74 に ぬ ぬ に に </code></pre>
-</div>
-</div>
-</section>
-<section id="hachidai-db" class="level2">
-<h2 class="anchored" data-anchor-id="hachidai-db">Hachidai DB</h2>
+<section id="現代語訳の対応" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="現代語訳の対応"><span class="header-section-number">4.4.3</span> 現代語訳の対応</h3>
 </section>
 </section>
-<section id="collocation" class="level1">
-<h1>Collocation</h1>
-<section id="all" class="level2">
-<h2 class="anchored" data-anchor-id="all">All</h2>
-<div id="cell-33" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hachidai.db +&gt; tatsuta lines +&gt; poem ID +&gt; uniq ID + match ID +&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># simplex form lines &amp; basic seme +&gt; regarding columns +&gt; output</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># collect tatsuta poems</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat hachidai.db <span class="op">|\</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'$7 ~ /たつた/'</span> <span class="op">|\</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  awk <span class="op">-</span>F <span class="st">':'</span> <span class="st">'{print $1 ":" $2}'</span> <span class="op">|\</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  sort <span class="op">|</span> uniq <span class="op">|\</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  grep <span class="op">-</span>E <span class="op">-</span>f <span class="op">-</span> hachidai.db <span class="op">|\</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'$2 ~ /^[ACE]0/'</span> <span class="op">|\</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'{print $1,$2,$3,$4,$7}'</span> <span class="op">&gt;\</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  tatsuta.txt</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat tatsuta.txt <span class="op">|\</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'{print $5}'</span> <span class="op">|\</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  sort <span class="op">|</span> uniq <span class="op">-</span>c <span class="op">|\</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  sort <span class="op">-</span>nr <span class="op">&gt;\</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  tf<span class="op">-</span>tatsuta.txt</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat tf<span class="op">-</span>tatsuta.txt <span class="op">|\</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  nl <span class="op">|\</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'{print $1,$2}'</span> <span class="op">|\</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  graph <span class="op">-</span>Tsvg <span class="op">-</span>L <span class="st">"Term Frequency in Tatsuta Context"</span> <span class="op">-</span>X <span class="st">"rank"</span> <span class="op">-</span>Y <span class="st">"frequency"</span> <span class="op">&gt;\</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  tf<span class="op">-</span>tatsuta.svg</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat tatsuta.txt <span class="op">|\</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'{print substr($1, 1, 8) ";" $5}'</span> <span class="op">|\</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  sort <span class="op">|</span> uniq <span class="op">|\</span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  awk <span class="op">-</span>F <span class="st">';'</span> <span class="st">'{print $2}'</span> <span class="op">|\</span></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  sort <span class="op">|</span> uniq <span class="op">-</span>c <span class="op">|\</span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  sort <span class="op">-</span>nr <span class="op">&gt;\</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>  df<span class="op">-</span>tatsuta.txt</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>cat df<span class="op">-</span>tatsuta.txt <span class="op">|\</span></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>  nl <span class="op">|\</span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'{print $1,$2}'</span> <span class="op">|\</span></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>  graph <span class="op">-</span>Tsvg <span class="op">-</span>L <span class="st">"Document Frequency in Tatsuta Context"</span> <span class="op">-</span>X <span class="st">"rank"</span> <span class="op">-</span>Y <span class="st">"frequency"</span> <span class="op">&gt;\</span></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>  df<span class="op">-</span>tatsuta.svg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-34" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-outputid="d276cf19-abf6-4298-a8d5-9a0ad7ffc40d">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>display(SVG(filename<span class="op">=</span><span class="st">'tf-tatsuta.svg'</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>display(SVG(filename<span class="op">=</span><span class="st">'df-tatsuta.svg'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="main_files/figure-html/cell-8-output-1.svg" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="main_files/figure-html/cell-8-output-2.svg" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 </section>
-<section id="content-words" class="level2">
-<h2 class="anchored" data-anchor-id="content-words">Content words</h2>
-<div id="cell-37" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_table(<span class="st">'hachidai.db'</span>, usecols<span class="op">=</span><span class="bu">range</span>(<span class="dv">9</span>), sep<span class="op">=</span><span class="st">' '</span>,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                   names<span class="op">=</span>[<span class="st">'id'</span>, <span class="st">'token_type'</span>, <span class="st">'bg_id'</span>, <span class="st">'chasen_id'</span>, <span class="st">'surface'</span>, <span class="st">'lemma'</span>, <span class="st">'lemma_reading'</span>, <span class="st">'kanji'</span>, <span class="st">'kanji_reading'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-38" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'semantic_field'</span>] <span class="op">=</span> df[<span class="st">'bg_id'</span>].<span class="bu">str</span>[:<span class="dv">8</span>]</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'poem_id'</span>] <span class="op">=</span> df[<span class="st">'id'</span>].<span class="bu">str</span>.split(<span class="st">':'</span>).<span class="bu">str</span>[:<span class="dv">2</span>].<span class="bu">str</span>.join(<span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-39" class="cell" data-outputid="01892a63-667a-446e-ace6-bb9829ccf23a">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<div>
-
-  <div id="df-472f4d51-dd4b-407a-94f2-8f71699664f7" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th">token_type</th>
-<th data-quarto-table-cell-role="th">bg_id</th>
-<th data-quarto-table-cell-role="th">chasen_id</th>
-<th data-quarto-table-cell-role="th">surface</th>
-<th data-quarto-table-cell-role="th">lemma</th>
-<th data-quarto-table-cell-role="th">lemma_reading</th>
-<th data-quarto-table-cell-role="th">kanji</th>
-<th data-quarto-table-cell-role="th">kanji_reading</th>
-<th data-quarto-table-cell-role="th">semantic_field</th>
-<th data-quarto-table-cell-role="th">poem_id</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>01:000001:0001</td>
-<td>A00</td>
-<td>BG-01-1630-01-0100</td>
-<td>2</td>
-<td>年</td>
-<td>年</td>
-<td>とし</td>
-<td>年</td>
-<td>とし</td>
-<td>BG-01-16</td>
-<td>01:000001</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>01:000001:0001</td>
-<td>A10</td>
-<td>BG-01-1911-03-1800</td>
-<td>2</td>
-<td>年</td>
-<td>年</td>
-<td>とし</td>
-<td>年</td>
-<td>とし</td>
-<td>BG-01-19</td>
-<td>01:000001</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>01:000001:0002</td>
-<td>A00</td>
-<td>BG-08-0061-07-0100</td>
-<td>61</td>
-<td>の</td>
-<td>の</td>
-<td>の</td>
-<td>の</td>
-<td>の</td>
-<td>BG-08-00</td>
-<td>01:000001</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>01:000001:0003</td>
-<td>A00</td>
-<td>BG-01-1770-01-0300</td>
-<td>2</td>
-<td>内</td>
-<td>内</td>
-<td>うち</td>
-<td>内</td>
-<td>うち</td>
-<td>BG-01-17</td>
-<td>01:000001</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>01:000001:0004</td>
-<td>A00</td>
-<td>BG-08-0061-05-0100</td>
-<td>61</td>
-<td>に</td>
-<td>に</td>
-<td>に</td>
-<td>に</td>
-<td>に</td>
-<td>BG-08-00</td>
-<td>01:000001</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-472f4d51-dd4b-407a-94f2-8f71699664f7')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-472f4d51-dd4b-407a-94f2-8f71699664f7 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-472f4d51-dd4b-407a-94f2-8f71699664f7');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-4dc6a41c-dcd7-42db-bfd1-5df37acdabe9">
-  <button class="colab-df-quickchart" onclick="quickchart('df-4dc6a41c-dcd7-42db-bfd1-5df37acdabe9')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-4dc6a41c-dcd7-42db-bfd1-5df37acdabe9 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
-    </div>
-  </div>
-</div>
-</div>
-</div>
+<section id="考察" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 考察</h1>
+<section id="追加率には翻訳観に左右されない部分がある" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="追加率には翻訳観に左右されない部分がある"><span class="header-section-number">5.1</span> 追加率には翻訳観に左右されない部分がある</h2>
 </section>
-<section id="tatsuta" class="level2">
-<h2 class="anchored" data-anchor-id="tatsuta">Tatsuta</h2>
-<div id="cell-41" class="cell" data-outputid="74436a5b-07bd-473d-ece2-8cefc63272a9">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 「たつた」を含む歌</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>obj <span class="op">=</span> df[df[<span class="st">'lemma_reading'</span>].<span class="bu">str</span>.match(<span class="st">'たつた'</span>)].poem_id.unique()</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>obj <span class="op">=</span> df[(df[<span class="st">'poem_id'</span>].isin(obj)) <span class="op">&amp;</span> (df[<span class="st">'token_type'</span>].<span class="bu">str</span>.match(<span class="vs">r'^[ACE]'</span>))].sort_values(<span class="st">'id'</span>).copy()</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>obj.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="116">
-<div>
-
-  <div id="df-8a837063-7563-41d3-9168-1177293d2704" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th">token_type</th>
-<th data-quarto-table-cell-role="th">bg_id</th>
-<th data-quarto-table-cell-role="th">chasen_id</th>
-<th data-quarto-table-cell-role="th">surface</th>
-<th data-quarto-table-cell-role="th">lemma</th>
-<th data-quarto-table-cell-role="th">lemma_reading</th>
-<th data-quarto-table-cell-role="th">kanji</th>
-<th data-quarto-table-cell-role="th">kanji_reading</th>
-<th data-quarto-table-cell-role="th">semantic_field</th>
-<th data-quarto-table-cell-role="th">poem_id</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2460</td>
-<td>01:000108:0001</td>
-<td>A00</td>
-<td>BG-01-5530-12-0100</td>
-<td>2</td>
-<td>花</td>
-<td>花</td>
-<td>はな</td>
-<td>花</td>
-<td>はな</td>
-<td>BG-01-55</td>
-<td>01:000108</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2461</td>
-<td>01:000108:0002</td>
-<td>A00</td>
-<td>BG-08-0061-07-0100</td>
-<td>61</td>
-<td>の</td>
-<td>の</td>
-<td>の</td>
-<td>の</td>
-<td>の</td>
-<td>BG-08-00</td>
-<td>01:000108</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2462</td>
-<td>01:000108:0003</td>
-<td>A00</td>
-<td>BG-02-1552-01-0100</td>
-<td>47</td>
-<td>ちる</td>
-<td>散る</td>
-<td>ちる</td>
-<td>散る</td>
-<td>ちる</td>
-<td>BG-02-15</td>
-<td>01:000108</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2463</td>
-<td>01:000108:0004</td>
-<td>A00</td>
-<td>BG-01-1010-01-0200</td>
-<td>2</td>
-<td>こと</td>
-<td>事</td>
-<td>こと</td>
-<td>事</td>
-<td>こと</td>
-<td>BG-01-10</td>
-<td>01:000108</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2464</td>
-<td>01:000108:0005</td>
-<td>A00</td>
-<td>BG-08-0065-14-0100</td>
-<td>65</td>
-<td>や</td>
-<td>や</td>
-<td>や</td>
-<td>や</td>
-<td>や</td>
-<td>BG-08-00</td>
-<td>01:000108</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-8a837063-7563-41d3-9168-1177293d2704')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-8a837063-7563-41d3-9168-1177293d2704 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-8a837063-7563-41d3-9168-1177293d2704');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-5e887335-63a1-4b7c-8290-dd9cf2414c7d">
-  <button class="colab-df-quickchart" onclick="quickchart('df-5e887335-63a1-4b7c-8290-dd9cf2414c7d')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-5e887335-63a1-4b7c-8290-dd9cf2414c7d button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-
-    </div>
-  </div>
-</div>
-</div>
-</div>
+<section id="現代語訳によるノンリテラル要素の可視化が十分考えられる" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="現代語訳によるノンリテラル要素の可視化が十分考えられる"><span class="header-section-number">5.2</span> 現代語訳によるノンリテラル要素の可視化が十分考えられる</h2>
 </section>
-<section id="collocation-term-frequency" class="level2">
-<h2 class="anchored" data-anchor-id="collocation-term-frequency">Collocation (Term frequency)</h2>
-<div id="cell-43" class="cell" data-outputid="45e00531-c53f-48f5-b13d-37c8f1975386">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># term frquency</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>obj[obj[<span class="st">'chasen_id'</span>] <span class="op">&lt;=</span> <span class="dv">57</span>].lemma_reading.value_counts()</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#.to_csv('term-freq.txt', sep='\t', header=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="117">
-<div>
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">count</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">lemma_reading</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">たつた</td>
-<td>62</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">みる</td>
-<td>48</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">やま</td>
-<td>43</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">かは</td>
-<td>20</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">あき</td>
-<td>17</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">むすぶ</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ひも</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">いも</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">おと</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ゐる</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-
-<p>224 rows × 1 columns</p>
-</div><br><label><b>dtype:</b> int64</label>
-</div>
-</div>
-</div>
+<section id="拡張意味単位の現代語訳の可視化としてのシステム" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="拡張意味単位の現代語訳の可視化としてのシステム"><span class="header-section-number">5.3</span> 拡張意味単位の現代語訳の可視化としてのシステム</h2>
 </section>
-<section id="collocation-document-frequency" class="level2">
-<h2 class="anchored" data-anchor-id="collocation-document-frequency">Collocation (Document frequency)</h2>
-<div id="cell-45" class="cell" data-outputid="b222563a-017c-4544-e9d6-c80bf5c00d6e">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># document frquency</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>obj[obj[<span class="st">'chasen_id'</span>] <span class="op">&lt;=</span> <span class="dv">57</span>].groupby(<span class="st">'lemma_reading'</span>)[<span class="st">'poem_id'</span>].nunique().sort_values(ascending<span class="op">=</span><span class="va">False</span>)[:<span class="dv">10</span>]</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#.to_csv('doc-freq.txt', sep='\t', header=False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="118">
-<div>
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">poem_id</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">lemma_reading</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">たつた</td>
-<td>62</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">やま</td>
-<td>41</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">かは</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">あき</td>
-<td>17</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">もみづ</td>
-<td>17</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">にしき</td>
-<td>13</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">みる</td>
-<td>12</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">もみじ</td>
-<td>10</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">は</td>
-<td>10</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">から</td>
-<td>9</td>
-</tr>
-</tbody>
-</table>
-
-</div><br><label><b>dtype:</b> int64</label>
-</div>
-</div>
-</div>
+<section id="分類体系の有用性" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="分類体系の有用性"><span class="header-section-number">5.4</span> 分類体系の有用性</h2>
 </section>
-<section id="colligation-term-frequency" class="level2">
-<h2 class="anchored" data-anchor-id="colligation-term-frequency">Colligation (Term frequency)</h2>
-<div id="cell-47" class="cell" data-outputid="eacae311-cc65-4ab4-f780-5a2fc207389d">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>obj[obj[<span class="st">'chasen_id'</span>] <span class="op">&gt;=</span> <span class="dv">58</span>].lemma_reading.value_counts().head(<span class="dv">10</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#.to_csv('term-freq.txt', sep='\t', header=False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="119">
-<div>
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">count</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">lemma_reading</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">の</td>
-<td>140</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">に</td>
-<td>42</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">なり</td>
-<td>33</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ぬ</td>
-<td>33</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ず</td>
-<td>30</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">は</td>
-<td>27</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ぞ</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">を</td>
-<td>20</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">も</td>
-<td>19</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">む</td>
-<td>16</td>
-</tr>
-</tbody>
-</table>
-
-</div><br><label><b>dtype:</b> int64</label>
-</div>
-</div>
-</div>
-<div id="cell-48" class="cell" data-outputid="8e45ccae-4ef6-49ac-e59e-5327cd957316">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># document frquency</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>obj[obj[<span class="st">'chasen_id'</span>] <span class="op">&gt;=</span> <span class="dv">58</span>].groupby(<span class="st">'lemma_reading'</span>)[<span class="st">'poem_id'</span>].nunique().sort_values(ascending<span class="op">=</span><span class="va">False</span>)[:<span class="dv">10</span>]</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#.to_csv('doc-freq.txt', sep='\t', header=False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="120">
-<div>
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">poem_id</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">lemma_reading</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">の</td>
-<td>61</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">に</td>
-<td>35</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">は</td>
-<td>24</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">を</td>
-<td>20</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">なり</td>
-<td>17</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">や</td>
-<td>16</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">けり</td>
-<td>16</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ず</td>
-<td>15</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">も</td>
-<td>14</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">と</td>
-<td>14</td>
-</tr>
-</tbody>
-</table>
-
-</div><br><label><b>dtype:</b> int64</label>
-</div>
-</div>
-</div>
 </section>
-<section id="semantic-preference" class="level2">
-<h2 class="anchored" data-anchor-id="semantic-preference">Semantic preference</h2>
-<div id="cell-50" class="cell" data-outputid="f40713f2-7693-43de-dd4e-7252e11e6d51">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># document frquency</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>obj[obj[<span class="st">'chasen_id'</span>] <span class="op">&lt;=</span> <span class="dv">57</span>].groupby(<span class="st">'semantic_field'</span>)[<span class="st">'poem_id'</span>].nunique().sort_values(ascending<span class="op">=</span><span class="va">False</span>)[:<span class="dv">10</span>]</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#.to_csv('doc-freq.txt', sep='\t', header=False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="121">
-<div>
-<div>
+<section id="結論" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 結論</h1>
+<section id="libraries" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="libraries"><span class="header-section-number">6.1</span> Libraries</h2>
+</section>
+<section id="data-and-preprocess" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="data-and-preprocess"><span class="header-section-number">6.2</span> Data and preprocess</h2>
+</section>
+<section id="hachidai-db" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="hachidai-db"><span class="header-section-number">6.3</span> Hachidai DB</h2>
+</section>
+</section>
+<section id="collocation" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Collocation</h1>
+<section id="all" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="all"><span class="header-section-number">7.1</span> All</h2>
+</section>
+<section id="content-words" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="content-words"><span class="header-section-number">7.2</span> Content words</h2>
+</section>
+<section id="tatsuta" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="tatsuta"><span class="header-section-number">7.3</span> Tatsuta</h2>
+</section>
+<section id="collocation-term-frequency" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="collocation-term-frequency"><span class="header-section-number">7.4</span> Collocation (Term frequency)</h2>
+</section>
+<section id="collocation-document-frequency" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="collocation-document-frequency"><span class="header-section-number">7.5</span> Collocation (Document frequency)</h2>
+</section>
+<section id="colligation-term-frequency" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="colligation-term-frequency"><span class="header-section-number">7.6</span> Colligation (Term frequency)</h2>
+</section>
+<section id="semantic-preference" class="level2 unnumbered" data-number="7.7">
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">poem_id</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">semantic_field</th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">CH-29-00</td>
-<td>62</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">BG-01-52</td>
-<td>56</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">BG-02-15</td>
-<td>48</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">BG-01-16</td>
-<td>33</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">BG-01-51</td>
-<td>31</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">BG-02-30</td>
-<td>30</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">BG-01-55</td>
-<td>26</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">BG-02-50</td>
-<td>20</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">BG-01-42</td>
-<td>19</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">BG-01-50</td>
-<td>19</td>
-</tr>
-</tbody>
-</table>
-
-</div><br><label><b>dtype:</b> int64</label>
-</div>
-</div>
-</div>
-<div id="cell-51" class="cell" data-outputid="4790923f-56bf-4148-bde6-3e1fad05b23f">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>writefile plot.gnuplot</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> terminal pngcairo size <span class="dv">800</span>,<span class="dv">600</span> enhanced font <span class="st">'Verdana,10'</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> output <span class="st">'term_frequency.png'</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> boxwidth <span class="fl">0.5</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> style fill solid</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> xlabel <span class="st">"Terms"</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> ylabel <span class="st">"Frequency"</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> title <span class="st">"Term Frequency"</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> xtics rotate by <span class="op">-</span><span class="dv">45</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>plot <span class="st">'data.txt'</span> using <span class="dv">2</span>:xtic(<span class="dv">1</span>) <span class="cf">with</span> boxes title <span class="st">'Frequency'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Writing plot.gnuplot</code></pre>
-</div>
-</div>
-<div id="cell-52" class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>gnuplot plot.gnuplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-53" class="cell" data-outputid="15a2acd1-406a-4f61-b9b9-3416c0d16bea">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Image</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设图片保存为 'term_frequency.png'</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>image_path <span class="op">=</span> <span class="st">'term_frequency.png'</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 显示图片</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span>image_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="74">
-<div>
-<figure class="figure">
-<p><img src="main_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 </section>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>初雁が鳴いて渡ってくるのだが、人の心の秋が来るのが悲しいので（筆者訳）。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>八代集とは古今集、後撰集、拾遺集、後拾遺集、金葉集、詞花集、千載集、新古今集の8つの勅撰集である。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>しかしながら、本居の翻訳意図は他の現代語の翻訳者のものとは少々異なっている。本居の意図は、古今集の注釈としてではなくて、純粋に人々に古今集がおもしろく価値のある文学であることを伝えようとしたところにあり、このことから本研究においてこの翻訳を他の翻訳者と同等に扱うことはできない。さらに、<span class="citation" data-cites="shiozawa">@shiozawa [1993]</span> によると、遠鏡で使われている口語表現の実態、すなわち、どんな単語が使われているのか、どういう意味なのかがはっきりわかっているわけではないし、江戸時代の口語表現それ自身についても明らかになっているわけではないので、本研究で取り扱うことはできない。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>本稿では、1/0 の 2 値として定義する。「2 語の一致」の 3 つのカテゴリーの中でどのレベルで一致と見るか、といった一致率の計算の厳しさを調整できる。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>ここでは、もちろん <span class="math inline">\(|S^{\prime}| = |T^{\prime}\)</span>|<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p><span class="citation" data-cites="Sinclair1996Search">@Sinclair1996Search</span> の例では、コアは実際には検索語に相当するものである。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7"><p>KollerMautner2004はにすべきであるとしている。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">7.7 Semantic preference</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Sinclair1996Search" class="csl-entry" role="listitem">
+Sinclair, John McHardy. 1996. <span>“The <span>Search</span> for <span>Units</span> of <span>Meaning</span>.”</span> <em>Textus</em> 9: 75–106.
+</div>
+<div id="ref-Yamamoto2005Mathematical" class="csl-entry" role="listitem">
+Yamamoto, Hilofumi. 2005. <span>“A Mathematical Analysis of the Connotations of Classical <span>Japanese</span> Poetic Vocabulary.”</span> PhD thesis, Canberra: The Austrilian National University. <a href="https://openresearch-repository.anu.edu.au/handle/1885/151572">https://openresearch-repository.anu.edu.au/handle/1885/151572</a>.
+</div>
+<div id="ref-Yamamoto2019Analysis" class="csl-entry" role="listitem">
+Yamamoto, Hilofumi, and Bor Hodošček. 2019. <span>“An <span>Analysis</span> of the <span>Differences Between Classical</span> and <span>Contemporary Poetic Vocabulary</span> of the <span>Kokinshu</span>.”</span> In <em>The 9th <span>Conference</span> of <span>Japanese Association</span> for <span>Digital Humanities</span> (<span>JADH2019</span>) <span>“<span>Localization</span> in <span>Global DH</span>”</span></em>, 68–71. Japanese Association for Digital Humanities. <a href="http://t2r2.star.titech.ac.jp/cgi-bin/publicationinfo.cgi?q_publication_content_number=CTT100800689">http://t2r2.star.titech.ac.jp/cgi-bin/publicationinfo.cgi?q_publication_content_number=CTT100800689</a>.
+</div>
+<div id="ref-kyusoshin1979Kokin" class="csl-entry" role="listitem">
+久曽神昇. 1979. <em>古今和歌集 全注釈</em>. Vol. 1–5. 5 vols. 講談社学術文庫. 東京: 講談社.
+</div>
+<div id="ref-okumura1978Kokin" class="csl-entry" role="listitem">
+奥村恆哉. 1978. <em>古今和歌集</em>. 新潮日本古典集成. 東京: 新潮社. <a href="https://books.google.com?id=uC7UAAAAMAAJ">https://books.google.com?id=uC7UAAAAMAAJ</a>.
+</div>
+<div id="ref-kojima1989Kokin" class="csl-entry" role="listitem">
+小島憲之, and 新井栄蔵. 1989. <em>古今和歌集</em>. 東京: 岩波書店.
+</div>
+<div id="ref-ozawa1971Kikon" class="csl-entry" role="listitem">
+小沢正夫. 1971. <em>古今和歌集</em>. 13th ed. 日本古典文学全集. 東京: 小学館. <a href="https://www.kosho.or.jp/products/detail.php?product_id=338279402">https://www.kosho.or.jp/products/detail.php?product_id=338279402</a>.
+</div>
+<div id="ref-komachiya1982Kokin" class="csl-entry" role="listitem">
+小町谷照彦. 1982. <em>古今和歌集：現代語訳対照</em>. 旺文社文庫. 東京: 旺文社.
+</div>
+<div id="ref-matsuda1968Shinshaku" class="csl-entry" role="listitem">
+松田武夫. 1968. <em>新釈古今和歌集</em>. Vol. 上下. 2 vols. 東京: 風間書房.
+</div>
+<div id="ref-katagiri1983Uta" class="csl-entry" role="listitem">
+片桐洋一. 1983. <em>歌枕歌ことば辞典</em>. 東京: 角川書店.
+</div>
+<div id="ref-katagiri1998Kokinhyoshaku" class="csl-entry" role="listitem">
+———. 1998. <em>古今和歌集全評釈</em>. Vol. 上中下. 3 vols. 東京: 講談社.
+</div>
+<div id="ref-kubota1960Kokin" class="csl-entry" role="listitem">
+窪田空穂. 1960. <em>古今和歌集評釈</em>. Vol. 上中下. 3 vols. Tokyo: Tokyodo.
+</div>
+<div id="ref-takeoka1976Kokin" class="csl-entry" role="listitem">
+竹岡正夫. 1976. <em>古今和歌集全評釈: 古注七種集成</em>. Vol. 上下. 2 vols. 東京: 右文書院. <a href="https://books.google.com?id=uC7UAAAAMAAJ">https://books.google.com?id=uC7UAAAAMAAJ</a>.
+</div>
+<div id="ref-kondo2001Ngram" class="csl-entry" role="listitem">
+近藤泰弘, and 近藤みゆき. 2001. <span>“N-gramの手法による言語テキストの分析方法–現代語対話表現の自動抽出に及ぶ.”</span> <em>漢字文献情報処理研究 / 漢字文献情報処理研究会 編</em>, no. 2 (October): 50–55. <a href="https://cir.nii.ac.jp/crid/1520854806118649088">https://cir.nii.ac.jp/crid/1520854806118649088</a>.
+</div>
+<div id="ref-kaneko1933Kokin" class="csl-entry" role="listitem">
+金子元臣. 1933. <em>古今和歌集評釈: 昭和新版</em>. 東京: 明治書院.
+</div>
+<div id="ref-chin2022Tango" class="csl-entry" role="listitem">
+陳旭東, ホドシチェクボル, and 山元啓史. 2022. <span>“単語アライメントの誤り対応を用いた歌ことばのコノテーション検出.”</span> <em>じんもんこん2022論文集</em> 2022 (December): 111–18. <a href="https://ipsj.ixsq.nii.ac.jp/ej/index.php?active_action=repository_view_main_item_detail&amp;page_id=13&amp;block_id=8&amp;item_id=223280&amp;item_no=1">https://ipsj.ixsq.nii.ac.jp/ej/index.php?active_action=repository_view_main_item_detail&amp;page_id=13&amp;block_id=8&amp;item_id=223280&amp;item_no=1</a>.
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

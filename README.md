@@ -1,43 +1,32 @@
-
 # Reproduction of Chen2024 for JJADH
 
-This repository is dedicated to the reproduction of the content from the JJADH paper by Chen2024. The project uses [`nix`](https://github.com/NixOS/nix) to create a temporary environment for the reproduction of the results. Nix allows you to set up an isolated development environment, which can be easily removed after use.
+This repository is dedicated to the reproduction of the content from the JJADH paper by Chen2024.
+The project uses [`nix`](https://github.com/NixOS/nix) to create a temporary environment for the reproduction of the results.
 
 ## Getting Started
 
-### Installing Nix
+Installation of `nix` follows [https://nix.dev/install-nix](https://nix.dev/install-nix).
+After installation, you need to restart the terminal.
 
-To get started, you need to install Nix. Follow these steps:
+This repository uses `nix flakes` You need to enable Flakes by setting an environment variable in your current shell session. Note that this is a temporary change and will only be effective for the duration of the terminal session:
 
-1. **Install Nix:**
+```bash
+export NIX_CONFIG="experimental-features = nix-command flakes"
+```
 
-   On Unix-like systems, run the following command:
+After installing Nix, you can enter the development shell provided by this repository:
 
-   ```bash
-   curl -L https://nixos.org/nix/install | sh
-   ```
+```bash
+nix develop
+```
 
-   Follow the on-screen instructions to complete the installation. You may need to restart your terminal or run the following command to load the Nix environment:
+This command will load the environment defined in `flake.nix` and provide you with all necessary dependencies and configurations to reproduce the content from the JJADH paper.
 
-   ```bash
-   . ~/.nix-profile/etc/profile.d/nix.sh
-   ```
+Then you can enter the Jupyterlab for the reproduction:
 
-   This repository uses `nix flakes` You need to enable Flakes by setting an environment variable in your current shell session. Note that this is a temporary change and will only be effective for the duration of the terminal session:
-
-   ```bash
-   export NIX_CONFIG="experimental-features = nix-command flakes"
-   ```
-
-2. **Enter the Development Shell:**
-
-   After installing Nix, you can enter the development shell provided by this repository:
-
-   ```bash
-   nix develop
-   ```
-
-   This command will load the environment defined in `flake.nix` and provide you with all necessary dependencies and configurations to reproduce the content from the JJADH paper.
+```bash
+jupyter lab main.ipynb
+```
 
 ### Removing the Nix Environment
 
@@ -55,45 +44,15 @@ sudo rm -rf /nix
 
 ## Optional: Using `direnv`
 
-[`direnv`](https://direnv.net/) is a shell extension that automatically loads and unloads environment variables based on your working directory. It can be used to automate the process of loading the Nix environment whenever you enter the project directory.
+[`direnv`](https://direnv.net/) is a shell extension that automatically loads and unloads environment variables based on your working directory.
+It can be used to automate the process of loading the Nix environment whenever you enter the project directory.
+When you enter the project directory, `direnv` will detect the `.envrc` file. To enable it, run:
 
-### Installing and Configuring `direnv`
+```bash
+direnv allow
+```
 
-1. **Install `direnv`:**
-
-   ```bash
-   nix-env -iA nixpkgs.direnv
-   ```
-
-2. **Configure your shell:**
-
-   Add the following line to your shell configuration file (`.bashrc`, `.zshrc`, etc.):
-
-   ```bash
-   eval "$(direnv hook bash)"  # For Bash
-   ```
-
-   Or:
-
-   ```bash
-   eval "$(direnv hook zsh)"  # For Zsh
-   ```
-
-   Then, reload your shell configuration:
-
-   ```bash
-   source ~/.bashrc  # Or source ~/.zshrc
-   ```
-
-3. **Allow the environment:**
-
-   When you enter the project directory, `direnv` will detect the `.envrc` file. To enable it, run:
-
-   ```bash
-   direnv allow
-   ```
-
-   This will automatically load the Nix environment specified in `flake.nix` every time you enter the directory.
+This will automatically load the Nix environment specified in `flake.nix` every time you enter the directory.
 
 ## Cleaning Up
 

@@ -1,0 +1,7 @@
+[submodule "data/translations"]
+	path = data/translations
+	url = https://github.com/idiig/kokinshuTranslations.git
+	branch = main
+[submodule "data/calcResidual"]
+	path = data/calcResidual
+	url = https://gist.github.com/a63a56105504263d75e716c68f2ccf4b.git

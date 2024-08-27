@@ -54,6 +54,8 @@
           python312
           # Utf8 support
           glibcLocalesUtf8
+          # git
+          git
         ];
 
         additionalExtensions = [
@@ -101,6 +103,12 @@
 
             export R_HOME=$(R RHOME)
             export RPY2_RHOME=$R_HOME
+
+            # Directoty
+            mkdir -p data
+            git submodule update --recursive
+            mkdir -p artifacts/
+            mkdir -p artifacts/figures/
 
             # Extensions
             ${pkgs.lib.concatMapStrings
