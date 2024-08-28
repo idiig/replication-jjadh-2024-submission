@@ -25,6 +25,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -150,7 +184,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#現代語訳の整理と分類" id="toc-現代語訳の整理と分類" class="nav-link" data-scroll-target="#現代語訳の整理と分類"><span class="header-section-number">4.1</span> 現代語訳の整理と分類</a>
   <ul class="collapse">
-  <li><a href="#分類" id="toc-分類" class="nav-link" data-scroll-target="#分類"><span class="header-section-number">4.1.1</span> 分類</a></li>
+  <li><a href="#分類コミュニケーションの力点の置き方" id="toc-分類コミュニケーションの力点の置き方" class="nav-link" data-scroll-target="#分類コミュニケーションの力点の置き方"><span class="header-section-number">4.1.1</span> 分類：コミュニケーションの力点の置き方</a></li>
   <li><a href="#分類ごとの翻訳観の詳細" id="toc-分類ごとの翻訳観の詳細" class="nav-link" data-scroll-target="#分類ごとの翻訳観の詳細"><span class="header-section-number">4.1.2</span> 分類ごとの翻訳観の詳細</a></li>
   </ul></li>
   <li><a href="#追加率の計算結果" id="toc-追加率の計算結果" class="nav-link" data-scroll-target="#追加率の計算結果"><span class="header-section-number">4.2</span> 追加率の計算結果</a></li>
@@ -253,7 +287,7 @@ window.Quarto = {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>Test</p>
+    <p>本論文の目的は、原文との一致率の計算と意味拡張単位の翻訳という二つの側面から、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、和歌辞典とは異なる解釈材料として、和歌の非字義的な情報を補足説明するために使用できることを示すことである。本研究の貢献は以下にある（仮）。1. 古今和歌集の現代語訳における初の語彙コーパスを公開した。2. 古今和歌集の翻訳の歴史的変遷を俯瞰し、特に20世紀における和歌の現代語訳の翻訳方針および翻訳観の整理を行った。3. 古語と現代語の翻訳対応率の計算により、翻訳方針にかかわらず、現代語訳において情報が追加されていることを示した。4. 意味拡張単位の観点に基づいた事例研究では、collocation（語と語の共出現）のノンリテラルなレベルでは現代語訳では追加はせず、入れ替えも比較的一貫している。対して、5. coligation（語とグラマレィカルパターンとの共出現）、semantic preference（語と特定意味領域との共出現）といったノンリテラルなレベルでは、原文に対してより多様な入れ替えと追加が行われ、対応づけが多様化していくことを明らかにした。以上により、現代語訳をノンリテラルレベルの可視化に応用すると考えられる。</p>
   </div>
 </div>
 
@@ -304,7 +338,7 @@ window.Quarto = {
   <ul>
   <li><a href="#現代語訳の整理と分類" id="toc-現代語訳の整理と分類"><span class="header-section-number">4.1</span> 現代語訳の整理と分類</a>
   <ul>
-  <li><a href="#分類" id="toc-分類"><span class="header-section-number">4.1.1</span> 分類</a></li>
+  <li><a href="#分類コミュニケーションの力点の置き方" id="toc-分類コミュニケーションの力点の置き方"><span class="header-section-number">4.1.1</span> 分類：コミュニケーションの力点の置き方</a></li>
   <li><a href="#分類ごとの翻訳観の詳細" id="toc-分類ごとの翻訳観の詳細"><span class="header-section-number">4.1.2</span> 分類ごとの翻訳観の詳細</a></li>
   </ul></li>
   <li><a href="#追加率の計算結果" id="toc-追加率の計算結果"><span class="header-section-number">4.2</span> 追加率の計算結果</a></li>
@@ -346,13 +380,13 @@ window.Quarto = {
   </ul></li>
   </ul>
 </nav>
-<div class="callout callout-style-default callout-important callout-titled" title="要旨">
+<div class="callout callout-style-default callout-important callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-要旨
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -363,7 +397,7 @@ window.Quarto = {
 <h1 data-number="1"><span class="header-section-number">1</span> はじめに</h1>
 <section id="目的と結論" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="目的と結論"><span class="header-section-number">1.1</span> 目的と結論</h2>
-<p>はじめに本論文の目的は、原文との一致率の計算と意味拡張単位の翻訳という二つの側面から、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、和歌辞典とは異なる解釈材料として、和歌の非字義的な情報を補足説明するために使用できることを示すことである。</p>
+<p>本論文の目的は、原文との一致率の計算と意味拡張単位の翻訳という二つの側面から、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、和歌辞典とは異なる解釈材料として、和歌の非字義的な情報を補足説明するために使用できることを示すことである。</p>
 <p>本研究の貢献は以下にある（仮）。</p>
 <ol type="1">
 <li>古今和歌集の現代語訳における初の語彙コーパスを公開した。</li>
@@ -392,8 +426,8 @@ window.Quarto = {
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="現代語訳に基づく非明示的要素の可視化"><span class="header-section-number">1.2.2</span> 現代語訳に基づく非明示的要素の可視化</h3>
 <p>以上のような非明示的要素の可視化システムの開発は、筆者が所属する山元研究室がこれまでに、現代語訳との相対化に基づく可視化システムを検討してきた <span class="citation" data-cites="Yamamoto2005Mathematical Yamamoto2006Extraction chin2022Tango Chen2024Translationbased">(<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">Yamamoto 2005</a>, <a href="#ref-Yamamoto2006Extraction" role="doc-biblioref">2006</a>; <a href="#ref-chin2022Tango" role="doc-biblioref">陳, ホドシチェク, and 山元 2022</a>; <a href="#ref-Chen2024Translationbased" role="doc-biblioref">Chen, Yamamoto, and Hodošček 2024</a>)</span>。</p>
 <p>現代語訳との相対化というのは、現代語の要素の集合から和歌の原文の要素を取り除き現代語にしか存在しない要素を引き立てることである。この考えが <span class="citation" data-cites="kondo2001Ngram">近藤 and 近藤 (<a href="#ref-kondo2001Ngram" role="doc-biblioref">2001</a>)</span>, <span class="citation" data-cites="kondo2011Heian">近藤 (<a href="#ref-kondo2011Heian" role="doc-biblioref">2011</a>)</span> では「引き算」と称している。しかし、引き算で残った要素は、つまり、現代語訳で追加された要素はどのような性格であるか、明確にする必要がある。</p>
-<p>翻訳における要素の追加などの処理と操作に関して、<span class="citation" data-cites="Koller2004Einfuehrung">Koller (<a href="#ref-Koller2004Einfuehrung" role="doc-biblioref">2004, 249</a>)</span> では翻訳者による「介入 (Eingriff)」として、「無害」とされる介入には、目的言語の読者の不足している背景知識や、デノテーション・コノテーション面の情報、そして、言語内的、社会文化的、間テキスト的な情報の損失を補うための注釈付き翻訳手法の結果としての追加が含まれていると指摘している。翻訳が注釈・辞書同様に、解釈資料として非明示的な情報の抽出に有効な材料と認識できる。</p>
-<p>ただし、翻訳における追加は読者の理解力を過大評価・過小評価した産物にもありうる <span class="citation" data-cites="Nida1964 Koller2004Einfuehrung">(<a href="#ref-Nida1964" role="doc-biblioref"><strong>Nida1964?</strong></a>; <a href="#ref-Koller2004Einfuehrung" role="doc-biblioref">Koller 2004, pp249–250</a>)</span>。この点においては、翻訳の insertation の多様性が伺える。 古今和歌集の歌語の解釈資料としての現代語訳については、<span class="citation" data-cites="Chen2024Translationbased">Chen, Yamamoto, and Hodošček (<a href="#ref-Chen2024Translationbased" role="doc-biblioref">2024</a>)</span> では触れたものの、その多様性について十分説明していない。10 種類の現代語のコンテキストや、翻訳者の翻訳観を踏まえ再検討する余地がある。</p>
+<p>翻訳における要素の追加などの処理と操作に関して、<span class="citation" data-cites="Koller2004Einfuehrung">W. Koller (<a href="#ref-Koller2004Einfuehrung" role="doc-biblioref">2004, 249</a>)</span> では翻訳者による「介入 (Eingriff)」として、「無害」とされる介入には、目的言語の読者の不足している背景知識や、デノテーション・コノテーション面の情報、そして、言語内的、社会文化的、間テキスト的な情報の損失を補うための注釈付き翻訳手法の結果としての追加が含まれていると指摘している。翻訳が注釈・辞書同様に、解釈資料として非明示的な情報の抽出に有効な材料と認識できる。</p>
+<p>ただし、翻訳における追加は読者の理解力を過大評価・過小評価した産物にもありうる <span class="citation" data-cites="Nida1964Science Koller2004Einfuehrung">(<a href="#ref-Nida1964Science" role="doc-biblioref">Nida 1964, 155</a>; <a href="#ref-Koller2004Einfuehrung" role="doc-biblioref">W. Koller 2004, pp249–250</a>)</span>。この点においては、翻訳の insertation の多様性が伺える。 古今和歌集の歌語の解釈資料としての現代語訳については、<span class="citation" data-cites="Chen2024Translationbased">Chen, Yamamoto, and Hodošček (<a href="#ref-Chen2024Translationbased" role="doc-biblioref">2024</a>)</span> では触れたものの、その多様性について十分説明していない。10 種類の現代語のコンテキストや、翻訳者の翻訳観を踏まえ再検討する余地がある。</p>
 </section>
 <section id="本稿の意義" class="level3" data-number="1.2.3">
 <h3 data-number="1.2.3" class="anchored" data-anchor-id="本稿の意義"><span class="header-section-number">1.2.3</span> 本稿の意義</h3>
@@ -518,13 +552,13 @@ Table&nbsp;1: 近代前（1600–1868）の古今集の代表的な注釈書
 <div aria-describedby="tbl-CT-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
 <colgroup>
-<col style="width: 4%">
-<col style="width: 5%">
-<col style="width: 55%">
-<col style="width: 5%">
-<col style="width: 11%">
-<col style="width: 9%">
 <col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 22%">
+<col style="width: 18%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -662,7 +696,7 @@ Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳10種
 <p>それぞれの訳者が自身の翻訳方針にどこまで一貫して訳しているかについて、実際の歌語と訳語の一致率 で計算する。一致率の計算は、要素の順序と重複を考慮しない集合演算による方法と、要素の順序と重複アライメントによる方法はあるが、ここではアライメントによる方法を用いる。具体的な手順は <span class="citation" data-cites="Yamamoto2005Mathematical">Yamamoto (<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">2005</a>)</span> と <span class="citation" data-cites="Yamamoto2019Analysis">Yamamoto and Hodošček (<a href="#ref-Yamamoto2019Analysis" role="doc-biblioref">2019</a>)</span> に詳しいが、本稿では先行研究で曖昧な部分を含め、計算のプロセスを明確にする。</p>
 <section id="旧分類語彙表番号-旧wlsp-に基づくマッチングのカテゴリー化" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="旧分類語彙表番号-旧wlsp-に基づくマッチングのカテゴリー化">旧分類語彙表番号 (旧WLSP) に基づくマッチングのカテゴリー化</h4>
-<p>歌語と現代語訳語の「一致・不一致」は、次の式のように、二語のメタコード（旧 WLSP 番号）の Longest common subsequence <span class="citation" data-cites="Traum2000">(<a href="#ref-Traum2000" role="doc-biblioref"><strong>Traum2000?</strong></a>)</span> の長さで <span class="math inline">U</span>（不一致）, <span class="math inline">G</span>（グループマッチ）, <span class="math inline">F</span>（フィールドマッチ）, <span class="math inline">E</span>（正確マッチ） 4 つにカテゴリ化ーする。</p>
+<p>歌語と現代語訳語の「一致・不一致」は、次の式のように、二語のメタコード（旧 WLSP 番号）の Longest common subsequence <span class="citation" data-cites="Sankoff1972Matching Traum2000Generation">(<a href="#ref-Sankoff1972Matching" role="doc-biblioref">Sankoff 1972</a>; <a href="#ref-Traum2000Generation" role="doc-biblioref">Traum and Habash 2000</a>)</span> の長さで <span class="math inline">U</span>（不一致）, <span class="math inline">G</span>（グループマッチ）, <span class="math inline">F</span>（フィールドマッチ）, <span class="math inline">E</span>（正確マッチ） 4 つにカテゴリ化ーする。</p>
 <p><span class="math display">
 \text{match}(s,t) \in
 \begin{cases}
@@ -705,8 +739,11 @@ E, &amp; \text{if } \text{LCS}(s,t) \geq 17 \\
 <section id="バッグ法による追加率の計算" class="level4 unnumbered page-columns page-full">
 <h4 class="unnumbered anchored" data-anchor-id="バッグ法による追加率の計算">バッグ法による追加率の計算</h4>
 <p>バッグ法による追加率（現代語訳における和歌原文に対する追加要素の割合）は、2 つのテキストを 2 つの集合と見做し、それらの集合における一致語の量をもとに計算する。ソーステキスト（和歌）<span class="math inline">S=(s_i)_{i \in \mathbb{Z}}</span> とターゲットテキスト（現代語訳） <span class="math inline">T=(t_i)_{i \in \mathbb{Z}}</span> が与えられた時、2 テキストのターゲットテキストにおける追加率の計算は下記に従う。</p>
-<p>$$ _{T}(S,T) = 1 - </p>
-<p><em>{T}(S,T) = </em>{i}^{|S|}_{j}^{|T|} (s_i, t_j) $$</p>
+<p><span class="math display">
+\text{U}_{T}(S,T) = 1 - \text{agreement}
+</span> <span class="math display">
+\text{agreement}_{T}(S,T) = \frac{1}{|T|} \sum_{i}^{|S|}\sum_{j}^{|T|} \text{score}(s_i, t_j)
+</span></p>
 <p><span class="math inline">\text{agreement}_{T}(S,T)</span> は、ターゲットテキストに対しての 2 テキストの一致語の割合である。これを一致率と定義する。この一致率は、以下のスコーア関数 <span class="math inline">\text{score}(s,t)</span><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> に基づいて計算される。ここではどのレベルにも原文の要素と対応のないの要素の追加率を計算するので、2 語がいずれのレベルに一致すれば 1 とカウントする（下記参照）。</p>
 <div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;本稿では、1/0 の 2 値として定義する。「2 語の一致」の 3 つのカテゴリーの中でどのレベルで一致と見るか、といった一致率の計算の厳しさを調整できる。</p></div></div><p><span class="math display">
 \text{score}(s,t) =
@@ -735,13 +772,9 @@ E, &amp; \text{if } \text{LCS}(s,t) \geq 17 \\
 \end{cases} &amp; i &gt; 0 \text{ and } j &gt; 0
 \end{cases}
 </span></p>
-<p>ソーステキストのシーケンス <span class="math inline">S</span> とターゲットテキストのシーケンス <span class="math inline">T</span> の部分列を用いて、位置 <span class="math inline">i</span> および <span class="math inline">j</span> までの最適なアライメントスコア $_{}(i, j) $ を再帰的に計算する。スコーア関数 <span class="math inline">\text{score}(s, t)</span> はバッグ法と同様に設定する。gap はギャップ（空白）を挿入する際に加算されるペナルティ (gap panelty) であり、ここでは便宜上 <span class="math inline">-1</span> と設定する。この式に基づき、プログラムは最尤なアライメントを探索する。整列した結果の例は次のようになる。ソーステキストにギャップが挿入さら、一致する語同士が配列される。</p>
-<blockquote class="blockquote">
-<p>立田姫ーー手向けるーーーー神のあれば【こそ】ーーー秋の木の葉のーーー幣とーーー散るーーーーらめ [Kokinshu 298]</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>竜田姫は、手向けをするべき神があるので、そのつかさどる秋の木の葉が、幣のように散るのであろうよ。<span class="citation" data-cites="kubota1960Kokin">(<a href="#ref-kubota1960Kokin" role="doc-biblioref">窪田 1960</a>)</span></p>
-</blockquote>
+<p>ソーステキストのシーケンス <span class="math inline">S</span> とターゲットテキストのシーケンス <span class="math inline">T</span> の部分列を用いて、位置 <span class="math inline">i</span> および <span class="math inline">j</span> までの最適なアライメントスコア <span class="math inline">\text{S}_{\text{DP}}(i,j)</span> を再帰的に計算する。スコーア関数 <span class="math inline">\text{score}(s,t)</span> はバッグ法と同様に設定する。gap はギャップ（空白）を挿入する際に加算されるペナルティ (gap panelty) であり、ここでは便宜上 <span class="math inline">-1</span> と設定する。この式に基づき、プログラムは最尤なアライメントを探索する。整列した結果の例は次のようになる。ソーステキストにギャップが挿入さら、一致する語同士が配列される。</p>
+<pre><code>&gt;|立田姫ーー手向けるーーーー神のあれば【こそ】ーーー秋の木の葉のーーー幣とーーー散るーーーーらめ  [Kokinshu 298]
+&gt;|竜田姫は、手向けをするべき神があるので、そのつかさどる秋の木の葉が、幣のように散るのであろうよ。[@kubota1960Kokin]</code></pre>
 <p>この基礎の上で、一致率と追加率を計算する。整列後の <span class="math inline">S^{\prime}</span> と <span class="math inline">T^{\prime}</span> がある<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>として、整列法による一致率 <span class="math inline">\text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime})</span> の計算は次に示す。</p>
 <div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;ここでは、もちろん <span class="math inline">|S^{\prime}| = |T^{\prime}</span>|</p></div></div><p><span class="math display">
 \text{U}^{\prime}_{T}(S,T) = 1-\text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime})
@@ -751,11 +784,11 @@ E, &amp; \text{if } \text{LCS}(s,t) \geq 17 \\
 <p>うち、prime (<span class="math inline">\prime</span>) 記号がついているものは整列後のテキストにおけるものである。動的計画法が和歌の翻訳における語順の交換などの site swap に弱いため、整列法で計算される追加率は、全体的に統計的に分析せず、ケーススターディの説明において提示する。</p>
 </section>
 </section>
-<section id="翻訳観と追加率の関係に関する統計モデリング" class="level2" data-number="3.3">
+<section id="翻訳観と追加率の関係に関する統計モデリング" class="level2 page-columns page-full" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="翻訳観と追加率の関係に関する統計モデリング"><span class="header-section-number">3.3</span> 翻訳観と追加率の関係に関する統計モデリング</h2>
 <p>先行研究では概念・フィールド・同義レベルの一致率（言い換え率）、理論的・実験的追加率などの多くの指標を計算しているが、本稿では、実験的追加率をを対象に、前節の分類結果に基づきより精緻な統計分析を行う。</p>
-<p>訳者の翻訳観が実践に移り、実際の現代語訳における追加率に影響を与えているかどうかを確認するために、統計モデリングを行った。具体的には、翻訳観（<code>policy</code>）が追加率（<code>additional_rate</code>）<sup>[ここでは、バッグ法によって算出された追加率を用いる。]に与える影響を検討するために、ベータ分布</sup>[被説明変数がベータ分布に近似すると観測されている。]に基づく回帰モデルを採用した。このモデルは、訳者（<code>translator</code>）と歌（<code>poem</code>）のランダム効果も考慮し、これらの要因が追加率に与える潜在的な影響を制御するものである。</p>
-<p><span class="math display">
+<p>訳者の翻訳観が実践に移り、実際の現代語訳における追加率に影響を与えているかどうかを確認するために、統計モデリングを行った。具体的には、翻訳観（<code>policy</code>）が追加率（<code>additional_rate</code>）<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> に与える影響を検討するために、ベータ分布<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> に基づく回帰モデルを採用した。このモデルは、訳者（<code>translator</code>）と歌（<code>poem</code>）のランダム効果も考慮し、これらの要因が追加率に与える潜在的な影響を制御するものである。</p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;ここでは、バッグ法によって算出された追加率を用いる。</p></div><div id="fn7"><p><sup>7</sup>&nbsp;被説明変数がベータ分布に近似すると観測されている。</p></div></div><p><span class="math display">
 y_i \sim \text{Beta}(\mu_i \phi, (1 - \mu_i) \phi)
 </span> <span class="math display">
 \mu_i = \text{logit}^{-1}(\eta_i) = \frac{1}{1 + e^{-\eta_i}}
@@ -772,16 +805,27 @@ u_{\text{poem}_i} \sim \mathcal{N}(0, \sigma_{\text{poem}}^2)
 </span> <span class="math display">
 \phi \sim \text{Cauchy}(0, 1)
 </span></p>
-<p>ここで： - <span class="math inline">y_i</span> は追加率であり、ベータ分布に従う。 - <span class="math inline">\mu_i</span> は応答変数の平均値であり、線形予測子 <span class="math inline">\eta_i</span> をロジスティック変換することで得られる。 - <span class="math inline">\eta_i</span> は線形予測子であり、翻訳観の固定効果、訳者、歌のランダム効果を含む。 - <span class="math inline">\beta_0</span> は切片であり、追加率の平均を示す。 - <span class="math inline">\beta_{\text{policy}}</span> は翻訳観の回帰係数であり、翻訳観が追加率に与える固定効果を評価する。 - <span class="math inline">u_{\text{translator}_i}</span> は訳者のランダム効果であり、訳者間の変動を制御する。これは正規分布に従うと仮定する。 - <span class="math inline">u_{\text{poem}_i}</span> は歌のランダム効果であり、歌間の変動を制御する。これは正規分布に従うと仮定する。 - <span class="math inline">\sigma_{\text{translator}}</span>, <span class="math inline">\sigma_{\text{poem}}</span> は訳者および歌のランダム効果の標準偏差であり、コーシー分布に従う。 - <span class="math inline">\phi</span> はベータ分布の精度パラメータであり、コーシー分布に従う。</p>
+<p>ここで：</p>
+<ul>
+<li><span class="math inline">y_i</span> は追加率であり、ベータ分布に従う。</li>
+<li><span class="math inline">\mu_i</span> は応答変数の平均値であり、線形予測子 <span class="math inline">\eta_i</span> をロジスティック変換することで得られる。</li>
+<li><span class="math inline">\eta_i</span> は線形予測子であり、翻訳観の固定効果、訳者、歌のランダム効果を含む。</li>
+<li><span class="math inline">\beta_0</span> は切片であり、追加率の平均を示す。</li>
+<li><span class="math inline">\beta_{\text{policy}}</span> は翻訳観の回帰係数であり、翻訳観が追加率に与える固定効果を評価する。</li>
+<li><span class="math inline">u_{\text{translator}_i}</span> は訳者のランダム効果であり、訳者間の変動を制御する。これは正規分布に従うと仮定する。</li>
+<li><span class="math inline">u_{\text{poem}_i}</span> は歌のランダム効果であり、歌間の変動を制御する。これは正規分布に従うと仮定する。</li>
+<li><span class="math inline">\sigma_{\text{translator}}</span>, <span class="math inline">\sigma_{\text{poem}}</span> は訳者および歌のランダム効果の標準偏差であり、コーシー分布に従う。</li>
+<li><span class="math inline">\phi</span> はベータ分布の精度パラメータであり、コーシー分布に従う。</li>
+</ul>
 <p>モデルの推定は、ベイズ推論に基づくMarkov Chain Monte Carlo (MCMC) 法を用いて実施する。具体的には、4 つのチェーンを使用し、各チェーンで 4000 回のイテレーションを行い、そのうち 1000 回をウォームアップ (burn-in) 期間として設定する。<code>brms</code>パッケージを用いてモデルを実装し、事後分布の収束性は R-hat 指標および有効サンプルサイズ (ESS) によって診断する。モデル結果では、翻訳観が追加率に与える影響を示し、事後平均、95%事後最狭信用区間 (posterior highest credible interval) 報告する。</p>
 </section>
 <section id="拡張意味単位モデル-extended-unit-of-meaning" class="level2 page-columns page-full" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="拡張意味単位モデル-extended-unit-of-meaning"><span class="header-section-number">3.4</span> 拡張意味単位モデル (extended unit of meaning)</h2>
 <p>和歌に対する現代語訳は、なんらかの言い換えと追加を行っていることが分っても、その追加要素や言い換え要素の性格がわかっているわけではない。</p>
-<p>これら要素の性格は、コーパス言語学の視点から分析する。本稿では <span class="citation" data-cites="Sinclair1996Search">Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> の拡張意味単位モデルの視座を採用し、和歌の原文に観測されている拡意味単位モデルが現代語訳でどのように処理されているか、辞書の記述とどのように異なるかを確認する。</p>
+<p>これら要素の性格は、コーパス言語学の視点から分析する。本稿では <span class="citation" data-cites="Sinclair1996Search">J. M. Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> の拡張意味単位モデルの視座を採用し、和歌の原文に観測されている拡意味単位モデルが現代語訳でどのように処理されているか、辞書の記述とどのように異なるかを確認する。</p>
 <section id="拡張意味単位モデル" class="level3 page-columns page-full" data-number="3.4.1">
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="拡張意味単位モデル"><span class="header-section-number">3.4.1</span> 拡張意味単位モデル</h3>
-<p>意味の拡張単位モデルでは、意味の単位を以下の五つの要素に分けている <span class="citation" data-cites="Sinclair1996Search">(<a href="#ref-Sinclair1996Search" role="doc-biblioref">Sinclair 1996</a>)</span>。<span class="citation" data-cites="Sinclair1996Search">Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> は <em>true feeling</em> から「(not) [EXPRESS] [one’s] <em>true feeling</em>」といった意味の拡張単位を抽出している例とりあげているので、この例で要素について <a href="#tbl-EUoM" class="quarto-xref">Table&nbsp;3</a> にまとめ説明する:</p>
+<p>意味の拡張単位モデルでは、意味の単位を以下の五つの要素に分けている <span class="citation" data-cites="Sinclair1996Search">(<a href="#ref-Sinclair1996Search" role="doc-biblioref">J. M. Sinclair 1996</a>)</span>。<span class="citation" data-cites="Sinclair1996Search">J. M. Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> は <em>true feeling</em> から「(not) [EXPRESS] [one’s] <em>true feeling</em>」といった意味の拡張単位を抽出している例とりあげているので、この例で要素について <a href="#tbl-EUoM" class="quarto-xref">Table&nbsp;3</a> にまとめ説明する:</p>
 <div id="tbl-EUoM" class="quarto-float anchored page-columns page-full">
 <figure class="quarto-float quarto-float-tbl figure page-columns page-full">
 <div aria-describedby="tbl-EUoM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -840,13 +884,13 @@ Table&nbsp;3: 拡張意味単位の要素、説明、事例、操作例
 </figure>
 </div>
 <ol type="1">
-<li>コア（core）は拡張意味単位における不変の成分である <span class="citation" data-cites="Sinclair2004Trust">(<a href="#ref-Sinclair2004Trust" role="doc-biblioref"><strong>Sinclair2004Trust?</strong></a>)</span>。<em>true feeling</em> がこの例におけるコアであり、検索語として使用されている。<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></li>
-<li>コロケーション（collocation）：コアと語の共出現関係である（<span class="citation" data-cites="Sinclair1970:15">(<a href="#ref-Sinclair1970:15" role="doc-biblioref"><strong>Sinclair1970:15?</strong></a>)</span>）。<em>true feeling</em> のコンテキストでは、<em>their</em>, <em>express</em>, <em>hide</em>, <em>reveal</em> などがあげられる。<span class="citation" data-cites="Sinclair1996Search">Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> では、コンテキストのウィンドーは 4 に、閾値は 50% の出現率に設定されている。<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
-<li>類連結（colligation）はコアとグラマティカル・パターンとの共出現関係である [cf., <span class="citation" data-cites="Firth1968">(<a href="#ref-Firth1968" role="doc-biblioref"><strong>Firth1968?</strong></a>)</span>, 183; Sinclair1996Search, 11; Sinclair2003, 171]。例えば、<em>true feeling</em> の前方共出現に <em>thier/his/her/our</em> が多く、それらの性質は所有格形容詞であるため、所有格形容詞が <em>true feeling</em> の類連接と認める。この類連接は直接の観測ができないため、コンコーダンス・コロケーションリストによる観測・帰納に基づく。</li>
-<li>意味的志向（semantic preference）はコアと特定の意味の語群（semantic set）との共出現関係 <span class="citation" data-cites="Sinclair2003">(<a href="#ref-Sinclair2003" role="doc-biblioref"><strong>Sinclair2003?</strong></a>)</span>。例えば、<em>express/hide/reveal/conceal</em> など <strong>EXPRESS</strong> まとは <strong>EXPRESS</strong> の否定のグループが常に <em>true feeling</em> のコンテキストに生起している。この意味的志向も類連接同様、コンコーダンス・コロケーションリストによる観測・帰納に基づく。</li>
-<li>談話韻律（discourse prosody）は拡張意味単位全体の評価・態度・語用論的意味 [Sinclair2004Trust, 174]である。<strong>EXPRESS</strong>の左には<em>less/not</em>などの否定が頻繁に出現するため、<em>true feeling</em> については「客観的・主観的に表現できない」（reluctance/inability）といったネガティブな談話韻律が推測される。これも同様、コンコーダンス・コロケーションリストによる観測・帰納による。</li>
+<li>コア（core）は拡張意味単位における不変の成分である <span class="citation" data-cites="Sinclair2004Trust">(<a href="#ref-Sinclair2004Trust" role="doc-biblioref">J. M. Sinclair 2004, 204</a>)</span>。<em>true feeling</em> がこの例におけるコアであり、検索語として使用されている。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></li>
+<li>コロケーション（collocation）：コアと語の共出現関係である <span class="citation" data-cites="Sinclair1970English">(<a href="#ref-Sinclair1970English" role="doc-biblioref">J. M. Sinclair, Jones, and Daley 1970, 15</a>)</span>。<em>true feeling</em> のコンテキストでは、<em>their</em>, <em>express</em>, <em>hide</em>, <em>reveal</em> などがあげられる。<span class="citation" data-cites="Sinclair1996Search">J. M. Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> では、コンテキストのウィンドーは 4 に、閾値は 50% の出現率に設定されている。<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></li>
+<li>類連結（colligation）はコアとグラマティカル・パターンとの共出現関係である <span class="citation" data-cites="Firth1968Selected Sinclair1996Search Sinclair2003Reading">(cf., <a href="#ref-Firth1968Selected" role="doc-biblioref">Firth and Palmer 1968, 183</a>; <a href="#ref-Sinclair1996Search" role="doc-biblioref">J. M. Sinclair 1996, 11</a>; <a href="#ref-Sinclair2003Reading" role="doc-biblioref">J. Sinclair 2003, 171</a>)</span>。例えば、<em>true feeling</em> の前方共出現に <em>thier/his/her/our</em> が多く、それらの性質は所有格形容詞であるため、所有格形容詞が <em>true feeling</em> の類連接と認める。この類連接は直接の観測ができないため、コンコーダンス・コロケーションリストによる観測・帰納に基づく。</li>
+<li>意味的志向（semantic preference）はコアと特定の意味の語群（semantic set）との共出現関係 <span class="citation" data-cites="Sinclair2003Reading">(<a href="#ref-Sinclair2003Reading" role="doc-biblioref">J. Sinclair 2003, 178</a>)</span>。例えば、<em>express/hide/reveal/conceal</em> など <strong>EXPRESS</strong> まとは <strong>EXPRESS</strong> の否定のグループが常に <em>true feeling</em> のコンテキストに生起している。この意味的志向も類連接同様、コンコーダンス・コロケーションリストによる観測・帰納に基づく。</li>
+<li>談話韻律（discourse prosody）は拡張意味単位全体の評価・態度・語用論的意味 <span class="citation" data-cites="Sinclair2004Trust">(<a href="#ref-Sinclair2004Trust" role="doc-biblioref">J. M. Sinclair 2004, 174</a>)</span>である。<strong>EXPRESS</strong>の左には<em>less/not</em>などの否定が頻繁に出現するため、<em>true feeling</em> については「客観的・主観的に表現できない」（reluctance/inability）といったネガティブな談話韻律が推測される。これも同様、コンコーダンス・コロケーションリストによる観測・帰納による。</li>
 </ol>
-<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;<span class="citation" data-cites="Sinclair1996Search">Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> の例では、コアは実際には検索語に相当するものである。</p></div><div id="fn7"><p><sup>7</sup>&nbsp;KollerMautner2004はにすべきであるとしている。</p></div></div><p>コア、コロケーションから談話韻律へと、直接な観測ができなくなり、明示的でなくなっていく <span class="citation" data-cites="Stubbs2001Words">(<a href="#ref-Stubbs2001Words" role="doc-biblioref">Stubbs 2002, 87–88</a>)</span>。</p>
+<div class="no-row-height column-margin column-container"><div id="fn8"><p><sup>8</sup>&nbsp;<span class="citation" data-cites="Sinclair1996Search">J. M. Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> の例では、コアは実際には検索語に相当するものである。</p></div><div id="fn9"><p><sup>9</sup>&nbsp;<span class="citation" data-cites="Koller2004Computer">V. Koller and Mautner (<a href="#ref-Koller2004Computer" role="doc-biblioref">2004</a>)</span> はにすべきであるとしている。</p></div></div><p>コア、コロケーションから談話韻律へと、直接な観測ができなくなり、明示的でなくなっていく <span class="citation" data-cites="Stubbs2001Words">(<a href="#ref-Stubbs2001Words" role="doc-biblioref">Stubbs 2001, 87–88</a>)</span>。</p>
 </section>
 <section id="本稿のアダプテーション" class="level3" data-number="3.4.2">
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="本稿のアダプテーション"><span class="header-section-number">3.4.2</span> 本稿のアダプテーション</h3>
@@ -859,41 +903,54 @@ Table&nbsp;3: 拡張意味単位の要素、説明、事例、操作例
 </section>
 </section>
 </section>
-<section id="結果" class="level1" data-number="4">
+<section id="結果" class="level1 page-columns page-full" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> 結果</h1>
-<section id="現代語訳の整理と分類" class="level2" data-number="4.1">
+<section id="現代語訳の整理と分類" class="level2 page-columns page-full" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="現代語訳の整理と分類"><span class="header-section-number">4.1</span> 現代語訳の整理と分類</h2>
-<section id="分類" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="分類"><span class="header-section-number">4.1.1</span> 分類</h3>
+<section id="分類コミュニケーションの力点の置き方" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="分類コミュニケーションの力点の置き方"><span class="header-section-number">4.1.1</span> 分類：コミュニケーションの力点の置き方</h3>
 <p>注釈書に記されている翻訳の方針に基づき、10 人の翻訳観をコミュニケーションの主体への視座の置き方に基づき、3 類に分類された：</p>
 <ol type="1">
-<li>テキストの字義を重視する方針：<span class="citation" data-cites="kaneko1933Kokin">金子 (<a href="#ref-kaneko1933Kokin" role="doc-biblioref">1933</a>)</span>; <span class="citation" data-cites="kubota1960Kokin">窪田 (<a href="#ref-kubota1960Kokin" role="doc-biblioref">1960</a>)</span>; <span class="citation" data-cites="katagiri1998Kokinhyoshaku">片桐 (<a href="#ref-katagiri1998Kokinhyoshaku" role="doc-biblioref">1998</a>)</span></li>
-<li>作者の意図を重視する方針：<span class="citation" data-cites="okumura1978Kokin">奥村 (<a href="#ref-okumura1978Kokin" role="doc-biblioref">1978</a>)</span>; <span class="citation" data-cites="takeoka1976Kokin">竹岡 (<a href="#ref-takeoka1976Kokin" role="doc-biblioref">1976</a>)</span></li>
-<li>読者の理解を重視する方針：<span class="citation" data-cites="ozawa1971Kikon">小沢 (<a href="#ref-ozawa1971Kikon" role="doc-biblioref">1971</a>)</span>; <span class="citation" data-cites="kyusojin1979Kokin">久曽神 (<a href="#ref-kyusojin1979Kokin" role="doc-biblioref">1979</a>)</span></li>
-<li>不明・その他の方針：<span class="citation" data-cites="matsuda1968Shinshaku">松田 (<a href="#ref-matsuda1968Shinshaku" role="doc-biblioref">1968</a>)</span>; <span class="citation" data-cites="kojima1989Kokin">小島 and 新井 (<a href="#ref-kojima1989Kokin" role="doc-biblioref">1989</a>)</span>; <span class="citation" data-cites="komachiya1982Kokin">小町谷 (<a href="#ref-komachiya1982Kokin" role="doc-biblioref">1982</a>)</span></li>
+<li>テキストの字義を重視する方針： <span class="citation" data-cites="kaneko1933Kokin">金子 (<a href="#ref-kaneko1933Kokin" role="doc-biblioref">1933</a>)</span>; <span class="citation" data-cites="kubota1960Kokin">窪田 (<a href="#ref-kubota1960Kokin" role="doc-biblioref">1960</a>)</span>; <span class="citation" data-cites="katagiri1998Kokinhyoshaku">片桐 (<a href="#ref-katagiri1998Kokinhyoshaku" role="doc-biblioref">1998</a>)</span></li>
+<li>作者の意図を重視する方針： <span class="citation" data-cites="okumura1978Kokin">奥村 (<a href="#ref-okumura1978Kokin" role="doc-biblioref">1978</a>)</span>; <span class="citation" data-cites="takeoka1976Kokin">竹岡 (<a href="#ref-takeoka1976Kokin" role="doc-biblioref">1976</a>)</span></li>
+<li>読者の理解を重視する方針： <span class="citation" data-cites="ozawa1971Kikon">小沢 (<a href="#ref-ozawa1971Kikon" role="doc-biblioref">1971</a>)</span>; <span class="citation" data-cites="kyusojin1979Kokin">久曽神 (<a href="#ref-kyusojin1979Kokin" role="doc-biblioref">1979</a>)</span></li>
+<li>不明・その他の方針： <span class="citation" data-cites="matsuda1968Shinshaku">松田 (<a href="#ref-matsuda1968Shinshaku" role="doc-biblioref">1968</a>)</span>; <span class="citation" data-cites="kojima1989Kokin">小島 and 新井 (<a href="#ref-kojima1989Kokin" role="doc-biblioref">1989</a>)</span>; <span class="citation" data-cites="komachiya1982Kokin">小町谷 (<a href="#ref-komachiya1982Kokin" role="doc-biblioref">1982</a>)</span></li>
 </ol>
 <p>この中で、原文の字義を重視する翻訳観は、もっとも逐語訳に拘っている。作者の意図・感受を重視する・読者の理解を重視する翻訳観では、多少の語と語順の入れ替え、語句の補いを許容しているように述べている。</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Add communication model figure">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Add communication model figure
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="citation" data-cites="Schramm1954Communication">(<a href="#ref-Schramm1954Communication" role="doc-biblioref"><strong>Schramm1954Communication?</strong></a>)</span> などにおいての力点の置き方が異なる。</p>
+</div>
+</div>
 </section>
-<section id="分類ごとの翻訳観の詳細" class="level3" data-number="4.1.2">
+<section id="分類ごとの翻訳観の詳細" class="level3 page-columns page-full" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="分類ごとの翻訳観の詳細"><span class="header-section-number">4.1.2</span> 分類ごとの翻訳観の詳細</h3>
 <section id="text-orientated" class="level4 unbumbered" data-number="4.1.2.1">
 <h4 class="unbumbered anchored" data-number="4.1.2.1" data-anchor-id="text-orientated"><span class="header-section-number">4.1.2.1</span> Text-orientated</h4>
-<p>原文に忠実に翻訳することを重視し、できるだけ語順や意味を変えずに翻訳を行う。 <span class="citation" data-cites="kaneko1933Kokin">金子 (<a href="#ref-kaneko1933Kokin" role="doc-biblioref">1933</a>)</span> は「逐語訳」に徹し、語を加えたり、削除することを避けており、慎重に翻訳していると述べている。金子 (1933) は歌の意をそこねたり、調をあやまったりすることを恐れて、鏡花水月の訳法（あからさまに説明せず、ただその姿を眼前に思い浮ばせるようにする漢文の表現法）に従ひ、きわめて小心に、一字一語の出入をもゆるがせにせぬことを期したことを述べている。また、文体的には、金子の翻訳調はたとえば「くずをれる」のような古めかしいことばをわざと翻訳に入れるところなど、本居宣長の「遠鏡」に似ている。 <span class="citation" data-cites="kubota1960Kokin">窪田 (<a href="#ref-kubota1960Kokin" role="doc-biblioref">1960</a>)</span> は、現代語訳の方針について、逐語訳にこだわり、語順を変えたり、新しい語を加えることを避けていると述べている。 <span class="citation" data-cites="katagiri1998Kokinhyoshaku">片桐 (<a href="#ref-katagiri1998Kokinhyoshaku" role="doc-biblioref">1998</a>)</span> も同様に、逐語訳を行い、和歌の省略や長大な増補を避け、可能な限り忠実に現代語訳している。</p>
+<p>このグープの訳者は、原文に忠実に翻訳することを重視し、できるだけ語順や意味を変えずに翻訳を行う。 <span class="citation" data-cites="kaneko1933Kokin">金子 (<a href="#ref-kaneko1933Kokin" role="doc-biblioref">1933</a>)</span> は「逐語訳」に徹し、語を加えたり、削除することを避けており、慎重に翻訳していると述べている。 <span class="citation" data-cites="kaneko1933Kokin">金子 (<a href="#ref-kaneko1933Kokin" role="doc-biblioref">1933</a>)</span> は歌の意をそこねたり、調をあやまったりすることを恐れて、鏡花水月の訳法（あからさまに説明せず、ただその姿を眼前に思い浮ばせるようにする漢文の表現法）に従ひ、きわめて小心に、一字一語の出入をもゆるがせにせぬことを期したことを述べている。また、文体的には、金子の翻訳調はたとえば「くずをれる」のような古めかしいことばをわざと翻訳に入れるところなど、本居宣長の「遠鏡」に似ている。 <span class="citation" data-cites="kubota1960Kokin">窪田 (<a href="#ref-kubota1960Kokin" role="doc-biblioref">1960</a>)</span> は、現代語訳の方針について、逐語訳にこだわり、語順を変えたり、新しい語を加えることを避けていると述べている。 <span class="citation" data-cites="katagiri1998Kokinhyoshaku">片桐 (<a href="#ref-katagiri1998Kokinhyoshaku" role="doc-biblioref">1998</a>)</span> も同様に、逐語訳を行い、和歌の省略や長大な増補を避け、可能な限り忠実に現代語訳している。</p>
 </section>
-<section id="intension-orientated" class="level4 unnumbered">
+<section id="intension-orientated" class="level4 unnumbered page-columns page-full">
 <h4 class="unnumbered anchored" data-anchor-id="intension-orientated">Intension-orientated</h4>
 <p>このグループでは、逐語訳に拘らず、表面的な意味よりも、原文の意図と感受性を重視する群である。 <span class="citation" data-cites="okumura1978Kokin">奥村 (<a href="#ref-okumura1978Kokin" role="doc-biblioref">1978, 7</a>)</span> は「口語訳は、原歌の言葉づかいや言い廻しを尊重し、一首の意味を厳密に解釈するより、基本的な作意をまず感じとってもらうことに重点をおいた」としている。原文の意図の理解を重視し、逐語訳よりも作意を優先して翻訳している。 <span class="citation" data-cites="takeoka1976Kokin">竹岡 (<a href="#ref-takeoka1976Kokin" role="doc-biblioref">1976, 上下:21</a>)</span> は、訳(口語訳)は原文の「筋」の紹介や解説の類ではなく，作者の認識のしかた・感じ方をあらゆる面より明らかにしたのち、それ現代語に存在する同じあるいは極力それに近似した認識のしかた、感じ方の表現にそっくりうつしかえることをいう。つまり、原作の逐語的に訳すのではまく、感受性の保持に重点を置きながら言い換えを積極的に用いる。具体的な現代語訳の方針としては、<span class="citation" data-cites="takeoka1976Kokin">竹岡 (<a href="#ref-takeoka1976Kokin" role="doc-biblioref">1976, 上下:11–12</a>)</span> は、次のような独自の理論を提案している。 <span class="math display">
-  S=\left[\left(a+b+c+\dots+n\right)\times X \right]\times Y
-  </span> ただし、<span class="math inline">S</span> は翻訳された文、<span class="math inline">a, b, c, \dots, n</span> のそれぞれは単語、<span class="math inline">X</span> は翻訳に含まれる要素、<span class="math inline">Y</span> は翻訳に効果的に加えられた要素である。<span class="math inline">a,b,c, \dots, n</span> それぞれの一般的普遍的意義は辞書で理解でき、それぞれの <span class="math inline">+</span> のしかたに相当するものは文法書を参照すれば了解できる」としている。<span class="citation" data-cites="takeoka1976Kokin">竹岡 (<a href="#ref-takeoka1976Kokin" role="doc-biblioref">1976, 上下:11</a>)</span> は <span class="math inline">Y</span> はふつうは 0 の値であるが、和歌にはいくつか効果的な要素が含まれる時、翻訳者は <span class="math inline">Y</span> に何らかの値、たとえば終助詞（わ、ね、よ）のようなものを付け加わえる。したがって、現代語訳作成のための重要な変数は <span class="math inline">X</span> となる。その <span class="math inline">X</span> は、語句の分割、対応する適切な現代語、語順、助詞・接続詞を含めた訳語、文の構造、話の流れ（談話）、場面の７つに分類されるとしている。 注釈書は「校訂」「釈」「訳」「評」「古注」で構成されている。契沖の「古今和歌集余材抄」以来のの 7 種の注釈書の注を統合したはじめてのものである。竹岡はこの注釈書にて文学研究に分析的アプローチを組み込んでいる。竹岡は賀茂真淵、香川景樹の仕事を分析に根拠がないとして同意できないとしている一方で、契沖、本居宣長、富士谷成章 (1738–79) らの注釈を評価している。加えて、特に古典文法、語彙の観点から 7 種すべての古注間の違いについて慎重に議論している。</p>
-</section>
+S=\left[\left(a+b+c+\dots+n\right)\times X \right]\times Y
+</span> ただし、<span class="math inline">S</span> は翻訳された文、<span class="math inline">a, b, c, \dots, n</span> のそれぞれは単語、<span class="math inline">X</span> は翻訳に含まれる要素、<span class="math inline">Y</span> は翻訳に効果的に加えられた要素である。<span class="math inline">a,b,c, \dots, n</span> それぞれの一般的普遍的意義は辞書で理解でき、それぞれの <span class="math inline">+</span> のしかたに相当するものは文法書を参照すれば了解できる」としている。<span class="citation" data-cites="takeoka1976Kokin">竹岡 (<a href="#ref-takeoka1976Kokin" role="doc-biblioref">1976, 上下:11</a>)</span> は <span class="math inline">Y</span> はふつうは 0 の値であるが、和歌にはいくつか効果的な要素が含まれる時、翻訳者は <span class="math inline">Y</span> に何らかの値、たとえば終助詞（わ、ね、よ）のようなものを付け加わえる。したがって、現代語訳作成のための重要な変数は <span class="math inline">X</span> となる。その <span class="math inline">X</span> は、語句の分割、対応する適切な現代語、語順、助詞・接続詞を含めた訳語、文の構造、話の流れ（談話）、場面の７つに分類されるとしている。このように、歌の筋より作者の意図を細部まで還元することを強調していると捉えられる。<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn10"><p><sup>10</sup>&nbsp;契沖の「古今和歌集余材抄」以来のの 7 種の注釈書の注を統合したはじめてのものである。竹岡はこの注釈書にて文学研究に分析的アプローチを組み込んでいる。竹岡は賀茂真淵、香川景樹の仕事を分析に根拠がないとして同意できないとしている一方で、契沖、本居宣長、富士谷成章 (1738–79) らの注釈を評価している。加えて、特に古典文法、語彙の観点から 7 種すべての古注間の違いについて慎重に議論している。</p></div></div></section>
 <section id="readability-orientated" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="readability-orientated">Readability-orientated</h4>
-<p>このグループの訳者は、原文に忠実であることよりも、内容の理解や解釈を読者に伝えることを重視している。そのため、語順を変えたり、新しい語を加えることもある。 <span class="citation" data-cites="ozawa1971Kikon">小沢 (<a href="#ref-ozawa1971Kikon" role="doc-biblioref">1971</a>)</span> は原作の語順・語法を変更することをいとわず、読者が理解しやすいように内容を優先した翻訳を行っている。<span class="citation" data-cites="ozawa1971Kikon">小沢 (<a href="#ref-ozawa1971Kikon" role="doc-biblioref">1971, 46</a>)</span> は「口語訳はそれだけ独立しても意味がよくわかるように努めたので、時には原作の語順・語法を変えている」と述べており、逐語訳よりも内容の理解の方に力点が置かれている。 <span class="citation" data-cites="kyusojin1979Kokin">久曽神 (<a href="#ref-kyusojin1979Kokin" role="doc-biblioref">1979</a>)</span> は、平易な口語訳を採用し、必要に応じて語句を補っており、解釈を重視した翻訳を行っている。現代語訳の方針としては「歌意は、歌句に基づく平易な口語訳としたが、必要と思われる場合は字句を補った」と述べている [p.6]。</p>
+<p>このグループの訳者は、原文に忠実であることよりも、読者の内容の理解や解釈を読者に伝えることを重視している。そのため、語順を変えたり、新しい語を加えることもある。 <span class="citation" data-cites="ozawa1971Kikon">小沢 (<a href="#ref-ozawa1971Kikon" role="doc-biblioref">1971</a>)</span> は原作の語順・語法を変更することをいとわず、読者が理解しやすいように内容を優先した翻訳を行っている。 <span class="citation" data-cites="ozawa1971Kikon">小沢 (<a href="#ref-ozawa1971Kikon" role="doc-biblioref">1971, 46</a>)</span> は「口語訳はそれだけ独立しても意味がよくわかるように努めたので、時には原作の語順・語法を変えている」と述べており、逐語訳よりも内容の理解の方に力点が置かれている。 <span class="citation" data-cites="kyusojin1979Kokin">久曽神 (<a href="#ref-kyusojin1979Kokin" role="doc-biblioref">1979</a>)</span> は、平易な口語訳を採用し、必要に応じて語句を補っており、解釈を重視した翻訳を行っている。現代語訳の方針としては「歌意は、歌句に基づく平易な口語訳としたが、必要と思われる場合は字句を補った」と述べている <span class="citation" data-cites="kyusojin1979Kokin">(<a href="#ref-kyusojin1979Kokin" role="doc-biblioref">久曽神 1979, 1–5:6</a>)</span>。</p>
 </section>
 <section id="不詳" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="不詳">不詳</h4>
-<p>現代語訳の方針について、<span class="citation" data-cites="komachiya1982Kokin">小町谷 (<a href="#ref-komachiya1982Kokin" role="doc-biblioref">1982</a>)</span>, <span class="citation" data-cites="matsuda1968Shinshaku">松田 (<a href="#ref-matsuda1968Shinshaku" role="doc-biblioref">1968</a>)</span>, <span class="citation" data-cites="kojima1989Kokin">小島 and 新井 (<a href="#ref-kojima1989Kokin" role="doc-biblioref">1989</a>)</span> は明確に述べていない。</p>
-<p>うち、<span class="citation" data-cites="matsuda1968Shinshaku">松田 (<a href="#ref-matsuda1968Shinshaku" role="doc-biblioref">1968</a>)</span> の現代語訳は他の 10 名の共同執筆者によって作られている。この注釈書冒頭のの解説には、現代語訳は今までの研究にしたがって作られたとは述べているものの、10 名の共著者の間での翻訳の共通認識、作成方針は明らかに述べられていない。また、松田は古今集の和歌について、歌人の感情についてだけでなく、選者の編集意識についても、解釈にも含めようとしていると述べている <span class="citation" data-cites="matsuda1968Shinshaku">(<a href="#ref-matsuda1968Shinshaku" role="doc-biblioref">松田 1968, 上下:9</a>)</span>。各歌の後に、順次、「通釈」「語釈」「古注」「評」の項目を設け、解釈・鑑賞などが記されている。 <span class="citation" data-cites="kojima1989Kokin">小島 and 新井 (<a href="#ref-kojima1989Kokin" role="doc-biblioref">1989</a>)</span> の特色の一つは注釈は江戸期 (1600–1868) だけでなく、これまでの注釈書では無視されてきた中世期 (1392–1600) に作られた注釈も取り入れていることである (pp.&nbsp;481–482)。また、万葉集の和歌と用語が対比されて引用されている (小島・新井 1989: 480)。各歌の注釈としては「歌番号」「大意」「語句の注」「参考事項」の順で述べられている。他の注釈本と比べてさほど量的に違いはないが、付録にはさまざまな資料が含まれており、付録だけで本の 30 パーセントを占めているほどである。</p>
+<p>現代語訳の方針について、 <span class="citation" data-cites="komachiya1982Kokin">小町谷 (<a href="#ref-komachiya1982Kokin" role="doc-biblioref">1982</a>)</span>, <span class="citation" data-cites="matsuda1968Shinshaku">松田 (<a href="#ref-matsuda1968Shinshaku" role="doc-biblioref">1968</a>)</span>, <span class="citation" data-cites="kojima1989Kokin">小島 and 新井 (<a href="#ref-kojima1989Kokin" role="doc-biblioref">1989</a>)</span> は明確に述べていない。</p>
+<p>うち、 <span class="citation" data-cites="matsuda1968Shinshaku">松田 (<a href="#ref-matsuda1968Shinshaku" role="doc-biblioref">1968</a>)</span> の現代語訳は他の 10 名の共同執筆者によって作られている。この注釈書冒頭のの解説には、現代語訳は今までの研究にしたがって作られたとは述べているものの、10 名の共著者の間での翻訳の共通認識、作成方針は明らかに述べられていない。また、松田は古今集の和歌について、歌人の感情についてだけでなく、選者の編集意識についても、解釈にも含めようとしていると述べている <span class="citation" data-cites="matsuda1968Shinshaku">(<a href="#ref-matsuda1968Shinshaku" role="doc-biblioref">松田 1968, 上下:9</a>)</span>。各歌の後に、順次、「通釈」「語釈」「古注」「評」の項目を設け、解釈・鑑賞などが記されている。 <span class="citation" data-cites="kojima1989Kokin">小島 and 新井 (<a href="#ref-kojima1989Kokin" role="doc-biblioref">1989</a>)</span> の特色の一つは注釈は江戸期 (1600–1868) だけでなく、これまでの注釈書では無視されてきた中世期 (1392–1600) に作られた注釈も取り入れていることである (pp.&nbsp;481–482)。また、万葉集の和歌と用語が対比されて引用されている (小島・新井 1989: 480)。各歌の注釈としては「歌番号」「大意」「語句の注」「参考事項」の順で述べられている。他の注釈本と比べてさほど量的に違いはないが、付録にはさまざまな資料が含まれており、付録だけで本の 30 パーセントを占めているほどである。</p>
 </section>
 <section id="まとめ" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="まとめ">まとめ</h4>
@@ -903,6 +960,25 @@ Table&nbsp;3: 拡張意味単位の要素、説明、事例、操作例
 </section>
 <section id="追加率の計算結果" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="追加率の計算結果"><span class="header-section-number">4.2</span> 追加率の計算結果</h2>
+<div id="cell-data-raw" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">system</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">    cat ./data/calcResidual/gistfile1.txt</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">intern =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div id="data-raw" class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'CALC kaneko 0001 OP=21 0.76:0.24:0.00 1.00(0.00) CT=36 0.44:0.56 0.14:0.00:0.42 0.42(0.00)'</li><li>'CALC kaneko 0002 OP=18 0.50:0.22:0.06 0.78(0.22) CT=47 0.19:0.81 0.11:0.16:0.55 0.62(0.07)'</li><li>'CALC kaneko 0003 OP=16 0.69:0.12:0.06 0.88(0.12) CT=39 0.28:0.72 0.08:0.08:0.56 0.59(0.03)'</li><li>'CALC kaneko 0004 OP=18 0.50:0.22:0.00 0.72(0.28) CT=36 0.25:0.75 0.11:0.18:0.46 0.50(0.04)'</li><li>'CALC kaneko 0005 OP=16 0.69:0.19:0.12 1.00(0.00) CT=32 0.38:0.62 0.16:0.00:0.47 0.50(0.03)'</li><li>'CALC kaneko 0006 OP=17 0.47:0.18:0.06 0.71(0.29) CT=42 0.19:0.81 0.12:0.20:0.49 0.60(0.11)'</li><li>'CALC kaneko 0007 OP=17 0.41:0.24:0.06 0.71(0.29) CT=37 0.19:0.81 0.11:0.21:0.50 0.54(0.04)'</li><li>'CALC kaneko 0008 OP=17 0.41:0.18:0.06 0.65(0.35) CT=34 0.21:0.79 0.15:0.23:0.42 0.50(0.08)'</li><li>'CALC kaneko 0009 OP=17 0.53:0.29:0.00 0.82(0.18) CT=33 0.30:0.70 0.15:0.10:0.45 0.48(0.04)'</li><li>'CALC kaneko 0010 OP=17 0.35:0.35:0.12 0.82(0.18) CT=50 0.12:0.88 0.16:0.13:0.59 0.66(0.07)'</li><li>'CALC kaneko 0011 OP=19 0.58:0.21:0.05 0.84(0.16) CT=36 0.31:0.69 0.14:0.09:0.47 0.47(0.00)'</li><li>'CALC kaneko 0012 OP=15 0.33:0.13:0.00 0.47(0.53) CT=49 0.12:0.88 0.04:0.45:0.39 0.69(0.30)'</li><li>'CALC kaneko 0013 OP=17 0.59:0.12:0.00 0.71(0.29) CT=42 0.24:0.76 0.05:0.21:0.50 0.60(0.09)'</li><li>'CALC kaneko 0014 OP=16 0.69:0.31:0.00 1.00(0.00) CT=39 0.28:0.72 0.13:0.00:0.59 0.59(0.00)'</li><li>'CALC kaneko 0015 OP=16 0.50:0.12:0.25 0.88(0.12) CT=39 0.21:0.79 0.15:0.08:0.56 0.59(0.03)'</li><li>'CALC kaneko 0016 OP=15 0.67:0.07:0.07 0.80(0.20) CT=43 0.23:0.77 0.07:0.14:0.56 0.65(0.09)'</li><li>'CALC kaneko 0017 OP=17 0.65:0.06:0.06 0.76(0.24) CT=45 0.24:0.76 0.04:0.17:0.54 0.62(0.08)'</li><li>'CALC kaneko 0018 OP=16 0.44:0.19:0.06 0.69(0.31) CT=53 0.15:0.85 0.08:0.24:0.53 0.70(0.17)'</li><li>'CALC kaneko 0019 OP=17 0.65:0.18:0.06 0.88(0.12) CT=40 0.28:0.72 0.10:0.07:0.55 0.57(0.02)'</li><li>'CALC kaneko 0020 OP=15 0.67:0.07:0.07 0.80(0.20) CT=31 0.32:0.68 0.06:0.12:0.49 0.52(0.03)'</li><li>'CALC kaneko 0021 OP=19 0.53:0.26:0.11 0.89(0.11) CT=34 0.29:0.71 0.21:0.05:0.45 0.44(0.01)'</li><li>'CALC kaneko 0022 OP=16 0.75:0.06:0.00 0.81(0.19) CT=29 0.41:0.59 0.03:0.10:0.45 0.45(0.00)'</li><li>'CALC kaneko 0023 OP=15 0.47:0.13:0.13 0.73(0.27) CT=42 0.17:0.83 0.10:0.20:0.54 0.64(0.10)'</li><li>'CALC kaneko 0024 OP=16 0.50:0.19:0.00 0.69(0.31) CT=32 0.25:0.75 0.12:0.20:0.43 0.50(0.07)'</li><li>'CALC kaneko 0025 OP=16 0.62:0.06:0.06 0.75(0.25) CT=33 0.30:0.70 0.06:0.16:0.48 0.52(0.04)'</li><li>'CALC kaneko 0026 OP=15 0.53:0.13:0.13 0.80(0.20) CT=35 0.23:0.77 0.14:0.13:0.50 0.57(0.07)'</li><li>'CALC kaneko 0027 OP=16 0.62:0.00:0.19 0.81(0.19) CT=30 0.33:0.67 0.10:0.11:0.46 0.47(0.01)'</li><li>'CALC kaneko 0028 OP=13 0.62:0.15:0.15 0.92(0.08) CT=43 0.19:0.81 0.12:0.05:0.64 0.70(0.05)'</li><li>'CALC kaneko 0029 OP=13 0.54:0.15:0.15 0.85(0.15) CT=32 0.22:0.78 0.16:0.10:0.53 0.59(0.06)'</li><li>'CALC kaneko 0030 OP=15 0.47:0.07:0.07 0.60(0.40) CT=57 0.12:0.88 0.04:0.34:0.51 0.74(0.23)'</li><li>'CALC kaneko 0031 OP=17 0.53:0.18:0.12 0.82(0.18) CT=75 0.12:0.88 0.07:0.14:0.67 0.77(0.10)'</li><li>'CALC kaneko 0032 OP=17 0.53:0.24:0.06 0.82(0.18) CT=52 0.17:0.83 0.10:0.13:0.60 0.67(0.07)'</li><li>'CALC kaneko 0033 OP=18 0.56:0.22:0.00 0.78(0.22) CT=49 0.20:0.80 0.08:0.16:0.56 0.63(0.08)'</li><li>'CALC kaneko 0034 OP=16 0.44:0.31:0.00 0.75(0.25) CT=34 0.21:0.79 0.15:0.16:0.49 0.53(0.04)'</li><li>'CALC kaneko 0035 OP=16 0.50:0.19:0.19 0.88(0.12) CT=44 0.18:0.82 0.14:0.09:0.60 0.64(0.04)'</li><li>'CALC kaneko 0036 OP=18 0.78:0.11:0.00 0.89(0.11) CT=39 0.36:0.64 0.05:0.07:0.52 0.54(0.01)'</li><li>'CALC kaneko 0037 OP=20 0.45:0.35:0.00 0.80(0.20) CT=55 0.16:0.84 0.15:0.14:0.55 0.64(0.08)'</li><li>'CALC kaneko 0038 OP=21 0.57:0.14:0.05 0.76(0.24) CT=55 0.24:0.76 0.07:0.16:0.53 0.62(0.09)'</li><li>'CALC kaneko 0039 OP=15 0.47:0.33:0.00 0.80(0.20) CT=46 0.15:0.85 0.11:0.15:0.59 0.67(0.08)'</li><li>'CALC kaneko 0040 OP=19 0.47:0.26:0.05 0.79(0.21) CT=64 0.14:0.86 0.11:0.16:0.59 0.70(0.11)'</li><li>'CALC kaneko 0041 OP=17 0.71:0.18:0.00 0.88(0.12) CT=34 0.35:0.65 0.09:0.07:0.49 0.50(0.01)'</li><li>'CALC kaneko 0042 OP=17 0.53:0.24:0.06 0.82(0.18) CT=45 0.20:0.80 0.11:0.12:0.57 0.62(0.05)'</li><li>'CALC kaneko 0043 OP=20 0.85:0.10:0.00 0.95(0.05) CT=47 0.34:0.66 0.04:0.03:0.59 0.57(0.01)'</li><li>'CALC kaneko 0044 OP=18 0.61:0.17:0.06 0.83(0.17) CT=44 0.25:0.75 0.09:0.11:0.55 0.59(0.04)'</li><li>'CALC kaneko 0045 OP=17 0.59:0.06:0.06 0.71(0.29) CT=53 0.19:0.81 0.04:0.23:0.55 0.68(0.13)'</li><li>'CALC kaneko 0046 OP=18 0.50:0.28:0.17 0.94(0.06) CT=40 0.23:0.78 0.23:0.03:0.52 0.55(0.03)'</li><li>'CALC kaneko 0047 OP=17 0.53:0.18:0.06 0.76(0.24) CT=32 0.28:0.72 0.12:0.14:0.45 0.47(0.01)'</li><li>'CALC kaneko 0048 OP=17 0.65:0.18:0.12 0.94(0.06) CT=38 0.29:0.71 0.13:0.03:0.54 0.55(0.01)'</li><li>'CALC kaneko 0049 OP=15 0.60:0.27:0.07 0.93(0.07) CT=34 0.26:0.74 0.15:0.04:0.55 0.56(0.01)'</li><li>'CALC kaneko 0050 OP=16 0.56:0.19:0.06 0.81(0.19) CT=41 0.22:0.78 0.07:0.13:0.57 0.61(0.04)'</li><li>'CALC kaneko 0051 OP=18 0.78:0.11:0.00 0.89(0.11) CT=42 0.33:0.67 0.05:0.07:0.55 0.57(0.02)'</li><li>'CALC kaneko 0052 OP=19 0.58:0.16:0.05 0.79(0.21) CT=40 0.28:0.72 0.10:0.13:0.49 0.53(0.03)'</li><li>'CALC kaneko 0053 OP=14 0.57:0.21:0.14 0.93(0.07) CT=50 0.16:0.84 0.10:0.05:0.69 0.72(0.03)'</li><li>'CALC kaneko 0054 OP=17 0.65:0.00:0.24 0.88(0.12) CT=43 0.26:0.74 0.14:0.07:0.53 0.60(0.07)'</li><li>'CALC kaneko 0055 OP=19 0.68:0.26:0.00 0.95(0.05) CT=42 0.31:0.69 0.12:0.03:0.54 0.55(0.01)'</li><li>'CALC kaneko 0056 OP=14 0.57:0.29:0.07 0.93(0.07) CT=35 0.23:0.77 0.14:0.04:0.58 0.60(0.02)'</li><li>'CALC kaneko 0057 OP=16 0.56:0.25:0.06 0.88(0.12) CT=42 0.21:0.79 0.12:0.08:0.58 0.62(0.04)'</li><li>'CALC kaneko 0058 OP=16 0.69:0.00:0.12 0.81(0.19) CT=31 0.35:0.65 0.06:0.11:0.47 0.48(0.01)'</li><li>'CALC kaneko 0059 OP=15 0.53:0.13:0.07 0.73(0.27) CT=22 0.36:0.64 0.14:0.13:0.37 0.32(0.05)'</li><li>'CALC kaneko 0060 OP=17 0.53:0.18:0.12 0.82(0.18) CT=36 0.25:0.75 0.11:0.11:0.53 0.53(0.00)'</li><li>'CALC kaneko 0061 OP=17 0.76:0.12:0.00 0.88(0.12) CT=38 0.34:0.66 0.03:0.07:0.56 0.55(0.00)'</li><li>'CALC kaneko 0062 OP=15 0.53:0.13:0.07 0.73(0.27) CT=55 0.16:0.84 0.07:0.20:0.56 0.73(0.17)'</li><li>'CALC kaneko 0063 OP=22 0.45:0.32:0.09 0.86(0.14) CT=71 0.14:0.86 0.13:0.10:0.63 0.69(0.06)'</li><li>'CALC kaneko 0064 OP=16 0.56:0.06:0.19 0.81(0.19) CT=49 0.18:0.82 0.10:0.13:0.58 0.67(0.09)'</li><li>'CALC kaneko 0065 OP=17 0.59:0.12:0.12 0.82(0.18) CT=56 0.18:0.82 0.11:0.13:0.59 0.70(0.11)'</li><li>'CALC kaneko 0066 OP=18 0.67:0.22:0.06 0.94(0.06) CT=36 0.33:0.67 0.17:0.03:0.47 0.50(0.03)'</li><li>'CALC kaneko 0067 OP=18 0.28:0.28:0.11 0.67(0.33) CT=59 0.08:0.92 0.14:0.26:0.52 0.69(0.18)'</li><li>'CALC kaneko 0068 OP=16 0.50:0.25:0.19 0.94(0.06) CT=56 0.18:0.82 0.14:0.04:0.64 0.71(0.08)'</li><li>'CALC kaneko 0069 OP=14 0.86:0.07:0.00 0.93(0.07) CT=31 0.39:0.61 0.03:0.04:0.54 0.55(0.01)'</li><li>'CALC kaneko 0070 OP=18 0.56:0.17:0.11 0.83(0.17) CT=60 0.17:0.83 0.07:0.13:0.64 0.70(0.06)'</li><li>'CALC kaneko 0071 OP=14 0.50:0.07:0.21 0.79(0.21) CT=37 0.19:0.81 0.11:0.15:0.55 0.62(0.07)'</li><li>'CALC kaneko 0072 OP=17 0.59:0.24:0.00 0.82(0.18) CT=32 0.31:0.69 0.12:0.10:0.46 0.47(0.01)'</li><li>'CALC kaneko 0073 OP=19 0.53:0.16:0.05 0.74(0.26) CT=33 0.30:0.70 0.12:0.15:0.42 0.42(0.00)'</li><li>'CALC kaneko 0074 OP=17 0.71:0.06:0.06 0.82(0.18) CT=46 0.28:0.72 0.04:0.12:0.55 0.63(0.08)'</li><li>'CALC kaneko 0075 OP=15 0.73:0.13:0.13 1.00(0.00) CT=37 0.30:0.70 0.11:0.00:0.59 0.59(0.00)'</li><li>'CALC kaneko 0076 OP=16 0.88:0.06:0.00 0.94(0.06) CT=39 0.36:0.64 0.03:0.04:0.58 0.59(0.01)'</li><li>'CALC kaneko 0077 OP=17 0.53:0.24:0.12 0.88(0.12) CT=45 0.22:0.78 0.16:0.07:0.55 0.62(0.07)'</li><li>'CALC kaneko 0078 OP=19 0.53:0.16:0.11 0.79(0.21) CT=43 0.23:0.77 0.12:0.14:0.51 0.56(0.04)'</li><li>'CALC kaneko 0079 OP=15 0.53:0.20:0.07 0.80(0.20) CT=56 0.14:0.86 0.07:0.16:0.63 0.73(0.10)'</li><li>'CALC kaneko 0080 OP=18 0.72:0.17:0.00 0.89(0.11) CT=52 0.23:0.77 0.06:0.08:0.63 0.65(0.02)'</li><li>'CALC kaneko 0081 OP=19 0.68:0.21:0.05 0.95(0.05) CT=37 0.35:0.65 0.14:0.03:0.49 0.49(0.00)'</li><li>'CALC kaneko 0082 OP=16 0.50:0.38:0.06 0.94(0.06) CT=53 0.15:0.85 0.15:0.04:0.65 0.70(0.04)'</li><li>'CALC kaneko 0083 OP=17 0.41:0.24:0.12 0.76(0.24) CT=50 0.14:0.86 0.14:0.17:0.55 0.66(0.11)'</li><li>'CALC kaneko 0084 OP=14 0.57:0.14:0.14 0.86(0.14) CT=36 0.22:0.78 0.11:0.10:0.57 0.61(0.04)'</li><li>'CALC kaneko 0085 OP=15 0.67:0.13:0.07 0.87(0.13) CT=45 0.22:0.78 0.07:0.09:0.62 0.67(0.05)'</li><li>'CALC kaneko 0086 OP=17 0.53:0.12:0.06 0.71(0.29) CT=43 0.21:0.79 0.07:0.21:0.51 0.60(0.10)'</li><li>'CALC kaneko 0087 OP=17 0.53:0.29:0.06 0.88(0.12) CT=45 0.20:0.80 0.13:0.08:0.59 0.62(0.03)'</li><li>'CALC kaneko 0088 OP=16 0.75:0.06:0.06 0.88(0.12) CT=39 0.31:0.69 0.05:0.08:0.56 0.59(0.03)'</li><li>'CALC kaneko 0089 OP=17 0.59:0.35:0.06 1.00(0.00) CT=52 0.19:0.81 0.13:0.00:0.67 0.67(0.00)'</li><li>'CALC kaneko 0090 OP=18 0.61:0.28:0.00 0.89(0.11) CT=37 0.30:0.70 0.14:0.06:0.50 0.51(0.01)'</li><li>'CALC kaneko 0091 OP=18 0.72:0.17:0.00 0.89(0.11) CT=47 0.28:0.72 0.06:0.07:0.59 0.62(0.03)'</li><li>'CALC kaneko 0092 OP=18 0.56:0.28:0.06 0.89(0.11) CT=41 0.24:0.76 0.17:0.07:0.52 0.56(0.04)'</li><li>'CALC kaneko 0093 OP=18 0.28:0.00:0.00 0.28(0.72) CT=40 0.12:0.88 0.00:0.63:0.24 0.55(0.31)'</li><li>'CALC kaneko 0094 OP=17 0.76:0.06:0.00 0.82(0.18) CT=30 0.43:0.57 0.03:0.09:0.44 0.43(0.01)'</li><li>'CALC kaneko 0095 OP=19 0.58:0.16:0.05 0.79(0.21) CT=50 0.22:0.78 0.08:0.15:0.55 0.62(0.07)'</li><li>'CALC kaneko 0096 OP=19 0.47:0.21:0.05 0.74(0.26) CT=41 0.20:0.80 0.15:0.17:0.49 0.54(0.05)'</li><li>'CALC kaneko 0097 OP=17 0.35:0.41:0.12 0.88(0.12) CT=35 0.17:0.83 0.26:0.07:0.50 0.51(0.01)'</li><li>'CALC kaneko 0098 OP=18 0.39:0.39:0.00 0.78(0.22) CT=69 0.10:0.90 0.13:0.17:0.60 0.74(0.14)'</li><li>'CALC kaneko 0099 OP=14 0.64:0.36:0.00 1.00(0.00) CT=35 0.26:0.74 0.14:0.00:0.60 0.60(0.00)'</li><li>'CALC kaneko 0100 OP=16 0.56:0.12:0.12 0.81(0.19) CT=49 0.18:0.82 0.12:0.13:0.56 0.67(0.11)'</li><li>'CALC kaneko 0101 OP=16 0.44:0.19:0.12 0.75(0.25) CT=40 0.17:0.82 0.12:0.17:0.52 0.60(0.08)'</li><li>'CALC kaneko 0102 OP=15 0.53:0.20:0.13 0.87(0.13) CT=32 0.25:0.75 0.16:0.08:0.51 0.53(0.02)'</li><li>'CALC kaneko 0103 OP=18 0.72:0.17:0.00 0.89(0.11) CT=31 0.42:0.58 0.13:0.05:0.40 0.42(0.02)'</li><li>'CALC kaneko 0104 OP=18 0.44:0.28:0.00 0.72(0.28) CT=62 0.15:0.85 0.08:0.22:0.56 0.71(0.15)'</li><li>'CALC kaneko 0105 OP=17 0.59:0.18:0.12 0.88(0.12) CT=35 0.29:0.71 0.14:0.07:0.50 0.51(0.01)'</li><li>'CALC kaneko 0106 OP=16 0.69:0.31:0.00 1.00(0.00) CT=58 0.19:0.81 0.10:0.00:0.71 0.72(0.02)'</li><li>'CALC kaneko 0107 OP=16 0.50:0.25:0.19 0.94(0.06) CT=31 0.26:0.74 0.23:0.03:0.48 0.48(0.00)'</li><li>'CALC kaneko 0108 OP=15 0.73:0.13:0.00 0.87(0.13) CT=32 0.34:0.66 0.06:0.08:0.51 0.53(0.02)'</li><li>'CALC kaneko 0109 OP=17 0.47:0.18:0.12 0.76(0.24) CT=44 0.18:0.82 0.14:0.16:0.52 0.61(0.09)'</li><li>'CALC kaneko 0110 OP=16 0.50:0.38:0.06 0.94(0.06) CT=51 0.18:0.82 0.16:0.04:0.62 0.69(0.06)'</li><li>'CALC kaneko 0111 OP=18 0.67:0.17:0.00 0.83(0.17) CT=34 0.35:0.65 0.09:0.09:0.47 0.47(0.00)'</li><li>'CALC kaneko 0112 OP=18 0.44:0.28:0.22 0.94(0.06) CT=54 0.17:0.83 0.17:0.04:0.63 0.67(0.04)'</li><li>'CALC kaneko 0113 OP=20 0.35:0.15:0.10 0.60(0.40) CT=42 0.17:0.83 0.14:0.28:0.41 0.52(0.11)'</li><li>'CALC kaneko 0114 OP=18 0.72:0.17:0.11 1.00(0.00) CT=43 0.30:0.70 0.14:0.00:0.56 0.58(0.02)'</li><li>'CALC kaneko 0115 OP=16 0.50:0.19:0.06 0.75(0.25) CT=26 0.35:0.65 0.15:0.12:0.38 0.38(0.01)'</li><li>'CALC kaneko 0116 OP=18 0.67:0.22:0.11 1.00(0.00) CT=36 0.33:0.67 0.14:0.00:0.53 0.50(0.03)'</li><li>'CALC kaneko 0117 OP=20 0.70:0.15:0.10 0.95(0.05) CT=31 0.45:0.55 0.16:0.02:0.37 0.35(0.01)'</li><li>'CALC kaneko 0118 OP=19 0.58:0.21:0.11 0.89(0.11) CT=39 0.28:0.72 0.18:0.06:0.48 0.51(0.03)'</li><li>'CALC kaneko 0119 OP=17 0.82:0.12:0.00 0.94(0.06) CT=49 0.29:0.71 0.04:0.04:0.63 0.65(0.02)'</li><li>'CALC kaneko 0120 OP=16 0.44:0.12:0.25 0.81(0.19) CT=33 0.21:0.79 0.18:0.11:0.49 0.52(0.02)'</li><li>'CALC kaneko 0121 OP=15 0.87:0.07:0.00 0.93(0.07) CT=33 0.39:0.61 0.03:0.04:0.54 0.55(0.01)'</li><li>'CALC kaneko 0122 OP=15 0.60:0.27:0.00 0.87(0.13) CT=30 0.33:0.67 0.10:0.08:0.49 0.50(0.01)'</li><li>'CALC kaneko 0123 OP=18 0.61:0.11:0.11 0.83(0.17) CT=41 0.27:0.73 0.12:0.10:0.51 0.56(0.05)'</li><li>'CALC kaneko 0124 OP=14 0.71:0.14:0.00 0.86(0.14) CT=35 0.29:0.71 0.11:0.09:0.51 0.60(0.09)'</li><li>'CALC kaneko 0125 OP=15 0.60:0.20:0.00 0.80(0.20) CT=39 0.23:0.77 0.10:0.13:0.53 0.62(0.08)'</li><li>'CALC kaneko 0126 OP=16 0.50:0.19:0.00 0.69(0.31) CT=44 0.18:0.82 0.09:0.23:0.50 0.64(0.14)'</li><li>'CALC kaneko 0127 OP=13 0.38:0.38:0.15 0.92(0.08) CT=38 0.13:0.87 0.18:0.05:0.63 0.66(0.03)'</li><li>'CALC kaneko 0128 OP=14 0.57:0.07:0.14 0.79(0.21) CT=36 0.25:0.75 0.08:0.14:0.52 0.61(0.09)'</li><li>'CALC kaneko 0129 OP=18 0.61:0.17:0.00 0.78(0.22) CT=40 0.28:0.72 0.07:0.14:0.51 0.55(0.04)'</li><li>'CALC kaneko 0130 OP=16 0.50:0.12:0.12 0.75(0.25) CT=47 0.17:0.83 0.09:0.19:0.56 0.66(0.10)'</li><li>'CALC kaneko 0131 OP=14 0.50:0.43:0.07 1.00(0.00) CT=44 0.16:0.84 0.11:0.00:0.73 0.68(0.05)'</li><li>'CALC kaneko 0132 OP=16 0.50:0.19:0.06 0.75(0.25) CT=34 0.24:0.76 0.12:0.16:0.49 0.53(0.04)'</li><li>'CALC kaneko 0133 OP=19 0.68:0.05:0.16 0.89(0.11) CT=43 0.30:0.70 0.09:0.06:0.54 0.56(0.02)'</li><li>'CALC kaneko 0134 OP=17 0.65:0.29:0.00 0.94(0.06) CT=31 0.35:0.65 0.19:0.03:0.43 0.45(0.03)'</li><li>'CALC kaneko 0135 OP=18 0.56:0.22:0.00 0.78(0.22) CT=33 0.30:0.70 0.12:0.13:0.45 0.45(0.01)'</li><li>'CALC kaneko 0136 OP=18 0.67:0.11:0.00 0.78(0.22) CT=51 0.24:0.76 0.04:0.16:0.56 0.65(0.08)'</li><li>'CALC kaneko 0137 OP=11 0.64:0.27:0.00 0.91(0.09) CT=47 0.15:0.85 0.09:0.07:0.70 0.77(0.07)'</li><li>'CALC kaneko 0138 OP=16 0.56:0.19:0.06 0.81(0.19) CT=30 0.30:0.70 0.17:0.10:0.43 0.47(0.03)'</li><li>'CALC kaneko 0139 OP=17 0.71:0.24:0.06 1.00(0.00) CT=31 0.39:0.61 0.16:0.00:0.45 0.45(0.00)'</li><li>'CALC kaneko 0140 OP=15 0.67:0.13:0.07 0.87(0.13) CT=32 0.31:0.69 0.09:0.08:0.51 0.53(0.02)'</li><li>'CALC kaneko 0141 OP=14 0.64:0.29:0.00 0.93(0.07) CT=39 0.23:0.77 0.15:0.04:0.57 0.64(0.07)'</li><li>'CALC kaneko 0142 OP=12 0.83:0.00:0.17 1.00(0.00) CT=21 0.48:0.52 0.10:0.00:0.43 0.43(0.00)'</li><li>'CALC kaneko 0143 OP=12 0.58:0.17:0.00 0.75(0.25) CT=23 0.30:0.70 0.09:0.15:0.46 0.48(0.02)'</li><li>'CALC kaneko 0144 OP=11 0.45:0.27:0.09 0.82(0.18) CT=34 0.15:0.85 0.15:0.13:0.58 0.68(0.10)'</li><li>'CALC kaneko 0145 OP=17 0.71:0.06:0.12 0.88(0.12) CT=42 0.29:0.71 0.07:0.08:0.57 0.60(0.03)'</li><li>'CALC kaneko 0146 OP=13 0.38:0.38:0.08 0.85(0.15) CT=27 0.19:0.81 0.22:0.09:0.50 0.52(0.02)'</li><li>'CALC kaneko 0147 OP=15 0.40:0.13:0.13 0.67(0.33) CT=29 0.21:0.79 0.14:0.22:0.44 0.48(0.05)'</li><li>'CALC kaneko 0148 OP=13 0.62:0.08:0.15 0.85(0.15) CT=26 0.31:0.69 0.12:0.09:0.49 0.50(0.01)'</li><li>'CALC kaneko 0149 OP=17 0.53:0.35:0.12 1.00(0.00) CT=41 0.22:0.78 0.22:0.00:0.56 0.59(0.02)'</li><li>'CALC kaneko 0150 OP=14 0.50:0.14:0.07 0.71(0.29) CT=36 0.19:0.81 0.08:0.21:0.52 0.61(0.10)'</li><li>'CALC kaneko 0151 OP=15 0.60:0.07:0.07 0.73(0.27) CT=41 0.22:0.78 0.05:0.20:0.54 0.63(0.10)'</li><li>'CALC kaneko 0152 OP=14 0.57:0.21:0.07 0.86(0.14) CT=37 0.22:0.78 0.11:0.10:0.58 0.62(0.04)'</li><li>'CALC kaneko 0153 OP=14 0.64:0.29:0.00 0.93(0.07) CT=33 0.24:0.76 0.15:0.04:0.56 0.58(0.01)'</li><li>'CALC kaneko 0154 OP=17 0.47:0.29:0.06 0.82(0.18) CT=55 0.16:0.84 0.11:0.13:0.60 0.69(0.09)'</li><li>'CALC kaneko 0155 OP=15 0.47:0.20:0.00 0.67(0.33) CT=37 0.19:0.81 0.08:0.24:0.49 0.59(0.11)'</li><li>'CALC kaneko 0156 OP=15 0.80:0.07:0.00 0.87(0.13) CT=27 0.44:0.56 0.04:0.07:0.45 0.44(0.00)'</li><li>'CALC kaneko 0157 OP=17 0.59:0.24:0.06 0.88(0.12) CT=29 0.34:0.66 0.17:0.06:0.43 0.41(0.01)'</li><li>'CALC kaneko 0158 OP=13 0.54:0.23:0.00 0.77(0.23) CT=26 0.27:0.73 0.12:0.14:0.47 0.50(0.03)'</li><li>'CALC kaneko 0159 OP=17 0.47:0.35:0.06 0.88(0.12) CT=42 0.19:0.81 0.17:0.08:0.57 0.60(0.03)'</li><li>'CALC kaneko 0160 OP=15 0.73:0.13:0.07 0.93(0.07) CT=27 0.41:0.59 0.11:0.03:0.45 0.44(0.00)'</li><li>'CALC kaneko 0161 OP=16 0.62:0.19:0.06 0.88(0.12) CT=43 0.26:0.74 0.09:0.08:0.57 0.63(0.06)'</li><li>'CALC kaneko 0162 OP=13 0.46:0.23:0.15 0.85(0.15) CT=38 0.16:0.84 0.13:0.11:0.60 0.66(0.06)'</li><li>'CALC kaneko 0163 OP=15 0.60:0.07:0.13 0.80(0.20) CT=35 0.26:0.74 0.09:0.13:0.53 0.57(0.05)'</li><li>'CALC kaneko 0164 OP=17 0.41:0.29:0.06 0.76(0.24) CT=39 0.18:0.82 0.15:0.16:0.51 0.56(0.05)'</li><li>'CALC kaneko 0165 OP=15 0.80:0.00:0.07 0.87(0.13) CT=38 0.32:0.68 0.03:0.09:0.57 0.61(0.04)'</li><li>'CALC kaneko 0166 OP=17 0.71:0.06:0.00 0.76(0.24) CT=51 0.24:0.76 0.04:0.17:0.55 0.67(0.11)'</li><li>'CALC kaneko 0167 OP=19 0.42:0.26:0.11 0.79(0.21) CT=45 0.18:0.82 0.16:0.14:0.53 0.58(0.05)'</li><li>'CALC kaneko 0168 OP=15 0.60:0.27:0.00 0.87(0.13) CT=35 0.26:0.74 0.11:0.08:0.54 0.57(0.03)'</li><li>'CALC kaneko 0169 OP=19 0.63:0.21:0.05 0.89(0.11) CT=36 0.33:0.67 0.17:0.05:0.45 0.47(0.02)'</li><li>'CALC kaneko 0170 OP=15 0.60:0.13:0.07 0.80(0.20) CT=34 0.26:0.74 0.09:0.13:0.52 0.56(0.04)'</li><li>'CALC kaneko 0171 OP=14 0.64:0.07:0.07 0.79(0.21) CT=32 0.28:0.72 0.06:0.14:0.52 0.56(0.05)'</li><li>'CALC kaneko 0172 OP=17 0.59:0.12:0.06 0.76(0.24) CT=44 0.23:0.77 0.07:0.17:0.54 0.61(0.07)'</li><li>'CALC kaneko 0173 OP=15 0.40:0.40:0.00 0.80(0.20) CT=42 0.14:0.86 0.17:0.14:0.55 0.64(0.09)'</li><li>'CALC kaneko 0174 OP=11 0.45:0.18:0.09 0.73(0.27) CT=29 0.14:0.86 0.10:0.21:0.55 0.62(0.07)'</li><li>'CALC kaneko 0175 OP=15 0.67:0.07:0.00 0.73(0.27) CT=34 0.29:0.71 0.03:0.18:0.50 0.56(0.06)'</li><li>'CALC kaneko 0176 OP=14 0.64:0.14:0.00 0.79(0.21) CT=51 0.18:0.82 0.04:0.17:0.62 0.73(0.11)'</li><li>'CALC kaneko 0177 OP=13 0.38:0.08:0.23 0.69(0.31) CT=45 0.11:0.89 0.09:0.25:0.55 0.71(0.16)'</li><li>'CALC kaneko 0178 OP=14 0.57:0.21:0.07 0.86(0.14) CT=47 0.17:0.83 0.09:0.11:0.64 0.70(0.06)'</li><li>'CALC kaneko 0179 OP=17 0.47:0.24:0.12 0.82(0.18) CT=40 0.20:0.80 0.15:0.11:0.54 0.57(0.04)'</li><li>'CALC kaneko 0180 OP=16 0.38:0.06:0.12 0.56(0.44) CT=32 0.19:0.81 0.09:0.31:0.40 0.50(0.10)'</li><li>'CALC kaneko 0181 OP=17 0.59:0.18:0.00 0.76(0.24) CT=41 0.27:0.73 0.10:0.15:0.48 0.59(0.10)'</li><li>'CALC kaneko 0182 OP=16 0.69:0.12:0.19 1.00(0.00) CT=46 0.22:0.78 0.13:0.00:0.65 0.65(0.00)'</li><li>'CALC kaneko 0183 OP=19 0.58:0.11:0.05 0.74(0.26) CT=42 0.26:0.74 0.07:0.18:0.49 0.55(0.06)'</li><li>'CALC kaneko 0184 OP=17 0.47:0.29:0.06 0.82(0.18) CT=48 0.19:0.81 0.12:0.12:0.57 0.65(0.08)'</li><li>'CALC kaneko 0185 OP=14 0.43:0.29:0.14 0.86(0.14) CT=49 0.12:0.88 0.14:0.10:0.63 0.71(0.08)'</li><li>'CALC kaneko 0186 OP=19 0.26:0.21:0.21 0.68(0.32) CT=44 0.11:0.89 0.18:0.22:0.48 0.57(0.09)'</li><li>'CALC kaneko 0187 OP=14 0.71:0.07:0.14 0.93(0.07) CT=36 0.31:0.69 0.08:0.04:0.57 0.61(0.04)'</li><li>'CALC kaneko 0188 OP=15 0.47:0.33:0.07 0.87(0.13) CT=50 0.14:0.86 0.16:0.09:0.61 0.70(0.09)'</li><li>'CALC kaneko 0189 OP=20 0.45:0.25:0.05 0.75(0.25) CT=33 0.27:0.73 0.18:0.14:0.41 0.39(0.02)'</li><li>'CALC kaneko 0190 OP=16 0.38:0.25:0.19 0.81(0.19) CT=44 0.14:0.86 0.18:0.13:0.55 0.64(0.08)'</li><li>'CALC kaneko 0191 OP=15 0.73:0.20:0.00 0.93(0.07) CT=34 0.32:0.68 0.09:0.04:0.55 0.56(0.01)'</li><li>'CALC kaneko 0192 OP=17 0.41:0.18:0.18 0.76(0.24) CT=31 0.23:0.77 0.19:0.14:0.44 0.45(0.01)'</li><li>'CALC kaneko 0193 OP=18 0.28:0.28:0.00 0.56(0.44) CT=42 0.12:0.88 0.12:0.34:0.42 0.57(0.15)'</li><li>'CALC kaneko 0194 OP=14 0.71:0.07:0.00 0.79(0.21) CT=36 0.28:0.72 0.03:0.15:0.55 0.61(0.07)'</li><li>'CALC kaneko 0195 OP=17 0.65:0.06:0.06 0.76(0.24) CT=33 0.33:0.67 0.06:0.14:0.46 0.48(0.02)'</li><li>'CALC kaneko 0196 OP=16 0.44:0.25:0.19 0.88(0.12) CT=77 0.09:0.91 0.09:0.10:0.72 0.79(0.08)'</li><li>'CALC kaneko 0197 OP=18 0.61:0.22:0.17 1.00(0.00) CT=33 0.36:0.64 0.24:0.00:0.39 0.45(0.06)'</li><li>'CALC kaneko 0198 OP=16 0.69:0.19:0.00 0.88(0.12) CT=54 0.22:0.78 0.07:0.09:0.62 0.70(0.09)'</li><li>'CALC kaneko 0199 OP=16 0.62:0.06:0.12 0.81(0.19) CT=33 0.30:0.70 0.09:0.11:0.49 0.52(0.02)'</li><li>'CALC kaneko 0200 OP=13 0.62:0.15:0.08 0.85(0.15) CT=56 0.14:0.86 0.05:0.12:0.68 0.77(0.09)'</li><li>⋯</li><li>'CALC takeoka 0801 OP=17 0.82:0.06:0.06 0.94(0.06) CT=23 0.61:0.39 0.09:0.02:0.29 0.26(0.03)'</li><li>'CALC takeoka 0802 OP=15 0.73:0.27:0.00 1.00(0.00) CT=33 0.33:0.67 0.12:0.00:0.55 0.55(0.00)'</li><li>'CALC takeoka 0803 OP=20 0.70:0.05:0.05 0.80(0.20) CT=40 0.35:0.65 0.05:0.12:0.48 0.50(0.02)'</li><li>'CALC takeoka 0804 OP=15 0.60:0.00:0.20 0.80(0.20) CT=37 0.24:0.76 0.08:0.14:0.54 0.59(0.05)'</li><li>'CALC takeoka 0805 OP=17 0.59:0.12:0.00 0.71(0.29) CT=22 0.50:0.50 0.09:0.12:0.29 0.23(0.06)'</li><li>'CALC takeoka 0806 OP=20 0.40:0.25:0.10 0.75(0.25) CT=30 0.27:0.73 0.20:0.13:0.40 0.33(0.07)'</li><li>'CALC takeoka 0807 OP=20 0.70:0.20:0.00 0.90(0.10) CT=23 0.61:0.39 0.17:0.02:0.20 0.13(0.07)'</li><li>'CALC takeoka 0808 OP=17 0.41:0.18:0.12 0.71(0.29) CT=39 0.21:0.79 0.10:0.20:0.49 0.56(0.08)'</li><li>'CALC takeoka 0809 OP=15 0.87:0.13:0.00 1.00(0.00) CT=21 0.62:0.38 0.10:0.00:0.29 0.29(0.00)'</li><li>'CALC takeoka 0810 OP=18 0.33:0.06:0.06 0.44(0.56) CT=32 0.16:0.84 0.06:0.43:0.35 0.44(0.09)'</li><li>'CALC takeoka 0811 OP=21 0.38:0.10:0.38 0.86(0.14) CT=32 0.25:0.75 0.34:0.06:0.35 0.34(0.00)'</li><li>'CALC takeoka 0812 OP=16 0.44:0.31:0.19 0.94(0.06) CT=24 0.29:0.71 0.38:0.02:0.31 0.33(0.02)'</li><li>'CALC takeoka 0813 OP=13 0.38:0.23:0.23 0.85(0.15) CT=32 0.16:0.84 0.19:0.10:0.56 0.59(0.04)'</li><li>'CALC takeoka 0814 OP=18 0.56:0.06:0.11 0.72(0.28) CT=24 0.42:0.58 0.12:0.13:0.33 0.25(0.08)'</li><li>'CALC takeoka 0815 OP=19 0.79:0.11:0.05 0.95(0.05) CT=45 0.33:0.67 0.07:0.03:0.57 0.58(0.01)'</li><li>'CALC takeoka 0816 OP=18 0.61:0.11:0.06 0.78(0.22) CT=46 0.24:0.76 0.07:0.15:0.54 0.61(0.07)'</li><li>'CALC takeoka 0817 OP=17 0.71:0.12:0.00 0.82(0.18) CT=38 0.32:0.68 0.05:0.11:0.52 0.55(0.03)'</li><li>'CALC takeoka 0818 OP=17 0.59:0.24:0.00 0.82(0.18) CT=42 0.24:0.76 0.10:0.12:0.55 0.60(0.05)'</li><li>'CALC takeoka 0819 OP=16 0.56:0.06:0.25 0.88(0.12) CT=23 0.39:0.61 0.22:0.05:0.34 0.30(0.04)'</li><li>'CALC takeoka 0820 OP=14 0.64:0.07:0.21 0.93(0.07) CT=29 0.31:0.69 0.14:0.04:0.51 0.52(0.00)'</li><li>'CALC takeoka 0821 OP=15 0.60:0.20:0.20 1.00(0.00) CT=25 0.36:0.64 0.24:0.00:0.40 0.40(0.00)'</li><li>'CALC takeoka 0822 OP=15 0.80:0.13:0.00 0.93(0.07) CT=27 0.44:0.56 0.11:0.03:0.41 0.44(0.03)'</li><li>'CALC takeoka 0823 OP=15 0.80:0.07:0.07 0.93(0.07) CT=48 0.27:0.73 0.06:0.04:0.62 0.69(0.07)'</li><li>'CALC takeoka 0824 OP=21 0.38:0.24:0.05 0.67(0.33) CT=47 0.17:0.83 0.13:0.23:0.47 0.55(0.09)'</li><li>'CALC takeoka 0825 OP=18 0.56:0.11:0.06 0.72(0.28) CT=49 0.20:0.80 0.08:0.20:0.52 0.63(0.12)'</li><li>'CALC takeoka 0826 OP=17 0.29:0.29:0.06 0.65(0.35) CT=44 0.11:0.89 0.16:0.26:0.47 0.61(0.14)'</li><li>'CALC takeoka 0827 OP=19 0.53:0.16:0.11 0.79(0.21) CT=35 0.29:0.71 0.17:0.11:0.43 0.46(0.03)'</li><li>'CALC takeoka 0828 OP=16 0.44:0.12:0.06 0.62(0.38) CT=54 0.13:0.87 0.06:0.31:0.51 0.70(0.19)'</li><li>'CALC takeoka 0829 OP=14 0.64:0.07:0.21 0.93(0.07) CT=28 0.32:0.68 0.14:0.04:0.50 0.50(0.00)'</li><li>'CALC takeoka 0830 OP=19 0.58:0.16:0.05 0.79(0.21) CT=23 0.48:0.52 0.17:0.07:0.27 0.17(0.10)'</li><li>'CALC takeoka 0831 OP=15 0.53:0.20:0.07 0.80(0.20) CT=39 0.23:0.77 0.10:0.13:0.53 0.62(0.08)'</li><li>'CALC takeoka 0832 OP=16 0.69:0.06:0.12 0.88(0.12) CT=24 0.46:0.54 0.12:0.05:0.36 0.33(0.03)'</li><li>'CALC takeoka 0833 OP=20 0.55:0.20:0.00 0.75(0.25) CT=31 0.35:0.65 0.16:0.12:0.36 0.35(0.01)'</li><li>'CALC takeoka 0834 OP=15 0.47:0.33:0.07 0.87(0.13) CT=25 0.28:0.72 0.28:0.06:0.38 0.40(0.02)'</li><li>'CALC takeoka 0835 OP=21 0.62:0.24:0.05 0.90(0.10) CT=31 0.42:0.58 0.19:0.04:0.35 0.32(0.03)'</li><li>'CALC takeoka 0836 OP=17 0.76:0.06:0.06 0.88(0.12) CT=27 0.52:0.48 0.07:0.05:0.36 0.37(0.01)'</li><li>'CALC takeoka 0837 OP=15 0.40:0.33:0.07 0.80(0.20) CT=20 0.35:0.65 0.30:0.07:0.28 0.25(0.03)'</li><li>'CALC takeoka 0838 OP=19 0.68:0.32:0.00 1.00(0.00) CT=41 0.32:0.68 0.15:0.00:0.54 0.54(0.00)'</li><li>'CALC takeoka 0839 OP=16 0.50:0.06:0.25 0.81(0.19) CT=27 0.30:0.70 0.19:0.10:0.42 0.41(0.01)'</li><li>'CALC takeoka 0840 OP=14 0.71:0.14:0.00 0.86(0.14) CT=24 0.42:0.58 0.08:0.07:0.43 0.42(0.01)'</li><li>'CALC takeoka 0841 OP=16 0.62:0.06:0.00 0.69(0.31) CT=21 0.48:0.52 0.05:0.15:0.33 0.24(0.09)'</li><li>'CALC takeoka 0842 OP=12 0.75:0.17:0.00 0.92(0.08) CT=32 0.28:0.72 0.09:0.05:0.57 0.62(0.05)'</li><li>'CALC takeoka 0843 OP=18 0.44:0.17:0.11 0.72(0.28) CT=24 0.33:0.67 0.21:0.13:0.33 0.25(0.08)'</li><li>'CALC takeoka 0844 OP=17 0.65:0.12:0.06 0.82(0.18) CT=21 0.52:0.48 0.14:0.06:0.27 0.19(0.08)'</li><li>'CALC takeoka 0845 OP=16 0.44:0.19:0.19 0.81(0.19) CT=30 0.23:0.77 0.20:0.11:0.46 0.47(0.01)'</li><li>'CALC takeoka 0846 OP=18 0.56:0.22:0.11 0.89(0.11) CT=27 0.37:0.63 0.22:0.05:0.36 0.33(0.03)'</li><li>'CALC takeoka 0847 OP=17 0.71:0.00:0.06 0.76(0.24) CT=38 0.32:0.68 0.03:0.15:0.50 0.55(0.05)'</li><li>'CALC takeoka 0848 OP=15 0.53:0.13:0.00 0.67(0.33) CT=25 0.32:0.68 0.08:0.20:0.40 0.40(0.00)'</li><li>'CALC takeoka 0849 OP=16 0.62:0.25:0.00 0.88(0.12) CT=27 0.37:0.63 0.15:0.06:0.42 0.41(0.01)'</li><li>'CALC takeoka 0850 OP=19 0.63:0.26:0.00 0.89(0.11) CT=39 0.31:0.69 0.15:0.06:0.48 0.51(0.03)'</li><li>'CALC takeoka 0851 OP=17 0.65:0.12:0.18 0.94(0.06) CT=28 0.39:0.61 0.18:0.03:0.40 0.39(0.01)'</li><li>'CALC takeoka 0852 OP=14 0.43:0.36:0.00 0.79(0.21) CT=31 0.19:0.81 0.19:0.13:0.48 0.55(0.07)'</li><li>'CALC takeoka 0853 OP=18 0.50:0.33:0.00 0.83(0.17) CT=30 0.30:0.70 0.23:0.08:0.39 0.40(0.01)'</li><li>'CALC takeoka 0854 OP=16 0.44:0.31:0.12 0.88(0.12) CT=29 0.24:0.76 0.24:0.06:0.45 0.45(0.00)'</li><li>'CALC takeoka 0855 OP=17 0.47:0.00:0.12 0.59(0.41) CT=36 0.22:0.78 0.06:0.30:0.42 0.53(0.10)'</li><li>'CALC takeoka 0856 OP=17 0.65:0.06:0.00 0.71(0.29) CT=25 0.44:0.56 0.04:0.15:0.37 0.32(0.05)'</li><li>'CALC takeoka 0857 OP=16 0.62:0.25:0.06 0.94(0.06) CT=26 0.38:0.62 0.19:0.03:0.40 0.38(0.01)'</li><li>'CALC takeoka 0858 OP=17 0.76:0.12:0.00 0.88(0.12) CT=34 0.38:0.62 0.06:0.07:0.49 0.50(0.01)'</li><li>'CALC takeoka 0859 OP=16 0.69:0.25:0.06 1.00(0.00) CT=34 0.32:0.68 0.15:0.00:0.53 0.53(0.00)'</li><li>'CALC takeoka 0860 OP=18 0.56:0.22:0.06 0.83(0.17) CT=29 0.34:0.66 0.21:0.07:0.37 0.38(0.01)'</li><li>'CALC takeoka 0861 OP=17 0.53:0.24:0.00 0.76(0.24) CT=30 0.30:0.70 0.13:0.13:0.43 0.43(0.00)'</li><li>'CALC takeoka 0862 OP=17 0.35:0.24:0.12 0.71(0.29) CT=30 0.20:0.80 0.20:0.18:0.42 0.43(0.01)'</li><li>'CALC takeoka 0863 OP=17 0.76:0.06:0.06 0.88(0.12) CT=26 0.50:0.50 0.08:0.05:0.37 0.35(0.03)'</li><li>'CALC takeoka 0864 OP=16 0.25:0.50:0.06 0.81(0.19) CT=33 0.12:0.88 0.30:0.11:0.47 0.52(0.05)'</li><li>'CALC takeoka 0865 OP=14 0.71:0.00:0.07 0.79(0.21) CT=26 0.38:0.62 0.04:0.12:0.45 0.46(0.01)'</li><li>'CALC takeoka 0866 OP=19 0.42:0.16:0.00 0.58(0.42) CT=39 0.21:0.79 0.10:0.29:0.40 0.51(0.11)'</li><li>'CALC takeoka 0867 OP=14 0.43:0.21:0.14 0.79(0.21) CT=24 0.25:0.75 0.21:0.12:0.43 0.42(0.01)'</li><li>'CALC takeoka 0868 OP=18 0.39:0.28:0.06 0.72(0.28) CT=42 0.19:0.81 0.14:0.19:0.48 0.57(0.09)'</li><li>'CALC takeoka 0869 OP=16 0.69:0.12:0.00 0.81(0.19) CT=40 0.28:0.72 0.07:0.12:0.53 0.60(0.07)'</li><li>'CALC takeoka 0870 OP=18 0.44:0.17:0.06 0.67(0.33) CT=34 0.24:0.76 0.12:0.22:0.43 0.47(0.04)'</li><li>'CALC takeoka 0871 OP=15 0.80:0.13:0.00 0.93(0.07) CT=20 0.60:0.40 0.10:0.02:0.28 0.25(0.03)'</li><li>'CALC takeoka 0872 OP=15 0.73:0.07:0.07 0.87(0.13) CT=26 0.42:0.58 0.08:0.07:0.43 0.42(0.01)'</li><li>'CALC takeoka 0873 OP=16 0.50:0.25:0.06 0.81(0.19) CT=36 0.22:0.78 0.14:0.12:0.52 0.56(0.04)'</li><li>'CALC takeoka 0874 OP=16 0.50:0.19:0.06 0.75(0.25) CT=66 0.12:0.88 0.06:0.20:0.61 0.76(0.14)'</li><li>'CALC takeoka 0875 OP=16 0.69:0.06:0.06 0.81(0.19) CT=36 0.31:0.69 0.08:0.11:0.50 0.56(0.06)'</li><li>'CALC takeoka 0876 OP=16 0.75:0.06:0.06 0.88(0.12) CT=33 0.36:0.64 0.06:0.07:0.50 0.52(0.01)'</li><li>'CALC takeoka 0877 OP=14 0.43:0.14:0.07 0.64(0.36) CT=29 0.21:0.79 0.10:0.25:0.44 0.52(0.07)'</li><li>'CALC takeoka 0878 OP=15 0.53:0.13:0.20 0.87(0.13) CT=41 0.20:0.80 0.12:0.09:0.59 0.63(0.04)'</li><li>'CALC takeoka 0879 OP=18 0.44:0.22:0.06 0.72(0.28) CT=28 0.29:0.71 0.18:0.15:0.39 0.36(0.03)'</li><li>'CALC takeoka 0880 OP=18 0.33:0.11:0.06 0.50(0.50) CT=27 0.22:0.78 0.07:0.35:0.35 0.33(0.02)'</li><li>'CALC takeoka 0881 OP=17 0.65:0.18:0.12 0.94(0.06) CT=30 0.37:0.63 0.17:0.03:0.44 0.43(0.01)'</li><li>'CALC takeoka 0882 OP=13 0.62:0.15:0.15 0.92(0.08) CT=28 0.29:0.71 0.14:0.04:0.53 0.54(0.01)'</li><li>'CALC takeoka 0883 OP=13 0.31:0.31:0.23 0.85(0.15) CT=20 0.20:0.80 0.40:0.06:0.34 0.35(0.01)'</li><li>'CALC takeoka 0884 OP=19 0.53:0.26:0.16 0.95(0.05) CT=32 0.31:0.69 0.25:0.02:0.41 0.41(0.01)'</li><li>'CALC takeoka 0885 OP=15 0.73:0.13:0.07 0.93(0.07) CT=21 0.52:0.48 0.14:0.02:0.31 0.29(0.03)'</li><li>'CALC takeoka 0886 OP=14 0.50:0.07:0.00 0.57(0.43) CT=41 0.17:0.83 0.02:0.34:0.46 0.66(0.20)'</li><li>'CALC takeoka 0887 OP=15 0.60:0.27:0.00 0.87(0.13) CT=61 0.15:0.85 0.07:0.10:0.68 0.75(0.07)'</li><li>'CALC takeoka 0888 OP=15 0.60:0.27:0.00 0.87(0.13) CT=30 0.30:0.70 0.13:0.08:0.49 0.50(0.01)'</li><li>'CALC takeoka 0889 OP=16 0.69:0.12:0.00 0.81(0.19) CT=39 0.28:0.72 0.05:0.12:0.54 0.59(0.05)'</li><li>'CALC takeoka 0890 OP=16 0.38:0.19:0.00 0.56(0.44) CT=23 0.26:0.74 0.13:0.27:0.34 0.30(0.04)'</li><li>'CALC takeoka 0891 OP=17 0.53:0.12:0.18 0.82(0.18) CT=36 0.25:0.75 0.14:0.11:0.50 0.53(0.02)'</li><li>'CALC takeoka 0892 OP=16 0.56:0.12:0.00 0.69(0.31) CT=25 0.36:0.64 0.08:0.18:0.39 0.36(0.03)'</li><li>'CALC takeoka 0893 OP=17 0.41:0.29:0.12 0.82(0.18) CT=36 0.19:0.81 0.19:0.11:0.50 0.53(0.02)'</li><li>'CALC takeoka 0894 OP=17 0.47:0.29:0.06 0.82(0.18) CT=34 0.24:0.76 0.18:0.10:0.48 0.50(0.02)'</li><li>'CALC takeoka 0895 OP=19 0.42:0.42:0.05 0.89(0.11) CT=26 0.31:0.69 0.38:0.03:0.28 0.27(0.01)'</li><li>'CALC takeoka 0896 OP=15 0.47:0.33:0.07 0.87(0.13) CT=34 0.21:0.79 0.18:0.08:0.54 0.56(0.02)'</li><li>'CALC takeoka 0897 OP=17 0.35:0.35:0.12 0.82(0.18) CT=36 0.17:0.83 0.22:0.11:0.50 0.53(0.02)'</li><li>'CALC takeoka 0898 OP=16 0.50:0.31:0.00 0.81(0.19) CT=47 0.19:0.81 0.11:0.13:0.57 0.66(0.09)'</li><li>'CALC takeoka 0899 OP=18 0.67:0.06:0.06 0.78(0.22) CT=35 0.34:0.66 0.06:0.13:0.47 0.49(0.02)'</li><li>'CALC takeoka 0900 OP=17 0.53:0.29:0.06 0.88(0.12) CT=27 0.33:0.67 0.15:0.06:0.46 0.37(0.09)'</li><li>'CALC takeoka 0901 OP=18 0.50:0.11:0.11 0.72(0.28) CT=30 0.27:0.73 0.13:0.17:0.43 0.40(0.03)'</li><li>'CALC takeoka 0902 OP=12 0.50:0.25:0.00 0.75(0.25) CT=27 0.22:0.78 0.11:0.17:0.50 0.56(0.06)'</li><li>'CALC takeoka 0903 OP=20 0.40:0.20:0.15 0.75(0.25) CT=37 0.22:0.78 0.19:0.15:0.45 0.46(0.01)'</li><li>'CALC takeoka 0904 OP=17 0.35:0.12:0.18 0.65(0.35) CT=28 0.21:0.79 0.18:0.21:0.39 0.39(0.00)'</li><li>'CALC takeoka 0905 OP=16 0.81:0.06:0.06 0.94(0.06) CT=26 0.50:0.50 0.08:0.03:0.40 0.38(0.01)'</li><li>'CALC takeoka 0906 OP=16 0.81:0.19:0.00 1.00(0.00) CT=18 0.72:0.28 0.17:0.00:0.11 0.11(0.00)'</li><li>'CALC takeoka 0907 OP=17 0.59:0.12:0.06 0.76(0.24) CT=30 0.33:0.67 0.10:0.13:0.43 0.43(0.00)'</li><li>'CALC takeoka 0908 OP=20 0.40:0.10:0.15 0.65(0.35) CT=28 0.29:0.71 0.21:0.17:0.33 0.29(0.04)'</li><li>'CALC takeoka 0909 OP=19 0.53:0.11:0.05 0.68(0.32) CT=22 0.45:0.55 0.09:0.14:0.31 0.14(0.17)'</li><li>'CALC takeoka 0910 OP=17 0.59:0.12:0.06 0.76(0.24) CT=23 0.43:0.57 0.17:0.09:0.30 0.26(0.04)'</li><li>'CALC takeoka 0911 OP=15 0.53:0.00:0.07 0.60(0.40) CT=20 0.40:0.60 0.05:0.22:0.33 0.25(0.08)'</li><li>'CALC takeoka 0912 OP=13 0.54:0.15:0.08 0.77(0.23) CT=23 0.30:0.70 0.13:0.13:0.43 0.43(0.00)'</li><li>'CALC takeoka 0913 OP=14 0.71:0.07:0.00 0.79(0.21) CT=25 0.40:0.60 0.04:0.12:0.44 0.44(0.00)'</li><li>'CALC takeoka 0914 OP=18 0.39:0.17:0.00 0.56(0.44) CT=42 0.17:0.83 0.12:0.32:0.40 0.57(0.17)'</li><li>'CALC takeoka 0915 OP=16 0.50:0.12:0.19 0.81(0.19) CT=26 0.27:0.73 0.19:0.10:0.44 0.38(0.05)'</li><li>'CALC takeoka 0916 OP=14 0.50:0.21:0.00 0.71(0.29) CT=24 0.29:0.71 0.12:0.17:0.42 0.42(0.00)'</li><li>'CALC takeoka 0917 OP=16 0.69:0.19:0.00 0.88(0.12) CT=30 0.37:0.63 0.10:0.07:0.47 0.47(0.00)'</li><li>'CALC takeoka 0918 OP=21 0.48:0.24:0.05 0.76(0.24) CT=24 0.42:0.58 0.25:0.08:0.25 0.12(0.13)'</li><li>'CALC takeoka 0919 OP=19 0.58:0.11:0.16 0.84(0.16) CT=22 0.50:0.50 0.18:0.05:0.27 0.14(0.13)'</li><li>'CALC takeoka 0920 OP=18 0.67:0.11:0.06 0.83(0.17) CT=26 0.46:0.54 0.12:0.07:0.35 0.31(0.04)'</li><li>'CALC takeoka 0921 OP=15 0.53:0.20:0.00 0.73(0.27) CT=22 0.36:0.64 0.18:0.12:0.33 0.32(0.02)'</li><li>'CALC takeoka 0922 OP=17 0.65:0.06:0.06 0.76(0.24) CT=24 0.46:0.54 0.08:0.11:0.35 0.29(0.06)'</li><li>'CALC takeoka 0923 OP=16 0.44:0.06:0.19 0.69(0.31) CT=28 0.25:0.75 0.11:0.20:0.44 0.43(0.01)'</li><li>'CALC takeoka 0924 OP=21 0.57:0.10:0.14 0.81(0.19) CT=29 0.41:0.59 0.17:0.08:0.33 0.28(0.06)'</li><li>'CALC takeoka 0925 OP=15 0.73:0.13:0.07 0.93(0.07) CT=35 0.34:0.66 0.09:0.04:0.53 0.57(0.04)'</li><li>'CALC takeoka 0926 OP=16 0.38:0.25:0.12 0.75(0.25) CT=38 0.18:0.82 0.16:0.16:0.49 0.58(0.09)'</li><li>'CALC takeoka 0927 OP=18 0.50:0.17:0.06 0.72(0.28) CT=28 0.32:0.68 0.14:0.15:0.39 0.36(0.03)'</li><li>'CALC takeoka 0928 OP=14 0.57:0.14:0.07 0.79(0.21) CT=33 0.24:0.76 0.12:0.14:0.50 0.58(0.08)'</li><li>'CALC takeoka 0929 OP=19 0.53:0.32:0.00 0.84(0.16) CT=23 0.43:0.57 0.26:0.05:0.26 0.17(0.08)'</li><li>'CALC takeoka 0930 OP=18 0.61:0.28:0.06 0.94(0.06) CT=37 0.30:0.70 0.19:0.03:0.48 0.51(0.03)'</li><li>'CALC takeoka 0931 OP=18 0.50:0.17:0.06 0.72(0.28) CT=28 0.29:0.71 0.18:0.15:0.39 0.36(0.03)'</li><li>'CALC takeoka 0932 OP=17 0.53:0.06:0.29 0.88(0.12) CT=29 0.31:0.69 0.21:0.06:0.43 0.41(0.01)'</li><li>'CALC takeoka 0933 OP=16 0.81:0.12:0.00 0.94(0.06) CT=22 0.59:0.41 0.09:0.02:0.30 0.27(0.03)'</li><li>'CALC takeoka 0934 OP=18 0.50:0.28:0.06 0.83(0.17) CT=31 0.29:0.71 0.23:0.08:0.40 0.42(0.02)'</li><li>'CALC takeoka 0935 OP=15 0.73:0.20:0.00 0.93(0.07) CT=27 0.41:0.59 0.11:0.03:0.45 0.44(0.00)'</li><li>'CALC takeoka 0936 OP=18 0.33:0.28:0.11 0.72(0.28) CT=34 0.18:0.82 0.21:0.17:0.45 0.47(0.02)'</li><li>'CALC takeoka 0937 OP=16 0.56:0.19:0.00 0.75(0.25) CT=39 0.23:0.77 0.08:0.17:0.52 0.59(0.07)'</li><li>'CALC takeoka 0938 OP=21 0.67:0.05:0.05 0.76(0.24) CT=47 0.30:0.70 0.06:0.15:0.49 0.55(0.07)'</li><li>'CALC takeoka 0939 OP=14 0.50:0.21:0.00 0.71(0.29) CT=23 0.30:0.70 0.13:0.16:0.40 0.39(0.01)'</li><li>'CALC takeoka 0940 OP=15 0.53:0.27:0.07 0.87(0.13) CT=25 0.32:0.68 0.20:0.06:0.42 0.40(0.02)'</li><li>'CALC takeoka 0941 OP=16 0.44:0.38:0.06 0.88(0.12) CT=30 0.27:0.73 0.23:0.06:0.44 0.47(0.03)'</li><li>'CALC takeoka 0942 OP=18 0.28:0.22:0.11 0.61(0.39) CT=24 0.21:0.79 0.29:0.19:0.31 0.25(0.06)'</li><li>'CALC takeoka 0943 OP=21 0.57:0.24:0.05 0.86(0.14) CT=32 0.38:0.62 0.19:0.06:0.38 0.34(0.03)'</li><li>'CALC takeoka 0944 OP=15 0.47:0.27:0.07 0.80(0.20) CT=21 0.33:0.67 0.24:0.09:0.34 0.29(0.06)'</li><li>'CALC takeoka 0945 OP=17 0.29:0.29:0.00 0.59(0.41) CT=28 0.18:0.82 0.25:0.24:0.34 0.39(0.06)'</li><li>'CALC takeoka 0946 OP=17 0.53:0.06:0.06 0.65(0.35) CT=33 0.27:0.73 0.06:0.24:0.43 0.48(0.05)'</li><li>'CALC takeoka 0947 OP=17 0.71:0.00:0.00 0.71(0.29) CT=29 0.41:0.59 0.00:0.17:0.41 0.41(0.00)'</li><li>'CALC takeoka 0948 OP=17 0.53:0.24:0.12 0.88(0.12) CT=34 0.26:0.74 0.18:0.07:0.49 0.50(0.01)'</li><li>'CALC takeoka 0949 OP=19 0.58:0.16:0.11 0.84(0.16) CT=34 0.32:0.68 0.15:0.08:0.45 0.44(0.00)'</li><li>'CALC takeoka 0950 OP=18 0.67:0.06:0.06 0.78(0.22) CT=24 0.50:0.50 0.08:0.09:0.32 0.25(0.07)'</li><li>'CALC takeoka 0951 OP=17 0.47:0.18:0.12 0.76(0.24) CT=34 0.21:0.79 0.21:0.14:0.45 0.50(0.05)'</li><li>'CALC takeoka 0952 OP=19 0.47:0.16:0.05 0.68(0.32) CT=30 0.30:0.70 0.13:0.18:0.39 0.37(0.02)'</li><li>'CALC takeoka 0953 OP=14 0.36:0.36:0.14 0.86(0.14) CT=26 0.23:0.77 0.27:0.07:0.43 0.46(0.03)'</li><li>'CALC takeoka 0954 OP=17 0.53:0.18:0.00 0.71(0.29) CT=43 0.21:0.79 0.09:0.21:0.49 0.60(0.11)'</li><li>'CALC takeoka 0955 OP=19 0.42:0.42:0.00 0.84(0.16) CT=31 0.26:0.74 0.26:0.08:0.41 0.39(0.02)'</li><li>'CALC takeoka 0956 OP=18 0.56:0.22:0.06 0.83(0.17) CT=39 0.26:0.74 0.13:0.10:0.51 0.54(0.03)'</li><li>'CALC takeoka 0957 OP=15 0.47:0.27:0.07 0.80(0.20) CT=31 0.23:0.77 0.16:0.12:0.49 0.52(0.03)'</li><li>'CALC takeoka 0958 OP=15 0.53:0.27:0.00 0.80(0.20) CT=36 0.22:0.78 0.14:0.13:0.51 0.58(0.07)'</li><li>'CALC takeoka 0959 OP=23 0.61:0.09:0.13 0.83(0.17) CT=42 0.33:0.67 0.12:0.10:0.45 0.45(0.00)'</li><li>'CALC takeoka 0960 OP=15 0.47:0.20:0.20 0.87(0.13) CT=32 0.22:0.78 0.19:0.08:0.51 0.53(0.02)'</li><li>'CALC takeoka 0961 OP=18 0.50:0.39:0.00 0.89(0.11) CT=25 0.36:0.64 0.28:0.04:0.32 0.28(0.04)'</li><li>'CALC takeoka 0962 OP=15 0.60:0.07:0.13 0.80(0.20) CT=32 0.28:0.72 0.09:0.12:0.50 0.53(0.03)'</li><li>'CALC takeoka 0963 OP=18 0.61:0.11:0.06 0.78(0.22) CT=42 0.26:0.74 0.07:0.15:0.52 0.57(0.05)'</li><li>'CALC takeoka 0964 OP=21 0.48:0.24:0.14 0.86(0.14) CT=45 0.22:0.78 0.16:0.09:0.53 0.53(0.00)'</li><li>'CALC takeoka 0965 OP=14 0.29:0.21:0.21 0.71(0.29) CT=32 0.12:0.88 0.22:0.19:0.47 0.56(0.09)'</li><li>'CALC takeoka 0966 OP=18 0.67:0.06:0.06 0.78(0.22) CT=41 0.29:0.71 0.05:0.15:0.51 0.56(0.05)'</li><li>'CALC takeoka 0967 OP=17 0.71:0.06:0.06 0.82(0.18) CT=18 0.67:0.33 0.11:0.04:0.18 0.06(0.13)'</li><li>'CALC takeoka 0968 OP=14 0.43:0.07:0.07 0.57(0.43) CT=30 0.20:0.80 0.07:0.31:0.42 0.53(0.11)'</li><li>'CALC takeoka 0969 OP=16 0.50:0.19:0.06 0.75(0.25) CT=27 0.30:0.70 0.15:0.14:0.42 0.41(0.01)'</li><li>'CALC takeoka 0970 OP=20 0.80:0.05:0.05 0.90(0.10) CT=24 0.67:0.33 0.04:0.03:0.26 0.17(0.10)'</li><li>'CALC takeoka 0971 OP=21 0.57:0.14:0.05 0.76(0.24) CT=35 0.34:0.66 0.11:0.13:0.41 0.40(0.01)'</li><li>'CALC takeoka 0972 OP=20 0.50:0.30:0.10 0.90(0.10) CT=47 0.21:0.79 0.17:0.06:0.56 0.57(0.02)'</li><li>'CALC takeoka 0973 OP=21 0.43:0.29:0.14 0.86(0.14) CT=38 0.24:0.76 0.24:0.08:0.45 0.45(0.00)'</li><li>'CALC takeoka 0974 OP=17 0.59:0.12:0.00 0.71(0.29) CT=43 0.23:0.77 0.05:0.21:0.51 0.60(0.10)'</li><li>'CALC takeoka 0975 OP=16 0.25:0.31:0.06 0.62(0.38) CT=28 0.14:0.86 0.21:0.24:0.40 0.43(0.03)'</li><li>'CALC takeoka 0976 OP=19 0.58:0.16:0.05 0.79(0.21) CT=39 0.28:0.72 0.10:0.13:0.49 0.51(0.03)'</li><li>'CALC takeoka 0977 OP=18 0.56:0.33:0.00 0.89(0.11) CT=29 0.34:0.66 0.21:0.05:0.40 0.38(0.02)'</li><li>'CALC takeoka 0978 OP=19 0.37:0.32:0.11 0.79(0.21) CT=29 0.24:0.76 0.24:0.11:0.41 0.34(0.06)'</li><li>'CALC takeoka 0979 OP=16 0.69:0.06:0.00 0.75(0.25) CT=20 0.55:0.45 0.05:0.10:0.30 0.20(0.10)'</li><li>'CALC takeoka 0980 OP=16 0.44:0.25:0.12 0.81(0.19) CT=23 0.30:0.70 0.26:0.08:0.35 0.30(0.05)'</li><li>'CALC takeoka 0981 OP=20 0.55:0.10:0.15 0.80(0.20) CT=21 0.52:0.48 0.24:0.05:0.19 0.05(0.14)'</li><li>'CALC takeoka 0982 OP=15 0.33:0.27:0.07 0.67(0.33) CT=19 0.32:0.68 0.26:0.14:0.28 0.21(0.07)'</li><li>'CALC takeoka 0983 OP=18 0.61:0.11:0.06 0.78(0.22) CT=29 0.38:0.62 0.10:0.11:0.40 0.38(0.02)'</li><li>'CALC takeoka 0984 OP=17 0.29:0.18:0.00 0.47(0.53) CT=49 0.12:0.88 0.06:0.43:0.38 0.65(0.27)'</li><li>'CALC takeoka 0985 OP=15 0.53:0.13:0.00 0.67(0.33) CT=30 0.27:0.73 0.10:0.21:0.42 0.50(0.08)'</li><li>'CALC takeoka 0986 OP=17 0.59:0.35:0.00 0.94(0.06) CT=29 0.34:0.66 0.21:0.03:0.42 0.41(0.01)'</li><li>'CALC takeoka 0987 OP=17 0.41:0.29:0.00 0.71(0.29) CT=25 0.28:0.72 0.20:0.15:0.37 0.32(0.05)'</li><li>'CALC takeoka 0988 OP=16 0.50:0.25:0.06 0.81(0.19) CT=26 0.35:0.65 0.19:0.09:0.38 0.38(0.01)'</li><li>'CALC takeoka 0989 OP=18 0.78:0.11:0.06 0.94(0.06) CT=30 0.43:0.57 0.10:0.03:0.44 0.40(0.04)'</li><li>'CALC takeoka 0990 OP=19 0.42:0.32:0.00 0.74(0.26) CT=37 0.22:0.78 0.16:0.16:0.46 0.49(0.03)'</li><li>'CALC takeoka 0991 OP=18 0.61:0.28:0.00 0.89(0.11) CT=27 0.41:0.59 0.19:0.05:0.36 0.33(0.03)'</li><li>'CALC takeoka 0992 OP=18 0.44:0.33:0.11 0.89(0.11) CT=33 0.24:0.76 0.24:0.06:0.46 0.45(0.00)'</li><li>'CALC takeoka 0993 OP=16 0.81:0.12:0.06 1.00(0.00) CT=30 0.43:0.57 0.10:0.00:0.47 0.47(0.00)'</li><li>'CALC takeoka 0994 OP=15 0.67:0.13:0.13 0.93(0.07) CT=29 0.34:0.66 0.14:0.03:0.48 0.48(0.00)'</li><li>'CALC takeoka 0995 OP=13 0.54:0.08:0.08 0.69(0.31) CT=39 0.18:0.82 0.05:0.24:0.53 0.67(0.13)'</li><li>'CALC takeoka 0996 OP=15 0.53:0.13:0.07 0.73(0.27) CT=48 0.19:0.81 0.06:0.20:0.55 0.69(0.14)'</li><li>'CALC takeoka 0997 OP=16 0.56:0.12:0.06 0.75(0.25) CT=30 0.33:0.67 0.07:0.15:0.45 0.47(0.02)'</li><li>'CALC takeoka 0998 OP=16 0.69:0.06:0.06 0.81(0.19) CT=21 0.52:0.48 0.10:0.07:0.31 0.24(0.07)'</li><li>'CALC takeoka 0999 OP=17 0.71:0.06:0.06 0.82(0.18) CT=44 0.30:0.70 0.05:0.12:0.54 0.61(0.07)'</li><li>'CALC takeoka 1000 OP=15 0.53:0.07:0.13 0.73(0.27) CT=34 0.24:0.76 0.15:0.16:0.45 0.56(0.11)'</li></ol>
+</div>
+</div>
 </section>
 <section id="統計モデルの推定結果" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="統計モデルの推定結果"><span class="header-section-number">4.3</span> 統計モデルの推定結果</h2>
@@ -960,9 +1036,129 @@ Table&nbsp;3: 拡張意味単位の要素、説明、事例、操作例
 <h1 data-number="6"><span class="header-section-number">6</span> 結論</h1>
 <section id="libraries" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="libraries"><span class="header-section-number">6.1</span> Libraries</h2>
+<div id="cell-64" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-outputid="7ea141f5-5e0f-4b8a-ccef-cc4b705c3ffb">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>apt install plotutils</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libplot2c2
+Suggested packages:
+  gsfonts
+The following NEW packages will be installed:
+  libplot2c2 plotutils
+0 upgraded, 2 newly installed, 0 to remove and 45 not upgraded.
+Need to get 1,117 kB of archives.
+After this operation, 4,139 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libplot2c2 amd64 2.6-11 [506 kB]
+Get:2 http://archive.ubuntu.com/ubuntu jammy/universe amd64 plotutils amd64 2.6-11 [611 kB]
+Fetched 1,117 kB in 1s (779 kB/s)
+Selecting previously unselected package libplot2c2:amd64.
+(Reading database ... 123594 files and directories currently installed.)
+Preparing to unpack .../libplot2c2_2.6-11_amd64.deb ...
+Unpacking libplot2c2:amd64 (2.6-11) ...
+Selecting previously unselected package plotutils.
+Preparing to unpack .../plotutils_2.6-11_amd64.deb ...
+Unpacking plotutils (2.6-11) ...
+Setting up libplot2c2:amd64 (2.6-11) ...
+Setting up plotutils (2.6-11) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.4) ...
+/sbin/ldconfig.real: /usr/local/lib/libur_adapter_opencl.so.0 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc_proxy.so.2 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_0.so.3 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libur_loader.so.0 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbb.so.12 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc.so.2 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbbind.so.3 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libur_adapter_level_zero.so.0 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_5.so.3 is not a symbolic link
+</code></pre>
+</div>
+</div>
+<div id="cell-65" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>from IPython.display import SVG, display</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="data-and-preprocess" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="data-and-preprocess"><span class="header-section-number">6.2</span> Data and preprocess</h2>
+<div id="cell-67" class="cell" data-outputid="e42548ca-af2d-468c-a961-9c5517ad4e9f">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># !wget -O hachidai_raw.db -c https://github.com/yamagen/hachidaishu/raw/main/hachidai.db</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>wget <span class="sc">-</span>O dictionaryconverter.py <span class="sc">-</span>c https<span class="sc">:</span><span class="er">//</span>raw.githubusercontent.com<span class="sc">/</span>yamagen<span class="sc">/</span>hachidaishu<span class="sc">/</span>main<span class="sc">/</span>dictionaryconverter.py</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>wget <span class="sc">-</span>O hachidaishu.py <span class="sc">-</span>c https<span class="sc">:</span><span class="er">//</span>raw.githubusercontent.com<span class="sc">/</span>yamagen<span class="sc">/</span>hachidaishu<span class="sc">/</span>main<span class="sc">/</span>hachidaishu.py</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>wget <span class="sc">-</span>O hachidai.db <span class="sc">-</span>c https<span class="sc">:</span><span class="er">//</span>raw.githubusercontent.com<span class="sc">/</span>yamagen<span class="sc">/</span>hachidaishu<span class="sc">/</span>main<span class="sc">/</span>hachidai.db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>--2024-08-20 13:08:08--  https://raw.githubusercontent.com/yamagen/hachidaishu/main/dictionaryconverter.py
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 15745 (15K) [text/plain]
+Saving to: ‘dictionaryconverter.py’
+
+dictionaryconverter 100%[===================&gt;]  15.38K  --.-KB/s    in 0.001s  
+
+2024-08-20 13:08:08 (22.6 MB/s) - ‘dictionaryconverter.py’ saved [15745/15745]
+
+--2024-08-20 13:08:09--  https://raw.githubusercontent.com/yamagen/hachidaishu/main/hachidaishu.py
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 8341 (8.1K) [text/plain]
+Saving to: ‘hachidaishu.py’
+
+hachidaishu.py      100%[===================&gt;]   8.15K  --.-KB/s    in 0s      
+
+2024-08-20 13:08:09 (55.7 MB/s) - ‘hachidaishu.py’ saved [8341/8341]
+
+--2024-08-20 13:08:09--  https://raw.githubusercontent.com/yamagen/hachidaishu/main/hachidai.db
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 15181150 (14M) [text/plain]
+Saving to: ‘hachidai.db’
+
+hachidai.db         100%[===================&gt;]  14.48M  --.-KB/s    in 0.09s   
+
+2024-08-20 13:08:10 (162 MB/s) - ‘hachidai.db’ saved [15181150/15181150]
+</code></pre>
+</div>
+</div>
+<div id="cell-68" class="cell" data-outputid="bdabc999-c3b7-4357-96ef-36031d6e17a5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>head hachidai.db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>01:000001:0001 A00 BG-01-1630-01-0100 02 年 年 とし 年 とし 
+01:000001:0001 A10 BG-01-1911-03-1800 02 年 年 とし 年 とし 
+01:000001:0002 A00 BG-08-0061-07-0100 61 の の の の の 
+01:000001:0003 A00 BG-01-1770-01-0300 02 内 内 うち 内 うち 
+01:000001:0004 A00 BG-08-0061-05-0100 61 に に に に に 
+01:000001:0005 A00 BG-01-1624-02-0100 02 春 春 はる 春 はる 
+01:000001:0006 A00 BG-08-0065-07-0100 65 は は は は は 
+01:000001:0007 A00 BG-02-1527-01-0102 47 き 来 く 来 き 
+01:000001:0008 A00 BG-03-1200-02-0900 74 に ぬ ぬ に に 
+01:000001:0008 A10 BG-09-0010-01-0101 74 に ぬ ぬ に に </code></pre>
+</div>
+</div>
 </section>
 <section id="hachidai-db" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="hachidai-db"><span class="header-section-number">6.3</span> Hachidai DB</h2>
@@ -972,107 +1168,1246 @@ Table&nbsp;3: 拡張意味単位の要素、説明、事例、操作例
 <h1 data-number="7"><span class="header-section-number">7</span> Collocation</h1>
 <section id="all" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="all"><span class="header-section-number">7.1</span> All</h2>
+<div id="cell-72" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hachidai.db +&gt; tatsuta lines +&gt; poem ID +&gt; uniq ID + match ID +&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># simplex form lines &amp; basic seme +&gt; regarding columns +&gt; output</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># collect tatsuta poems</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>cat hachidai.db <span class="sc">|</span>\</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'$7 ~ /たつた/'</span> <span class="sc">|</span>\</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  awk <span class="sc">-</span>F <span class="st">':'</span> <span class="st">'{print $1 ":" $2}'</span> <span class="sc">|</span>\</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  sort <span class="sc">|</span> uniq <span class="sc">|</span>\</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  grep <span class="sc">-</span>E <span class="sc">-</span>f <span class="sc">-</span> hachidai.db <span class="sc">|</span>\</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'$2 ~ /^[ACE]0/'</span> <span class="sc">|</span>\</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'{print $1,$2,$3,$4,$7}'</span> <span class="sc">&gt;</span>\</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  tatsuta.txt</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>cat tatsuta.txt <span class="sc">|</span>\</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'{print $5}'</span> <span class="sc">|</span>\</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  sort <span class="sc">|</span> uniq <span class="sc">-</span>c <span class="sc">|</span>\</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  sort <span class="sc">-</span>nr <span class="sc">&gt;</span>\</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  tf<span class="sc">-</span>tatsuta.txt</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>cat tf<span class="sc">-</span>tatsuta.txt <span class="sc">|</span>\</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  nl <span class="sc">|</span>\</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'{print $1,$2}'</span> <span class="sc">|</span>\</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  graph <span class="sc">-</span>Tsvg <span class="sc">-</span>L <span class="st">"Term Frequency in Tatsuta Context"</span> <span class="sc">-</span>X <span class="st">"rank"</span> <span class="sc">-</span>Y <span class="st">"frequency"</span> <span class="sc">&gt;</span>\</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>  tf<span class="sc">-</span>tatsuta.svg</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>cat tatsuta.txt <span class="sc">|</span>\</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'{print substr($1, 1, 8) ";" $5}'</span> <span class="sc">|</span>\</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>  sort <span class="sc">|</span> uniq <span class="sc">|</span>\</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  awk <span class="sc">-</span>F <span class="st">';'</span> <span class="st">'{print $2}'</span> <span class="sc">|</span>\</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>  sort <span class="sc">|</span> uniq <span class="sc">-</span>c <span class="sc">|</span>\</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  sort <span class="sc">-</span>nr <span class="sc">&gt;</span>\</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">-</span>tatsuta.txt</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>cat df<span class="sc">-</span>tatsuta.txt <span class="sc">|</span>\</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>  nl <span class="sc">|</span>\</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>  awk <span class="st">'{print $1,$2}'</span> <span class="sc">|</span>\</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>  graph <span class="sc">-</span>Tsvg <span class="sc">-</span>L <span class="st">"Document Frequency in Tatsuta Context"</span> <span class="sc">-</span>X <span class="st">"rank"</span> <span class="sc">-</span>Y <span class="st">"frequency"</span> <span class="sc">&gt;</span>\</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">-</span>tatsuta.svg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-73" class="cell" data-jupyter="{&quot;outputs_hidden&quot;:true}" data-outputid="d276cf19-abf6-4298-a8d5-9a0ad7ffc40d">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">display</span>(<span class="fu">SVG</span>(<span class="at">filename=</span><span class="st">'tf-tatsuta.svg'</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">display</span>(<span class="fu">SVG</span>(<span class="at">filename=</span><span class="st">'df-tatsuta.svg'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-9-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-9-output-2.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="content-words" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="content-words"><span class="header-section-number">7.2</span> Content words</h2>
+<div id="cell-76" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>import pandas as pd</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">pd.read_table</span>(<span class="st">'hachidai.db'</span>, <span class="at">usecols=</span><span class="fu">range</span>(<span class="dv">9</span>), <span class="at">sep=</span><span class="st">' '</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">names=</span>[<span class="st">'id'</span>, <span class="st">'token_type'</span>, <span class="st">'bg_id'</span>, <span class="st">'chasen_id'</span>, <span class="st">'surface'</span>, <span class="st">'lemma'</span>, <span class="st">'lemma_reading'</span>, <span class="st">'kanji'</span>, <span class="st">'kanji_reading'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-77" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'semantic_field'</span>] <span class="ot">=</span> df[<span class="st">'bg_id'</span>].str[<span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'poem_id'</span>] <span class="ot">=</span> df[<span class="st">'id'</span>]<span class="fu">.str.split</span>(<span class="st">':'</span>).str[<span class="sc">:</span><span class="dv">2</span>]<span class="fu">.str.join</span>(<span class="st">':'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-78" class="cell" data-outputid="01892a63-667a-446e-ace6-bb9829ccf23a">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df.head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+  <div id="df-472f4d51-dd4b-407a-94f2-8f71699664f7" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">token_type</th>
+<th data-quarto-table-cell-role="th">bg_id</th>
+<th data-quarto-table-cell-role="th">chasen_id</th>
+<th data-quarto-table-cell-role="th">surface</th>
+<th data-quarto-table-cell-role="th">lemma</th>
+<th data-quarto-table-cell-role="th">lemma_reading</th>
+<th data-quarto-table-cell-role="th">kanji</th>
+<th data-quarto-table-cell-role="th">kanji_reading</th>
+<th data-quarto-table-cell-role="th">semantic_field</th>
+<th data-quarto-table-cell-role="th">poem_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>01:000001:0001</td>
+<td>A00</td>
+<td>BG-01-1630-01-0100</td>
+<td>2</td>
+<td>年</td>
+<td>年</td>
+<td>とし</td>
+<td>年</td>
+<td>とし</td>
+<td>BG-01-16</td>
+<td>01:000001</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>01:000001:0001</td>
+<td>A10</td>
+<td>BG-01-1911-03-1800</td>
+<td>2</td>
+<td>年</td>
+<td>年</td>
+<td>とし</td>
+<td>年</td>
+<td>とし</td>
+<td>BG-01-19</td>
+<td>01:000001</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>01:000001:0002</td>
+<td>A00</td>
+<td>BG-08-0061-07-0100</td>
+<td>61</td>
+<td>の</td>
+<td>の</td>
+<td>の</td>
+<td>の</td>
+<td>の</td>
+<td>BG-08-00</td>
+<td>01:000001</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>01:000001:0003</td>
+<td>A00</td>
+<td>BG-01-1770-01-0300</td>
+<td>2</td>
+<td>内</td>
+<td>内</td>
+<td>うち</td>
+<td>内</td>
+<td>うち</td>
+<td>BG-01-17</td>
+<td>01:000001</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>01:000001:0004</td>
+<td>A00</td>
+<td>BG-08-0061-05-0100</td>
+<td>61</td>
+<td>に</td>
+<td>に</td>
+<td>に</td>
+<td>に</td>
+<td>に</td>
+<td>BG-08-00</td>
+<td>01:000001</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-472f4d51-dd4b-407a-94f2-8f71699664f7')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-472f4d51-dd4b-407a-94f2-8f71699664f7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-472f4d51-dd4b-407a-94f2-8f71699664f7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-4dc6a41c-dcd7-42db-bfd1-5df37acdabe9">
+  <button class="colab-df-quickchart" onclick="quickchart('df-4dc6a41c-dcd7-42db-bfd1-5df37acdabe9')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-4dc6a41c-dcd7-42db-bfd1-5df37acdabe9 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
 </section>
 <section id="tatsuta" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="tatsuta"><span class="header-section-number">7.3</span> Tatsuta</h2>
+<div id="cell-80" class="cell" data-outputid="74436a5b-07bd-473d-ece2-8cefc63272a9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 「たつた」を含む歌</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">=</span> df[df[<span class="st">'lemma_reading'</span>]<span class="fu">.str.match</span>(<span class="st">'たつた'</span>)]<span class="fu">.poem_id.unique</span>()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>obj <span class="ot">=</span> df[(df[<span class="st">'poem_id'</span>]<span class="fu">.isin</span>(obj)) <span class="sc">&amp;</span> (df[<span class="st">'token_type'</span>]<span class="fu">.str.match</span>(r<span class="st">'^[ACE]'</span>))]<span class="fu">.sort_values</span>(<span class="st">'id'</span>)<span class="fu">.copy</span>()</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">obj.head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="116">
+<div>
+
+  <div id="df-8a837063-7563-41d3-9168-1177293d2704" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">token_type</th>
+<th data-quarto-table-cell-role="th">bg_id</th>
+<th data-quarto-table-cell-role="th">chasen_id</th>
+<th data-quarto-table-cell-role="th">surface</th>
+<th data-quarto-table-cell-role="th">lemma</th>
+<th data-quarto-table-cell-role="th">lemma_reading</th>
+<th data-quarto-table-cell-role="th">kanji</th>
+<th data-quarto-table-cell-role="th">kanji_reading</th>
+<th data-quarto-table-cell-role="th">semantic_field</th>
+<th data-quarto-table-cell-role="th">poem_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2460</td>
+<td>01:000108:0001</td>
+<td>A00</td>
+<td>BG-01-5530-12-0100</td>
+<td>2</td>
+<td>花</td>
+<td>花</td>
+<td>はな</td>
+<td>花</td>
+<td>はな</td>
+<td>BG-01-55</td>
+<td>01:000108</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2461</td>
+<td>01:000108:0002</td>
+<td>A00</td>
+<td>BG-08-0061-07-0100</td>
+<td>61</td>
+<td>の</td>
+<td>の</td>
+<td>の</td>
+<td>の</td>
+<td>の</td>
+<td>BG-08-00</td>
+<td>01:000108</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2462</td>
+<td>01:000108:0003</td>
+<td>A00</td>
+<td>BG-02-1552-01-0100</td>
+<td>47</td>
+<td>ちる</td>
+<td>散る</td>
+<td>ちる</td>
+<td>散る</td>
+<td>ちる</td>
+<td>BG-02-15</td>
+<td>01:000108</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2463</td>
+<td>01:000108:0004</td>
+<td>A00</td>
+<td>BG-01-1010-01-0200</td>
+<td>2</td>
+<td>こと</td>
+<td>事</td>
+<td>こと</td>
+<td>事</td>
+<td>こと</td>
+<td>BG-01-10</td>
+<td>01:000108</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2464</td>
+<td>01:000108:0005</td>
+<td>A00</td>
+<td>BG-08-0065-14-0100</td>
+<td>65</td>
+<td>や</td>
+<td>や</td>
+<td>や</td>
+<td>や</td>
+<td>や</td>
+<td>BG-08-00</td>
+<td>01:000108</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-8a837063-7563-41d3-9168-1177293d2704')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-8a837063-7563-41d3-9168-1177293d2704 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-8a837063-7563-41d3-9168-1177293d2704');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-5e887335-63a1-4b7c-8290-dd9cf2414c7d">
+  <button class="colab-df-quickchart" onclick="quickchart('df-5e887335-63a1-4b7c-8290-dd9cf2414c7d')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-5e887335-63a1-4b7c-8290-dd9cf2414c7d button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
 </section>
 <section id="collocation-term-frequency" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="collocation-term-frequency"><span class="header-section-number">7.4</span> Collocation (Term frequency)</h2>
+<div id="cell-82" class="cell" data-outputid="45e00531-c53f-48f5-b13d-37c8f1975386">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># term frquency</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>obj[obj[<span class="st">'chasen_id'</span>] <span class="sc">&lt;=</span> <span class="dv">57</span>]<span class="fu">.lemma_reading.value_counts</span>()</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#.to_csv('term-freq.txt', sep='\t', header=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="117">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">lemma_reading</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">たつた</td>
+<td>62</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">みる</td>
+<td>48</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">やま</td>
+<td>43</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">かは</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">あき</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">むすぶ</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ひも</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">いも</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">おと</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ゐる</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>224 rows × 1 columns</p>
+</div><br><label><b>dtype:</b> int64</label>
+</div>
+</div>
+</div>
 </section>
 <section id="collocation-document-frequency" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="collocation-document-frequency"><span class="header-section-number">7.5</span> Collocation (Document frequency)</h2>
+<div id="cell-84" class="cell" data-outputid="b222563a-017c-4544-e9d6-c80bf5c00d6e">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># document frquency</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>obj[obj[<span class="st">'chasen_id'</span>] <span class="sc">&lt;=</span> <span class="dv">57</span>]<span class="fu">.groupby</span>(<span class="st">'lemma_reading'</span>)[<span class="st">'poem_id'</span>]<span class="fu">.nunique</span>()<span class="fu">.sort_values</span>(<span class="at">ascending=</span>False)[<span class="sc">:</span><span class="dv">10</span>]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">#.to_csv('doc-freq.txt', sep='\t', header=False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="118">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">poem_id</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">lemma_reading</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">たつた</td>
+<td>62</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">やま</td>
+<td>41</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">かは</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">あき</td>
+<td>17</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">もみづ</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">にしき</td>
+<td>13</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">みる</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">もみじ</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">は</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">から</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+
+</div><br><label><b>dtype:</b> int64</label>
+</div>
+</div>
+</div>
 </section>
 <section id="colligation-term-frequency" class="level2" data-number="7.6">
 <h2 data-number="7.6" class="anchored" data-anchor-id="colligation-term-frequency"><span class="header-section-number">7.6</span> Colligation (Term frequency)</h2>
+<div id="cell-86" class="cell" data-outputid="eacae311-cc65-4ab4-f780-5a2fc207389d">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>obj[obj[<span class="st">'chasen_id'</span>] <span class="sc">&gt;=</span> <span class="dv">58</span>]<span class="fu">.lemma_reading.value_counts</span>()<span class="fu">.head</span>(<span class="dv">10</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#.to_csv('term-freq.txt', sep='\t', header=False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="119">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">count</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">lemma_reading</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">の</td>
+<td>140</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">に</td>
+<td>42</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">なり</td>
+<td>33</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ぬ</td>
+<td>33</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ず</td>
+<td>30</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">は</td>
+<td>27</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">ぞ</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">を</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">も</td>
+<td>19</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">む</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+
+</div><br><label><b>dtype:</b> int64</label>
+</div>
+</div>
+</div>
+<div id="cell-87" class="cell" data-outputid="8e45ccae-4ef6-49ac-e59e-5327cd957316">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># document frquency</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>obj[obj[<span class="st">'chasen_id'</span>] <span class="sc">&gt;=</span> <span class="dv">58</span>]<span class="fu">.groupby</span>(<span class="st">'lemma_reading'</span>)[<span class="st">'poem_id'</span>]<span class="fu">.nunique</span>()<span class="fu">.sort_values</span>(<span class="at">ascending=</span>False)[<span class="sc">:</span><span class="dv">10</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#.to_csv('doc-freq.txt', sep='\t', header=False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="120">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">poem_id</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">lemma_reading</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">の</td>
+<td>61</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">に</td>
+<td>35</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">は</td>
+<td>24</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">を</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">なり</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">や</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">けり</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">ず</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">も</td>
+<td>14</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">と</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+
+</div><br><label><b>dtype:</b> int64</label>
+</div>
+</div>
+</div>
 </section>
-<section id="semantic-preference" class="level2 unnumbered" data-number="7.7">
+<section id="semantic-preference" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="semantic-preference"><span class="header-section-number">7.7</span> Semantic preference</h2>
+<div id="cell-89" class="cell" data-outputid="f40713f2-7693-43de-dd4e-7252e11e6d51">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># document frquency</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>obj[obj[<span class="st">'chasen_id'</span>] <span class="sc">&lt;=</span> <span class="dv">57</span>]<span class="fu">.groupby</span>(<span class="st">'semantic_field'</span>)[<span class="st">'poem_id'</span>]<span class="fu">.nunique</span>()<span class="fu">.sort_values</span>(<span class="at">ascending=</span>False)[<span class="sc">:</span><span class="dv">10</span>]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#.to_csv('doc-freq.txt', sep='\t', header=False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="121">
+<div>
+<div>
 
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">poem_id</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">semantic_field</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">CH-29-00</td>
+<td>62</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">BG-01-52</td>
+<td>56</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">BG-02-15</td>
+<td>48</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">BG-01-16</td>
+<td>33</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">BG-01-51</td>
+<td>31</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">BG-02-30</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">BG-01-55</td>
+<td>26</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">BG-02-50</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">BG-01-42</td>
+<td>19</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">BG-01-50</td>
+<td>19</td>
+</tr>
+</tbody>
+</table>
+
+</div><br><label><b>dtype:</b> int64</label>
+</div>
+</div>
+</div>
+<div id="cell-90" class="cell" data-outputid="4790923f-56bf-4148-bde6-3e1fad05b23f">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="sc">%%</span>writefile plot.gnuplot</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>set terminal pngcairo size <span class="dv">800</span>,<span class="dv">600</span> enhanced font <span class="st">'Verdana,10'</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>set output <span class="st">'term_frequency.png'</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>set boxwidth <span class="fl">0.5</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>set style fill solid</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>set xlabel <span class="st">"Terms"</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>set ylabel <span class="st">"Frequency"</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>set title <span class="st">"Term Frequency"</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>set xtics rotate by <span class="sc">-</span><span class="dv">45</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>plot <span class="st">'data.txt'</span> using <span class="dv">2</span><span class="sc">:</span><span class="fu">xtic</span>(<span class="dv">1</span>) with boxes title <span class="st">'Frequency'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Writing plot.gnuplot</code></pre>
+</div>
+</div>
+<div id="cell-91" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>gnuplot plot.gnuplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-92" class="cell" data-outputid="15a2acd1-406a-4f61-b9b9-3416c0d16bea">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>from IPython.display import Image</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 假设图片保存为 'term_frequency.png'</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>image_path <span class="ot">=</span> <span class="st">'term_frequency.png'</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 显示图片</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Image</span>(<span class="at">filename=</span>image_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="74">
+<div>
+<figure class="figure">
+<p><img src="main_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 </section>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">7.7 Semantic preference</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Chen2024Translationbased" class="csl-entry" role="listitem">
-Chen, Xudong, Hilofumi Yamamoto, and Bor Hodošček. 2024. <span>“Translation-Based Connotation Visualization for Classical Poetic <span>Japanese</span> Vocabulary of the <span>Kokin Wakashū</span> Ca. 905.”</span> <em>Journal of Computational Literary Studies</em> 2 (1, 1): 1–32. <a href="https://doi.org/10.48694/jcls.3596">https://doi.org/10.48694/jcls.3596</a>.
+Chen, Xudong, Hilofumi Yamamoto, and Bor Hodošček. 2024. <span>“Translation-Based Connotation Visualization for Classical Poetic <span>Japanese</span> Vocabulary of the <span>Kokin Wakash<span>ū</span></span> Ca. 905.”</span> <em>Journal of Computational Literary Studies</em> 2 (1): 1–32. <a href="https://doi.org/10.48694/jcls.3596">https://doi.org/10.48694/jcls.3596</a>.
+</div>
+<div id="ref-Firth1968Selected" class="csl-entry" role="listitem">
+Firth, J. R., and F. R. Palmer. 1968. <em><span>Selected Papers, 1952-59</span></em>. Harlow: Prentice Hall Press.
+</div>
+<div id="ref-Koller2004Computer" class="csl-entry" role="listitem">
+Koller, Veronika, and Gerlinde Mautner. 2004. <span>“Computer <span>Applications</span> in <span>Critical Discourse Analysis</span>.”</span> In <em>Applying <span>English Grammar</span>.</em>, edited by Caroline Coffin, Ann Hewings, and Kieran O’Halloran. Routledge.
 </div>
 <div id="ref-Koller2004Einfuehrung" class="csl-entry" role="listitem">
-Koller, Werner. 2004. <em>Einführung in die Übersetzungswissenschaft</em>. 7., aktualisierte Aufl. Wiebelsheim: Quelle und Meyer.
+Koller, Werner. 2004. <em><span>Einf<span>ü</span>hrung in die <span>Ü</span>bersetzungswissenschaft</span></em>. 7., aktualisierte Aufl. Wiebelsheim: Quelle und Meyer.
+</div>
+<div id="ref-Nida1964Science" class="csl-entry" role="listitem">
+Nida, Eugene Albert. 1964. <em>Toward a <span>Science</span> of <span>Translating</span>: <span>With Special Reference</span> to <span>Principles</span> and <span>Procedures Involved</span> in <span>Bible Translating</span></em>. Brill Archive.
+</div>
+<div id="ref-Sankoff1972Matching" class="csl-entry" role="listitem">
+Sankoff, D. 1972. <span>“Matching Sequences Under Deletion-Insertion Constraints.”</span> <em>Proceedings of the National Academy of Sciences of the United States of America</em> 69 (1): 4–6. <a href="https://doi.org/10.1073/pnas.69.1.4">https://doi.org/10.1073/pnas.69.1.4</a>.
+</div>
+<div id="ref-Sinclair2003Reading" class="csl-entry" role="listitem">
+Sinclair, John. 2003. <em>Reading <span>Concordances</span></em>. First Edition. London: Pearson ESL.
 </div>
 <div id="ref-Sinclair1996Search" class="csl-entry" role="listitem">
 Sinclair, John McHardy. 1996. <span>“The <span>Search</span> for <span>Units</span> of <span>Meaning</span>.”</span> <em>Textus</em> 9: 75–106.
 </div>
+<div id="ref-Sinclair2004Trust" class="csl-entry" role="listitem">
+———. 2004. <em>Trust the <span>Text</span>: <span>Language</span>, <span>Corpus</span> and <span>Discourse</span></em>. Edited by Ronald Carter. 1st ed. London ; New York: Routledge. <a href="https://doi.org/10.4324/9780203594070">https://doi.org/10.4324/9780203594070</a>.
+</div>
+<div id="ref-Sinclair1970English" class="csl-entry" role="listitem">
+Sinclair, John McHardy, S. Jones, and R. Daley. 1970. <em>English Lexical Studies: Report to <span>OSTI</span> on Project <span>C</span>/<span>LP</span>/08. <span>Final</span> Report for Period <span>January</span> 1967 - <span>September</span> 1969</em>. Birmingham: Department of English, University of Birmingham.
+</div>
 <div id="ref-Stubbs2001Words" class="csl-entry" role="listitem">
-Stubbs, Michael. 2002. <em>Words and Phrases: Corpus Studies of Lexical Semantics</em>. Oxford ; Malden, MA: Blackwell Publishers.
+Stubbs, Michael. 2001. <em>Words and Phrases: Corpus Studies of Lexical Semantics</em>. Oxford ; Malden, MA: Blackwell Publishers.
+</div>
+<div id="ref-Traum2000Generation" class="csl-entry" role="listitem">
+Traum, David, and Nizar Habash. 2000. <span>“Generation from <span>Lexical Conceptual Structures</span>.”</span> In <em><span>NAACL-ANLP</span> 2000 <span>Workshop</span>: <span>Applied Interlinguas</span>: <span>Practical Applications</span> of <span>Interlingual Approaches</span> to <span>NLP</span></em>.
 </div>
 <div id="ref-Yamamoto2005Mathematical" class="csl-entry" role="listitem">
-Yamamoto, Hilofumi. 2005. <span>“A Mathematical Analysis of the Connotations of Classical <span>Japanese</span> Poetic Vocabulary.”</span> PhD thesis, Canberra: The Austrilian National University. <a href="https://openresearch-repository.anu.edu.au/handle/1885/151572">https://openresearch-repository.anu.edu.au/handle/1885/151572</a>.
+Yamamoto, Hilofumi. 2005. <span>“A Mathematical Analysis of the Connotations of Classical <span>Japanese</span> Poetic Vocabulary.”</span> PhD thesis, Canberra: The Austrilian National University.
 </div>
 <div id="ref-Yamamoto2006Extraction" class="csl-entry" role="listitem">
-———. 2006. <span>“Extraction and visualisation of the connotation of classical Japanese Poetic Vocabulary -How to construct semantic space by graph-.”</span> <em>Proceedings of Symposium for Computers and the Humanities Symposium 2006 (Jinmoncom 2006)</em> 2006 (December): 21–28. <a href="https://ipsj.ixsq.nii.ac.jp/ej/index.php?active_action=repository_view_main_item_detail&amp;page_id=13&amp;block_id=8&amp;item_id=100538&amp;item_no=1">https://ipsj.ixsq.nii.ac.jp/ej/index.php?active_action=repository_view_main_item_detail&amp;page_id=13&amp;block_id=8&amp;item_id=100538&amp;item_no=1</a>.
+———. 2006. <span>“<span>Extraction and visualisation of the connotation of classical Japanese Poetic Vocabulary -How to construct semantic space by graph-</span>.”</span> <em>Proceedings of Symposium for Computers and the Humanities Symposium 2006 (Jinmoncom 2006)</em> 2006 (December): 21–28.
 </div>
 <div id="ref-Yamamoto2019Analysis" class="csl-entry" role="listitem">
-Yamamoto, Hilofumi, and Bor Hodošček. 2019. <span>“An <span>Analysis</span> of the <span>Differences Between Classical</span> and <span>Contemporary Poetic Vocabulary</span> of the <span>Kokinshu</span>.”</span> In <em>The 9th <span>Conference</span> of <span>Japanese Association</span> for <span>Digital Humanities</span> (<span>JADH2019</span>) <span>“<span>Localization</span> in <span>Global DH</span>”</span></em>, 68–71. Japanese Association for Digital Humanities. <a href="http://t2r2.star.titech.ac.jp/cgi-bin/publicationinfo.cgi?q_publication_content_number=CTT100800689">http://t2r2.star.titech.ac.jp/cgi-bin/publicationinfo.cgi?q_publication_content_number=CTT100800689</a>.
+Yamamoto, Hilofumi, and Bor Hodošček. 2019. <span>“An <span>Analysis</span> of the <span>Differences Between Classical</span> and <span>Contemporary Poetic Vocabulary</span> of the <span>Kokinshu</span>.”</span> In <em>The 9th <span>Conference</span> of <span>Japanese Association</span> for <span>Digital Humanities</span> (<span>JADH2019</span>) <span>“<span>Localization</span> in <span>Global DH</span>”</span></em>, 68–71. Japanese Association for Digital Humanities.
 </div>
 <div id="ref-kyusojin1979Kokin" class="csl-entry" role="listitem">
-久曽神昇. 1979. <em>古今和歌集 全注釈</em>. Vol. 1–5. 5 vols. 講談社学術文庫. 東京: 講談社.
+久曽神昇. 1979. <em><span>古今和歌集 全注釈</span></em>. Vol. 1–5. <span>講談社学術文庫</span>. 東京: 講談社.
 </div>
 <div id="ref-okumura1978Kokin" class="csl-entry" role="listitem">
-奥村恆哉. 1978. <em>古今和歌集</em>. 新潮日本古典集成. 東京: 新潮社. <a href="https://books.google.com?id=uC7UAAAAMAAJ">https://books.google.com?id=uC7UAAAAMAAJ</a>.
+奥村恆哉. 1978. <em><span>古今和歌集</span></em>. <span>新潮日本古典集成</span>. 東京: 新潮社.
 </div>
 <div id="ref-kojima1989Kokin" class="csl-entry" role="listitem">
-小島憲之, and 新井栄蔵. 1989. <em>古今和歌集</em>. 東京: 岩波書店.
+小島憲之, and 新井栄蔵. 1989. <em><span>古今和歌集</span></em>. 東京: 岩波書店.
 </div>
 <div id="ref-ozawa1971Kikon" class="csl-entry" role="listitem">
-小沢正夫. 1971. <em>古今和歌集</em>. 13th ed. 日本古典文学全集. 東京: 小学館. <a href="https://www.kosho.or.jp/products/detail.php?product_id=338279402">https://www.kosho.or.jp/products/detail.php?product_id=338279402</a>.
+小沢正夫. 1971. <em><span>古今和歌集</span></em>. 13th ed. <span>日本古典文学全集</span>. 東京: 小学館.
 </div>
 <div id="ref-komachiya1982Kokin" class="csl-entry" role="listitem">
 小町谷照彦. 1982. <em>古今和歌集：現代語訳対照</em>. 旺文社文庫. 東京: 旺文社.
 </div>
 <div id="ref-matsuda1968Shinshaku" class="csl-entry" role="listitem">
-松田武夫. 1968. <em>新釈古今和歌集</em>. Vol. 上下. 2 vols. 東京: 風間書房.
+松田武夫. 1968. <em>新釈古今和歌集</em>. Vol. 上下. 東京: 風間書房.
 </div>
 <div id="ref-katagiri1983Uta" class="csl-entry" role="listitem">
 片桐洋一. 1983. <em>歌枕歌ことば辞典</em>. 東京: 角川書店.
 </div>
 <div id="ref-katagiri1998Kokinhyoshaku" class="csl-entry" role="listitem">
-———. 1998. <em>古今和歌集全評釈</em>. Vol. 上中下. 3 vols. 東京: 講談社.
+———. 1998. <em><span>古今和歌集全評釈</span></em>. Vol. 上中下. 東京: 講談社.
 </div>
 <div id="ref-kubota1960Kokin" class="csl-entry" role="listitem">
-窪田空穂. 1960. <em>古今和歌集評釈</em>. Vol. 上中下. 3 vols. Tokyo: Tokyodo.
+窪田空穂. 1960. <em>古今和歌集評釈</em>. Vol. 上中下. Tokyo: Tokyodo.
 </div>
 <div id="ref-takeoka1976Kokin" class="csl-entry" role="listitem">
-竹岡正夫. 1976. <em>古今和歌集全評釈: 古注七種集成</em>. Vol. 上下. 2 vols. 東京: 右文書院. <a href="https://books.google.com?id=uC7UAAAAMAAJ">https://books.google.com?id=uC7UAAAAMAAJ</a>.
+竹岡正夫. 1976. <em><span>古今和歌集全評釈: 古注七種集成</span></em>. Vol. 上下. 東京: 右文書院.
 </div>
 <div id="ref-kondo2011Heian" class="csl-entry" role="listitem">
-近藤泰弘. 2011. <span>“平安時代の漢文訓読語の分類.”</span> <em>訓点語と訓点資料 = Diacritical language and diacritical materials / 訓点語学会 編</em> 127 (September): 120–31. <a href="https://cir.nii.ac.jp/crid/1520009408461630208">https://cir.nii.ac.jp/crid/1520009408461630208</a>.
+近藤泰弘. 2011. <span>“<span>平安時代の漢文訓読語の分類</span>.”</span> <em>訓点語と訓点資料 = Diacritical language and diacritical materials / 訓点語学会 編</em> 127 (September): 120–31.
 </div>
 <div id="ref-kondo2001Ngram" class="csl-entry" role="listitem">
-近藤泰弘, and 近藤みゆき. 2001. <span>“N-gramの手法による言語テキストの分析方法–現代語対話表現の自動抽出に及ぶ.”</span> <em>漢字文献情報処理研究 / 漢字文献情報処理研究会 編</em>, no. 2 (October): 50–55. <a href="https://cir.nii.ac.jp/crid/1520854806118649088">https://cir.nii.ac.jp/crid/1520854806118649088</a>.
+近藤泰弘, and 近藤みゆき. 2001. <span>“<span>N-gramの手法による言語テキストの分析方法–現代語対話表現の自動抽出に及ぶ</span>.”</span> <em>漢字文献情報処理研究 / 漢字文献情報処理研究会 編</em>, no. 2 (October): 50–55.
 </div>
 <div id="ref-kaneko1933Kokin" class="csl-entry" role="listitem">
 金子元臣. 1933. <em>古今和歌集評釈: 昭和新版</em>. 東京: 明治書院.
 </div>
 <div id="ref-chin2022Tango" class="csl-entry" role="listitem">
-陳旭東, ホドシチェクボル, and 山元啓史. 2022. <span>“単語アライメントの誤り対応を用いた歌ことばのコノテーション検出.”</span> <em>じんもんこん2022論文集</em> 2022 (December): 111–18. <a href="https://ipsj.ixsq.nii.ac.jp/ej/index.php?active_action=repository_view_main_item_detail&amp;page_id=13&amp;block_id=8&amp;item_id=223280&amp;item_no=1">https://ipsj.ixsq.nii.ac.jp/ej/index.php?active_action=repository_view_main_item_detail&amp;page_id=13&amp;block_id=8&amp;item_id=223280&amp;item_no=1</a>.
+陳旭東, ホドシチェクボル, and 山元啓史. 2022. <span>“<span>単語アライメントの誤り対応を用いた歌ことばのコノテーション検出</span>.”</span> <em>じんもんこん2022論文集</em> 2022 (December): 111–18.
 </div>
 </div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{chen2024,
   author = {Chen, Xudong and Hodošček‬, ‪Bor and Yamamoto, Hilofumi},
   title = {古今和歌集の現代日本語訳の分析 -
     {追加率と拡張意味単位の観点から}},
   date = {2024-09-01},
-  doi = {10.5555/12345678},
+  doi = {10.17928/jjadh.0.0_0},
   langid = {en},
-  abstract = {Test}
+  abstract = {本論文の目的は、原文との一致率の計算と意味拡張単位の翻訳という二つの側面から、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、和歌辞典とは異なる解釈材料として、和歌の非字義的な情報を補足説明するために使用できることを示すことである。本研究の貢献は以下にある（仮）。1.
+    古今和歌集の現代語訳における初の語彙コーパスを公開した。2.
+    古今和歌集の翻訳の歴史的変遷を俯瞰し、特に20世紀における和歌の現代語訳の翻訳方針および翻訳観の整理を行った。3.
+    古語と現代語の翻訳対応率の計算により、翻訳方針にかかわらず、現代語訳において情報が追加されていることを示した。4.
+    意味拡張単位の観点に基づいた事例研究では、collocation（語と語の共出現）のノンリテラルなレベルでは現代語訳では追加はせず、入れ替えも比較的一貫している。対して、5.
+    coligation（語とグラマレィカルパターンとの共出現）、semantic
+    preference（語と特定意味領域との共出現）といったノンリテラルなレベルでは、原文に対してより多様な入れ替えと追加が行われ、対応づけが多様化していくことを明らかにした。以上により、現代語訳をノンリテラルレベルの可視化に応用すると考えられる。}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-chen2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Chen, Xudong, ‪Bor Hodošček‬, and Hilofumi Yamamoto. 2024.
 <span>“古今和歌集の現代日本語訳の分析 -
 追加率と拡張意味単位の観点から.”</span> Journal of Japanese Association
-for Digital Humanities. September 1, 2024. <a href="https://doi.org/10.5555/12345678">https://doi.org/10.5555/12345678</a>.
+for Digital Humanities. September 1, 2024. <a href="https://doi.org/10.17928/jjadh.0.0_0">https://doi.org/10.17928/jjadh.0.0_0</a>.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
