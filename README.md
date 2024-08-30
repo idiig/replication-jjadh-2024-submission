@@ -3,6 +3,12 @@
 This repository is dedicated to the reproduction of the content from the JJADH paper by Chen2024.
 The project uses [`nix`](https://github.com/NixOS/nix) to create a temporary environment for the reproduction of the results.
 
+Clone this repository:
+
+```bash
+git clone --recursive https://github.com/idiig/jjadh-replication.git
+```
+
 ## Getting Started
 
 Installation of `nix` follows [https://nix.dev/install-nix](https://nix.dev/install-nix).
