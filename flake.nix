@@ -10,6 +10,24 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
+        # Define cmdstanr package from unstable channel
+        cmdstanr = pkgs.rPackages.buildRPackage {
+          name = "cmdstanr";
+          src = pkgs.fetchurl {
+            url = "https://github.com/stan-dev/cmdstanr/archive/refs/tags/v0.8.0.tar.gz";
+            sha256 = "06p3z1c08djf6z3lwh973hl7nw8ljj098lrxadayxp33f7nznnfg";
+          };
+          propagatedBuildInputs = with pkgs.rPackages; [
+            checkmate
+            jsonlite
+            processx
+            R6
+            vroom
+            posterior
+            data_table
+          ];
+        };
+
         # Define the core R environment with specific packages
         my-r-env = pkgs.rWrapper.override {
           packages = with pkgs.rPackages; [
@@ -57,6 +75,8 @@
           glibcLocalesUtf8
           git
           nodejs
+          gcc
+          busybox
         ];
 
         additionalExtensions = [
@@ -86,6 +106,9 @@
           # Shell hook to start JupyterLab and provide an environment description
           shellHook = ''
      
+            # Rstudio
+            Rscript -e 'cmdstanr::install_cmdstan()'
+
             # Path
             TEMPDIR=$(mktemp -d -p /tmp)
             mkdir -p $TEMPDIR
