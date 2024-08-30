@@ -2,6 +2,6 @@
 /.ipynb_checkpoints/
 /.virtual_documents/
 /main_files/
-*.html
 artifacts/*
 /_extensions/
+/.Rhistory
