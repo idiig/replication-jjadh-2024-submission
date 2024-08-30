@@ -130,8 +130,7 @@
             export R_LIBS_SITE=$(Rscript -e 'cat(paste(.libPaths(), collapse=":"))')
 
             # Directoty
-            mkdir -p data
-            git submodule update --recursive
+            git submodule update --remote --recursive
             mkdir -p artifacts/
             mkdir -p artifacts/figures/
 
