@@ -15,7 +15,10 @@
           packages = with pkgs.rPackages; [
             languageserver
             IRkernel
+            png
+            reticulate
             knitr
+            cmdstanr
             rmarkdown
             tidyverse
             fitdistrplus    # For confirm data distribution
@@ -46,16 +49,14 @@
 
         # System packages
         system-packages = with pkgs; [
-          # Writing tools
           quarto
           pandoc
-          # Languages
           R
+          rstudio
           python312
-          # Utf8 support
           glibcLocalesUtf8
-          # git
           git
+          nodejs
         ];
 
         additionalExtensions = [
@@ -103,6 +104,7 @@
 
             export R_HOME=$(R RHOME)
             export RPY2_RHOME=$R_HOME
+            export R_LIBS_SITE=$(Rscript -e 'cat(paste(.libPaths(), collapse=":"))')
 
             # Directoty
             mkdir -p data
