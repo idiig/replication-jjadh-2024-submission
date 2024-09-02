@@ -14,7 +14,7 @@ author:
         url: 'https://www.titech.ac.jp/english/'
         isni: 0000000121792105
         ror: 0112mx960
-  - name: ‪Bor Hodošček‬
+  - name: Bor Hodošček
     corresponding: false
     roles: []
     id: jc
@@ -121,11 +121,74 @@ crossref:
 
 :::{.callout-important title="Note"}
 test
+
+
+```{R}
+#| label: libraries
+#| message: false
+library(fitdistrplus)
+library(tidyverse)
+library(knitr)
+library(rstatix)
+
+library(brms)
+library(tidybayes)
+library(scales)
+library(ggdist)
+library(ggplot2)
+library(ggpubr)
+library(ggridges)
+library(ggokabeito)
+```
+
+```{R}
+#| label: themes
+theme_set_b <- function() {
+  theme_void() +
+    theme(
+      strip.background = element_rect(
+        color = "white", 
+        fill = "white"
+      ),
+      panel.grid.major.y = element_line(
+        color = "gray80",
+        linetype = "solid"
+      ),
+      strip.text = element_text(
+        color = "black",
+        size = rel(1),
+        angle = 90,
+        vjust = 0.5,
+        hjust = 1
+      ),
+      axis.text.y = element_text(
+        color = "black", 
+        hjust = 0
+      ),
+      strip.text.y.left = element_text(
+        angle = 180
+      ),
+      axis.title.x = element_text(
+        size = rel(1.3)
+      ),
+      axis.title.y = element_text(
+        size = rel(1.3),
+        angle = 90,
+        vjust = 0.5
+      ),
+      legend.position = "bottom",
+      legend.title = element_text(
+        size = rel(1),
+        face = "bold"
+      )
+    )
+}
+```
 :::
 
 # はじめに
 
-## 目的と結論
+## 目的と結論の概要
 
 本論文の目的は、原文との一致率の計算と意味拡張単位の翻訳という二つの側面から、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、和歌辞典とは異なる解釈材料として、和歌の非字義的な情報を補足説明するために使用できることを示すことである。
 
@@ -164,6 +227,15 @@ test
 ただし、翻訳における追加は読者の理解力を過大評価・過小評価した産物にもありうる [@Nida1964Science, p. 155; @Koller2004Einfuehrung, pp249--250]。この点においては、翻訳の insertation の多様性が伺える。
 古今和歌集の歌語の解釈資料としての現代語訳については、@Chen2024Translationbased では触れたものの、その多様性について十分説明していない。10 種類の現代語のコンテキストや、翻訳者の翻訳観を踏まえ再検討する余地がある。
 
+### 翻訳一般性仮説 (Translation universal hypothesis)
+
+- 単純化の定理 (simplication)、
+- 長さ増加の定理 (lenghtening)
+- 明示化の定理 (expicitation)
+- 重複の削減
+
+仮説への批判
+
 ### 本稿の意義
 
 現代語訳の作成者はいずれも、和歌の原文に対する理解や解釈に独自の視点を持っており、それぞれ比較することによって、和歌の現代語訳の追加要素の性格のカテゴリ化、および、その普遍性を明確できる。
@@ -174,10 +246,18 @@ test
 
 ### 問題意識と本稿の構成
 
-本稿では、古今和歌集の現代語訳の歴史的変遷を辿り、古今集の現代語訳の訳者のそれぞれの翻訳観を提示し、3つの問題意識に対し考察を行う：
+非明示的要素の可視化の前提として、4 つの面から再検討すべき余地がある：
 
-1. 直訳を意識した訳者がほとんどか
-2. 直訳を意識した訳者と、意訳を意識した訳者は、その意識にかかわらず原文との一致率がどれほどあるか、2 者に統計的な差があるか
+1. 注釈書における現代語訳の翻訳観の確認
+2. 現代語訳において原文の要素が削りが最小限であることの証明
+3. 現代語訳における追加要素が翻訳観を問わず十分であることの証明
+4. 現代語訳におおける追加要素がノンリテラル要素の可視化に適していることの証明
+
+そこで、本稿では、古今和歌集の現代語訳の歴史的変遷を辿り、古今集の現代語訳の訳者のそれぞれの翻訳観を提示し、3つの問題意識に対し考察を行う：
+
+1. 訳者の翻訳観はどのように分類できるか。
+2. 原文の要素の削除率がどれほどか。
+2. 原文との一致率がどれほどあるか、翻訳観による統計的な差があるか
 3. 意味の拡張単位（後述）の観点から、訳者の追加に反映されている要素は何か
 
 本稿の構成は、以下となる：
@@ -284,7 +364,7 @@ test
 前節で提示した 20 世紀の古今集の注釈書の著者の注釈方法、現代語訳執筆方針について文献調査を行い整理する。
 @Yamamoto2005Mathematical [p. 102] では、訳者の理論的考えを踏まえつつ、それぞれの現代語訳を実際に観察し、「逐語訳」「作者の意思の尊重」「字句を補う」「語順・語法を変える」「不詳」のように分類しているが、「作者の意思の尊重」は目標であり、その他は具体的な訳し方である、分類の視座が統一されていないため、本稿では、コミュニケーションの観点から翻訳の力点の置き方の分類を行う。それぞれの翻訳観に基づいて、意訳と直訳の意識についてまとめる。
 
-## 追加率の計算
+## 追加率・不一致率の計算
 
 それぞれの訳者が自身の翻訳方針にどこまで一貫して訳しているかについて、実際の歌語と訳語の一致率
 で計算する。一致率の計算は、要素の順序と重複を考慮しない集合演算による方法と、要素の順序と重複アライメントによる方法はあるが、ここではアライメントによる方法を用いる。具体的な手順は @Yamamoto2005Mathematical と @Yamamoto2019Analysis に詳しいが、本稿では先行研究で曖昧な部分を含め、計算のプロセスを明確にする。
@@ -318,15 +398,15 @@ $$
   - $s=$ `[BG-01-5520-20-040]1` 梅 (plum)
   - $t=$ `[BG-01-5520-20-040]-A` 梅 (plum)
 
-#### バッグ法による追加率の計算 {.unnumbered}
+#### バッグ法による不追加率の計算 {.unnumbered}
 
 バッグ法による追加率（現代語訳における和歌原文に対する追加要素の割合）は、2 つのテキストを 2 つの集合と見做し、それらの集合における一致語の量をもとに計算する。ソーステキスト（和歌）$S=(s_i)_{i \in \mathbb{Z}}$ とターゲットテキスト（現代語訳） $T=(t_i)_{i \in \mathbb{Z}}$ が与えられた時、2 テキストのターゲットテキストにおける追加率の計算は下記に従う。
 
 $$
-\text{U}_{T}(S,T) = 1 - \text{agreement}
-$$
-$$
-\text{agreement}_{T}(S,T) = \frac{1}{|T|}\sum_{s_i}^{|s|} \max_{t_j \in T} \text{score}(t_i, s_j)
+\begin{align}
+\text{U}_{T}(S,T) &= 1 - \text{agreement}_{T}(S,T)\\
+\text{agreement}_{T}(S,T) &= \frac{1}{|T|}\sum_{s_i}^{|s|} \max_{t_j \in T} \text{score}(t_i, s_j)
+\end{align}
 $$
 
 $\text{agreement}_{T}(S,T)$ は、ターゲットテキストに対しての 2 テキストの non-repetive な一致語の割合である。これを一致率と定義する。この一致率は、以下のスコーア関数 $\text{score}(s,t)$^[本稿では、1/0 の 2 値として定義する。「2 語の一致」の 3 つのカテゴリーの中でどのレベルで一致と見るか、といった一致率の計算の厳しさを調整できる。] に基づいて計算される。ここではどのレベルにも原文の要素と対応のないの要素の追加率を計算するので、2 語がいずれのレベルに一致すれば 1 とカウントする（下記参照）。
@@ -341,9 +421,19 @@ $$
 \end{cases}
 $$
 
-$|T|$ はターゲットテキストの長さを指し、$s_i$, $t_i$ はそれぞれソーステキスト、ターゲットテキストの $i$ 番目と $j$ 番目の要素を意味する。追加率は $1 - \text{agreement}$ で計算する。
+$|T|$ はターゲットテキストの長さを指し、$s_i$, $t_i$ はそれぞれソーステキスト、ターゲットテキストの $i$ 番目と $j$ 番目の要素を意味する。追加率は $1 - \text{agreement}_{T}(S,T)$ で計算する。
+
+一方で、不一致率は、原文にある要素のうち、現代語訳において対応が存在しない割合として、同様な計算ができる。
+
+$$
+\begin{align}
+\text{U}_{S}(S,T) &= 1 - \text{agreement}_{S}(S,T)\\
+\text{agreement}_{S}(S,T) &= \frac{1}{|S|}\sum_{s_i}^{|s|} \max_{t_j \in T} \text{score}(t_i, s_j)
+\end{align}
+$$
 
 バッグ法で計算された追加率は、統計分析に用いる（詳しくは次節参照）。
+不一致率について初歩的な記述統計をまず確認する。
 
 #### 整列法による追加率の計算 {.unnumbered}
 
@@ -380,50 +470,179 @@ $$
 
 うち、prime ($\prime$) 記号がついているものは整列後のテキストにおけるものである。動的計画法が和歌の翻訳における語順の交換などの site swap に弱いため、整列法で計算される追加率は、全体的に統計的に分析せず、ケーススターディの説明において提示する。
 
+```{bash}
+#| label: data-raw
+echo "Translator,PoemID,opN,opE,opF,opG,opT,opU,ctN,ctE,ctA,ctFG,ctU,ctD,Theoretical,Gap" >\
+  artifacts/data.csv
+  
+cat ./data/calcResidual/calcResidual-bag.txt |\
+  sed 's/[=:()]/ /g' |\
+  awk '{print $2,$3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16,$17,$18,$19}' OFS="," >>\
+  artifacts/data.csv
+```
+
+```{R}
+#| label: data-process
+
+data <- read.csv("artifacts/data.csv") |>
+  mutate(
+    AdditionRate = ctU + ctD,
+    UnmatchRate = opU,
+    Translator = as.factor(Translator),
+    Focus = case_when(
+      Translator %in% c(
+        "kaneko",
+        "kubota",
+        "katagiri"
+      ) ~ "Text-focused",
+      Translator %in% c(
+        "okumura",
+        "takeoka"
+      ) ~ "Poet-focused",
+      Translator %in% c(
+        "ozawa",
+        "kyusojin"
+      ) ~ "Reader-focused",
+      Translator %in% c(
+        "matsuda",
+        "kojimaarai",
+        "komachiya"
+      ) ~ "Others",
+    ),
+    Focus = factor(
+      Focus,
+      levels = c(
+        "Text-focused", 
+        "Poet-focused", 
+        "Reader-focused", 
+        "Others"
+      )
+    ),
+    Translator = factor(
+      Translator,
+      levels = c(
+        "kaneko",
+        "kubota",
+        "katagiri",
+        "okumura",
+        "takeoka",
+        "ozawa",
+        "kyusojin",
+        "matsuda",
+        "kojimaarai",
+        "komachiya"
+      )
+    )
+  ) |>
+  select(
+    Translator,
+    PoemID,
+    Focus,
+    AdditionRate,
+    UnmatchRate
+  )
+
+translator_labels <- c(
+  "kaneko" = "KNK",
+  "kubota" = "KBT",
+  "katagiri" = "KTGR",
+  "okumura" = "OKMR",
+  "takeoka" = "TKOK",
+  "ozawa" = "OZW",
+  "kyusojin" = "KSJ",
+  "matsuda" = "MTD",
+  "kojimaarai" = "K&A",
+  "komachiya" = "KMCY"
+  )
+```
+
 ## 翻訳観と追加率の関係に関する統計モデリング
 
 先行研究では概念・フィールド・同義レベルの一致率（言い換え率）、理論的・実験的追加率などの多くの指標を計算しているが、本稿では、実験的追加率をを対象に、前節の分類結果に基づきより精緻な統計分析を行う。
 
-訳者の翻訳観が実践に移り、実際の現代語訳における追加率に影響を与えているかどうかを確認するために、統計モデリングを行った。具体的には、翻訳観（`policy`）が追加率（`additional_rate`）^[ここでは、バッグ法によって算出された追加率を用いる。] に与える影響を検討するために、ベータ分布^[被説明変数がベータ分布に近似すると観測されている。] に基づく回帰モデルを採用した。このモデルは、訳者（`translator`）と歌（`poem`）のランダム効果も考慮し、これらの要因が追加率に与える潜在的な影響を制御するものである。
-
-$$
-y_i \sim \text{Beta}(\mu_i \phi, (1 - \mu_i) \phi)
-$$
-$$
-\mu_i = \text{logit}^{-1}(\eta_i) = \frac{1}{1 + e^{-\eta_i}}
-$$
-$$
-\eta_i = \beta_0 + \beta_{\text{policy}} \cdot \text{policy}_i + u_{\text{translator}_i} + u_{\text{poem}_i}
-$$
-$$
-\beta_0, \beta_{\text{policy}} \sim \mathcal{N}(0, 1)
-$$
-$$
-u_{\text{translator}_i} \sim \mathcal{N}(0, \sigma_{\text{translator}}^2)
-$$
-$$
-u_{\text{poem}_i} \sim \mathcal{N}(0, \sigma_{\text{poem}}^2)
-$$
-$$
-\sigma_{\text{translator}}, \sigma_{\text{poem}} \sim \text{Cauchy}(0, 1)
-$$
-$$
-\phi \sim \text{Cauchy}(0, 1)
-$$
-
-ここで：
-
-- $y_i$ は追加率であり、ベータ分布に従う。
-- $\mu_i$ は応答変数の平均値であり、線形予測子 $\eta_i$ をロジスティック変換することで得られる。
-- $\eta_i$ は線形予測子であり、翻訳観の固定効果、訳者、歌のランダム効果を含む。
-- $\beta_0$ は切片であり、追加率の平均を示す。
-- $\beta_{\text{policy}}$ は翻訳観の回帰係数であり、翻訳観が追加率に与える固定効果を評価する。
-- $u_{\text{translator}_i}$ は訳者のランダム効果であり、訳者間の変動を制御する。これは正規分布に従うと仮定する。
-- $u_{\text{poem}_i}$ は歌のランダム効果であり、歌間の変動を制御する。これは正規分布に従うと仮定する。
-- $\sigma_{\text{translator}}$, $\sigma_{\text{poem}}$ は訳者および歌のランダム効果の標準偏差であり、コーシー分布に従う。
-- $\phi$ はベータ分布の精度パラメータであり、コーシー分布に従う。
+訳者の翻訳観が実践に移り、実際の現代語訳における追加率に影響を与えているかどうかを確認するために、統計モデリングを行った。具体的には、翻訳観（`Focus`）が追加率（`additional_rate`）^[ここでは、バッグ法によって算出された追加率を用いる。] に与える影響を検討するために、ベータ分布^[計算された応答変数は、$(0, 1)$ の区間にあり、二項分布を仮定して用いることも考えられる。ただし、二項分布を用いる場合は、現代語訳文の全語数と追加に相当する語数の情報が必要であり、本稿の計算は @yamamoto2018 の計算結果を踏まえたため、全語数について情報が不足しており、それを前提としないベータ分布を用いる。] に基づく回帰モデルを採用した。このモデルは、訳者（`translator`）と歌（`poem`）のランダム効果も考慮し、これらの要因が追加率に与える潜在的な影響を制御するものである。モデルについて、付録を参照されたい。
 
 モデルの推定は、ベイズ推論に基づくMarkov Chain Monte Carlo (MCMC) 法を用いて実施する。具体的には、4 つのチェーンを使用し、各チェーンで 4000 回のイテレーションを行い、そのうち 1000 回をウォームアップ (burn-in) 期間として設定する。`brms`パッケージを用いてモデルを実装し、事後分布の収束性は R-hat 指標および有効サンプルサイズ (ESS) によって診断する。モデル結果では、翻訳観が追加率に与える影響を示し、事後平均、95%事後最狭信用区間 (posterior highest credible interval) 報告する。
+
+
+```{r}
+#| label: beta-model
+#| cache: true
+#| messge: false
+
+# backend
+options(
+    mc.cores = parallel::detectCores(),
+    brms.backend = "cmdstanr"
+)
+
+# Global setting
+chains <- 4
+iter <- 2000
+warmup <- 1000
+bayes_seed <- 1234
+
+# Formula
+formula <- bf(
+  AdditionRate ~ a + b, 
+  a ~ 1 + (1 | Translator) + (1 | PoemID),
+  b ~ 0 + Focus,
+  phi ~ 1 + (1 | PoemID),
+  nl = TRUE
+)
+
+prior = c(
+  prior(student_t(3, 0, 2.5), nlpar = b),
+  prior(
+    student_t(3, 0, 2.5),
+    class = b,
+    coef = Intercept,
+    nlpar = a
+  ),
+  prior(
+    student_t(3, 0, 2.5),
+    class = sd,
+    group = Translator,
+    nlpar = a
+  ),
+  prior(
+    student_t(3, 0, 2.5),
+    class = sd,
+    group = PoemID,
+    nlpar = a
+  ),
+  prior(
+    student_t(3, 0, 2.5),
+    class = Intercept,
+    dpar = phi
+  ),
+  # Default prior for standard deviation of phi parameter in PoemID group
+  prior(
+    student_t(3, 0, 2.5),
+    class = sd,
+    dpar = phi,
+    group = PoemID
+  )
+)
+
+# Model
+model <- data %>%
+  brm(
+    data = .,
+    formula = formula,
+    family = Beta(), 
+    prior = prior, 
+    chains = chains,
+    iter = iter,
+    warmup = warmup,
+    seed = bayes_seed,
+    silent = 2,
+    adapt_delta = 0.9,
+    control = list(max_treedepth = 12),
+    file = "./artifacts/model_beta_bayes",
+    save_model = TRUE
+  )
+```
 
 ## 拡張意味単位モデル (extended unit of meaning)
 
@@ -482,7 +701,7 @@ $$
 
 ### 分類ごとの翻訳観の詳細
 
-#### Text-orientated {.unbumbered}
+#### Text-focused {.unbumbered}
 
 このグープの訳者は、原文に忠実に翻訳することを重視し、できるだけ語順や意味を変えずに翻訳を行う。
 @kaneko1933Kokin は「逐語訳」に徹し、語を加えたり、削除することを避けており、慎重に翻訳していると述べている。
@@ -490,7 +709,7 @@ $$
 @kubota1960Kokin は、現代語訳の方針について、逐語訳にこだわり、語順を変えたり、新しい語を加えることを避けていると述べている。
 @katagiri1998Kokinhyoshaku も同様に、逐語訳を行い、和歌の省略や長大な増補を避け、可能な限り忠実に現代語訳している。
 
-#### Intension-orientated {.unnumbered}
+#### Poet-focused {.unnumbered}
 
 このグループでは、逐語訳に拘らず、表面的な意味よりも、原文の意図と感受性を重視する群である。
 @okumura1978Kokin [p. 7] は「口語訳は、原歌の言葉づかいや言い廻しを尊重し、一首の意味を厳密に解釈するより、基本的な作意をまず感じとってもらうことに重点をおいた」としている。原文の意図の理解を重視し、逐語訳よりも作意を優先して翻訳している。
@@ -500,7 +719,7 @@ S=\left[\left(a+b+c+\dots+n\right)\times X \right]\times Y
 $$
 ただし、$S$ は翻訳された文、$a, b, c, \dots, n$ のそれぞれは単語、$X$ は翻訳に含まれる要素、$Y$ は翻訳に効果的に加えられた要素である。$a,b,c, \dots, n$ それぞれの一般的普遍的意義は辞書で理解でき、それぞれの $+$ のしかたに相当するものは文法書を参照すれば了解できる」としている。@takeoka1976Kokin [p. 11] は $Y$ はふつうは 0 の値であるが、和歌にはいくつか効果的な要素が含まれる時、翻訳者は $Y$ に何らかの値、たとえば終助詞（わ、ね、よ）のようなものを付け加わえる。したがって、現代語訳作成のための重要な変数は $X$ となる。その $X$ は、語句の分割、対応する適切な現代語、語順、助詞・接続詞を含めた訳語、文の構造、話の流れ（談話）、場面の７つに分類されるとしている。このように、歌の筋より作者の意図を細部まで還元することを強調していると捉えられる。^[契沖の「古今和歌集余材抄」以来のの 7 種の注釈書の注を統合したはじめてのものである。竹岡はこの注釈書にて文学研究に分析的アプローチを組み込んでいる。竹岡は賀茂真淵、香川景樹の仕事を分析に根拠がないとして同意できないとしている一方で、契沖、本居宣長、富士谷成章 (1738–79) らの注釈を評価している。加えて、特に古典文法、語彙の観点から 7 種すべての古注間の違いについて慎重に議論している。]
 
-#### Readability-orientated {.unnumbered}
+#### Reader-focused {.unnumbered}
 
 このグループの訳者は、原文に忠実であることよりも、読者の内容の理解や解釈を読者に伝えることを重視している。そのため、語順を変えたり、新しい語を加えることもある。
 @ozawa1971Kikon は原作の語順・語法を変更することをいとわず、読者が理解しやすいように内容を優先した翻訳を行っている。 @ozawa1971Kikon [p. 46] は「口語訳はそれだけ独立しても意味がよくわかるように努めたので、時には原作の語順・語法を変えている」と述べており、逐語訳よりも内容の理解の方に力点が置かれている。
@@ -517,161 +736,18 @@ $$
 
 それぞれの翻訳の方針を見る限り、ほとんどの作者が逐語訳を基本に原文の意味を変えない翻訳を試みているが、力点の置き方が若干異なっている。本稿では、「テキストの字義を重視」「作者の意図・感受の解釈を重視」「読者の理解を重視」「不詳」のようにコミュニケーションの観点から分類を行った。この中で、原文の字義を重視する翻訳観は、もっとも逐語訳に拘っている。作者の意図・感受を重視する・読者の理解を重視する翻訳観では、多少の語と語順の入れ替え、語句の補いを許容している。ただし、この分類は、もちろんのこと、互いに重なる部分もあるが予想される。
 
-## 追加率の計算結果
+## 追加率・不一致率の概要
 
 追加率の計算結果は、@fig-data を参照する。
 
 ```{R}
-#| label: libraries
-#| message: false
-library(fitdistrplus)
-library(tidyverse)
-library(knitr)
-library(rstatix)
-library(ggplot2)
-library(ggpubr)
-library(ggridges)
-```
-
-```{R}
-#| label: themes
-theme_set_b <- function() {
-  theme_void() +
-    theme(
-      strip.background = element_rect(
-        color = "white", 
-        fill = "white"
-      ),
-      panel.grid.major.y = element_line(
-        color = "gray80",
-        linetype = "solid"
-      ),
-      strip.text = element_text(
-        color = "black",
-        size = rel(1),
-        angle = 90,
-        vjust = 0.5,
-        hjust = 1
-      ),
-      axis.text.y = element_text(
-        color = "black", 
-        hjust = 0
-      ),
-      strip.text.y.left = element_text(
-        angle = 180
-      ),
-      axis.title.x = element_text(
-        size = rel(1.3)
-      ),
-      axis.title.y = element_text(
-        size = rel(1.3),
-        angle = 90,
-        vjust = 0.5
-      ),
-      legend.position = "bottom",
-      legend.title = element_text(
-        size = rel(1),
-        face = "bold"
-      )
-    )
-}
-```
-
-```{bash}
-#| label: data-raw
-echo "Translator,PoemID,opN,opE,opF,opG,opT,opU,ctN,ctE,ctA,ctFG,ctU,ctD,Theoretical,Gap" >\
-  artifacts/data.csv
-  
-cat ./data/calcResidual/gistfile1.txt |\
-  sed 's/[=:()]/ /g' |\
-  awk '{print $2,$3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16,$17,$18,$19}' OFS="," >>\
-  artifacts/data.csv
-```
-
-```{R}
-#| label: data-process
-data <- read.csv("artifacts/data.csv") |>
-  mutate(
-    AdditionRate = ctU + ctD,
-    Translator = as.factor(Translator),
-    Policy = case_when(
-      Translator %in% c(
-        "kaneko",
-        "kubota",
-        "katagiri"
-      ) ~ "Text-orientated",
-      Translator %in% c(
-        "okumura",
-        "takeoka"
-      ) ~ "Intension-orientated",
-      Translator %in% c(
-        "ozawa",
-        "kyusojin"
-      ) ~ "Readability-orientated",
-      Translator %in% c(
-        "matsuda",
-        "kojimaarai",
-        "komachiya"
-      ) ~ "Others",
-    ),
-    Policy = factor(
-      Policy,
-      levels = c(
-        "Text-orientated", 
-        "Intension-orientated", 
-        "Readability-orientated", 
-        "Others"
-      )
-    ),
-    Translator = factor(
-      Translator,
-      levels = c(
-        "kaneko",
-        "kubota",
-        "katagiri",
-        "okumura",
-        "takeoka",
-        "ozawa",
-        "kyusojin",
-        "matsuda",
-        "kojimaarai",
-        "komachiya"
-      )
-    )
-  ) |>
-  select(
-    Translator,
-    PoemID,
-    Policy,
-    AdditionRate
-  )
-
-translator_labels <- c(
-  "kaneko" = "KNK",
-  "kubota" = "KBT",
-  "katagiri" = "KTGR",
-  "okumura" = "OKMR",
-  "takeoka" = "TKOK",
-  "ozawa" = "OZW",
-  "kyusojin" = "KSJ",
-  "matsuda" = "MTD",
-  "kojimaarai" = "K&A",
-  "komachiya" = "KMCY"
-  )
-```
-
-```{R}
 #| label: fig-data
-#| fig-scap: 追加率の確率分布
-#| fig-cap: 追加率の確率分布：
-#| fig-subcap: 
-#|   - "訳者別の追加率の確率分布"
-#|   - "Cullen & Frey Graph"
+#| fig-scap: 訳者別の追加率の確率分布
+#| fig-cap: 訳者追加率の確率分布
 #| messge: false
-#| laylayout-nrow: 2
-##| layout: [[61, 27]]
+#| warning: false
 
-by_policy_annotation <- data |> group_by(Policy) |> 
+by_focus_annotation <- data |> group_by(Focus) |> 
   get_summary_stats(
     AdditionRate, 
     type = "mean_sd"
@@ -679,13 +755,13 @@ by_policy_annotation <- data |> group_by(Policy) |>
   mutate(
     annotation = paste0(
       formatC(mean * 100, format = "f", digits = 1),
-      "*'%'*~(italic(N)==",
+      "*'%'~(N==",
       n,
-      "*';'*~italic(std.)==", 
+      "*';'~std.==", 
       formatC(sd, format = "f", digits = 3),
       ")"
-    )
-  )|>
+    ) 
+  ) |>
   select(annotation) |>
   pull()
 
@@ -697,9 +773,9 @@ by_translator_annotation <- data |> group_by(Translator) |>
   mutate(
     annotation = paste0(
       formatC(mean * 100, format = "f", digits = 1),
-      "*'%'*~(italic(N)==",
+      "*'%'~(N==",
       n,
-      "*';'*~italic(std.)==", 
+      "*';'~std.==", 
       formatC(sd, format = "f", digits = 3),
       ")"
     )
@@ -708,16 +784,16 @@ by_translator_annotation <- data |> group_by(Translator) |>
   pull()
 
 data |>
-  arrange(Policy, Translator) |>
+  arrange(Focus, Translator) |>
   ggplot(
     aes(
       x = AdditionRate, 
       y = Translator, 
-      fill = Policy,
+      fill = Focus,
       )
     ) + 
   stat_density_ridges(
-    color = "red",
+    color = palette_okabe_ito(5),
     quantile_lines = TRUE, 
     quantiles = c(0.025, 0.5, 0.975), 
     jittered_points = TRUE, 
@@ -726,11 +802,15 @@ data |>
     point_size = 0.001, 
     point_alpha = 0.1,
     point_color = "black",
-    alpha = 0.5,
+    alpha = 0.8,
     scale = 1,
     ) +
-  scale_fill_brewer(palette = "Blues") +  
-  scale_x_continuous(breaks = c(0, 0.25, 0.5, 0.75, 1)) +  
+  # scale_fill_brewer(palette = "Blues") +  
+  scale_x_continuous(
+    labels = label_percent(),
+    breaks = c(0, 0.25, 0.5, 0.75, 1),
+    limits = c(-0.2, 1.2)
+  ) +  
   scale_y_discrete(labels = translator_labels) +
   geom_hline(
     yintercept = c("matsuda", "ozawa", "okumura", "kaneko"),
@@ -741,30 +821,31 @@ data |>
   annotate(
     geom="text",
     x = -0.2, y = c("kojimaarai", "kyusojin", "takeoka", "katagiri"),
-    color = "blue",
-    vjust = -0.2,
+    # color = "blue",
+    color = palette_okabe_ito(order=c(2, 3, 6, 1)),
+    vjust = -0.1,
     hjust = 0,
     size = 6,
     label = c(
       "Others", 
-      "Readability",
-      "Intension",
-      "Text"
+      "Reader-focused",
+      "Poet-focused",
+      "Text-focused"
       )
     ) + 
   annotate(
     geom="text",
     x = -0.2, y = c("kojimaarai", "kyusojin", "takeoka", "katagiri"),
-    color = "blue",
+    color = palette_okabe_ito(order=c(2, 3, 6, 1)),
     vjust = 1.2,
     hjust = 0,
     size = 3,
-    label = by_policy_annotation,
+    label = by_focus_annotation,
     parse = TRUE
     ) + 
   annotate(
     geom="text",
-    x = 1.5, y = c(levels(data$Translator)),
+    x = 1.2, y = c(levels(data$Translator)),
     color = "black",
     vjust = -0.2,
     hjust = 1,
@@ -773,14 +854,16 @@ data |>
     parse = TRUE
     ) +
   xlab("Addition Rate") +
+  scale_fill_okabe_ito(order = c(1, 6, 3, 2), guide = "none") +
   labs(
-    fill = "Translation policy: "
+    fill = "Translation Focus: ",
+    caption = "2.5%, 50%, 97.5% quantiles are shown with red line"
   ) + 
   theme_set_b() +
   theme(
     axis.text.x = element_text(
       angle = 0, 
-      hjust = 1, 
+      hjust = 0.5, 
       vjust = 0.5
     ),
     axis.text.y = element_text(
@@ -790,64 +873,473 @@ data |>
     axis.title.y = element_blank()
   ) +
   guides(fill = guide_legend(nrow = 2)) 
-
-data |> 
-  dplyr::select(AdditionRate) |>
-  unlist() |>
-  descdist(
-    discrete = FALSE, 
-    boot = 1000,
-    print = FALSE, 
-    )
 ```
-
-## 統計モデルの推定結果
 
 ```{r}
-#| label: beta-model
-#| cache: true
+#| label: fig-unmatch-rate
+#| fig-scap: 不一致率（明確な対応をもたない要素が和歌原文を占める割合）の概要
+#| fig-cap: 不一致率（明確な対応をもたない要素が和歌原文を占める割合）の概要
 
-library(brms)
+by_focus_annotation <- data |> group_by(Focus) |> 
+  get_summary_stats(
+    UnmatchRate, 
+    type = "mean_sd"
+  ) |>
+  mutate(
+    annotation = paste0(
+      formatC(mean * 100, format = "f", digits = 1),
+      "*'%'~(N==",
+      n,
+      "*';'~std.==", 
+      formatC(sd, format = "f", digits = 3),
+      ")"
+    ) 
+  ) |>
+  select(annotation) |>
+  pull()
 
-# backend
-options(
-    mc.cores = parallel::detectCores(),
-    brms.backend = "cmdstanr"
-)
+by_translator_annotation <- data |> group_by(Translator) |> 
+  get_summary_stats(
+      UnmatchRate, 
+      type = "mean_sd"
+  ) |>
+  mutate(
+    annotation = paste0(
+      formatC(mean * 100, format = "f", digits = 1),
+      "*'%'~(N==",
+      n,
+      "*';'~std.==", 
+      formatC(sd, format = "f", digits = 3),
+      ")"
+    )
+  ) |>
+  select(annotation) |>
+  pull()
 
-# Global setting
-chains <- 4
-iter <- 4000
-warmup <- 1000
-bayes_seed <- 1234
-
-# Model
-model <- data %>%
-  brm(
-    data = .,
-    formula = AdditionRate ~ Policy + (1 | Translator) + (1 | PoemID), 
-    family = Beta(), 
-    prior = c(
-      prior(normal(0, 1), class = "b"),             # fixed effect
-      prior(normal(0, 1), class = "Intercept"),     # intercept
-      prior(cauchy(0, 1), class = "sd")            # random effect sd
-      # prior(cauchy(0, 1), class = "sigma")          # fi for beta dist
+data |>
+  arrange(Focus, Translator) |>
+  ggplot(
+    aes(
+      x = UnmatchRate, 
+      y = Translator, 
+      fill = Focus,
+    )
+  ) + 
+  stat_density_ridges(
+    color = palette_okabe_ito(5),
+    quantile_lines = TRUE, 
+    quantiles = c(0.025, 0.5, 0.975), 
+    jittered_points = TRUE, 
+    position = "raincloud",
+    vline_width = 1, vline_color = "red",
+    point_size = 0.001, 
+    point_alpha = 0.1,
+    point_color = "black",
+    alpha = 0.8,
+    scale = 1,
+  ) +
+  # scale_fill_brewer(palette = "Blues") +  
+  scale_x_continuous(
+    labels = label_percent(),
+    breaks = c(0, 0.25, 0.5, 0.75, 1),
+    limits = c(-0.2, 1.2)
+  ) + 
+  scale_y_discrete(labels = translator_labels) +
+  geom_hline(
+    yintercept = c("matsuda", "ozawa", "okumura", "kaneko"),
+    linetype = "solid", 
+    color = "black",
+    linewidth = 1.5
+  ) + 
+  annotate(
+    geom = "text",
+    x = 0.4,
+    y = c(
+      "kojimaarai", "kyusojin",
+      "takeoka", "katagiri"
+    ), 
+    # color = "blue",
+    color = palette_okabe_ito(order=c(2, 3, 6, 1)),
+    vjust = -0.1,
+    hjust = 0,
+    size = 5,
+    label = c(
+      "Others", 
+      "Reader-focused",
+      "Poet-focused",
+      "Text-focused"
+    )
+  ) + 
+  annotate(
+    geom = "text",
+    x = 0.4, y = c("kojimaarai", "kyusojin", "takeoka", "katagiri"),
+    color = palette_okabe_ito(order=c(2, 3, 6, 1)),
+    vjust = 1.2,
+    hjust = 0,
+    size = 2.5,
+    label = by_focus_annotation,
+    parse = TRUE
+  ) + 
+  annotate(
+    geom="text",
+    x = 1.2, y = c(levels(data$Translator)),
+    color = "black",
+    vjust = -0.2,
+    hjust = 1,
+    size = 2.5,
+    label = by_translator_annotation,
+    parse = TRUE
+  ) +
+  geom_vline(
+    xintercept = 0.2,
+    color = palette_okabe_ito(9),
+    linewidth = 1
+  ) +
+  xlab("Addition Rate") +
+  scale_fill_okabe_ito(order = c(1, 6, 3, 2), guide = "none") +
+  labs(
+    fill = "Translation Focus: ",
+    caption = "2.5%, 50%, 97.5% quantiles are shown with red line\n20% line is shown with black dashed line"
+  ) + 
+  theme_set_b() +
+  theme(
+    axis.text.x = element_text(
+      angle = 0, 
+      hjust = 0.5, 
+      vjust = 0.5
     ),
-    chains = chains,
-    iter = iter,
-    warmup = warmup,
-    seed = bayes_seed,
-    adapt_delta = 0.9,
-    silent = 2,
-    control = list(max_treedepth = 12)
+    axis.text.y = element_text(
+      face = "italic"
+    ),
+    legend.title = element_text(size = 12),
+    axis.title.y = element_blank()
+  ) +
+  guides(fill = guide_legend(nrow = 2)) 
+```
+## 統計モデルの推定結果
+
+### 翻訳観による追加率の相違が小さい
+
+モデルの事後分布から翻訳観ごとの現代語訳の追加率をサンプリングした [@fig-poster]。モデルの可視化と解釈について、@Yu2020Tradeoff を参考に、比較 2 群の差の事後分布の 95% の CrI が 0 をカバーしているかを観測する以外に、2 群の差が 0 より大きい確率を同時に確認する。まず、95% の CrI が 0 をカバーしていない場合、2 群に差があると判断する；95% の CrI が 0 をカバーしていても、2 群の差が 0 より大きい確率が 95% より大きい、または 5% より小さい場合、傾向差があると判断する。
+
+(a) 追加率は、翻訳を問わず 50% 前後、追加要素を加えていることがわかった。この点は、観測データ通りであった。
+(b) 翻訳観グループで比較した結果、2 グループの差の事後分布の 95% の CrI はすべて 0 をカバーしており、それぞれの 2 群の追加率は異なることが認められなかった。
+傾向としては、`Reader-focused` 群の追加率に比べ `Other` 群の追加率が 5% 程度下回り (CrI $[-0.13, 04]$, $P(\Delta > 0) = 88\%$)、`Poet-focused` 群が 5% 程度下回る (CrI $[-0.13, 04]$, $P(\Delta > 0) = 87.6\%$) ことが観測されているが、傾向差の基準を満していない。
+
+```{r}
+#| label: fig-poster
+#| fig-scap: 予測された追加率の事後分布
+#| fig-cap: 予測された追加率の事後分布
+#| fig-subcap: 
+#|   - "予測された各翻訳観の追加率の事後分布"
+#|   - "予測された翻訳観による追加率の相違の事後分布"
+#| messge: false
+#| warning: false
+#| laylayout-nrow: 2
+##| layout: [[61, 27]]
+
+pred_addition_rate <- model |> 
+  epred_draws(
+    newdata = tibble(
+      Focus = c(
+       'Text-focused', 
+       'Poet-focused',
+       'Reader-focused',
+       'Others'
+      ),
+      PoemID = NA,
+      Translator = NA
+    )
+  ) |>
+  mutate(
+    Focus = factor(
+      Focus,
+      levels = c(
+        "Text-focused", 
+        "Poet-focused", 
+        "Reader-focused", 
+        "Others"
+      )
+    )
   )
+
+pred_focus_annotation <- pred_addition_rate |>
+  median_hdi(.epred, .width = 0.95) |> 
+  mutate_if(is.numeric, round, digits = 2) |>
+  mutate(annotation = paste0(
+    .epred, 
+    "*'; '*95*'% '*CrI==",
+    "'['*", 
+    .lower, 
+    "*', '*",
+    .upper, 
+    "*']'", 
+    sep = ""
+    )
+  ) |>
+  pull(annotation)
+
+pred_addition_rate |>
+  ggplot(aes(x = .epred, y = Focus)) + 
+  stat_slab(
+    aes(
+      fill = Focus,
+      fill_ramp = after_stat(
+        cut_cdf_qi(cdf, .width = c(0.02, 0.8, 0.95, 1))
+        )
+      ),
+    # height = 4,
+    color = "white",
+    slab_size = 0.05,
+  ) + 
+  stat_pointinterval(
+    .width = c(.95, .8, .2)
+  ) + 
+  scale_fill_okabe_ito(order = c(1, 6, 3, 2), guide = "none") +
+  scale_fill_ramp_discrete(range = c(1, 0.2), guide = "none") +
+  scale_x_continuous(
+    labels = label_percent(),
+    breaks = c(0, 0.25, 0.5, 0.75, 1),
+    limits = c(-0.4, 0.85)
+    ) +  
+  labs(
+    x = "Estimated Addition Rate",
+    y = "Focus",
+    caption = "Posterior medians are shown with points\n 80% and 95% credible intervals (HDI) are shown with inner, outer intervals and shading"
+  ) +
+  annotate(
+    geom="text",
+    x =-0.4, y = c(levels(pred_addition_rate$Focus)),
+    color = palette_okabe_ito(order=c(1, 6, 3, 2)),
+    # color = "black",
+    vjust = -0.2,
+    hjust = 0,
+    size = 5,
+    label = pred_focus_annotation,
+    parse = TRUE
+  ) + 
+  geom_vline(
+    xintercept = 0.5, 
+    color = palette_okabe_ito(9), 
+    linetype="dashed",
+    linewidth = 1
+  ) +
+  theme_set_b() +
+  theme(
+    axis.text.x = element_text(
+      angle = 0, 
+      hjust = 0.5, 
+      vjust = 0.5
+    ),
+    axis.title.y = element_blank()
+  )
+
+pred_addition_rate_diff <- pred_addition_rate |> 
+  compare_levels(
+    variable = .epred, 
+    by = Focus
+  ) |>
+  mutate(
+    Focus = factor(
+      Focus,
+      levels = c(
+        "Poet-focused - Text-focused",
+        "Reader-focused - Poet-focused",
+        "Reader-focused - Text-focused",
+        "Others - Poet-focused",
+        "Others - Reader-focused",
+        "Others - Text-focused"
+      )
+    )
+  )
+
+pred_diff_CrI_annotation <- pred_addition_rate_diff |>
+  median_hdi(.width = 0.95) |> 
+  mutate_if(is.numeric, round, digits = 2) |>
+  mutate(annotation = paste0(
+    .epred, 
+    "*'; '*95*'% '*CrI==", 
+    "'['*", 
+    .lower,  
+    "*', '*",
+    .upper, 
+    "*']'", 
+    sep = ""
+    )
+  ) |>
+  pull(annotation)
+
+pred_diff_prob_g_0_annotation <- pred_addition_rate_diff |>
+  group_by(Focus) |>
+  summarise(
+    prob_ge_0 = mean(.epred > 0) * 100
+  ) |>
+  mutate_if(is.numeric, round, digits = 1) |>
+  mutate(annotation = paste0(
+    "italic(P)(Delta>0)==", 
+    prob_ge_0,
+    "*'%'",
+    sep = ""
+    )
+  ) |>
+  pull(annotation)
+
+pred_addition_rate_diff  |>
+  separate(
+    Focus, 
+    into = c("FocusA", "FocusB"), 
+    sep = " - ",
+    remove = FALSE
+  ) |>
+  mutate(
+    FocusA = factor(
+      FocusA,
+      levels = c(
+        "Text-focused", 
+        "Poet-focused", 
+        "Reader-focused", 
+        "Others"
+      )
+    ),
+    FocusB = factor(
+      FocusB,
+      levels = c(
+        "Text-focused", 
+        "Poet-focused", 
+        "Reader-focused", 
+        "Others"
+      )
+    )
+  ) |>
+  ggplot(
+    aes(
+      x = .epred, y = Focus
+    )
+  ) + 
+  stat_halfeye(
+    aes(
+      fill = FocusA, 
+      fill_ramp = stat(x < 0)
+    )
+  ) +
+  stat_pointinterval(
+    .width = c(.95, .8, .2)
+  ) + 
+  scale_fill_okabe_ito(order = c(6, 3, 2)) +
+  scale_fill_ramp_discrete(
+    from = "grey95",
+    range = c(1, 0), guide = "none") +
+  scale_x_continuous(
+    labels = label_percent(),
+    breaks = c(-0.25, 0, 0.25, 0.5, 0.75),
+    limits = c(-0.6, .4)
+    )+  
+  labs(
+    x = "Estimated Addition Rate Differences",
+    y = "Focus",
+    caption = "Posterior medians are shown with points\n 80% and 95% credible intervals (HDI) are shown with inner and outer intervals",
+    fill = "Base Translation Focus"
+  ) +
+  annotate(
+    geom="text",
+    x = -0.05, y = c(levels(pred_addition_rate_diff$Focus)),
+    # color = palette_okabe_ito(order=c(1, 6, 3, 2)),
+    # color = "black",
+    vjust = -0.1,
+    hjust = 1,
+    size = 3,
+    label = pred_diff_CrI_annotation,
+    parse = TRUE
+  ) + 
+  annotate(
+    geom="text",
+    x = 0.1, y = c(levels(pred_addition_rate_diff$Focus)),
+    color = palette_okabe_ito(order=c(6, 3, 3, 2, 2, 2)),
+    # color = "black",
+    vjust = -0.1,
+    hjust = 0,
+    size = 3,
+    label = pred_diff_prob_g_0_annotation,
+    parse = TRUE
+  ) + 
+  geom_vline(
+    xintercept = 0, 
+    color = palette_okabe_ito(9), 
+    linetype="dashed",
+    linewidth = 1
+  ) +
+  theme_set_b() +
+  theme(
+    axis.text.x = element_text(
+      angle = 0, 
+      hjust = 0.5, 
+      vjust = 0.5
+    ),
+    axis.title.y = element_blank()
+  ) +
+  guides(fill = guide_legend(nrow = 3)) 
 ```
 
-### 翻訳観による追加率の違い
+### 訳者による追加率の変動より歌による変動のほうが大きい
 
-### 和歌のランダム効果
+階層モデリングにおいて、訳者と歌をランダム切片としてモデル化した。各グループレベルがそれぞれ共有していると仮定した正規分布のパラメータである標準偏差の事後分布を可視化した [@fig-hyperparameter]。訳者グループの標準偏差の分布が歌グループのより左寄りであることが確認された。訳者の間の変動よりも、歌の間の変動のほうが大きいことが伺える。つまり、ランダム効果の視点からは、歌が訳者に比べ追加率の変動に寄与していると考えられる。
 
-### 訳者のランダム効果
+```{r}
+#| label: fig-hyperparameter
+#| fig-scap: グループレベルのハイパーパラメータの事後分布
+#| fig-cap: グループレベルのハイパーパラメータの事後分布
+
+post <- model |> 
+  as_draws_df() |>
+  select(starts_with("sd")) |>
+  select(-contains("pattern"))
+
+group_labels <- c(
+  "sd_PoemID__a_Intercept" = "Poem",
+  "sd_Translator__a_Intercept" = "Translator"
+  )
+
+post |>
+  pivot_longer(sd_PoemID__a_Intercept:sd_Translator__a_Intercept) |> 
+  mutate(name = factor(name)) |>
+  ggplot(aes(x = value, fill = name)) +
+  geom_density(linewidth = 0, alpha = 3/4, adjust = 2/3, show.legend = F) +
+  annotate(
+    geom = "text", 
+    x = 0.3, y = 20, 
+    label = expression(sigma["Poem"]),
+    color = palette_okabe_ito(7)
+  ) +
+  annotate(
+    geom = "text", 
+    x = 0.1, y = 10, 
+    label = expression(sigma["Translator"]), 
+    color = palette_okabe_ito(5)
+  ) +
+  scale_fill_okabe_ito(order = c(7, 5), guide = "none") + 
+  scale_x_continuous(
+    breaks = c(0.1, 0.2, 0.3),
+    limits = c(0, .4)
+    )+  
+  scale_y_continuous(NULL, breaks = NULL) +
+  labs(
+    x = expression("Group hyperparameter"~sigma~"value"),
+    y = "Group",
+  ) +
+  theme_set_b() +
+  theme(
+    axis.text.x = element_text(
+      angle = 0, 
+      hjust = 0.5, 
+      vjust = 1
+    ),
+    axis.title.y = element_blank(),
+    panel.grid.major.x = element_line(
+      color = "gray80",
+      linetype = "solid"
+    )
+  )
+```
 
 ## 拡張意味単位の対応：「立田」の場合
 
@@ -869,12 +1361,152 @@ model <- data %>%
 
 ## 追加率には翻訳観に左右されない部分がある
 
-## 現代語訳によるノンリテラル要素の可視化が十分考えられる
+追加率について、別の角度から再計算し、素のデータに対して予測モデリングを行った結果、いずれの翻訳観においても、相当の比例の追加要素が含まれえていることが再現できた。訳者の間の摂動より、歌による摂動のほうが大きいと考えられる。注釈書では、多くの語の解釈が注釈によって詳しく解説されていながらも、追加率が低下しているとはいえない。訳者の目線がテキストを重視するにせよ、作者の意図を重視するにせよ、読者の読み易さを重視するにせよ、基本的に追加せざるをえない要素があることがあると考えられる。それらの要素は、つまり、翻訳の目線、訳者の違いに左右されないものであり、その性質を明確する余地が残っている。現代語訳によるノンリテラル要素の可視化が十分考えられる。
 
-## 拡張意味単位の現代語訳の可視化としてのシステム
+## 拡張意味単位のから見る現代語訳よる可視化システム
+
+拡張意味単位の観点から、現代語訳は、コロケーションのレベルで対応が一貫しているが、コリゲーションと意味志向のレベルで要素の置き換えと追加など、対応の多様化が進み、談話韻律のレベルでは基調が保持されていると考えられる。現代語訳において、訳者や翻訳観に左右されない追加要素が、コリゲーションと意味志向のレベルにおいて解釈を行った産物として捉えられる。
+よって、機能的な表現として、コリゲーション：naked verb
+内容的表現として、意味志向のネットワーク、グラフの拡張は、概念レベルで行う。
 
 ## 分類体系の有用性
 
+本稿における一致率の計算では、単語アライメントモデルより安定的な分類番号を用いた。分類体系が、同一の意味の語を階層的に対応づけることの有用性が古語研究で再確認できた。現在 @Asahara2022 によって古語への分類語彙番号が付与されていることによって広げられる研究の可能性が十分期待できるであろう。ただし、現在分類語彙表番号は、概念レベルまでであって、類義語、同義語、同語異表記の検出への対応が研究者各自で目標んそった追加的付与が求められている。こん点において、意味体系の作り方に関して検討する余地がある。
+
 # 結論
 
+本稿では、古今和歌集の注釈書における現代語訳の概観と分類を行い、それら現代語訳における追加要素（補足説明）の比例の統計モデリングを行い、事例に対してコーパス言語学的な分析を行った。
+
+# 附録 {.appendix .unnumbered}
+
+## 追加率の予測モデル {.appendix .unnumbered}
+
+$$
+\begin{aligned}
+&\text{[Likelihood]} \\
+\text{Addition Rate}_i &\sim \operatorname{Beta}(\mu_i \phi_i, (1 - \mu_i) \phi_i) \\
+\ \\
+&\text{[} \mu \text{ part of beta distribution]} \\
+\mu_i &= \operatorname{logit}^{-1}(\eta_i) = \frac{1}{1 + e^{-\eta_i}} \\
+\eta_i &=  \alpha_{\text{translator}[i]} + \gamma_{\text{poem}[i]} + \beta_{\text{translation focus}[i]} \\
+\ \\
+&\text{[} \phi \text{ part of beta distribution]} \\
+\log(\phi_i) &= \gamma^{\phi}_{\text{poem}[i]} \\
+\ \\
+& \text{[Group-specific intercepts]} \\
+\alpha_{j} &\sim \mathcal{N}(\mu_{\alpha_j}, \sigma_{\text{translator}}), \text{ for } j \text{ in translator} 1, 2, \dots, 10 \\
+\gamma_{j} &\sim \mathcal{N}(0, \sigma_{\text{poem}}), \text{ for } j \text{ in poem} 1, 2, \dots, 1000 \\
+\gamma^{\phi}_{j} &\sim \mathcal{N}(\mu_{\gamma^{\phi}_{j}}, \sigma^{\phi}_{\text{poem}}), \text{ for } j \text{ in poem} 1, 2, \dots, 1000 \\
+\ \\
+& \text{[Prior for fixed coefficients]} \\
+\beta_{j} &\sim \text{Student-t}(3, 0, 2.5), \text{ for } j \text{ in translation focus} 1, 2, 3, 4\\
+\ \\
+& \text{[Prior for population-level intercepts]} \\
+\mu_{\alpha_{j}}, \mu_{\gamma^{\phi}_{j}} &\sim \text{Student-t}(3, 0, 2.5) \\
+\ \\
+& \text{[Prior for hyperparameter]} \\
+\sigma_{\text{translator}}, \sigma_{\text{poem}}, \sigma^{\phi}_{\text{poem}} &\sim \text{Student-t}(3, 0, 2.5)
+\end{aligned}
+$$
+
+ここ^[
+モデルの書き方として Centered Parameterization にしているが、`brms` での実装が `Non-Centered Parameterization` になっている点に注意されたい。]では：
+
+- $\text{Addition Rate}_i$ は追加率であり、ベータ分布に従うと仮定する。
+- $\mu_i \phi_i, (1 - \mu_i) \phi_i$ はそれぞれベータ分布のシェープパラメータに相当する。
+- $\mu_i$ はベータ分布の平均値パラメータであり、線形予測子 $\eta_i$ をロジスティック変換することで得られる。
+- $\beta_{\text{traslation focus}[i]}, \text{traslation focus}=1,2,3,4$ は4つの翻訳観の固定効果項であり、翻訳観の種類ごとに異なる効果をモデル化する。
+- $\alpha_{\text{traslator}[i]}, translator=1,2,\dots,10$ は訳者のランダム効果項（ランダム切片）であり、 
+- $\gamma_{\text{poem}[i]}, \text{poem}=1,2,\dots,1000$ は詩（PoemID）のランダム効果項（ランダム切片）である。
+- $\phi_i$ はベータ分布の精度パラメータであり、詩（PoemID）のランダム効果項 $\gamma^{\phi}_{\text{poem}[i]}$ でモデル化する。
+- $\mu_{\alpha_j}$, $\mu_{\gamma^{\phi}_{j}}$ はそれぞれ $\mu$ パートと $\phi$ パートの population-level の切片である。
+
+事前分布の設定について、基本的に`brms`のデフォルト設定に従う：
+- 切片 $\mu_{\alpha_j}$, $\mu_{\gamma^{\phi}_{j}}$ と翻訳観ごとの固定効果 $\beta_{\text{traslation focus}}$ のは Student-t 分布の事前分布に従うと仮定する（`brms` のデフォルト事前分布）。
+- $\sigma_{\text{translator}}$, $\sigma_{\text{poem}}$, $\sigma^{\phi}_{\text{poem}}$ はそれぞれ、訳者および詩歌、精度パラメータに対するランダム効果項の標準偏差であり、Student-t 分布に従うと仮定する（`brms` のデフォルト事前分布）。
+
+デフォルト設定が次表を参照する：
+
+```{R}
+#| label: tbl-model-configs
+#| tbl-scap: デフォルト事前分布
+#| warining: false
+
+formula |> get_prior(
+  formula, data=data, family = Beta(),
+  prior= prior
+  ) |> 
+  kable()
+```
+
+モデルの詳細：
+
+```{R}
+#| label: model-info
+
+model |> summary()
+```
+
+<!-- $$ -->
+<!-- \begin{aligned} -->
+<!-- &\text{[Likelihood]} \\ -->
+<!-- \text{Addition Rate}_i &\sim \operatorname{Beta}(\mu_i \phi_i, (1 - \mu_i) \phi_i) \\ -->
+<!-- \ \\ -->
+<!-- &\text{[} \mu \text{ part of beta distribution]} \\ -->
+<!-- \mu_i &= \operatorname{logit}^{-1}(\eta_i) = \frac{1}{1 + e^{-\eta_i}} \\ -->
+<!-- \eta_i &= + u_{\text{translator}_i} + u_{\text{poem}_i} + \text{\textbf{Translation focus}}_i \boldsymbol{\beta} \\ -->
+<!-- \text{\textbf{Translation focus}} &= (\text{Text-focused}\; \text{Translator-focused}\; \text{Reader-focused}\; \text{Others}) \\ -->
+<!-- \boldsymbol{\beta} &= (\beta_{0}\; \beta_{1}\; \beta_{2}\; \beta_{3})^{\intercal} \\ -->
+<!-- \ \\ -->
+<!-- &\text{[} \phi \text{ part of beta distribution]} \\ -->
+<!-- \log(\phi_i) &= u_{\phi_{\text{poem}_i}} \\ -->
+<!-- \ \\ -->
+<!-- & \text{[Translator- and Poem-specific random intercepts]} \\ -->
+<!-- u_{\text{translator}_i} &\sim \mathcal{N}(\mu_{\text{translator}}, \sigma_{\text{translator}}^2) \\ -->
+<!-- u_{\text{poem}_i} &\sim \mathcal{N}(\mu_{\text{poem}}, \sigma_{\text{poem}}^2) \\ -->
+<!-- u_{\phi_{\text{poem}_i}} &\sim \mathcal{N}(\mu_{\phi_{\text{poem}}}, \sigma_{\phi_{\text{poem}}}^2) \\ -->
+<!-- \ \\ -->
+<!-- &\text{[Priors]} \\ -->
+<!-- \beta_{0} &\sim \text{Student-t}(3, 0, 2.5) \\ -->
+<!-- \beta_{1}, \beta_{2},\beta_{3} &\sim \operatorname{Uniform}(0, 1) \\ -->
+<!-- \sigma_{\text{translator}}, \sigma_{\text{poem}}, \sigma_{\phi_{\text{poem}}} &\sim \text{Student-t}(3, 0, 2.5) -->
+<!-- \end{aligned} -->
+<!-- $$ -->
+
+
+<!-- - $\text{Addition Rate}_i$ は追加率であり、ベータ分布に従うと仮定する。 -->
+<!-- - $\mu_i \phi_i, (1 - \mu_i) \phi_i$ はそれぞれベータ分布の形状パラメータに相当する。 -->
+<!-- - $\mu_i$ はベータ分布の平均値パラメータであり、線形予測子 $\eta_i$ をロジスティック変換することで得られる。線形予測子 $\eta_i$ において、 -->
+<!--   - $\boldsymbol{\beta}$ は翻訳観の固定効果項である。 $\beta_{1},\beta_{2},\beta_{3},\beta_{4}$ で構成される。 -->
+<!--   - $u_{\text{translator}_i}$ は訳者のランダム効果項（ランダム切片）であり、 $u_{\text{poem}_i}$ はランダム効果項（ランダム切片）である。 -->
+<!-- - $\phi_i$ はベータ分布の精度パラメータであり、詩 (PoemID) のランダム効果項 $u_{\phi_{\text{poem}_i}}$ で予測される。 -->
+<!-- - 固定効果項 $\boldsymbol{\beta}$ の各要素は Student-t 分布の事前分布を用いる（`brms`のデフォルト事前分布）。 -->
+<!-- - $\sigma_{\text{translator}}$, $\sigma_{\text{poem}}$, $\sigma_{\phi_{\text{poem}}}$ はそれぞれ、訳者および詩歌、精度パラメータに対するランダム効果項の標準偏差であり、Student-t 分布に従うと仮定される（`brms`のデフォルト事前分布）。 -->
+
+
+<!-- $$\text{AdditionRate}_i \sim \text{Beta}(\mu_i \cdot \phi_i, (1 - \mu_i) \cdot \phi_i)$$ -->
+<!-- $$\mu_i = \text{logit}^{-1}(\eta_i) = \frac{1}{1 + e^{-\eta_i}}$$ -->
+<!-- $$\eta_i = \beta_0 + \beta_{\text{focus}} \cdot \text{focus}_i + u_{\text{translator}_i} + u_{\text{poem}_i}$$ -->
+<!-- $$\phi_i = \phi_0 + u_{\phi_{\text{poem}_i}}$$ -->
+<!-- $$\beta_0, \beta_{\text{focus}}, \phi_0 \sim \text{Student-t}(3, 0, 2.5)$$ -->
+<!-- $$u_{\text{translator}_i} \sim \mathcal{N}(0, \sigma_{\text{translator}}^2)$$ -->
+<!-- $$u_{\text{poem}_i} \sim \mathcal{N}(0, \sigma_{\text{poem}}^2)$$ -->
+<!-- $$u_{\phi_{\text{poem}_i}} \sim \mathcal{N}(0, \sigma_{\phi_{\text{poem}}}^2)$$ -->
+<!-- $$\sigma_{\text{translator}}, \sigma_{\text{poem}}, \sigma_{\phi_{\text{poem}}} \sim \text{Student-t}(3, 0, 2.5)$$ -->
+
+<!-- ここで: -->
+
+<!-- - $\text{Addition Rate}_i$ は追加率であり、ベータ分布に従う。 -->
+<!-- - $\mu_i$ はベータ分布の平均値であり、線形予測子 $\eta_i$ をロジスティック変換することで得られる。 -->
+<!-- - $\phi_i$ はベータ分布の精度パラメータであり、詩歌 ($\text{PoemID}$) ごとに異なるランダム効果 $u_{\phi_{\text{poem}_i}}$ を持つと仮定される。 -->
+<!-- - $\mu_i \cdot \phi_i, (1 - \mu_i) \cdot \phi_i$ はそれぞれベータ分布の形状パラメータに相当する。 -->
+<!-- - $\eta_i$ は線形予測子であり、翻訳観の固定効果 ($\beta_{\text{focus}}$)、訳者のランダム効果 ($u_{\text{translator}_i}$)、および詩歌のランダム効果 ($u_{\text{poem}_i}$) を含む。 -->
+<!-- - $\phi_i$ は詩歌レベルでのランダム効果を持つ精度パラメータであり，$\phi_0$ という切片と詩歌のランダム効果の和として表現される。 -->
+<!-- - $\beta_0$ は切片であり、追加率の平均を示す。 -->
+<!-- - $\beta_{\text{focus}}$ は翻訳観の回帰係数であり、翻訳観が追加率に与える固定効果を評価する。 -->
+<!-- - $\phi_0$ は精度パラメータ $\phi_i$ の切片であり、Student-t 分布に従うと仮定される。 -->
+<!-- - $u_{\text{translator}_i}$ は訳者のランダム効果であり、訳者間の変動を制御する。これは正規分布に従うと仮定される。 -->
+<!-- - $u_{\text{poem}_i}$ は詩歌のランダム効果であり、詩歌間の変動を制御する。これは正規分布に従うと仮定される。 -->
+<!-- - $u_{\phi_{\text{poem}_i}}$ は精度パラメータ $\phi_i$ の詩歌ごとのランダム効果であり、正規分布に従うと仮定される。 -->
+<!-- - $\sigma_{\text{translator}}$, $\sigma_{\text{poem}}$, $\sigma_{\phi_{\text{poem}}}$ はそれぞれ、訳者および詩歌、精度パラメータに対するランダム効果の標準偏差であり、Student-t 分布に従うと仮定される。 -->
 
