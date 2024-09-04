@@ -216,27 +216,18 @@ theme_set_b <- function() {
 
 この記述に従い読み解いていけば、恋人の心が「飽き（秋）」て、歌人が「泣（鳴）」いている「失恋」の話であろうと推測される。このように「秋」から読み取る「飽きる恋」の情報は、原文の文脈（周辺語）では非明示的、つまりノンリテラルであるため、語の文字通りの意味だけでは読み取れない。
 
-### 現代語訳に基づく非明示的要素の可視化
+### 現代語訳の追加要素に基づく歌語の非明示的要素の可視化
 
 以上のような非明示的要素の可視化システムの開発は、筆者が所属する山元研究室がこれまでに、現代語訳との相対化に基づく可視化システムを検討してきた [@Yamamoto2005Mathematical; @Yamamoto2006Extraction; @chin2022Tango; @Chen2024Translationbased]。
 
-現代語訳との相対化というのは、現代語の要素の集合から和歌の原文の要素を取り除き現代語にしか存在しない要素を引き立てることである。この考えが @kondo2001Ngram, @kondo2011Heian では「引き算」と称している。しかし、引き算で残った要素は、つまり、現代語訳で追加された要素はどのような性格であるか、明確にする必要がある。
+現代語訳との相対化というのは、現代語の要素の集合から和歌の原文の要素を取り除き現代語にしか存在しない要素を引き立てることである。この考えが @kondo2001Ngram, @kondo2011Heian では「引き算」と称している。しかし、引き算で残った要素、つまり、現代語訳で追加された要素はどのような性格であるか、明確にする必要がある。
 
 翻訳における要素の追加などの処理と操作に関して、@Koller2004Einfuehrung [p. 249] では翻訳者による「介入 (Eingriff)」として、「無害」とされる介入には、目的言語の読者の不足している背景知識や、デノテーション・コノテーション面の情報、そして、言語内的、社会文化的、間テキスト的な情報の損失を補うための注釈付き翻訳手法の結果としての追加が含まれていると指摘している。翻訳が注釈・辞書同様に、解釈資料として非明示的な情報の抽出に有効な材料と認識できる。
 
-ただし、翻訳における追加は読者の理解力を過大評価・過小評価した産物にもありうる [@Nida1964Science, p. 155; @Koller2004Einfuehrung, pp249--250]。この点においては、翻訳の insertation の多様性が伺える。
+ただし、翻訳における追加は読者の理解力を過大評価・過小評価した産物にもありうる [@Nida1964Science, p. 155; @Koller2004Einfuehrung, pp249--250]。この点においては、翻訳の追加の多様性が伺える。
 古今和歌集の歌語の解釈資料としての現代語訳については、@Chen2024Translationbased では触れたものの、その多様性について十分説明していない。10 種類の現代語のコンテキストや、翻訳者の翻訳観を踏まえ再検討する余地がある。
 
-### 翻訳一般性仮説 (Translation universal hypothesis)
-
-- 単純化の定理 (simplication)、
-- 長さ増加の定理 (lenghtening)
-- 明示化の定理 (expicitation)
-- 重複の削減
-
-仮説への批判
-
-### 本稿の意義
+## 本稿の意義
 
 現代語訳の作成者はいずれも、和歌の原文に対する理解や解釈に独自の視点を持っており、それぞれ比較することによって、和歌の現代語訳の追加要素の性格のカテゴリ化、および、その普遍性を明確できる。
 
@@ -244,7 +235,7 @@ theme_set_b <- function() {
 
 最終的に以上の知見を踏まえ、非明示的要素の可視化システムの根拠をより明確にでき、その改善の方向性をも明確できる。
 
-### 問題意識と本稿の構成
+## 問題意識と本稿の構成
 
 非明示的要素の可視化の前提として、4 つの面から再検討すべき余地がある：
 
@@ -695,8 +686,15 @@ model <- data %>%
 
 この中で、原文の字義を重視する翻訳観は、もっとも逐語訳に拘っている。作者の意図・感受を重視する・読者の理解を重視する翻訳観では、多少の語と語順の入れ替え、語句の補いを許容しているように述べている。
 
-::: {.callout-important title="Add communication model figure"}
-@Schramm1954Process などにおいての力点の置き方が異なる。
+それぞれ @Schramm1954Process のコミュニケーションモデルにおいて力点の置き方で解釈される [@fig-schramm-schema]。
+
+::: {#fig-schramm-schema layout-nrow=2}
+
+![コミュニケーションモデル](figures/fig-process-comm.svg){#fig-schramm-schema-orig}
+
+![翻訳観の分類](figures/fig-schema-op-ct-tikz.svg){#fig-schramm-schema-adap}
+
+コミュニケーションモデルから見る翻訳観の分類
 :::
 
 ### 分類ごとの翻訳観の詳細
@@ -1020,23 +1018,12 @@ data |>
 
 ### 翻訳観による追加率の相違が小さい
 
-モデルの事後分布から翻訳観ごとの現代語訳の追加率をサンプリングした [@fig-poster]。モデルの可視化と解釈について、@Yu2020Tradeoff を参考に、比較 2 群の差の事後分布の 95% の CrI が 0 をカバーしているかを観測する以外に、2 群の差が 0 より大きい確率を同時に確認する。まず、95% の CrI が 0 をカバーしていない場合、2 群に差があると判断する；95% の CrI が 0 をカバーしていても、2 群の差が 0 より大きい確率が 95% より大きい、または 5% より小さい場合、傾向差があると判断する。
-
-(a) 追加率は、翻訳を問わず 50% 前後、追加要素を加えていることがわかった。この点は、観測データ通りであった。
-(b) 翻訳観グループで比較した結果、2 グループの差の事後分布の 95% の CrI はすべて 0 をカバーしており、それぞれの 2 群の追加率は異なることが認められなかった。
-傾向としては、`Reader-focused` 群の追加率に比べ `Other` 群の追加率が 5% 程度下回り (CrI $[-0.13, 04]$, $P(\Delta > 0) = 88\%$)、`Poet-focused` 群が 5% 程度下回る (CrI $[-0.13, 04]$, $P(\Delta > 0) = 87.6\%$) ことが観測されているが、傾向差の基準を満していない。
-
 ```{r}
-#| label: fig-poster
-#| fig-scap: 予測された追加率の事後分布
-#| fig-cap: 予測された追加率の事後分布
-#| fig-subcap: 
-#|   - "予測された各翻訳観の追加率の事後分布"
-#|   - "予測された翻訳観による追加率の相違の事後分布"
+#| label: posterier-data
 #| messge: false
 #| warning: false
-#| laylayout-nrow: 2
-##| layout: [[61, 27]]
+
+set.seed(1234)
 
 pred_addition_rate <- model |> 
   epred_draws(
@@ -1066,10 +1053,17 @@ pred_addition_rate <- model |>
 pred_focus_annotation <- pred_addition_rate |>
   median_hdi(.epred, .width = 0.95) |> 
   mutate_if(is.numeric, round, digits = 2) |>
+  mutate(median = paste0(
+    "$",
+    .epred*100,
+    "\\%$"
+    )
+  ) |>
   mutate(annotation = paste0(
     .epred, 
-    "*'; '*95*'% '*CrI==",
-    "'['*", 
+    "*'%; '*",
+    .width * 100,
+    "*'% CrI ['*", 
     .lower, 
     "*', '*",
     .upper, 
@@ -1077,7 +1071,117 @@ pred_focus_annotation <- pred_addition_rate |>
     sep = ""
     )
   ) |>
-  pull(annotation)
+  mutate(description = paste0(
+    "$\\mathrm{posterior\\; median} = ",
+    .epred, 
+    "\\%; ",
+    .width * 100,
+    "\\%\\;\\mathrm{CrI} = [", 
+    .lower, 
+    ", ",
+    .upper, 
+    "]$", 
+    sep = ""
+    )
+  ) |>
+  select(Focus,annotation, description, median)
+
+pred_addition_rate_diff <- pred_addition_rate |> 
+  compare_levels(
+    variable = .epred, 
+    by = Focus
+  ) |>
+  mutate(
+    Focus = factor(
+      Focus,
+      levels = c(
+        "Poet-focused - Text-focused",
+        "Reader-focused - Poet-focused",
+        "Reader-focused - Text-focused",
+        "Others - Poet-focused",
+        "Others - Reader-focused",
+        "Others - Text-focused"
+      )
+    )
+  )
+
+pred_diff_CrI_annotation <- pred_addition_rate_diff |>
+  median_hdi(.width = 0.95) |> 
+  mutate_if(is.numeric, round, digits = 2) |>
+  mutate(median = paste0(
+    "$",
+    .epred*100,
+    "\\%$"
+    ) 
+  ) |>
+  mutate(annotation = paste0(
+    "Delta==",
+    .epred, 
+    "*'%; '*",
+    .width * 100,
+    "*'% CrI ['*", 
+    .lower,  
+    "*', '*",
+    .upper, 
+    "*']'", 
+    sep = ""
+    )
+  ) |>
+  mutate(description = paste0(
+    "$\\mathrm{posterior\\; median} = ",
+    .epred, 
+    "\\%; ",
+    .width * 100,
+    "\\%\\;\\mathrm{CrI} = [", 
+    .lower, 
+    ", ",
+    .upper, 
+    "]$", 
+    sep = ""
+    )
+  ) |>
+  select(Focus, annotation, description, median)
+
+pred_diff_prob_g_0_annotation <- pred_addition_rate_diff |>
+  group_by(Focus) |>
+  summarise(
+    prob_g_0 = mean(.epred > 0) * 100
+  ) |>
+  mutate_if(is.numeric, round, digits = 1) |>
+  mutate(annotation = paste0(
+    "italic(P)(Delta>0)==", 
+    prob_g_0,
+    "*'%'",
+    sep = ""
+    )
+  ) |>
+  mutate(description = paste0(
+    "$P(\\Delta>0) = ",
+    prob_g_0,
+    "\\%$",
+    sep = ""
+    )
+  ) |>
+  select(Focus, annotation, description, prob_g_0)
+```
+
+モデルの事後分布から翻訳観ごとの現代語訳の追加率をサンプリングした [@fig-poster]。モデルの可視化と解釈について、@Yu2020Tradeoff を参考に、比較 2 群の差の事後分布の 95% の CrI が 0 をカバーしているかを観測する以外に、2 群の差が 0 より大きい確率を同時に確認する。まず、95% の CrI が 0 をカバーしていない場合、2 群に差があると判断する；95% の CrI が 0 をカバーしていても、2 群の差が 0 より大きい確率が 95% より大きい、または 5% より小さい場合、傾向差があると判断する。
+
+(a) 追加率は、翻訳観を問わず 現代語訳の要素の 50% 前後が、追加的な要素であることがわかった。この点は、観測データからも確認されていた。
+(b) 翻訳観グループで比較した結果、2 グループの差の事後分布の 95% の CrI はすべて 0 をカバーしており、それぞれの 2 群の追加率は異なることが認められなかった。
+傾向としては、`Reader-focused` 群の追加率に比べ `Other` 群の追加率が `{r} pred_diff_CrI_annotation |> filter(Focus == "Others - Reader-focused") |> pull(median) |> I()` 程度下回る (`{r} pred_diff_CrI_annotation |> filter(Focus == "Others - Reader-focused") |> pull(description) |> I()`, `{r} pred_diff_prob_g_0_annotation |> filter(Focus == "Others - Reader-focused") |> pull(description) |> I()`)。`Reader-focused` 群の追加率は、`Poet-focused` 群より `{r} pred_diff_CrI_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(median) |> I()`% 程度下回る (`{r} pred_diff_CrI_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(description) |> I()`, `{r} pred_diff_prob_g_0_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(description) |> I()`) ことが観測されているが、傾向差の基準を満していない。
+
+```{r}
+#| label: fig-poster
+#| fig-scap: 予測された追加率の事後分布
+#| fig-cap: 予測された追加率の事後分布
+#| fig-subcap: 
+#|   - "予測された各翻訳観の追加率の事後分布"
+#|   - "予測された翻訳観による追加率の相違の事後分布"
+#| messge: false
+#| warning: false
+#| laylayout-nrow: 2
+##| layout: [[61, 27]]
 
 pred_addition_rate |>
   ggplot(aes(x = .epred, y = Focus)) + 
@@ -1115,7 +1219,7 @@ pred_addition_rate |>
     vjust = -0.2,
     hjust = 0,
     size = 5,
-    label = pred_focus_annotation,
+    label = pred_focus_annotation$annotation,
     parse = TRUE
   ) + 
   geom_vline(
@@ -1133,56 +1237,6 @@ pred_addition_rate |>
     ),
     axis.title.y = element_blank()
   )
-
-pred_addition_rate_diff <- pred_addition_rate |> 
-  compare_levels(
-    variable = .epred, 
-    by = Focus
-  ) |>
-  mutate(
-    Focus = factor(
-      Focus,
-      levels = c(
-        "Poet-focused - Text-focused",
-        "Reader-focused - Poet-focused",
-        "Reader-focused - Text-focused",
-        "Others - Poet-focused",
-        "Others - Reader-focused",
-        "Others - Text-focused"
-      )
-    )
-  )
-
-pred_diff_CrI_annotation <- pred_addition_rate_diff |>
-  median_hdi(.width = 0.95) |> 
-  mutate_if(is.numeric, round, digits = 2) |>
-  mutate(annotation = paste0(
-    .epred, 
-    "*'; '*95*'% '*CrI==", 
-    "'['*", 
-    .lower,  
-    "*', '*",
-    .upper, 
-    "*']'", 
-    sep = ""
-    )
-  ) |>
-  pull(annotation)
-
-pred_diff_prob_g_0_annotation <- pred_addition_rate_diff |>
-  group_by(Focus) |>
-  summarise(
-    prob_ge_0 = mean(.epred > 0) * 100
-  ) |>
-  mutate_if(is.numeric, round, digits = 1) |>
-  mutate(annotation = paste0(
-    "italic(P)(Delta>0)==", 
-    prob_ge_0,
-    "*'%'",
-    sep = ""
-    )
-  ) |>
-  pull(annotation)
 
 pred_addition_rate_diff  |>
   separate(
@@ -1248,7 +1302,7 @@ pred_addition_rate_diff  |>
     vjust = -0.1,
     hjust = 1,
     size = 3,
-    label = pred_diff_CrI_annotation,
+    label = pred_diff_CrI_annotation$annotation,
     parse = TRUE
   ) + 
   annotate(
@@ -1259,7 +1313,7 @@ pred_addition_rate_diff  |>
     vjust = -0.1,
     hjust = 0,
     size = 3,
-    label = pred_diff_prob_g_0_annotation,
+    label = pred_diff_prob_g_0_annotation$annotation,
     parse = TRUE
   ) + 
   geom_vline(
@@ -1288,6 +1342,8 @@ pred_addition_rate_diff  |>
 #| label: fig-hyperparameter
 #| fig-scap: グループレベルのハイパーパラメータの事後分布
 #| fig-cap: グループレベルのハイパーパラメータの事後分布
+#| warning: false
+#| message: false
 
 post <- model |> 
   as_draws_df() |>
@@ -1359,15 +1415,120 @@ post |>
 
 # 考察
 
+## 現代語訳における「欠落」の多くは序詞、枕詞
+
+欠落されているものは、むしろなんらかの形で訳されている可能性はあり、、、、
+
+省略率の計算では、10種の現代語訳に共通してみられた問題点は「序詞」「枕詞」「まわりくどい言い回し」の３点である。訳者の幾人かは意識的に「序詞」「枕詞」を訳さないで放置していることが観測された。
+たとえば、@matsuda1968Shinshaku の現代語訳では、4 首は現代語訳の方がもとの歌より短くなっている。^[値は]
+CT{\scriptsize (matu, 173)}=-0.08と
+CT{\scriptsize (matu, 665)}=-0.15の訳においては、
+枕詞\index{まくらことば@枕詞}は省略されている。
+CT{\scriptsize (matu, 684)}=-0.08の訳においては、
+CT{\scriptsize (matu, 697)}=-0.88においては、
+枕詞\index{まくらことば@枕詞}も序詞\index{じょことば@序詞}も
+省略されている。
+
+これらの歌は当然不一致率も高い。
+
+特に、CT{\scriptsize(matu, 697)}はもとの和歌よりもずっと短い\footnote{CT{\scriptsize (kyuu,404)}=-0.60もまた極端に短く、序詞がやはり
+省略されている。}。
+CT{\scriptsize(matu, 697)}では大和の枕詞「敷島の」が省略されている。
+OP{\scriptsize(697)}は、「頃も」と「衣」が掛詞になっているが、
+その「衣」に掛かっていく序詞\index{じょことば@序詞}も省略されている。
+
+さて、和歌と現代語訳の間にある回りくどい表現についても、どうにかして一致させたいと願うかもしれないが、残念ながら、その願いを叶えることは技術的に難しい。
+ある語と回りくどい言い方が同等の意味を持つことばを辞書に用意し、二者間の一致を実現させることは実に難しい。
+比較的やさしい方法があるとするならば、両者の表現をもう一段下位の概念で定義して、下位の概念同士が一致するかどうかを試してみる。
+うまくいってほしいと期待するしかないが、それは期待以外の何者でもない。
+なぜなら、すべての語について該当する下位概念を言い当て、それを記述すること自体が難しいからだ\footnote{たとえば、「桜」「花」という上位の概念語を当てることは簡単だが、「花」という語を見て、それが「桜」であるという保証はどこにもない。} 。
+
+上では問題点だと述べたが、一致しない要素（つまり、現代語訳のあまりもの）は、コノテーションを調べる目的からすれば、むしろ貴重なものなのである。
+
+したがって、すべてが一致してしまうことより、一致しないものがあることの方
+がこの研究にとってはおもしろく意義のあることなのである。
+
 ## 追加率には翻訳観に左右されない部分がある
 
 追加率について、別の角度から再計算し、素のデータに対して予測モデリングを行った結果、いずれの翻訳観においても、相当の比例の追加要素が含まれえていることが再現できた。訳者の間の摂動より、歌による摂動のほうが大きいと考えられる。注釈書では、多くの語の解釈が注釈によって詳しく解説されていながらも、追加率が低下しているとはいえない。訳者の目線がテキストを重視するにせよ、作者の意図を重視するにせよ、読者の読み易さを重視するにせよ、基本的に追加せざるをえない要素があることがあると考えられる。それらの要素は、つまり、翻訳の目線、訳者の違いに左右されないものであり、その性質を明確する余地が残っている。現代語訳によるノンリテラル要素の可視化が十分考えられる。
+
+### 翻訳一般性仮説の観点から見る現代語訳の操作
+
+翻訳における言い換え、追加、省略について、翻訳研究の観点からしばしば、翻訳一般性（普遍性）の仮説で解釈されている。@Chesterman2004Hypotheses と @Edina2016Translation に基づいて、翻訳において潜在的にかかわりうる翻訳一般性を以下に整理している：
+
+- 単純化 (cf. law of simplication)：ソース言語の言語面、あるいは、情報面の翻訳における単純化 [@Baker1996Challenges]
+- 標準化・慣習化 (cf. law of standardization / conventionalization)^[その逆として、ソース干渉の定理 (law of interference) が提起されている。それは、翻訳において外国語・外国文化を翻訳において伝わるようにする傾向を指す [@Tully2014Translation, p. 295]。]
+  - ソース言語の外国的特徴 (foreign feature) をターゲット言語のの文化へと修正し [@Tully2014Translation, p. 295]、
+  - 翻訳のプロセスにおいてターゲット言語における典型的なパターンを踏襲し、ないしはそれを強調する [@Baker1993Corpus，p. 176]
+  - ソーステキストのテーマがターゲットテキストのレパートリーに変換される傾向がある [@Toury1995Descriptive, p. 268] 
+- 長さ増加の定理 (law of lenghtening)：ターゲットテキストのがソーステキストより長い傾向 [@Vinay1958Comparative]
+- 明示化の定理 (law of expicitation)：@Blum-Kulka1986Shifts では、翻訳者がソーステキスト にはない Cohensive marker^[According to @Nunan1993Introducing [p. 21], cohensive markers are “words and phrases which enable the writer or speaker to establish relationship across sentence or utterance boundaries, and which help to tie the sentences in a text together”.] をターゲットテキストで示すことが示唆されている。@Baker1996Challenges [p. 180] は、この問題を「翻訳では『物事を暗黙的なままにしておくのではなく、明確に説明する』傾向がある」とより広く捉えられるようになった。ただし、ここで明示化とは、翻訳文や書き下し文で使用される品詞（接続詞、副詞、関係代名詞の使用など）の追加で原文の情報を明示化することを指す [@Jia2022Myth; @Puurtinen2004Corpusbased; @Palumbo2009Key]。^[明示化の反対に、暗示化 (law of implicitation) もあり、暗示化とは、暗示のプロセスは「原文では明確に明示されている情報を暗示的にする」ことである [@Bednar2015Social, p: 3]。]
+- 重複削減の定理 (reduction of repetition)：翻訳において、原文に存在する重複が減少する [@Baker1993Corpus]
+
+本稿では、現代語訳の追加要素の存在について、長さ増加の普遍性、明示化の普遍性からしては、それが不思議なものではなく、むしろ翻訳における普遍的な現象である。
+ただし、追加要素が、最終的に本稿の最終目的である歌ことばの非明示的情報の可視化につながっていくかいなかについて、単純な問題ではない。
+
+- 明示化のルールは、語の説明的補足よりも、翻訳研究ではわかりやすくするための文法的・機能的要素の追加が注目されている。つまり、個々の歌ことばの明示化のための要素ではなく、文の意味の明示化のための要素が主眼になっている。歌ことばのノンリテラル要素の可視化においては、文法的機能的な要素が古今和歌集の翻訳の多くを占めることは望ましくないとしている。
+- 実際、明示化に見えたことは、通時的な変化や、文化的なギャップである可能性もあり [@Mauranen2008Universal p. 39; @Yamamoto2019Analysis, p. 68]  、ノンリテラル要素の可視化においては、文化的ギャップを埋める明示化のほうが望ましい。
+- 文体的に明瞭な表現にする、いわゆる言語の様式（言い換え）の平易化を介した明示化と、翻訳の操作で非明示的な要素の提示による明示化の区別も重要である。後者は情報の詳細化につながるため、本稿においては後者が望ましい。
+
+ケーススタディの例では、文法的・機能的要素、様式の平易化、通時的変化でない、語の明示化の要素とみられるものも多く観測されていたため、一応、ノンリテラル要素の抽出として価値があると考えている。
+
+一方で、翻訳における省略の現象に関連する普遍性については、単純化と、暗示化と、重複の削除^[重複の削除は、前節で説明した現象を包括しているため、前節を参照されたい。] があると思われる。
+単純化というのは、
+
+1. 翻訳において表現が欠落するか、
+2. 情報が欠落するか、または
+3. 語彙の豊富さ・密度が減るか、
+
+といった 3 つの側面がある。本稿の目的とかかかるのは、表現の欠落と情報の欠落である。表現が欠落することは、必ずしも情報の欠落を意味しているというわけではないが、語の追加もまた情報の追加を意味しない。この点については、暗示化と関連している。暗示化は、つまり、情報をターゲットテキストの語彙的要素・文法的要素に隠すことであり、情報量を削らない。本稿の議論では、現代語訳と原文の情報量が同等であることを前提にしていることに注意されたい。^[古語の意味は、筆者らが不可知・不可視であると捉える立場に立ち、訳者ができれば情報の欠落なく訳していると仮定している。]
+この場合、表現の追加・省略は、訳者が強調したい情報が明らかにし、重要でないと思われている情報が背景にする、いわゆる注意力の配分の問題であると考えられる。追加要素の分析の価値が見出される。ただし、本稿の前提が強めの仮説であることを認めざるをえない、欠落の情報があり暗示化することも確認されていることは、つまり可視化において背景化された情報が不可視のままを意味している。翻訳に基づくノンリテラル可視化の課題のひとつと考えられる。
+
+翻訳の標準化・慣習化の普遍性も古今和歌集の現代語訳において、追加と省略、とりわけ言い換え操作の解釈として考えられる。したし、「古今和歌集の注釈書における現代日本語訳」というのは、極めて特殊な例であると考えられる。同言語内の通時的変種間の翻訳であるため、いわゆる外国的な性質の保留はつまり古風的に訳すことになり、しかし、注釈書にある翻訳であるため文学的に訳す必要がない。標準化・慣習化はこのケースでは、どのような現象につながるかは不明であり、翻訳の操作の内実について検討する余地がある。
+
+このように、現代語訳における追加と省略は、一部は翻訳普遍性仮説で説明することができた。すべての現象についてこの仮説で解釈されることが難しい^[実際、その普遍性は、これらの一般性定理は、結局いずれも反例が存在するため、確率的な傾向、あるいは、普遍性とすることが妥当でであるとされてる [cf., @Pym2008Toury; @Tymoczko1998Computerized; @Chesterman2004Hypotheses; @Chesterman2010Why]。とりもなおさず、一般性といいつつ例外が認めているわけである。
+]が翻訳を用いて語の非字義的な要素の可視化を目指す本稿では、翻訳普遍性の仮説から価値と課題と両方がみられた。
+
+<!-- 仮説への批判: -->
+<!-- 贝克对翻译英语语料库的研究（TEC，Laviosa，1997，1998）局限于英语作为目标语言或源语言，而忽视了作者、体裁和源语言的起源（Martin，2017；Tsai，2020）。 -->
+<!-- Pym (2010，第 78 页) 认为，普遍性要求某种语言现象只出现在翻译文本中，而在其他文本中不出现。他认为，这些语言普遍性应该属于翻译文本特征的分类之一。另一方面，实证研究结果（例如Puurtinen，2004 年；Saldanha，2004 年；Becher，2011 年）指出，并非所有翻译都存在此类固有特征，因此研究人员不得不认为，所揭示的现象不可能与所有类型的文本及其翻译背景相关（Tymoczko，1998 年）。 -->
+<!-- Tymoczko (1998)等人指出了相关的缺陷。每当需要生成或检验关于普遍性的假设时，就会建立翻译语料库。然而，对于什么应该或不应该算作翻译以纳入该语料库，却并不清楚。例如，我们需要回答一些棘手的问题来决定这一重大步骤，包括询问如果翻译是由目标语言的母语人士完成的并且是最近出版的，是否应该纳入。问题可能还涉及它们是否可以归类为好或坏，或者它们是否由受过训练的专业人士、业余爱好者、团体、粉丝或个人完成，并包含改编或版本。在构建这样的语料库时，需要明确在何处划清纳入项目的界限。 -->
 
 ## 拡張意味単位のから見る現代語訳よる可視化システム
 
 拡張意味単位の観点から、現代語訳は、コロケーションのレベルで対応が一貫しているが、コリゲーションと意味志向のレベルで要素の置き換えと追加など、対応の多様化が進み、談話韻律のレベルでは基調が保持されていると考えられる。現代語訳において、訳者や翻訳観に左右されない追加要素が、コリゲーションと意味志向のレベルにおいて解釈を行った産物として捉えられる。
 よって、機能的な表現として、コリゲーション：naked verb
 内容的表現として、意味志向のネットワーク、グラフの拡張は、概念レベルで行う。
+
+## 和歌の現代語訳の何が特殊か
+
+古語雅語の同言語系統の翻訳
+
+注釈における翻訳
+
+## 問題点
+
+伊勢物語の「過剰な意味付け」について。78段の「夜のおまし」から。
+過剰に意味を付けることは、単なる解釈の違いを超えて、文学研究や文献解釈において問題となることがある。
+特に、文献の本来の意図や文脈を歪める危険性がある。
+以下に、過剰な意味付けの問題点をいくつか挙げる。
+
+文脈の無視:
+まず、文脈に適さない過剰な意味付けは、元の文章の意図や内容を誤解させる可能性がある。
+特に、歴史的背景や文化的文脈を無視すると、誤った解釈を誘導する可能性がある。
+
+解釈の妥当性の喪失:
+研究者が独自の解釈を過度に推し進めると、その解釈が妥当性を失い、学術的な信頼性が低下し、他の解釈や資料と矛盾する場合、解釈の整合性が疑われることにもなる。
+
+テキストの本質的な意味の曖昧化:
+本来のテキストのシンプルな意味や意図が、過剰な意味付けによって曖昧になり、読者がテキストを正しく理解することが難しくなりうる。
+
+研究の信頼性の損失:
+誤った解釈や過剰な意味付けに基づいた研究は、学問全体の信頼性を損なうリスクもあり、これにより、他の研究者や読者がその研究を参考にすることに対して懐疑的になる可能性がある。
+
+研究の質の低下:
+よって、過剰な意味付けは、単なる解釈の違い以上に、研究の質や信頼性に影響を与える問題である。解釈においては、文脈に忠実であり、テキストの本来の意味を尊重することが重要である。
+
 
 ## 分類体系の有用性
 
