@@ -1,0 +1,8 @@
+mode: 3
+level: 3
+gap_penalty: 0.01
+u: -1
+g: 10
+f: 13
+e: 17
+output_folder: output

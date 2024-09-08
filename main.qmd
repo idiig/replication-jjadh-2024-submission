@@ -360,6 +360,145 @@ theme_set_b <- function() {
 それぞれの訳者が自身の翻訳方針にどこまで一貫して訳しているかについて、実際の歌語と訳語の一致率
 で計算する。一致率の計算は、要素の順序と重複を考慮しない集合演算による方法と、要素の順序と重複アライメントによる方法はあるが、ここではアライメントによる方法を用いる。具体的な手順は @Yamamoto2005Mathematical と @Yamamoto2019Analysis に詳しいが、本稿では先行研究で曖昧な部分を含め、計算のプロセスを明確にする。
 
+```{python}
+#| label: poem-mode
+
+from typing import List
+
+def poem_mode(poem: str, mode: int = 2) -> List[str]:
+    """
+    Function to filter and output data based on the given mode.
+    
+    Mode 1: Original output.
+    Mode 2: Filter rows where the decomposition code starts with 'A' or 'B' or 'D' and the first digit of the number part is '0'.
+    Mode 3: Filter rows where the decomposition code starts with 'A' or 'C' or 'E' and the first digit of the number part is '0'.
+    
+    :param poem: A string block with multiple lines of input data representing the poems.
+    :param mode: Mode to determine the filtering behavior:
+        - 1: Original output.
+        - 2: Basic sense, ignore decomposition ('A', 'B', 'D' with '0' in decomposition code).
+        - 3: Basic sense, consider decomposition ('A', 'C', 'E' with '0' in decomposition code).
+    :return: Filtered list of strings based on the mode.
+    
+    Example:
+    poem_test_data = '''
+    01:000001:0001 A00 BG-01-1630-01-0100 02 年 年 とし 年 とし
+    01:000001:0001 A10 BG-01-1911-03-1800 02 年 年 とし 年 とし
+    01:000001:0002 A00 BG-08-0061-07-0100 61 の の の の の
+    01:000001:0003 A00 BG-01-1770-01-0300 02 内 内 うち 内 うち
+    01:000001:0004 A00 BG-08-0061-05-0100 61 に に に に に
+    01:000001:0005 A00 BG-01-1624-02-0100 02 春 春 はる 春 はる
+    01:000001:0006 A00 BG-08-0065-07-0100 65 は は は は は
+    01:000001:0007 A00 BG-02-1527-01-0102 47 き 来 く 来 き
+    01:000001:0008 A00 BG-03-1200-02-0900 74 に ぬ ぬ に に
+    01:000001:0008 A10 BG-09-0010-01-0101 74 に ぬ ぬ に に
+    '''
+
+    poem_mode(poem_test_data, mode=1)
+    poem_mode(poem_test_data, mode=2)
+    poem_mode(poem_test_data, mode=3)
+    """
+    if mode == 1:
+        # If mode is 1, return the original poem string split by lines
+        return poem.strip().splitlines()
+
+    # Split the input string by lines and further split each line by whitespace for other modes
+    data = [line.split() for line in poem.strip().splitlines()]
+    result = []
+
+    for row in data:
+        decomposition_code = row[1]  # Second column represents the decomposition code
+        first_char = decomposition_code[0]  # Get the first character of the decomposition code (A, B, C, D, or E)
+        
+        # Ensure the first character is one of 'A', 'B', 'C', 'D', or 'E'
+        # Explanation of decomposition code first_char:
+        # A: No decomposition (default)
+        # B: Decomposed non-special words
+        # C: Components of decomposed non-special words
+        # D: Decomposed proper nouns
+        # E: Components of decomposed proper nouns
+        assert first_char in ['A', 'B', 'C', 'D', 'E'], f"Unexpected decomposition code: {decomposition_code}"
+
+        # Explanation of decomposition code first_digit:
+        # 0: Basic sense (primary meaning)
+        # Other integers: Other senses (secondary meanings or further decompositions)
+        first_digit = decomposition_code[1]  # Get the first digit of the numeric part (0 for basic sense)
+
+        if mode == 2 and first_char in ['A', 'B', 'D'] and first_digit == '0':
+            # Mode 2: Basic sense, ignore decomposition (A, B, D)
+            result.append(" ".join(row))
+        elif mode == 3 and first_char in ['A', 'C', 'E'] and first_digit == '0':
+            # Mode 3: Basic sense, consider decomposition (A, C, E)
+            result.append(" ".join(row))
+    
+    return result
+```
+
+```{python}
+#| label: translation-mode
+
+def translation_mode(translation: str, mode: int = 2) -> List[str]:
+    """
+    Function to filter and output translation data based on the given mode.
+    
+    Mode 1: Original output. 
+        - Returns the translation data as is.
+    
+    Mode 2: Ambiguity set to 1, ignore decomposition.
+        - Filters rows where the first column is 1 (ambiguity set to 1) and the fourth column is 0 or 1 (decomposition ignored),
+          and skips the current row if the next row's fourth column is 3.
+    
+    Mode 3: Ambiguity set to 1, consider decomposition.
+        - Filters rows where the first column is 1 (ambiguity set to 1) and the fourth column is 0, 2, or 3 (decomposition considered),
+          and skips the current row if the next row's fourth column is 3.
+    
+    :param translation: A string block with multiple lines of input data, representing the translations.
+    :param mode: Mode to determine the filtering behavior.
+        - 1: Original output
+        - 2: Ambiguity set to 1, ignore decomposition
+        - 3: Ambiguity set to 1, consider decomposition
+    :return: Filtered list of strings based on the mode.
+
+    Example:
+    translation_test_data = '''
+    1 katagiri 0001 1 51 50 07 BG-03-1940-01-010-A 早く はやい 早い
+    1 katagiri 0001 2 51 50 07 BG-03-1660-03-010-A -- はやい 早い
+    1 katagiri 0001 1 65 00 00 BG-08-0065-08-010-A も も も
+    1 katagiri 0001 2 65 00 00 BG-04-1130-01-200-A -- も も
+    1 katagiri 0001 1 02 00 00 BG-01-1631-01-280-A 年内 ねんない 年内
+    1 katagiri 0001 3 02 00 00 BG-01-1630-01-010-A -- とし 年
+    1 katagiri 0001 3 02 00 00 BG-08-0071-01-010-A -- の の
+    '''
+
+    translation_mode(translation_test_data, mode=1)
+    translation_mode(translation_test_data, mode=2)
+    translation_mode(translation_test_data, mode=3)
+    """
+    if mode == 1:
+        # If mode is 1, return the original translation string split by lines
+        return translation.strip().splitlines()
+
+    # Split the input string by lines and further split each line by whitespace for other modes
+    data = [line.split() for line in translation.strip().splitlines()]
+    result = []
+
+    for i, row in enumerate(data):
+        ambiguity = int(row[0])
+        decomposition = int(row[3])
+
+        # Check if the current row's fourth column is 1, and if the next row's fourth column is 3
+        # Explanation: the next row's fourth column == 3 means the current row is a compound unit
+        if decomposition == 1 and i + 1 < len(data) and int(data[i + 1][3]) == 3:
+            continue  # Skip current row if the next row's fourth column is 3
+
+        if mode == 2 and ambiguity == 1 and decomposition in [0, 1]:
+            result.append(" ".join(row))  # Ambiguity set to 1, ignore decomposition
+        elif mode == 3 and ambiguity == 1 and decomposition in [0, 1, 3]:
+            result.append(" ".join(row))  # Ambiguity set to 1, consider decomposition
+    
+    return result
+```
+
 #### 旧分類語彙表番号 (旧WLSP) に基づくマッチングのカテゴリー化 {.unnumbered}
 
 歌語と現代語訳語の「一致・不一致」は、次の式のように、二語のメタコード（旧 WLSP 番号）の Longest common subsequence [@Sankoff1972Matching; @Traum2000Generation] の長さで $U$（不一致）, $G$（グループマッチ）, $F$（フィールドマッチ）, $E$（正確マッチ） 4 つにカテゴリ化ーする。
@@ -389,61 +528,200 @@ $$
   - $s=$ `[BG-01-5520-20-040]1` 梅 (plum)
   - $t=$ `[BG-01-5520-20-040]-A` 梅 (plum)
 
+```{python}
+#| label: match-string
+
+from difflib import SequenceMatcher
+
+# Define internal LCS (Longest Common Subsequence) function
+def LCS(s: str, t: str) -> int:
+    """
+    Calculate the length of the longest common subsequence (LCS) between two strings.
+    
+    This is an internal function that uses a sequence matching algorithm to determine
+    the longest common subsequence between the two input strings.
+
+    :param s: The first input string.
+    :param t: The second input string.
+    :return: The length of the longest common subsequence between the two strings.
+    """
+    seq_matcher = SequenceMatcher(None, s, t)
+    match = seq_matcher.find_longest_match(0, len(s), 0, len(t))
+    return match.size
+
+# Define match category function
+def match_category(s: str, t: str) -> str:
+    """
+    Classify the match between two strings into one of four categories based on the LCS (Longest Common Subsequence) length.
+    
+    The function calculates the LCS length between two strings and classifies the match into one of four categories:
+    - 'U': [U]nmatch, when LCS length is less than 10.
+    - 'G': [G]roup match, when LCS length is between 10 and 12.
+    - 'F': [F]ield match, when LCS length is between 13 and 16.
+    - 'E': [E]xact match, when LCS length is 17 or greater.
+
+    :param s: The first input string to compare.
+    :param t: The second input string to compare.
+    :return: A string representing the match category ('U', 'G', 'F', or 'E') based on the LCS length.
+    """
+    # Calculate LCS length using the internal function
+    lcs_length = LCS(s, t)
+
+    # Categorize based on the LCS length
+    if lcs_length < 10:
+        return "U"
+    elif 10 <= lcs_length < 13:
+        return "G"
+    elif 13 <= lcs_length < 17:
+        return "F"
+    else:
+        return "E"
+```
+
 #### バッグ法による不追加率の計算 {.unnumbered}
 
 バッグ法による追加率（現代語訳における和歌原文に対する追加要素の割合）は、2 つのテキストを 2 つの集合と見做し、それらの集合における一致語の量をもとに計算する。ソーステキスト（和歌）$S=(s_i)_{i \in \mathbb{Z}}$ とターゲットテキスト（現代語訳） $T=(t_i)_{i \in \mathbb{Z}}$ が与えられた時、2 テキストのターゲットテキストにおける追加率の計算は下記に従う。
 
 $$
 \begin{align}
-\text{U}_{T}(S,T) &= 1 - \text{agreement}_{T}(S,T)\\
-\text{agreement}_{T}(S,T) &= \frac{1}{|T|}\sum_{s_i}^{|s|} \max_{t_j \in T} \text{score}(t_i, s_j)
-\end{align}
+\text{U}_{T}(S,T) &= 1 - \frac{1}{|T|}\text{agreement}_{S}\\
+\text{agreement}_{S} &= \sum_{s_i \in S} \mathbb{I} \left( \exists t_j \in T \text{ such that } \text{match}(s_i, t_j) \notin U \right)
 $$
 
-$\text{agreement}_{T}(S,T)$ は、ターゲットテキストに対しての 2 テキストの non-repetive な一致語の割合である。これを一致率と定義する。この一致率は、以下のスコーア関数 $\text{score}(s,t)$^[本稿では、1/0 の 2 値として定義する。「2 語の一致」の 3 つのカテゴリーの中でどのレベルで一致と見るか、といった一致率の計算の厳しさを調整できる。] に基づいて計算される。ここではどのレベルにも原文の要素と対応のないの要素の追加率を計算するので、2 語がいずれのレベルに一致すれば 1 とカウントする（下記参照）。
-
-$$
-\text{score}(s,t) =
-\begin{cases}
-0, & \text{if } \text{match}(s,t) \in U \\
-1, & \text{if } \text{match}(s,t) \in G \\
-1, & \text{if } \text{match}(s,t) \in F \\
-1, & \text{if } \text{match}(s,t) \in E \\
-\end{cases}
-$$
-
-$|T|$ はターゲットテキストの長さを指し、$s_i$, $t_i$ はそれぞれソーステキスト、ターゲットテキストの $i$ 番目と $j$ 番目の要素を意味する。追加率は $1 - \text{agreement}_{T}(S,T)$ で計算する。
+$\text{agreement}_{S}$ は、ターゲットテキストに対しての 2 テキストの non-repetive な一致語の数である。$\frac{1}{|S|}\text{agreement}_{S}$ を一致率（バッグ法）と定義する。$|T|$ はターゲットテキストの長さを指し、$s_i$, $t_i$ はそれぞれソーステキスト、ターゲットテキストの $i$ 番目と $j$ 番目の要素を意味する。追加率は $1 - \frac{1}{|S|}\text{agreement}_{S}$ で計算する。$\mathbb{I}$ は指示関数（Indicator Function）であり、インプットが真の場合 1 を、偽の場合 0 を返す。
+^[ここの一致率と類似して、計算の厳しさは$\mathbb{I}$ 内の条件で調節できる。ここでは、$E, F, G$ のいずれのレベエルでマッチできていれば、1を返すように設定している。]。
 
 一方で、不一致率は、原文にある要素のうち、現代語訳において対応が存在しない割合として、同様な計算ができる。
 
 $$
 \begin{align}
-\text{U}_{S}(S,T) &= 1 - \text{agreement}_{S}(S,T)\\
-\text{agreement}_{S}(S,T) &= \frac{1}{|S|}\sum_{s_i}^{|s|} \max_{t_j \in T} \text{score}(t_i, s_j)
+\text{U}_{S}(S,T) &= 1 - \frac{1}{|S|}\text{agreement}_{S}
 \end{align}
 $$
 
 バッグ法で計算された追加率は、統計分析に用いる（詳しくは次節参照）。
 不一致率について初歩的な記述統計をまず確認する。
 
+```{python}
+#| label: score-function
+
+# Define score function based on match category
+def score(s: str, t: str) -> int:
+    """
+    Calculate the score based on the match category between two strings.
+
+    The function first classifies the match category using the `match_category` function.
+    It returns:
+    - 0 if the match category is 'U' (Unmatch).
+    - 1 if the match category is 'G' (Group match), 'F' (Field match), or 'E' (Exact match).
+
+    :param s: The first input string to compare.
+    :param t: The second input string to compare.
+    :return: An integer score where 0 represents an Unmatch and 1 represents all other matches.
+    """
+    category = match_category(s, t)
+    
+    if category == "U":
+        return 0
+    else:
+        return 1
+```
+
+```{python}
+def addition_rate_bag(poem: str, translation: str, mode: int = 1) -> float:
+    """
+    Calculate the translation addition rate using a bag method, comparing poem data with its translation.
+
+    This function computes the rate at which additional elements appear in the translation
+    that are not directly matched in the original poem. It uses the longest common subsequence (LCS) to determine
+    the match between individual elements in the poem and translation, categorizing matches as Unmatch (U), 
+    Group match (G), Field match (F), or Exact match (E).
+
+    The function operates in three modes to filter both the poem and the translation based on decomposition:
+    Mode 1: Returns the original data without any filtering.
+    Mode 2: Filters rows where ambiguity is set to 1, ignoring decomposition in the fourth column.
+    Mode 3: Filters rows where ambiguity is set to 1, considering decomposition.
+
+    The addition rate is defined as:
+    
+        Addition Rate = 1 - (Agreement between Poem and Translation)
+
+    Agreement is computed as the ratio of matched elements between the poem and translation texts.
+
+    :param poem: A string representing the poem data, where each line is a tokenized element of the poem.
+    :param translation: A string representing the translation data, where each line is a tokenized element of the translation.
+    :param mode: Integer representing the filtering mode (default is 1).
+        - Mode 1: Original output without filtering (default).
+        - Mode 2: Ambiguity set to 1, ignore decomposition.
+        - Mode 3: Ambiguity set to 1, consider decomposition.
+    
+    :return: A float representing the translation addition rate as a percentage of the translation that does not have 
+             a direct match in the original poem (0 to 1 scale).
+    
+    Example Usage:
+    --------------
+    poem_data = '''
+    01:000001:0001 A00 BG-01-1630-01-0100 02 年 年 とし 年 とし
+    01:000001:0002 A00 BG-08-0061-07-0100 61 の の の の の
+    '''
+    
+    translation_data = '''
+    1 katagiri 0001 1 51 50 07 BG-03-1940-01-010-A 早く はやい 早い
+    1 katagiri 0001 2 51 50 07 BG-03-1660-03-010-A -- はやい 早い
+    '''
+    
+    addition_rate = addition_rate_bag(poem_data, translation_data, mode=2)
+    print(f"Addition Rate: {addition_rate:.2%}")
+    """
+    
+    # Get the filtered poem and translation lines based on the mode
+    poem_lines = poem_mode(poem, mode)
+    translation_lines = translation_mode(translation, mode)
+    
+    poem_size = len(poem_lines)
+    translation_size = len(translation_lines)
+    
+    # Calculate agreement for translation (T)
+    total_score = 0
+    for t in translation_lines:
+        max_score = max(score(t, s) for s in poem_lines)
+        total_score += max_score
+
+    # agreement rate between poem and translation
+    agreement_T = total_score / translation_size if translation_size > 0 else 0
+    addition_rate = 1 - agreement_T
+    
+    return addition_rate
+```
+
 #### 整列法による追加率の計算 {.unnumbered}
 
 整列法について説明する。整列法は、動的計画法に基づく。本稿では、動的計画法を用いて 2 つのシーケンス間のアライメントを計算するためのスコーア関数の具体的な式は以下の通りである。
 
 $$
-\text{S}_{\text{DP}}(i, j) =
+\begin{align}
+\text{S}_{\text{DP}}(i, j) &=
 \begin{cases}
 0 & \text{if } i = 0 \text{ or } j = 0 \\
 \max
 \begin{cases}
-\text{S}_{\text{DP}}(i-1, j) + \text{gap} \\
-\text{S}_{\text{DP}}(i-1, j-1) + \text{score}(s_i, t_j) \\
-\text{S}_{\text{DP}}(i, j-1) + \text{gap}
+\text{S}_{\text{DP}}(i-1, j) - \text{gap} \\
+\text{S}_{\text{DP}}(i-1, j-1) + \text{weight}(s_i, t_j) \\
+\text{S}_{\text{DP}}(i, j-1) - \text{gap}
 \end{cases} & i > 0 \text{ and } j > 0
-\end{cases}
+\end{cases}\\
+\text{weight}(s,t) &=
+\begin{cases}
+-1, & \text{if } \text{match}(s,t) \in U \\
+10, & \text{if } \text{match}(s,t) \in G \\
+13, & \text{if } \text{match}(s,t) \in F \\
+17, & \text{if } \text{match}(s,t) \in E \\
+\end{cases}\\
+\text{gap} = 0
+\end{align}
 $$
 
-ソーステキストのシーケンス $S$ とターゲットテキストのシーケンス $T$ の部分列を用いて、位置 $i$ および $j$ までの最適なアライメントスコア $\text{S}_{\text{DP}}(i,j)$ を再帰的に計算する。スコーア関数 $\text{score}(s,t)$ はバッグ法と同様に設定する。gap はギャップ（空白）を挿入する際に加算されるペナルティ (gap panelty) であり、ここでは便宜上 $-1$ と設定する。この式に基づき、プログラムは最尤なアライメントを探索する。整列した結果の例は次のようになる。ソーステキストにギャップが挿入さら、一致する語同士が配列される。
+ソーステキストのシーケンス $S$ とターゲットテキストのシーケンス $T$ の部分列を用いて、位置 $i$ および $j$ までの最適なアライメントスコア $\text{S}_{\text{DP}}(i,j)$ を再帰的に計算する。weight関数 $\text{weight}(s,t)$ はLCSに準拠する。Unmatch の場合は $-1$ のペナルティを課す。gap はギャップ（空白）を挿入する際に加算されるペナルティ (gap panelty) であり、ここでは便宜上 $0.01$ と設定する。^[単純に観測からして、和歌の翻訳で遠い対応が多く存在しているので、ギャップペナルティは 0.01 と設定することで、遠くの語の対応を許容させる。] この式に基づき、プログラムは最尤なアライメントを探索する。整列した結果の例は次のようになる。ソーステキストにギャップが挿入さら、一致する語同士が配列される。
 
 ```
 >|立田姫ーー手向けるーーーー神のあれば【こそ】ーーー秋の木の葉のーーー幣とーーー散るーーーーらめ  [Kokinshu 298]
@@ -453,16 +731,25 @@ $$
 この基礎の上で、一致率と追加率を計算する。整列後の $S^{\prime}$ と $T^{\prime}$ がある^[ここでは、もちろん $|S^{\prime}| = |T^{\prime}$|]として、整列法による一致率 $\text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime})$ の計算は次に示す。
 
 $$
-\text{U}^{\prime}_{T}(S,T) = 1-\text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime})
-$$
-$$
-\text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime}) = \frac{1}{|T|}\sum_{i}^{|T|} \text{score}(s^{\prime}_i, t^{\prime}_i)
+\begin{align}
+\text{U}^{\prime}_{T}(S,T) &= 1-\frac{1}{|T|}\text{agreement}^{\prime}_{S}\\
+\text{agreement}^{\prime}_{S}) &= \sum_{s_i \in S^{\prime}} \mathbb{I} \left( \exists t_j^{\prime} \in T^{\prime} \text{ such that } \text{match}(s_i^{\prime}, t_j^{\prime}) \notin U \right)
+\end{align}
 $$
 
 うち、prime ($\prime$) 記号がついているものは整列後のテキストにおけるものである。動的計画法が和歌の翻訳における語順の交換などの site swap に弱いため、整列法で計算される追加率は、全体的に統計的に分析せず、ケーススターディの説明において提示する。
 
+## 翻訳観と追加率の関係に関する統計モデリング
+
+先行研究では概念・フィールド・同義レベルの一致率（言い換え率）、理論的・実験的追加率などの多くの指標を計算しているが、本稿では、実験的追加率をを対象に、前節の分類結果に基づきより精緻な統計分析を行う。
+
+訳者の翻訳観が実践に移り、実際の現代語訳における追加率に影響を与えているかどうかを確認するために、統計モデリングを行った。具体的には、翻訳観（`Focus`）が追加率（`additional_rate`）^[ここでは、バッグ法によって算出された追加率を用いる。] に与える影響を検討するために、ベータ分布^[計算された応答変数は、$(0, 1)$ の区間にあり、二項分布を仮定して用いることも考えられる。ただし、二項分布を用いる場合は、現代語訳文の全語数と追加に相当する語数の情報が必要であり、本稿の計算は @yamamoto2018 の計算結果を踏まえたため、全語数について情報が不足しており、それを前提としないベータ分布を用いる。] に基づく回帰モデルを採用した。このモデルは、訳者（`translator`）と歌（`poem`）のランダム効果も考慮し、これらの要因が追加率に与える潜在的な影響を制御するものである。モデルについて、付録を参照されたい。
+
+モデルの推定は、ベイズ推論に基づくMarkov Chain Monte Carlo (MCMC) 法を用いて実施する。具体的には、4 つのチェーンを使用し、各チェーンで 4000 回のイテレーションを行い、そのうち 1000 回をウォームアップ (burn-in) 期間として設定する。`brms`パッケージを用いてモデルを実装し、事後分布の収束性は R-hat 指標および有効サンプルサイズ (ESS) によって診断する。モデル結果では、翻訳観が追加率に与える影響を示し、事後平均、95%事後最狭信用区間 (posterior highest credible interval) 報告する。
+
 ```{bash}
 #| label: data-raw
+
 echo "Translator,PoemID,opN,opE,opF,opG,opT,opU,ctN,ctE,ctA,ctFG,ctU,ctD,Theoretical,Gap" >\
   artifacts/data.csv
   
@@ -474,6 +761,7 @@ cat ./data/calcResidual/calcResidual-bag.txt |\
 
 ```{R}
 #| label: data-process
+#| message: false
 
 data <- read.csv("artifacts/data.csv") |>
   mutate(
@@ -546,14 +834,6 @@ translator_labels <- c(
   "komachiya" = "KMCY"
   )
 ```
-
-## 翻訳観と追加率の関係に関する統計モデリング
-
-先行研究では概念・フィールド・同義レベルの一致率（言い換え率）、理論的・実験的追加率などの多くの指標を計算しているが、本稿では、実験的追加率をを対象に、前節の分類結果に基づきより精緻な統計分析を行う。
-
-訳者の翻訳観が実践に移り、実際の現代語訳における追加率に影響を与えているかどうかを確認するために、統計モデリングを行った。具体的には、翻訳観（`Focus`）が追加率（`additional_rate`）^[ここでは、バッグ法によって算出された追加率を用いる。] に与える影響を検討するために、ベータ分布^[計算された応答変数は、$(0, 1)$ の区間にあり、二項分布を仮定して用いることも考えられる。ただし、二項分布を用いる場合は、現代語訳文の全語数と追加に相当する語数の情報が必要であり、本稿の計算は @yamamoto2018 の計算結果を踏まえたため、全語数について情報が不足しており、それを前提としないベータ分布を用いる。] に基づく回帰モデルを採用した。このモデルは、訳者（`translator`）と歌（`poem`）のランダム効果も考慮し、これらの要因が追加率に与える潜在的な影響を制御するものである。モデルについて、付録を参照されたい。
-
-モデルの推定は、ベイズ推論に基づくMarkov Chain Monte Carlo (MCMC) 法を用いて実施する。具体的には、4 つのチェーンを使用し、各チェーンで 4000 回のイテレーションを行い、そのうち 1000 回をウォームアップ (burn-in) 期間として設定する。`brms`パッケージを用いてモデルを実装し、事後分布の収束性は R-hat 指標および有効サンプルサイズ (ESS) によって診断する。モデル結果では、翻訳観が追加率に与える影響を示し、事後平均、95%事後最狭信用区間 (posterior highest credible interval) 報告する。
 
 
 ```{r}
@@ -686,22 +966,11 @@ model <- data %>%
 
 この中で、原文の字義を重視する翻訳観は、もっとも逐語訳に拘っている。作者の意図・感受を重視する・読者の理解を重視する翻訳観では、多少の語と語順の入れ替え、語句の補いを許容しているように述べている。
 
-それぞれ @Schramm1954Process のコミュニケーションモデルにおいて力点の置き方で解釈される [@fig-schramm-schema]。
-
-::: {#fig-schramm-schema layout-nrow=2}
-
-![コミュニケーションモデル](figures/fig-process-comm.svg){#fig-schramm-schema-orig}
-
-![翻訳観の分類](figures/fig-schema-op-ct-tikz.svg){#fig-schramm-schema-adap}
-
-コミュニケーションモデルから見る翻訳観の分類
-:::
-
 ### 分類ごとの翻訳観の詳細
 
 #### Text-focused {.unbumbered}
 
-このグープの訳者は、原文に忠実に翻訳することを重視し、できるだけ語順や意味を変えずに翻訳を行う。
+このグループの訳者は、原文に忠実に翻訳することを重視し、できるだけ語順や意味を変えずに翻訳を行う。
 @kaneko1933Kokin は「逐語訳」に徹し、語を加えたり、削除することを避けており、慎重に翻訳していると述べている。
 @kaneko1933Kokin は歌の意をそこねたり、調をあやまったりすることを恐れて、鏡花水月の訳法（あからさまに説明せず、ただその姿を眼前に思い浮ばせるようにする漢文の表現法）に従ひ、きわめて小心に、一字一語の出入をもゆるがせにせぬことを期したことを述べている。また、文体的には、金子の翻訳調はたとえば「くずをれる」のような古めかしいことばをわざと翻訳に入れるところなど、本居宣長の「遠鏡」に似ている。
 @kubota1960Kokin は、現代語訳の方針について、逐語訳にこだわり、語順を変えたり、新しい語を加えることを避けていると述べている。
@@ -1415,6 +1684,35 @@ post |>
 
 # 考察
 
+## 訳者の翻訳観はコミュニケーションモデルにおけるハイライトの違いで解釈できる
+
+
+訳者の 4 つの翻訳観は、それぞれ @Schramm1954Process のコミュニケーションモデルにおいて力点の置き方で解釈できる (@fig-schramm-schema)。
+
+::: {#fig-schramm-schema layout-nrow=2}
+
+![コミュニケーションモデル](figures/fig-process-comm.svg){#fig-schramm-schema-orig}
+
+![翻訳観の分類](figures/fig-schema-op-ct-tikz.svg){#fig-schramm-schema-adap}
+
+コミュニケーションモデルから見る翻訳観の分類
+:::
+
+現代語訳のコミュニケーションモデルは 2 つのサブプロセスを含めている。翻訳者がサブプロセス 1 の受信者でありながら、サブプロセス 2 の発信者である。2 つのサブプロセスの経験野をコミュニケートする役割を果たしている。
+
+このモデルの考え方では、
+
+1. 歌人の作意を重視することは、コミュニケーションモデルのサブプロセス（10 世紀）の中のソースをハイライトすることである
+2. テキストを重視することは、コミュニケーションのサブプロセス（10 世紀）におけるシグナルであるテキストのリテラルな意味をハイライトしている
+3. 読者にとっての読みやすさを重視することは、コミュニケーションモデルのサブプロセス（20 世紀）の中のデスティネーションをハイライトすることである。
+
+現代語訳からノンリテラル要素を抽出する場合、翻訳観 3 の訳文からノンリテラル要素を多く抽出できそうであった。しかし、訳者の意識とは別に、翻訳を実践する際に、翻訳の実践と翻訳観のずれがあることがある。この点について、分析 2 では明確にしている。
+
+## 追加率には翻訳観に左右されない部分がある
+
+追加率について、別の角度から再計算し、素のデータに対して予測モデリングを行った結果、いずれの翻訳観においても、相当の比例の追加要素が含まれえていることが再現できた。訳者の間の摂動より、歌による摂動のほうが大きいと考えられる。注釈書では、多くの語の解釈が注釈によって詳しく解説されていながらも、追加率が低下しているとはいえない。訳者の目線がテキストを重視するにせよ、作者の意図を重視するにせよ、読者の読み易さを重視するにせよ、基本的に追加せざるをえない要素があることがあると考えられる。それらの要素は、つまり、翻訳の目線、訳者の違いに左右されないものであり、その性質を明確する余地が残っている。現代語訳によるノンリテラル要素の可視化が十分考えられる。
+
+
 ## 現代語訳における「欠落」の多くは序詞、枕詞
 
 欠落されているものは、むしろなんらかの形で訳されている可能性はあり、、、、
@@ -1448,11 +1746,7 @@ OP{\scriptsize(697)}は、「頃も」と「衣」が掛詞になっているが
 したがって、すべてが一致してしまうことより、一致しないものがあることの方
 がこの研究にとってはおもしろく意義のあることなのである。
 
-## 追加率には翻訳観に左右されない部分がある
-
-追加率について、別の角度から再計算し、素のデータに対して予測モデリングを行った結果、いずれの翻訳観においても、相当の比例の追加要素が含まれえていることが再現できた。訳者の間の摂動より、歌による摂動のほうが大きいと考えられる。注釈書では、多くの語の解釈が注釈によって詳しく解説されていながらも、追加率が低下しているとはいえない。訳者の目線がテキストを重視するにせよ、作者の意図を重視するにせよ、読者の読み易さを重視するにせよ、基本的に追加せざるをえない要素があることがあると考えられる。それらの要素は、つまり、翻訳の目線、訳者の違いに左右されないものであり、その性質を明確する余地が残っている。現代語訳によるノンリテラル要素の可視化が十分考えられる。
-
-### 翻訳一般性仮説の観点から見る現代語訳の操作
+## 翻訳一般性仮説の観点から見る現代語訳の操作
 
 翻訳における言い換え、追加、省略について、翻訳研究の観点からしばしば、翻訳一般性（普遍性）の仮説で解釈されている。@Chesterman2004Hypotheses と @Edina2016Translation に基づいて、翻訳において潜在的にかかわりうる翻訳一般性を以下に整理している：
 

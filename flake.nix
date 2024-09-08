@@ -61,8 +61,7 @@
           python-lsp-server
           jupyterlab
           jupyterlab-lsp
-          numpy
-          pandas
+          hydra-core
         ]);
 
         # System packages
