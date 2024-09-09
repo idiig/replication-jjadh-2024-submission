@@ -6,3 +6,4 @@
 /_extensions/
 /.Rhistory
 /main_cache/
+/log/*.log

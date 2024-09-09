@@ -348,6 +348,112 @@ theme_set_b <- function() {
 
 ## データフォーマット
 
+```{python}
+#| label: read-raw-db
+
+from typing import List
+
+def poem_mode(poem: str, mode: int = 2) -> List[str]:
+    """
+    Function to filter and output data based on the given mode.
+
+    Mode 1: Original output.
+    Mode 2: Filter rows where the decomposition code starts with 'A' or 'B' or 'D' and the first digit of the number part is '0'.
+    Mode 3: Filter rows where the decomposition code starts with 'A' or 'C' or 'E' and the first digit of the number part is '0',
+            and filter out decompositions of multi-sense words (i.e., if a 'B' or 'D' row is found, skip its 'C' or 'E' blocks).
+
+    :param poem: A string block with multiple lines of input data representing the poems.
+    :param mode: Mode to determine the filtering behavior:
+        - 1: Original output.
+        - 2: Basic sense, ignore decomposition ('A', 'B', 'D' with '0' in decomposition code).
+        - 3: Basic sense, consider decomposition ('A', 'C', 'E' with '0' in decomposition code), and filter multi-sense decompositions.
+    :return: Filtered list of strings based on the mode.
+    """
+    if mode == 1:
+        # If mode is 1, return the original poem string split by lines
+        return poem.strip().splitlines()
+
+    # Split the input string by lines and further split each line by whitespace for other modes
+    data = [line.split() for line in poem.strip().splitlines()]
+    result = []
+
+    skip_decompositions = False  # Flag to skip decompositions related to 'B' or 'D' rows
+
+    for row in data:
+        decomposition_code = row[1]  # Second column represents the decomposition code
+        first_char = decomposition_code[0]  # Get the first character of the decomposition code (A, B, C, D, or E)
+
+        # Ensure the first character is one of 'A', 'B', 'C', 'D', or 'E'
+        assert first_char in ['A', 'B', 'C', 'D', 'E'], f"Unexpected decomposition code: {decomposition_code}"
+
+        # Explanation of decomposition code first_digit:
+        # 0: Basic sense (primary meaning)
+        # Other integers: Other senses (secondary meanings or further decompositions)
+        first_digit = decomposition_code[1]  # Get the first digit of the numeric part (0 for basic sense)
+
+        if mode == 2 and first_char in ['A', 'B', 'D'] and first_digit == '0':
+            # Mode 2: Basic sense, ignore decomposition (A, B, D)
+            result.append(" ".join(row))
+        elif mode == 3:
+            if skip_decompositions and first_char in ['C', 'E']:
+                # Skip 'C' or 'E' decompositions after 'B' or 'D' multi-sense lines
+                continue
+            elif first_char in ['B', 'D'] and first_digit != '0':
+                # If we encounter a multi-sense row (first digit != '0'), we set the flag to skip its decompositions
+                skip_decompositions = True
+            else:
+                skip_decompositions = False  # Reset the flag if we're not in a multi-sense situation
+
+            if first_char in ['A', 'C', 'E'] and first_digit == '0':
+                # Mode 3: Basic sense, consider decomposition (A, C, E)
+                result.append(" ".join(row))
+
+    return result
+  
+
+def _add_token_numbering(line: str) -> str:
+    """
+    Internal function to add numbering to each line based on the decomposition field (4th column).
+
+    :param line: A single line of the translation data.
+    :return: The line with numbering added to the end of the line.
+    """
+    row = line.split()
+    decomposition_field = row[3]  # The decomposition field (4th column)
+
+    # Static variable to hold the token counter across function calls
+    if not hasattr(_add_token_numbering, "token_counter"):
+        _add_token_numbering.token_counter = 0
+
+    # Check the decomposition field and update the token counter accordingly
+    if decomposition_field != "0" and decomposition_field != "1":
+        row.append(str(_add_token_numbering.token_counter))
+    else:
+        _add_token_numbering.token_counter += 1
+        row.append(str(_add_token_numbering.token_counter))
+
+    return " ".join(row)
+
+
+def _remove_punctuation(line: str) -> str:
+    """
+    Internal function to remove lines that are considered punctuation based on the POS column (6th column).
+
+    :param line: A single line of the translation data.
+    :return: The original line if it is not punctuation, otherwise an empty string.
+    """
+    row = line.split()
+    pos_column = int(row[4])  # POS column is the 5th column
+    polysemy_colomn = row[0]  # Polysemy coloum is first column
+
+    # POS 76 and greater are considered punctuation, so we skip them
+    # When polysemy_colomn is N, the row is un validated, so we skip them
+    if pos_column >= 76 or polysemy_colomn == "N":
+        return ""  # Return an empty string to indicate this line is punctuation and should be skipped
+
+    return line
+```
+
 # 方法
 
 ## 文献調査による翻訳観の分類
@@ -359,145 +465,6 @@ theme_set_b <- function() {
 
 それぞれの訳者が自身の翻訳方針にどこまで一貫して訳しているかについて、実際の歌語と訳語の一致率
 で計算する。一致率の計算は、要素の順序と重複を考慮しない集合演算による方法と、要素の順序と重複アライメントによる方法はあるが、ここではアライメントによる方法を用いる。具体的な手順は @Yamamoto2005Mathematical と @Yamamoto2019Analysis に詳しいが、本稿では先行研究で曖昧な部分を含め、計算のプロセスを明確にする。
-
-```{python}
-#| label: poem-mode
-
-from typing import List
-
-def poem_mode(poem: str, mode: int = 2) -> List[str]:
-    """
-    Function to filter and output data based on the given mode.
-    
-    Mode 1: Original output.
-    Mode 2: Filter rows where the decomposition code starts with 'A' or 'B' or 'D' and the first digit of the number part is '0'.
-    Mode 3: Filter rows where the decomposition code starts with 'A' or 'C' or 'E' and the first digit of the number part is '0'.
-    
-    :param poem: A string block with multiple lines of input data representing the poems.
-    :param mode: Mode to determine the filtering behavior:
-        - 1: Original output.
-        - 2: Basic sense, ignore decomposition ('A', 'B', 'D' with '0' in decomposition code).
-        - 3: Basic sense, consider decomposition ('A', 'C', 'E' with '0' in decomposition code).
-    :return: Filtered list of strings based on the mode.
-    
-    Example:
-    poem_test_data = '''
-    01:000001:0001 A00 BG-01-1630-01-0100 02 年 年 とし 年 とし
-    01:000001:0001 A10 BG-01-1911-03-1800 02 年 年 とし 年 とし
-    01:000001:0002 A00 BG-08-0061-07-0100 61 の の の の の
-    01:000001:0003 A00 BG-01-1770-01-0300 02 内 内 うち 内 うち
-    01:000001:0004 A00 BG-08-0061-05-0100 61 に に に に に
-    01:000001:0005 A00 BG-01-1624-02-0100 02 春 春 はる 春 はる
-    01:000001:0006 A00 BG-08-0065-07-0100 65 は は は は は
-    01:000001:0007 A00 BG-02-1527-01-0102 47 き 来 く 来 き
-    01:000001:0008 A00 BG-03-1200-02-0900 74 に ぬ ぬ に に
-    01:000001:0008 A10 BG-09-0010-01-0101 74 に ぬ ぬ に に
-    '''
-
-    poem_mode(poem_test_data, mode=1)
-    poem_mode(poem_test_data, mode=2)
-    poem_mode(poem_test_data, mode=3)
-    """
-    if mode == 1:
-        # If mode is 1, return the original poem string split by lines
-        return poem.strip().splitlines()
-
-    # Split the input string by lines and further split each line by whitespace for other modes
-    data = [line.split() for line in poem.strip().splitlines()]
-    result = []
-
-    for row in data:
-        decomposition_code = row[1]  # Second column represents the decomposition code
-        first_char = decomposition_code[0]  # Get the first character of the decomposition code (A, B, C, D, or E)
-        
-        # Ensure the first character is one of 'A', 'B', 'C', 'D', or 'E'
-        # Explanation of decomposition code first_char:
-        # A: No decomposition (default)
-        # B: Decomposed non-special words
-        # C: Components of decomposed non-special words
-        # D: Decomposed proper nouns
-        # E: Components of decomposed proper nouns
-        assert first_char in ['A', 'B', 'C', 'D', 'E'], f"Unexpected decomposition code: {decomposition_code}"
-
-        # Explanation of decomposition code first_digit:
-        # 0: Basic sense (primary meaning)
-        # Other integers: Other senses (secondary meanings or further decompositions)
-        first_digit = decomposition_code[1]  # Get the first digit of the numeric part (0 for basic sense)
-
-        if mode == 2 and first_char in ['A', 'B', 'D'] and first_digit == '0':
-            # Mode 2: Basic sense, ignore decomposition (A, B, D)
-            result.append(" ".join(row))
-        elif mode == 3 and first_char in ['A', 'C', 'E'] and first_digit == '0':
-            # Mode 3: Basic sense, consider decomposition (A, C, E)
-            result.append(" ".join(row))
-    
-    return result
-```
-
-```{python}
-#| label: translation-mode
-
-def translation_mode(translation: str, mode: int = 2) -> List[str]:
-    """
-    Function to filter and output translation data based on the given mode.
-    
-    Mode 1: Original output. 
-        - Returns the translation data as is.
-    
-    Mode 2: Ambiguity set to 1, ignore decomposition.
-        - Filters rows where the first column is 1 (ambiguity set to 1) and the fourth column is 0 or 1 (decomposition ignored),
-          and skips the current row if the next row's fourth column is 3.
-    
-    Mode 3: Ambiguity set to 1, consider decomposition.
-        - Filters rows where the first column is 1 (ambiguity set to 1) and the fourth column is 0, 2, or 3 (decomposition considered),
-          and skips the current row if the next row's fourth column is 3.
-    
-    :param translation: A string block with multiple lines of input data, representing the translations.
-    :param mode: Mode to determine the filtering behavior.
-        - 1: Original output
-        - 2: Ambiguity set to 1, ignore decomposition
-        - 3: Ambiguity set to 1, consider decomposition
-    :return: Filtered list of strings based on the mode.
-
-    Example:
-    translation_test_data = '''
-    1 katagiri 0001 1 51 50 07 BG-03-1940-01-010-A 早く はやい 早い
-    1 katagiri 0001 2 51 50 07 BG-03-1660-03-010-A -- はやい 早い
-    1 katagiri 0001 1 65 00 00 BG-08-0065-08-010-A も も も
-    1 katagiri 0001 2 65 00 00 BG-04-1130-01-200-A -- も も
-    1 katagiri 0001 1 02 00 00 BG-01-1631-01-280-A 年内 ねんない 年内
-    1 katagiri 0001 3 02 00 00 BG-01-1630-01-010-A -- とし 年
-    1 katagiri 0001 3 02 00 00 BG-08-0071-01-010-A -- の の
-    '''
-
-    translation_mode(translation_test_data, mode=1)
-    translation_mode(translation_test_data, mode=2)
-    translation_mode(translation_test_data, mode=3)
-    """
-    if mode == 1:
-        # If mode is 1, return the original translation string split by lines
-        return translation.strip().splitlines()
-
-    # Split the input string by lines and further split each line by whitespace for other modes
-    data = [line.split() for line in translation.strip().splitlines()]
-    result = []
-
-    for i, row in enumerate(data):
-        ambiguity = int(row[0])
-        decomposition = int(row[3])
-
-        # Check if the current row's fourth column is 1, and if the next row's fourth column is 3
-        # Explanation: the next row's fourth column == 3 means the current row is a compound unit
-        if decomposition == 1 and i + 1 < len(data) and int(data[i + 1][3]) == 3:
-            continue  # Skip current row if the next row's fourth column is 3
-
-        if mode == 2 and ambiguity == 1 and decomposition in [0, 1]:
-            result.append(" ".join(row))  # Ambiguity set to 1, ignore decomposition
-        elif mode == 3 and ambiguity == 1 and decomposition in [0, 1, 3]:
-            result.append(" ".join(row))  # Ambiguity set to 1, consider decomposition
-    
-    return result
-```
 
 #### 旧分類語彙表番号 (旧WLSP) に基づくマッチングのカテゴリー化 {.unnumbered}
 
@@ -520,7 +487,7 @@ $$
   - $t=$ `[BG-0]8-0061-07-010-A` の (of, genetive case)
 2. **Group match** ($\text{match}(s,t) \in G$; $\text{LCS}(s,t)=11$):
   - $s=$ `[BG-01-5520-]20-0401` 梅 (plum)
-  - $t=$ `[BG-01-5520-]19-115-A` 秋萩 (autumn *Lespedeza*)
+  - $t=$ `[BG-01-5520-]19-115-A` 秋萩 (autumn)
 3. **Field match** ($\text{match}(s,t) \in F$; $\text{LCS}(s,t)=11$):
   - $s=$ `[BG-01-2030-01-]0300` 神 (god)
   - $t=$ `[BG-01-2030-01-]030-A` 仏 (Buddha)
@@ -531,13 +498,10 @@ $$
 ```{python}
 #| label: match-string
 
-from difflib import SequenceMatcher
-
-# Define internal LCS (Longest Common Subsequence) function
 def LCS(s: str, t: str) -> int:
     """
     Calculate the length of the longest common subsequence (LCS) between two strings.
-    
+
     This is an internal function that uses a sequence matching algorithm to determine
     the longest common subsequence between the two input strings.
 
@@ -549,11 +513,11 @@ def LCS(s: str, t: str) -> int:
     match = seq_matcher.find_longest_match(0, len(s), 0, len(t))
     return match.size
 
-# Define match category function
+
 def match_category(s: str, t: str) -> str:
     """
     Classify the match between two strings into one of four categories based on the LCS (Longest Common Subsequence) length.
-    
+
     The function calculates the LCS length between two strings and classifies the match into one of four categories:
     - 'U': [U]nmatch, when LCS length is less than 10.
     - 'G': [G]roup match, when LCS length is between 10 and 12.
@@ -603,95 +567,79 @@ $$
 不一致率について初歩的な記述統計をまず確認する。
 
 ```{python}
-#| label: score-function
+#| label: count-match-bag
 
-# Define score function based on match category
-def score(s: str, t: str) -> int:
+def match_count_bag(poem_lines: List[str], translation_lines: List[str]) -> dict:
     """
-    Calculate the score based on the match category between two strings.
+    Calculate the total match count between the poem and translation for Exact (E), Field (F), and Group (G) matches.
 
-    The function first classifies the match category using the `match_category` function.
-    It returns:
-    - 0 if the match category is 'U' (Unmatch).
-    - 1 if the match category is 'G' (Group match), 'F' (Field match), or 'E' (Exact match).
+    The function compares each element in the poem with the elements in the translation.
+    The match is counted with priority: Exact (E) > Field (F) > Group (G), meaning if an E match is found,
+    it will not check for F or G, and similarly for F before G.
 
-    :param s: The first input string to compare.
-    :param t: The second input string to compare.
-    :return: An integer score where 0 represents an Unmatch and 1 represents all other matches.
-    """
-    category = match_category(s, t)
-    
-    if category == "U":
-        return 0
-    else:
-        return 1
-```
+    :param poem_lines: A list of strings representing the poem data (already filtered).
+    :param translation_lines: A list of strings representing the translation data (already filtered).
 
-```{python}
-def addition_rate_bag(poem: str, translation: str, mode: int = 1) -> float:
-    """
-    Calculate the translation addition rate using a bag method, comparing poem data with its translation.
+    :return: A dictionary containing the total match counts for 'E', 'F', and 'G' categories.
 
-    This function computes the rate at which additional elements appear in the translation
-    that are not directly matched in the original poem. It uses the longest common subsequence (LCS) to determine
-    the match between individual elements in the poem and translation, categorizing matches as Unmatch (U), 
-    Group match (G), Field match (F), or Exact match (E).
-
-    The function operates in three modes to filter both the poem and the translation based on decomposition:
-    Mode 1: Returns the original data without any filtering.
-    Mode 2: Filters rows where ambiguity is set to 1, ignoring decomposition in the fourth column.
-    Mode 3: Filters rows where ambiguity is set to 1, considering decomposition.
-
-    The addition rate is defined as:
-    
-        Addition Rate = 1 - (Agreement between Poem and Translation)
-
-    Agreement is computed as the ratio of matched elements between the poem and translation texts.
-
-    :param poem: A string representing the poem data, where each line is a tokenized element of the poem.
-    :param translation: A string representing the translation data, where each line is a tokenized element of the translation.
-    :param mode: Integer representing the filtering mode (default is 1).
-        - Mode 1: Original output without filtering (default).
-        - Mode 2: Ambiguity set to 1, ignore decomposition.
-        - Mode 3: Ambiguity set to 1, consider decomposition.
-    
-    :return: A float representing the translation addition rate as a percentage of the translation that does not have 
-             a direct match in the original poem (0 to 1 scale).
-    
     Example Usage:
     --------------
-    poem_data = '''
-    01:000001:0001 A00 BG-01-1630-01-0100 02 年 年 とし 年 とし
-    01:000001:0002 A00 BG-08-0061-07-0100 61 の の の の の
-    '''
-    
-    translation_data = '''
-    1 katagiri 0001 1 51 50 07 BG-03-1940-01-010-A 早く はやい 早い
-    1 katagiri 0001 2 51 50 07 BG-03-1660-03-010-A -- はやい 早い
-    '''
-    
-    addition_rate = addition_rate_bag(poem_data, translation_data, mode=2)
-    print(f"Addition Rate: {addition_rate:.2%}")
-    """
-    
-    # Get the filtered poem and translation lines based on the mode
-    poem_lines = poem_mode(poem, mode)
-    translation_lines = translation_mode(translation, mode)
-    
-    poem_size = len(poem_lines)
-    translation_size = len(translation_lines)
-    
-    # Calculate agreement for translation (T)
-    total_score = 0
-    for t in translation_lines:
-        max_score = max(score(t, s) for s in poem_lines)
-        total_score += max_score
+    poem_data = [
+        "01:000001:0001 A00 BG-01-1630-01-0100 02 年 年 とし 年 とし",
+        "01:000001:0002 A00 BG-08-0061-07-0100 61 の の の の の"
+    ]
 
-    # agreement rate between poem and translation
-    agreement_T = total_score / translation_size if translation_size > 0 else 0
-    addition_rate = 1 - agreement_T
-    
-    return addition_rate
+    translation_data = [
+        "1 katagiri 0001 1 51 50 07 BG-03-1940-01-010-A 早く はやい 早い 1",
+        "1 katagiri 0001 2 51 50 07 BG-03-1660-03-010-A -- はやい 早い 1"
+    ]
+
+    match_counts = match_count(poem_data, translation_data)
+    print(f"Match counts: {match_counts}")
+    """
+
+    # Initialize counters for E, F, G matches
+    match_counts = {"E": 0, "F": 0, "G": 0}
+
+    # Calculate total match count based on poem as the source
+    for poem_line in poem_lines:
+        s = poem_line.split()[2]  # BG ID string from poem
+        assert len(s) == 18, f"Invalid BG ID string: {s}"
+
+        found_match = False
+
+        # First, search for E match
+        for translation_line in translation_lines:
+            t = translation_line.split()[7]  # BG ID string from translation
+            assert len(t) == 19, f"Invalid BG ID string: {t}"
+
+            if match_category(s, t) == "E":
+                match_counts["E"] += 1
+                found_match = True
+                break  # Stop once an E match is found
+
+        # If no E match is found, search for F match
+        if not found_match:
+            for translation_line in translation_lines:
+                t = translation_line.split()[7]
+                if match_category(s, t) == "F":
+                    match_counts["F"] += 1
+                    found_match = True
+                    break  # Stop once an F match is found
+
+        # If no F match is found, search for G match
+        if not found_match:
+            for translation_line in translation_lines:
+                t = translation_line.split()[7]
+                if match_category(s, t) == "G":
+                    match_counts["G"] += 1
+                    break  # Stop once a G match is found
+
+    # Assert to ensure that the total matches (E + F + G) equal the number of poem lines
+    total_matches = match_counts["E"] + match_counts["F"] + match_counts["G"]
+    assert total_matches <= len(poem_lines), f"Total matches {total_matches} exceed the number of poem lines {len(poem_lines)}"
+
+    return match_counts
 ```
 
 #### 整列法による追加率の計算 {.unnumbered}
@@ -739,6 +687,385 @@ $$
 
 うち、prime ($\prime$) 記号がついているものは整列後のテキストにおけるものである。動的計画法が和歌の翻訳における語順の交換などの site swap に弱いため、整列法で計算される追加率は、全体的に統計的に分析せず、ケーススターディの説明において提示する。
 
+```{python}
+#| label: weight-function
+
+def weight(s: str, t: str, u: int = -1, g: int = 10, f: int = 13, e: int = 17) -> int:
+    """
+    Calculate the weight based on the match category between two strings.
+
+    The function first classifies the match category using the `match_category` function.
+    It allows custom weight values for each match category (U, G, F, E).
+    - 'U' (Unmatch) returns the weight for unmatch (default is -1).
+    - 'G' (Group match) returns the weight for group match (default is 10).
+    - 'F' (Field match) returns the weight for field match (default is 13).
+    - 'E' (Exact match) returns the weight for exact match (default is 17).
+
+    :param s: The first input string to compare.
+    :param t: The second input string to compare.
+    :param u: Weight for unmatch (default is -1).
+    :param g: Weight for group match (default is 10).
+    :param f: Weight for field match (default is 13).
+    :param e: Weight for exact match (default is 17).
+    :return: An integer weight based on the match category.
+    """
+    category = match_category(s, t)
+
+    if category == "U":
+        return u
+    elif category == "G":
+        return g
+    elif category == "F":
+        return f
+    else:  # "E"
+        return e
+```
+
+```{python}
+#| label: alignment
+
+def alignment(poem_lines: List[str], translation_lines: List[str], gap_penalty: float = 0.01, u: int = -1, g: int = 10, f: int = 13, e: int = 17) -> str:
+    """
+    Align the poem and translation sequences using dynamic programming and return the alignment in a formatted output.
+
+    :param poem_lines: A list of strings representing the poem data (already filtered).
+    :param translation_lines: A list of strings representing the translation data (already filtered).
+    :param gap_penalty: Float representing the penalty for inserting gaps (default is 0.01).
+    :param u: Weight for unmatch (default is -1).
+    :param g: Weight for group match (default is 10).
+    :param f: Weight for field match (default is 13).
+    :param e: Weight for exact match (default is 17).
+
+    :return: A formatted string representing the aligned sequences, including matching category and token information.
+    """
+
+    # Get the size of the poem and translation
+    poem_size = len(poem_lines)
+    translation_size = len(translation_lines)
+
+    # m: number of poem lines, n: number of translation lines
+    m, n = poem_size, translation_size
+
+    # Initialize the DP (Dynamic Programming) table and traceback table
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    traceback = [[(0, 0)] * (n + 1) for _ in range(m + 1)]
+
+    # Fill DP table with gap penalties for alignment
+    for i in range(1, m + 1):
+        dp[i][0] = dp[i - 1][0] + gap_penalty  # Penalty for gaps in translation
+        traceback[i][0] = (i - 1, 0)  # Record traceback
+    for j in range(1, n + 1):
+        dp[0][j] = dp[0][j - 1] + gap_penalty  # Penalty for gaps in poem
+        traceback[0][j] = (0, j - 1)  # Record traceback
+
+    # Fill the DP table with alignment scores based on the weight function
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            match_weight = dp[i - 1][j - 1] + weight(poem_lines[i - 1], translation_lines[j - 1], u=u, g=g, f=f, e=e)
+            gap_poem = dp[i - 1][j] + gap_penalty  # Gap in translation
+            gap_translation = dp[i][j - 1] + gap_penalty  # Gap in poem
+
+            dp[i][j] = max(match_weight, gap_poem, gap_translation)
+
+            # Track the source of the best alignment decision (match, gap in poem, gap in translation)
+            if dp[i][j] == match_weight:
+                traceback[i][j] = (i - 1, j - 1)
+            elif dp[i][j] == gap_poem:
+                traceback[i][j] = (i - 1, j)
+            else:
+                traceback[i][j] = (i, j - 1)
+
+    # Traceback step to retrieve the optimal alignment path
+    aligned_poem = []
+    aligned_translation = []
+
+    i, j = m, n
+    while i > 0 or j > 0:
+        prev_i, prev_j = traceback[i][j]
+        if i > 0 and j > 0 and (prev_i, prev_j) == (i - 1, j - 1):
+            aligned_poem.append(poem_lines[i - 1])
+            aligned_translation.append(translation_lines[j - 1])
+        elif i > 0 and (prev_i, prev_j) == (i - 1, j):
+            aligned_poem.append(poem_lines[i - 1])
+            aligned_translation.append("-")  # Gap in translation
+        else:
+            aligned_poem.append("-")  # Gap in poem
+            aligned_translation.append(translation_lines[j - 1])
+        i, j = prev_i, prev_j
+
+    # Reverse the alignments to reflect the original sequence
+    aligned_poem.reverse()
+    aligned_translation.reverse()
+
+    # Initialize output
+    output = []
+
+    # Process each aligned pair for final output
+    for pair_id, (op_token, ct_token) in enumerate(zip(aligned_poem, aligned_translation), 1):
+
+        # Extract necessary fields for poem and translation tokens
+        op_fields = op_token.split() if op_token != "-" else ["-"] * 9  # Handle gaps with placeholder
+        ct_fields = ct_token.split() if ct_token != "-" else ["-"] * 12  # Handle gaps with placeholder
+
+        assert len(op_fields) == 9, f"Invalid op_fields length: {len(op_fields)}. Fields: {op_fields}"
+
+        # Unpack poem fields
+        (
+            token_identifier_op,  # AnthologyID:PoemID:SequentialID
+            polysemy_decomposition_op,
+            bg_id_op,
+            pos_op,
+            surface_op,
+            lemma_kanji_op,
+            lemma_kana_op,
+            conjugation_kanji_op,
+            conjugation_kana_op
+        ) = op_fields
+
+        # Unpack translation fields
+        (
+            polysemy_ct,
+            # Explanation for polysemy_ct:
+            # 1=non-polysemy
+            # 2=polysemy
+            translator,
+            poem_id,
+            polysemy_decomposition_ct,
+            # Explanation for polysemy_decomposition_ct:
+            # 0=default sense(non-polysemy and simplex);
+            # 1=defaut sense(compound);
+            # 2=potential sense; 3=decomposition of compound
+            pos_ct,
+            pos_b_ct,
+            pos_c_ct,
+            bg_id_ct,
+            surface_ct,
+            lemma_kana_ct,
+            lemma_kanji_ct,
+            seq_id_ct
+        ) = ct_fields
+
+        # Handle potential sense and decomposition flags
+        potential_sense_op = "" if (polysemy_decomposition_op == "-" or polysemy_decomposition_op[1] == "0") else "*"
+        potential_sense_ct = "" if (polysemy_decomposition_ct == "-" or (polysemy_ct == "1" and polysemy_decomposition_ct != "2")) else "*"
+        decomposition_op = "+" if (polysemy_decomposition_op[0] == "C" or polysemy_decomposition_op[0] == "E") else ""
+        decomposition_ct = "+" if polysemy_decomposition_ct == "3" else ""
+
+        # Determine match category based on score (Exact, Field, Group)
+        category = match_category(bg_id_op, bg_id_ct) if (op_token != "-" and ct_token != "-") else "-"
+        match_value = category
+
+        # Sequential ID for poem
+        seq_id_op = int(token_identifier_op.split(":")[-1]) if token_identifier_op != "-" else "-"
+
+        # Padding
+        padding_width_op = 7 - 1 * len(surface_op) if surface_op != "-" else 7
+        if padding_width_op < 0:
+            padding_width_op = 0
+        padding_width_ct = 7 - 1 * len(lemma_kanji_ct) if lemma_kanji_ct != "-" else 7
+        if padding_width_ct < 0:
+            padding_width_ct = 0
+
+        # Format the final aligned output with appropriate columns and alignment
+        output.append(
+            f"{pair_id:>2} {match_value:>2} {pos_op:>2} {bg_id_op:>18} {surface_op:>{padding_width_op}} {seq_id_op:>2} {potential_sense_op:>1} "
+            f"{decomposition_op:>1} <-> {decomposition_ct:<1} {potential_sense_ct:<1} {seq_id_ct:<2} {lemma_kanji_ct:<{padding_width_ct}} {bg_id_ct:<18}"
+        )
+
+    # Prepare the formatted output with headers and alignment
+    translator = translation_lines[0].split()[1]
+    poem_id = translation_lines[0].split()[2]
+    header = (
+        f"args: translator:{translator}; poem No.{poem_id}; weight:(U={u}, G={g}, F={f}, E={e}); gap penalty: {gap_penalty}\n"
+        " +------- pair No.\n"
+        " |  +---- matching level (E=Exact, F=Field, G=Group)\n"
+        " |  |  +- pos No.\n"
+        " |  |  |  OP decomposition (+) ----------+     +--------------- CT decomposition\n"
+        " |  |  |  OP potential sense (*) ------+ |     | +------------- CT potential sense\n"
+        " |  |  |  OP token No. --------------+ | |     | | +----------- CT token No.\n"
+        " |  |  |  OP token ---------------+  | | |     | | |  +-------- CT token\n"
+        " |  |  |  OP WLSP code ---+       |  | | |     | | |  |       + CT WLSP code\n"
+        " |  |  |                  |       |  | | |     | | |  |       |"
+    )
+    output = [header] + output
+
+    return "\n".join(output)
+```
+
+```{python}
+#| label: count-match-alignment
+
+def match_count_alignment(alignment_output: str) -> dict:
+    """
+    Count the occurrences of match categories (E, F, G) in the alignment output.
+
+    This function counts only the E (Exact), F (Field), and G (Group) matches in the alignment output.
+    It does not calculate or track unmatched (U) tokens.
+
+    :param alignment_output: A string representing the alignment output, where each line represents a pair.
+
+    :return: A dictionary with counts of E, F, and G matches.
+    """
+    # Initialize the counters for each match category
+    counts = {"E": 0, "F": 0, "G": 0}
+
+    # Extract the total number of OP tokens from the header
+    lines = alignment_output.strip().splitlines()
+
+    # Iterate through the lines and count occurrences of E, F, G
+    for line in lines:
+        # Skip lines that do not contain match category information
+        if len(line.strip()) == 0 or line.strip().startswith('+'):
+            continue
+
+        # Extract the match category from the line (2nd field)
+        match_category = line.split()[1].strip()
+
+        # Count E, F, G and skip lines with "-"
+        if match_category == "E":
+            counts["E"] += 1
+        elif match_category == "F":
+            counts["F"] += 1
+        elif match_category == "G":
+            counts["G"] += 1
+
+    return counts
+```
+
+```{python}
+#| label: count-macth
+
+def match_count(match_counts: dict, level: int = 1) -> int:
+    """
+    Calculate the total match count based on the specified match level.
+
+    The match count is calculated by summing the appropriate categories of matches
+    based on the selected level of strictness:
+
+    - Level 1: Only count Exact (E) matches.
+    - Level 2: Count Exact (E) and Field (F) matches.
+    - Level 3: Count Exact (E), Field (F), and Group (G) matches.
+
+    :param match_counts: A dictionary with counts of E, F, G, and U matches.
+    :param level: Integer representing the matching strictness level (default is 1).
+        - Level 1: Only count Exact matches (E).
+        - Level 2: Count Exact (E) and Field (F) matches.
+        - Level 3: Count Exact (E), Field (F), and Group (G) matches.
+
+    :return: An integer representing the total match count.
+    """
+
+    # Ensure the level is valid
+    assert level in [1, 2, 3], "Invalid level. Must be 1, 2, or 3."
+
+    # Calculate the total match count based on the level
+    if level == 1:
+        total_match_count = match_counts["E"]
+    elif level == 2:
+        total_match_count = match_counts["E"] + match_counts["F"]
+    else:  # level == 3
+        total_match_count = match_counts["E"] + match_counts["F"] + match_counts["G"]
+
+    return total_match_count
+```
+
+```{python}
+#| label: pipe
+
+def main(poem: str, translation: str, mode: int = 3, level: int = 3, gap_penalty: float = 0.01, u: int = -1, g: int = 10, f: int = 13, e: int = 17, output_folder: str = "output"):
+    """
+    A complete pipeline function that processes poem and translation data, computes match counts,
+    alignment results, and rates (addition and unmatch rates), and writes results to a CSV file.
+
+    :param poem: The poem data as a string.
+    :param translation: The translation data as a string.
+    :param mode: The mode to filter the poem and translation (default is 3).
+    :param level: The strictness level for calculating match counts (default is 3).
+    :param gap_penalty: Gap penalty for alignment (default is 0.01).
+    :param u: Weight for unmatch (default is -1).
+    :param g: Weight for group match (default is 10).
+    :param f: Weight for field match (default is 13).
+    :param e: Weight for exact match (default is 17).
+    :param output_folder: The folder where the CSV file will be saved (default is "output").
+    """
+
+    # Process the poem and translation using poem_mode and translation_mode
+    poem_lines = poem_mode(poem, mode)
+    translation_lines = translation_mode(translation, mode)
+
+    # Calculate poem and translation sizes
+    poem_size = len(poem_lines)
+    translation_size = len(translation_lines)
+
+    # Info
+    translator = translation_lines[0].split()[1]
+    poem_id = translation_lines[0].split()[2]
+
+    # Calculate match counts using the bag method
+    match_count_bag_ = match_count_bag(poem_lines, translation_lines)
+    exact_match_bag = match_count_bag_["E"]
+    field_match_bag = match_count_bag_["F"]
+    group_match_bag = match_count_bag_["G"]
+    unmatch_bag = poem_size - exact_match_bag - field_match_bag - group_match_bag
+    total_match_bag = match_count(match_count_bag_, level)
+
+    # Calculate alignment and match counts from alignment
+    alignment_output = alignment(poem_lines, translation_lines, gap_penalty=gap_penalty, u=u, g=g, f=f, e=e)
+    match_count_alignment_ = match_count_alignment(alignment_output)
+    exact_match_alignment = match_count_alignment_["E"]
+    field_match_alignment = match_count_alignment_["F"]
+    group_match_alignment = match_count_alignment_["G"]
+    unmatch_alignment = poem_size - exact_match_alignment - field_match_alignment - group_match_alignment
+    total_match_alignment = match_count(match_count_alignment_, level)
+
+    # Calculate addition and unmatch rates
+    addition_rate_bag = 1 - total_match_bag / translation_size if translation_size > 0 else 0
+    addition_rate_alignment = 1 - total_match_alignment / translation_size if translation_size > 0 else 0
+    unmatch_rate_bag = unmatch_bag / poem_size if poem_size > 0 else 0
+    unmatch_rate_alignment = unmatch_alignment / poem_size if poem_size > 0 else 0
+
+    # Format the statistics according to the required structure
+    statistics = (
+        f"mode={mode}; level={level}\n"
+        f"OP={poem_size}; CT={translation_size};\n"
+        f"bag (E={exact_match_bag}, F={field_match_bag}, G={group_match_bag}, U={unmatch_bag}, T={total_match_bag}, "
+        f"AddRate={addition_rate_bag:.2%}, UnmatchRate={unmatch_rate_bag:.2%});\n"
+        f"alignment (E={exact_match_alignment}, F={field_match_alignment}, G={group_match_alignment}, U={unmatch_alignment}, "
+        f"T={total_match_alignment}, AddRate={addition_rate_alignment:.2%}, UnmatchRate={unmatch_rate_alignment:.2%})"
+    )
+
+    # Prepare the output folder
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    # Prepare CSV file name and path
+    csv_filename = f"{poem_id}-{translator}.csv"
+    csv_filepath = os.path.join(output_folder, csv_filename)
+
+    # Write results to CSV
+    with open(csv_filepath, mode='w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        # Write CSV header
+        csvwriter.writerow([
+            "translator", "poem_id", "poem_size", "translation_size", "total_match_bag", "unmatch_bag",
+            "exact_match_bag", "field_match_bag", "group_match_bag", "addition_rate_bag", "unmatch_rate_bag",
+            "total_match_alignment", "unmatch_alignment", "exact_match_alignment", "field_match_alignment",
+            "group_match_alignment", "addition_rate_alignment", "unmatch_rate_alignment"
+        ])
+        # Write CSV row
+        csvwriter.writerow([
+            translator, poem_id, poem_size, translation_size, total_match_bag, unmatch_bag, exact_match_bag,
+            field_match_bag, group_match_bag, addition_rate_bag, unmatch_rate_bag, total_match_alignment,
+            unmatch_alignment, exact_match_alignment, field_match_alignment, group_match_alignment,
+            addition_rate_alignment, unmatch_rate_alignment
+        ])
+
+    print(f"output file: {csv_filepath}")
+    # Print alignment output and formatted statistics
+    print("statistics:", statistics)
+    print(alignment_output)
+```
+
 ## 翻訳観と追加率の関係に関する統計モデリング
 
 先行研究では概念・フィールド・同義レベルの一致率（言い換え率）、理論的・実験的追加率などの多くの指標を計算しているが、本稿では、実験的追加率をを対象に、前節の分類結果に基づきより精緻な統計分析を行う。
@@ -747,26 +1074,12 @@ $$
 
 モデルの推定は、ベイズ推論に基づくMarkov Chain Monte Carlo (MCMC) 法を用いて実施する。具体的には、4 つのチェーンを使用し、各チェーンで 4000 回のイテレーションを行い、そのうち 1000 回をウォームアップ (burn-in) 期間として設定する。`brms`パッケージを用いてモデルを実装し、事後分布の収束性は R-hat 指標および有効サンプルサイズ (ESS) によって診断する。モデル結果では、翻訳観が追加率に与える影響を示し、事後平均、95%事後最狭信用区間 (posterior highest credible interval) 報告する。
 
-```{bash}
-#| label: data-raw
-
-echo "Translator,PoemID,opN,opE,opF,opG,opT,opU,ctN,ctE,ctA,ctFG,ctU,ctD,Theoretical,Gap" >\
-  artifacts/data.csv
-  
-cat ./data/calcResidual/calcResidual-bag.txt |\
-  sed 's/[=:()]/ /g' |\
-  awk '{print $2,$3,$5,$6,$7,$8,$9,$10,$12,$13,$14,$15,$16,$17,$18,$19}' OFS="," >>\
-  artifacts/data.csv
-```
-
 ```{R}
 #| label: data-process
 #| message: false
 
-data <- read.csv("artifacts/data.csv") |>
+data <- read.csv("artifacts/calc_results.csv") |>
   mutate(
-    AdditionRate = ctU + ctD,
-    UnmatchRate = opU,
     Translator = as.factor(Translator),
     Focus = case_when(
       Translator %in% c(
@@ -1283,6 +1596,7 @@ data |>
   ) +
   guides(fill = guide_legend(nrow = 2)) 
 ```
+
 ## 統計モデルの推定結果
 
 ### 翻訳観による追加率の相違が小さい

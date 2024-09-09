@@ -12,32 +12,15 @@ def poem_mode(poem: str, mode: int = 2) -> List[str]:
 
     Mode 1: Original output.
     Mode 2: Filter rows where the decomposition code starts with 'A' or 'B' or 'D' and the first digit of the number part is '0'.
-    Mode 3: Filter rows where the decomposition code starts with 'A' or 'C' or 'E' and the first digit of the number part is '0'.
+    Mode 3: Filter rows where the decomposition code starts with 'A' or 'C' or 'E' and the first digit of the number part is '0',
+            and filter out decompositions of multi-sense words (i.e., if a 'B' or 'D' row is found, skip its 'C' or 'E' blocks).
 
     :param poem: A string block with multiple lines of input data representing the poems.
     :param mode: Mode to determine the filtering behavior:
         - 1: Original output.
         - 2: Basic sense, ignore decomposition ('A', 'B', 'D' with '0' in decomposition code).
-        - 3: Basic sense, consider decomposition ('A', 'C', 'E' with '0' in decomposition code).
+        - 3: Basic sense, consider decomposition ('A', 'C', 'E' with '0' in decomposition code), and filter multi-sense decompositions.
     :return: Filtered list of strings based on the mode.
-
-    Example:
-    poem_test_data = '''
-    01:000001:0001 A00 BG-01-1630-01-0100 02 年 年 とし 年 とし
-    01:000001:0001 A10 BG-01-1911-03-1800 02 年 年 とし 年 とし
-    01:000001:0002 A00 BG-08-0061-07-0100 61 の の の の の
-    01:000001:0003 A00 BG-01-1770-01-0300 02 内 内 うち 内 うち
-    01:000001:0004 A00 BG-08-0061-05-0100 61 に に に に に
-    01:000001:0005 A00 BG-01-1624-02-0100 02 春 春 はる 春 はる
-    01:000001:0006 A00 BG-08-0065-07-0100 65 は は は は は
-    01:000001:0007 A00 BG-02-1527-01-0102 47 き 来 く 来 き
-    01:000001:0008 A00 BG-03-1200-02-0900 74 に ぬ ぬ に に
-    01:000001:0008 A10 BG-09-0010-01-0101 74 に ぬ ぬ に に
-    '''
-
-    poem_mode(poem_test_data, mode=1)
-    poem_mode(poem_test_data, mode=2)
-    poem_mode(poem_test_data, mode=3)
     """
     if mode == 1:
         # If mode is 1, return the original poem string split by lines
@@ -47,17 +30,13 @@ def poem_mode(poem: str, mode: int = 2) -> List[str]:
     data = [line.split() for line in poem.strip().splitlines()]
     result = []
 
+    skip_decompositions = False  # Flag to skip decompositions related to 'B' or 'D' rows
+
     for row in data:
         decomposition_code = row[1]  # Second column represents the decomposition code
         first_char = decomposition_code[0]  # Get the first character of the decomposition code (A, B, C, D, or E)
 
         # Ensure the first character is one of 'A', 'B', 'C', 'D', or 'E'
-        # Explanation of decomposition code first_char:
-        # A: No decomposition (default)
-        # B: Decomposed non-special words
-        # C: Components of decomposed non-special words
-        # D: Decomposed proper nouns
-        # E: Components of decomposed proper nouns
         assert first_char in ['A', 'B', 'C', 'D', 'E'], f"Unexpected decomposition code: {decomposition_code}"
 
         # Explanation of decomposition code first_digit:
@@ -68,9 +47,19 @@ def poem_mode(poem: str, mode: int = 2) -> List[str]:
         if mode == 2 and first_char in ['A', 'B', 'D'] and first_digit == '0':
             # Mode 2: Basic sense, ignore decomposition (A, B, D)
             result.append(" ".join(row))
-        elif mode == 3 and first_char in ['A', 'C', 'E'] and first_digit == '0':
-            # Mode 3: Basic sense, consider decomposition (A, C, E)
-            result.append(" ".join(row))
+        elif mode == 3:
+            if skip_decompositions and first_char in ['C', 'E']:
+                # Skip 'C' or 'E' decompositions after 'B' or 'D' multi-sense lines
+                continue
+            elif first_char in ['B', 'D'] and first_digit != '0':
+                # If we encounter a multi-sense row (first digit != '0'), we set the flag to skip its decompositions
+                skip_decompositions = True
+            else:
+                skip_decompositions = False  # Reset the flag if we're not in a multi-sense situation
+
+            if first_char in ['A', 'C', 'E'] and first_digit == '0':
+                # Mode 3: Basic sense, consider decomposition (A, C, E)
+                result.append(" ".join(row))
 
     return result
 
@@ -167,9 +156,11 @@ def _remove_punctuation(line: str) -> str:
     """
     row = line.split()
     pos_column = int(row[4])  # POS column is the 5th column
+    polysemy_colomn = row[0]  # Polysemy coloum is first column
 
     # POS 76 and greater are considered punctuation, so we skip them
-    if pos_column >= 76:
+    # When polysemy_colomn is N, the row is un validated, so we skip them
+    if pos_column >= 76 or polysemy_colomn == "N":
         return ""  # Return an empty string to indicate this line is punctuation and should be skipped
 
     return line
@@ -406,6 +397,8 @@ def alignment(poem_lines: List[str], translation_lines: List[str], gap_penalty: 
         op_fields = op_token.split() if op_token != "-" else ["-"] * 9  # Handle gaps with placeholder
         ct_fields = ct_token.split() if ct_token != "-" else ["-"] * 12  # Handle gaps with placeholder
 
+        assert len(op_fields) == 9, f"Invalid op_fields length: {len(op_fields)}. Fields: {op_fields}"
+        
         # Unpack poem fields
         (
             token_identifier_op,  # AnthologyID:PoemID:SequentialID
@@ -457,7 +450,11 @@ def alignment(poem_lines: List[str], translation_lines: List[str], gap_penalty: 
 
         # Padding
         padding_width_op = 7 - 1 * len(surface_op) if surface_op != "-" else 7
+        if padding_width_op < 0:
+            padding_width_op = 0
         padding_width_ct = 7 - 1 * len(lemma_kanji_ct) if lemma_kanji_ct != "-" else 7
+        if padding_width_ct < 0:
+            padding_width_ct = 0
 
         # Format the final aligned output with appropriate columns and alignment
         output.append(
@@ -483,9 +480,6 @@ def alignment(poem_lines: List[str], translation_lines: List[str], gap_penalty: 
     output = [header] + output
 
     return "\n".join(output)
-
-alignment_ = alignment(poem_lines, translation_lines)
-print(alignment_)
 
 
 def match_count_alignment(alignment_output: str) -> dict:
@@ -647,9 +641,9 @@ def main(poem: str, translation: str, mode: int = 3, level: int = 3, gap_penalty
             addition_rate_alignment, unmatch_rate_alignment
         ])
 
-    print(f"---\n{csv_filepath}\n")
+    print(f"output file: {csv_filepath}")
     # Print alignment output and formatted statistics
-    print("statistics:", statistics, "\n")
+    print("statistics:", statistics)
     print(alignment_output)
 
 
@@ -666,7 +660,7 @@ def cli_main():
     args = parser.parse_args()
 
     # Use Hydra to initialize and compose configuration for additional parameters
-    with initialize(version_base=None, config_path="param", job_name=""):
+    with initialize(version_base=None, config_path="../param", job_name=""):
         cfg = compose(config_name="default")
 
     # Call the main function with both argparse and Hydra parameters
