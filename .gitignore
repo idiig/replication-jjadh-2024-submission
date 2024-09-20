@@ -7,3 +7,5 @@
 /.Rhistory
 /main_cache/
 /log/*.log
+/supplementary_materials/translation-examples.txt
+/data/translationExamples.txt

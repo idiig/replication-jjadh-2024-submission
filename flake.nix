@@ -36,6 +36,7 @@
             png
             reticulate
             knitr
+            glossr
             cmdstanr
             rmarkdown
             tidyverse
@@ -74,6 +75,7 @@
           glibcLocalesUtf8
           git
           nodejs
+          javaldx
           gcc
           busybox
         ];

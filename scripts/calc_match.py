@@ -110,14 +110,14 @@ def translation_mode(translation: str, mode: int = 2) -> List[str]:
         ambiguity = int(row_fields[0])
         decomposition = int(row_fields[3])
 
-        # Check if the current row's fourth column is 1, and if the next row's fourth column is 3
-        if decomposition == 1 and i + 1 < len(numbered_data) and int(numbered_data[i + 1].split()[3]) == 3:
-            continue  # Skip current row if the next row's fourth column is 3
-
         # Apply filtering based on mode
         if mode == 2 and ambiguity == 1 and decomposition in [0, 1]:
             result.append(row)  # Ambiguity set to 1, ignore decomposition
         elif mode == 3 and ambiguity == 1 and decomposition in [0, 1, 3]:
+            # Check if the current row's fourth column is 1, and if the next row's fourth column is 3
+            if decomposition == 1 and i + 1 < len(numbered_data) and int(numbered_data[i + 1].split()[3]) == 3:
+                continue  # Skip current row if the next row's fourth column is 3
+
             result.append(row)  # Ambiguity set to 1, consider decomposition
 
     return result
