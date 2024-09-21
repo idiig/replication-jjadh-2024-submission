@@ -2649,9 +2649,13 @@ K&A, KMCY, KTGR, KBT, TKOK は要素の追加を行わなかった。「立田�
 
 以上により、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、和歌辞典とは異なる解釈材料として、和歌のノンリテラル情報を補足説明するために利用できることを論じた。しかし同時に、言語変化のギャップを埋めるための要素の除外や、翻訳における信頼性の高い要素の取り立て方の工夫の重要性を示唆している。
 
+# データの公開利用 {.appendix .unnumbered}
+
+公開できるデータである @kaneko1933Kokin による現代語訳の分割語彙データは XXXXX にて参照する。
+
 # 補足材料 {.appendix .unnumbered}
 
-補足資料は、URL (XXXX) を参照する。
+補足資料は、[https://github.com/idiig/replication-test/blob/main/supplementary-materials/補足資料 Supplementary materials.pdf](https://github.com/idiig/replication-test/blob/main/supplementary-materials/補足資料 Supplementary materials.pdf) を参照する。再現実験について、[https://github.com/idiig/replication-test/tree/main](https://github.com/idiig/replication-test/tree/main) を参照する。
 
 # 謝辞 {.appendix .unnumbered}
 
