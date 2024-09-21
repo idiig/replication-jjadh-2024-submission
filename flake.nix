@@ -33,6 +33,7 @@
           packages = with pkgs.rPackages; [
             languageserver
             IRkernel
+            whereami
             png
             reticulate
             knitr
@@ -71,11 +72,12 @@
           pandoc
           R
           rstudio
+          # posit
           python312
           glibcLocalesUtf8
           git
           nodejs
-          javaldx
+          # javaldx
           gcc
           busybox
         ];
@@ -106,9 +108,6 @@
 
           # Shell hook to start JupyterLab and provide an environment description
           shellHook = ''
-     
-            # Rstudio
-            Rscript -e 'cmdstanr::install_cmdstan()'
 
             # Path
             TEMPDIR=$(mktemp -d -p /tmp)
@@ -116,6 +115,9 @@
             cp -r ${pkgs.python312Packages.jupyterlab}/share/jupyter/lab/* $TEMPDIR
             chmod -R 755 $TEMPDIR
             echo "$TEMPDIR is the app directory"
+
+            # Rstudio
+            Rscript -e 'cmdstanr::install_cmdstan(file.path(Sys.getenv("TEMPDIR")), quiet=TRUE)'
 
             export JUPYTER_CONFIG_DIR=$TEMPDIR
             export JUPYTER_PATH=$TEMPDIR/share/jupyter
@@ -143,12 +145,13 @@
                        (d: pkgs.lib.attrByPath ["passthru" "jupyterlabExtensions"] [] d)
                        buildInputs) ++ additionalExtensions))  }
 
-            # Build jupyter lab
-            jupyter lab build --app-dir=$TEMPDIR
+            # Uncomment here if you use jupyter
+            # # Build jupyter lab
+            # jupyter lab build --app-dir=$TEMPDIR
 
-            # Registeration of IRkernal
-            mkdir -p $TEMPDIR/share/jupyter/kernels/ir
-            cp -r ${pkgs.rPackages.IRkernel}/library/IRkernel/kernelspec/* $TEMPDIR/share/jupyter/kernels/ir
+            # # Registeration of IRkernal
+            # mkdir -p $TEMPDIR/share/jupyter/kernels/ir
+            # cp -r ${pkgs.rPackages.IRkernel}/library/IRkernel/kernelspec/* $TEMPDIR/share/jupyter/kernels/ir
 
             # Message
             echo "This is a nix-shell environment for the replication of the JJADH paper."
