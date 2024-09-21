@@ -1,0 +1,2 @@
+translator,poem_id,poem_size,translation_size,total_match_bag,unmatch_bag,exact_match_bag,field_match_bag,group_match_bag,addition_rate_bag,unmatch_rate_bag,total_match_alignment,unmatch_alignment,exact_match_alignment,field_match_alignment,group_match_alignment,addition_rate_alignment,unmatch_rate_alignment
+matsuda,0979,17,25,14,3,11,1,2,0.43999999999999995,0.17647058823529413,10,7,9,0,1,0.6,0.4117647058823529

@@ -1,0 +1,2 @@
+translator,poem_id,poem_size,translation_size,total_match_bag,unmatch_bag,exact_match_bag,field_match_bag,group_match_bag,addition_rate_bag,unmatch_rate_bag,total_match_alignment,unmatch_alignment,exact_match_alignment,field_match_alignment,group_match_alignment,addition_rate_alignment,unmatch_rate_alignment
+kubota,0971,21,34,16,5,11,1,4,0.5294117647058824,0.23809523809523808,12,9,10,1,1,0.6470588235294117,0.42857142857142855

@@ -1,0 +1,2 @@
+translator,poem_id,poem_size,translation_size,total_match_bag,unmatch_bag,exact_match_bag,field_match_bag,group_match_bag,addition_rate_bag,unmatch_rate_bag,total_match_alignment,unmatch_alignment,exact_match_alignment,field_match_alignment,group_match_alignment,addition_rate_alignment,unmatch_rate_alignment
+takeoka,0529,19,31,18,1,13,3,2,0.4193548387096774,0.05263157894736842,16,3,11,3,2,0.4838709677419355,0.15789473684210525

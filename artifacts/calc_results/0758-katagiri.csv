@@ -1,0 +1,2 @@
+translator,poem_id,poem_size,translation_size,total_match_bag,unmatch_bag,exact_match_bag,field_match_bag,group_match_bag,addition_rate_bag,unmatch_rate_bag,total_match_alignment,unmatch_alignment,exact_match_alignment,field_match_alignment,group_match_alignment,addition_rate_alignment,unmatch_rate_alignment
+katagiri,0758,18,58,13,5,6,1,6,0.7758620689655172,0.2777777777777778,8,10,5,1,2,0.8620689655172413,0.5555555555555556

@@ -1,0 +1,2 @@
+translator,poem_id,poem_size,translation_size,total_match_bag,unmatch_bag,exact_match_bag,field_match_bag,group_match_bag,addition_rate_bag,unmatch_rate_bag,total_match_alignment,unmatch_alignment,exact_match_alignment,field_match_alignment,group_match_alignment,addition_rate_alignment,unmatch_rate_alignment
+kaneko,0092,18,42,17,1,13,3,1,0.5952380952380952,0.05555555555555555,16,2,12,2,2,0.6190476190476191,0.1111111111111111

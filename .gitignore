@@ -1,11 +1,8 @@
 /.direnv/
 /.ipynb_checkpoints/
 /.virtual_documents/
-/main_files/
-/artifacts/*
 /_extensions/
 /.Rhistory
 /main_cache/
 /log/*.log
 /supplementary_materials/translation-examples.txt
-/data/translationExamples.txt

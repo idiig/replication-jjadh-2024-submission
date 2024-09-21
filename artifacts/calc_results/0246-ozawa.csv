@@ -1,0 +1,2 @@
+translator,poem_id,poem_size,translation_size,total_match_bag,unmatch_bag,exact_match_bag,field_match_bag,group_match_bag,addition_rate_bag,unmatch_rate_bag,total_match_alignment,unmatch_alignment,exact_match_alignment,field_match_alignment,group_match_alignment,addition_rate_alignment,unmatch_rate_alignment
+ozawa,0246,17,29,12,5,7,1,4,0.5862068965517242,0.29411764705882354,10,7,7,1,2,0.6551724137931034,0.4117647058823529

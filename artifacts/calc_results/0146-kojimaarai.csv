@@ -1,0 +1,2 @@
+translator,poem_id,poem_size,translation_size,total_match_bag,unmatch_bag,exact_match_bag,field_match_bag,group_match_bag,addition_rate_bag,unmatch_rate_bag,total_match_alignment,unmatch_alignment,exact_match_alignment,field_match_alignment,group_match_alignment,addition_rate_alignment,unmatch_rate_alignment
+kojimaarai,0146,13,23,11,2,6,3,2,0.5217391304347826,0.15384615384615385,9,4,6,2,1,0.6086956521739131,0.3076923076923077

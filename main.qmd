@@ -42,7 +42,7 @@ author:
         ror: 0112mx960
 date: 2024/09/01
 abstract: | 
-  注釈書における翻訳における要素の追加を利用した古今和歌集の歌ことばのノンリテラル情報の可視化をこれまで行われてきたが、それら注釈における現代語訳や、現代語訳における追加要素に関する詳細の分析が示されていない。本論文の目的は、いままでの研究に用いられてきた古今集の現代語訳 10 種が、ノンリテラル要素の可視化に適している材料であるかについて詳細な分析を行うことである。まず、古今集の注釈における現代語訳について概観し、訳者の翻訳の意識についてまとめた。つぎに、直訳語をもたない歌ことばが原文に占める割合（不一致率）と現代語訳における追加要素の割合（追加率）の計算で、現代語訳の要素の追加と一致の実態を把握した。最後に、具体例を示し、現代語訳における追加要素の事例分析を行った。
+  注釈書における翻訳における要素の追加を利用した古今和歌集の歌ことばのノンリテラル情報の可視化をこれまで行われてきたが、それら注釈における現代語訳や、現代語訳における追加要素に関する詳細の分析が示されていない。本稿の目的は、いままでの研究に用いられてきた古今集の現代語訳 10 種が、ノンリテラル要素の可視化に適している材料であるかについて詳細な分析を行うことである。まず、古今集の注釈における現代語訳について概観し、訳者の翻訳の意識についてまとめた。つぎに、直訳語をもたない歌ことばが原文に占める割合（不一致率）と現代語訳における追加要素の割合（追加率）の計算で、現代語訳の要素の追加と一致の実態を把握した。最後に、具体例を示し、現代語訳における追加要素の事例分析を行った。
   分析の結果、和歌の現代語訳の訳者の翻訳意識は、主観的に、作意中心・テキスト中心・読者中心と不明 4 類に分類できた。しかし、客観的には、翻訳意識が異なったとしても、計量的には同じ程度の追加要素を多く含めていた。B分析事例においては、センテンスレベルの訳においても、要素の追加にコーパスレベルの共出現傾向に基づく推論があり、語の意味の志向性について補足要素を多く足していることが確認できた。以上により、現代語訳をノンリテラルレベルの可視化に適用できることを示した。
 # plain-language-summary: |
 key-points:
@@ -191,7 +191,7 @@ theme_set_b <- function() {
 
 ## 目的と結論の概要
 
-本論文の目的は、原文との非一致率、訳文においての追加率の計算と対応事例の追加要素の分析におけるという二つの側面から、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、訳し方の意図が異なっても、解釈材料として、和歌における語の非字義的な情報を補足説明するために利用できることを示すことである。
+本稿の目的は、原文との非一致率、訳文においての追加率の計算と対応事例の追加要素の分析におけるという二つの側面から、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、訳し方の意図が異なっても、解釈材料として、和歌における語の非字義的な情報を補足説明するために利用できることを示すことである。
 
 本研究の主要な貢献は以下にある。
 
@@ -541,33 +541,6 @@ $$
   - $s=$ `[BG-01-5520-20-040]1` 梅 (plum)
   - $t=$ `[BG-01-5520-20-040]-A` 梅 (plum)
 
-The agreement ("match/unmatch") between poetic words and their contemporary translations is categorized into four layers—$U$ (Unmatch), $G$ (Group Match), $F$ (Field Match), and $E$ (Exact Match)—determined by the length of the Longest Common Subsequence (LCS) [@Sankoff1972Matching; @Traum2000Generation] between the two words' metacodes (old-version WLSP codes), as outlined in the following formula.
-
-$$
-\text{match}(s,t) \in
-\begin{cases}
-U, & \text{if } \text{LCS}(s,t) < 10 \\
-G, & \text{if } 10 \leq \text{LCS}(s,t) < 13 \\
-F, & \text{if } 13 \leq \text{LCS}(s,t) < 17 \\
-E, & \text{if } \text{LCS}(s,t) \geq 17 \\
-\end{cases}
-$$
-
-In this formula, $s$ represents the metacode of a word in the source text (the poem), and $t$ represents the metacode of a word in the target text (the contemporary translation). $\text{LCS}(s,t)$ refers to the LCS between the two metacodes $s$ and $t$. Below, we provide examples for each classification.
-
-1. **Unmatch** ($\text{match}(s,t) \in U$; $\text{LCS}(s,t)=4$):
-  - $s=$ `[BG-0]1-5520-20-0401` 梅 (plum)
-  - $t=$ `[BG-0]8-0061-07-010-A` の (of, genetive case)
-2. **Group match** ($\text{match}(s,t) \in G$; $\text{LCS}(s,t)=11$):
-  - $s=$ `[BG-01-5520-]20-0401` 梅 (plum)
-  - $t=$ `[BG-01-5520-]19-115-A` 秋萩 (autumn)
-3. **Field match** ($\text{match}(s,t) \in F$; $\text{LCS}(s,t)=11$):
-  - $s=$ `[BG-01-2030-01-]0300` 神 (god)
-  - $t=$ `[BG-01-2030-01-]030-A` 仏 (Buddha)
-4. **Exact match** ($\text{match}(s,t) \in E$; $\text{LCS}(s,t)=17$):
-  - $s=$ `[BG-01-5520-20-040]1` 梅 (plum)
-  - $t=$ `[BG-01-5520-20-040]-A` 梅 (plum)
-
 ```{python}
 #| label: match-string
 
@@ -617,7 +590,7 @@ def match_category(s: str, t: str) -> str:
         return "E"
 ```
 
-#### バッグ法による不追加率の計算 Calculation of addition rate using the bag method {.unnumbered}
+#### バッグ法による不追加率の計算 {.unnumbered}
 
 バッグ法による追加率（現代語訳における和歌原文に対する追加要素の割合）は、2 つのテキストを 2 つの集合と見做し、順序関係せず集合における一致語の数をもとに計算する。ソーステキスト（和歌）$S=(s_i)_{i \in \mathbb{Z}^{+}}$ とターゲットテキスト（現代語訳） $T=(t_i)_{i \in \mathbb{Z}^{+}}$ が与えられた時、2 テキストのターゲットテキストにおける追加率の計算は下記に従う。
 
@@ -628,9 +601,9 @@ $$
 \end{align}
 $$
 
-$\text{agreement}_{S}$ は、ソーステキストにおける 2 テキストの重複なし (non-repetive) の一致語をもつトークンの数である。$\frac{1}{|T|}\text{agreement}_{S}$ を一致率（バッグ法）と定義する。分母ははターゲットテキストのトークン数にしている。$|T|$ はターゲットテキストの長さを指し、$s_i$, $t_j$ はそれぞれソーステキストの $i$ 番目と、ターゲットテキストの $j$ 番目のトークンを意味する。追加率は 1 から一致率を引いて計算する。$\mathbb{I}$ は指示関数（Indicator Function）であり、インプットが真（$s_i$ が訳において一致語が存在する）の場合 1 を、偽（$s_i$ が訳において一致語が存在しない）の場合 0 を返す。^[ここの一致率の計算の厳しさは $\mathbb{I}$ 内の条件で調節できる。ここでは、$E, F, G$ のいずれかのレベルで一致できていれば、1 を返すように設定している。]
+$\text{agreement}_{S}$ は、ソーステキストにおいて一致語をもつトークンの数である。$\frac{1}{|T|}\text{agreement}_{S}$ を一致率（バッグ法）と定義する。分母はターゲットテキストのトークン数 $|T|$  にしている。$s_i$, $t_j$ はそれぞれソーステキストの $i$ 番目と、ターゲットテキストの $j$ 番目のトークンを意味する。追加率は 1 から一致率を引いて計算する。$\mathbb{I}$ は指示関数（indicator function）であり、インプットが真（$s_i$ が訳において一致語をもつ）の場合 1 を、偽（$s_i$ が訳において一致語をもたない）の場合 0 を返す。^[ここの一致率の計算の厳しさは $\mathbb{I}$ 内の条件で調節できる。ここでは、メタコードが $E, F, G$ のいずれかのレベルでマッチングすることを一致するとしている。]
 
-ここでの計算で注意されたいのは、一致率の分子が原文の語が一致語をもつトークンの数であり、訳文の語が一致語をもつケースの数ではない。つまり、現代語訳における一対多の訳は、その中の一部のみが和歌の要素と一致し、残りの部分が追加要素にあたるという認識である。たとえば、「散る」を「散り乱れる」と訳す場合は、一対多の訳とするべきかはやはり曖昧であり、本稿では処理の一貫性を重視するため、短単位の訳について一対一の訳を大前提としている。^[そのかわりに、本稿ではデータベースを利用して 3 パターンの単位基準の入力を提供している：多義性と複合単位を無視し短単位のみでの計算、多義性を無視し複合単位を優先する計算と、多義性の複合単位の潜在的分解をそのまま残す計算を選択できる。結果の報告では短単位で進める。]
+ここでの計算で注意されたいのは、この計算ではソーステキストの語について一致語をもつか、もたないかを、ソーステキストの視点から見ていることである。ターゲットテキストにおいて多対一で和歌の要素と一致しても、その複数の一語のみが一語と見做し、その他の語を追加要素にあてるという認識である。このようにする理由は処理の一貫性を重視するためである。例えば、「散る」を「散り乱れる」と訳している場合を多対一の訳とすべきかは曖昧であるので、一貫して「乱れる」のような部分を追加要素と見る。つまり、計算では一対一の訳を大前提としている。^[そのかわりに、本稿ではデータベースを利用して 3 パターンの単位基準の入力を提供している：多義性と複合単位を無視し短単位のみでの計算、多義性を無視し複合単位を優先する計算と、多義性の複合単位の潜在的構成要素をそのまま残す計算が選択できる。ただし、結果の報告では短単位で進める。]
 
 一方で、不一致率は、原文にある要素のうち、訳において一致語が存在しない割合として同様な計算を行う。ここではもちろん、分母をソーステキストの数にしている。
 
@@ -640,31 +613,7 @@ $$
 \end{align}
 $$
 
-バッグ法で計算された追加率は、統計分析に用いて訳者の主観的意識による影響を検証する（詳しくは次節参照）。
-不一致率については初歩的な記述統計でまず確認する。
-
-We calculate the addition rate, which represents the proportion of additional elements in the contemporary translation relative to the original poem, using the bag method. In this approach, we treat both texts as sets and base the calculation on the number of agreements without considering their order. Given the source text (poem) $S=(s_i)_{i \in \mathbb{Z}^{+}}$ and the target text (contemporary translation) $T=(t_i)_{i \in \mathbb{Z}^{+}}$, we calculate the addition rate for the target text as follows:
-
-$$
-\begin{align}
-\text{U}_{T}(S,T) &= 1 - \frac{1}{|T|}\text{agreement}_{S}\\
-\text{agreement}_{S} &= \sum_{s_i \in S} \mathbb{I} \left( \exists t_j \in T \text{ such that } \text{match}(s_i, t_j) \notin U \right)
-\end{align}
-$$
-
-Here, $\text{agreement}_{S}$ represents the number of tokens in the source text that have non-repetitive agreements with tokens in the target text. The term $\frac{1}{|T|}\text{agreement}_{S}$ gives the agreement rate (bag method) for the translation, where the denominator is the total number of tokens in the target text. We use $|T|$ to denote the total number of tokens in the target text, and $s_i$, $t_j$ to represent the $i$th and $j$th tokens in the source and target texts, respectively. We calculate the addition rate by subtracting the agreement rate from 1. The indicator function $\mathbb{I}$ returns 1 if the input condition is true (i.e., if $s_i$ has an agreement in the translation), and 0 if it is false (i.e., if $s_i$ has no agreement in the translation). ^[We can adjust the strictness of the agreement rate calculation through the conditions within $\mathbb{I}$. In this case, the function returns 1 if a match exists at any of the $E$, $F$, or $G$ levels.]
-
-One key point is that the numerator of the agreement rate reflects the number of agreements in the source text, not the number of agreements in the translation. This approach allows us to recognize one-to-many translations in the target text, where part of the translation corresponds to elements in the poem, while the rest is considered additional. For example, translating "chiru" 散る (scatter) as "chirimidareru" 散り乱れる (scatter wildly) raises the question of whether this should be treated as a one-to-many translation. To ensure consistency, we assume a one-to-one translation as the default for simplex units. ^[We also provide three input unit options in the database: one that ignores polysemy and focuses only on simplex units, one that prioritizes compound units while ignoring polysemy, and one that retains potential decompositions of compound units. For this paper, we use the simplex unit approach.]
-
-We calculate the unmatch rate similarly, as the proportion of elements in the source text that have no agreement in the translation, using the following formula:
-
-$$
-\begin{align}
-\text{U}_{S}(S,T) &= 1 - \frac{1}{|S|}\text{agreement}_{S}
-\end{align}
-$$
-
-We use the addition rate calculated by the bag method for statistical analysis to examine the influence of the translator's subjective awareness of their translation approach, as detailed in the previous section. We review the unmatch rate using basic descriptive statistics.
+バッグ法で計算された追加率に、統計分析に用いて訳者の主観的に意識している翻訳アプローチによる影響が存在するかを検証する。不一致率については初歩的な記述統計で確認する。
 
 ```{python}
 #| label: count-match-bag
@@ -742,9 +691,9 @@ def match_count_bag(poem_lines: List[str], translation_lines: List[str]) -> dict
     return match_counts
 ```
 
-#### 整列法による追加率の計算 Calculation of addition rate using the alignment method {.unnumbered}
+#### 整列法による追加率の計算 {.unnumbered}
 
-整列法による計算について説明する。整列法による計算は、文字通りアライメントを推定して、アライメントにある 2 語対の一致の数で計算を行うわけであり、集合としてではなく、シーケンスとして順序を考慮する計算になっている。
+整列法による計算について説明する。整列法による計算は、文字通りにまずアライメントを推定してから、アライメントの 2 語の一致の数で計算を行う。集合としてではなく、シーケンスとして順序を考慮する計算である。
 
 本稿では、分類語彙表番号を用いた動的計画法に基づきアライメントを行う。動的計画法を用いて 2 つのシーケンス間のアライメントを計算するためのスコーア関数は以下のように定義する。
 
@@ -789,63 +738,10 @@ $$
 \end{align}
 $$
 
-この式では、prime ($\prime$) 記号がついているものは整列後のテキストにおけるものを意味する。指示関数 $\mathbb{I}$ において、アライメントが一致する場合 1 を返し、アライメントが一致しない場合 0 を返す。ギャップが入っているアライメントは計算の対象としない。
+この式では、prime ($\prime$) 記号がついているものは整列後のテキストにおけるものを意味する。指示関数 $\mathbb{I}$ において、アライメントの 2 語が一致する場合 1 を返し、アライメントの 2 語が一致しない場合 0 を返す。ギャップが入っているアライメントは計算の対象としない。
 一致率・不一致率・追加率の計算において、分母は整列前のソーステキストのトークン数にする。
 
-動的計画法は、和歌の翻訳における語順の交換などの site swap に弱く、句の順序、語順が入れ替えられる訳の場合アライメントがうまくできなくなる。さらに、整列法はアライメントの2 語対が一致するという厳しめの前提が設けてあり、この前提と現実とはかなり異なる可能性が高い。したがって、整列法で計算される追加率は、全体的に統計的に分析せず、ケーススターディの説明においてのみ提示する。
-
-We now explain the calculation method using the alignment approach. Unlike the bag method, which ignores word order, the alignment method estimates aligned word pairs and calculates the number of agreements within the alignment, treating the poem and its translation as sequences rather than sets.
-
-In this paper, we perform the alignment using dynamic programming. The score function for calculating the alignment between two sequences is defined as follows:
-
-$$
-\text{S}_{\text{DP}}(i, j) =
-\begin{cases}
-0 & \text{if } i = 0 \text{ or } j = 0 \\
-\max
-\begin{cases}
-\text{S}_{\text{DP}}(i-1, j) - \text{gap} \\
-\text{S}_{\text{DP}}(i-1, j-1) + \text{weight}(s_i, t_j) \\
-\text{S}_{\text{DP}}(i, j-1) - \text{gap}
-\end{cases} & i > 0 \text{ and } j > 0
-\end{cases}\\
-$$
-
-The matching weight function is based on the LCS value of the two word sense identifiers, i.e., the WLSP codes. For an unmatch, we apply a penalty of $-1$:
-
-$$
-\text{weight}(s,t) =
-\begin{cases}
--1, & \text{if } \text{match}(s,t) \in U \\
-10, & \text{if } \text{match}(s,t) \in G \\
-13, & \text{if } \text{match}(s,t) \in F \\
-17, & \text{if } \text{match}(s,t) \in E \\
-\end{cases}
-$$
-
-Using the subsequences of the source text $S$ and the target text $T$, we recursively calculate the optimal alignment score $\text{S}_{\text{DP}}(i,j)$ for positions $S_i$ and $T_j$. The gap penalty (for inserting gaps) is set to 0.01, which allows for distant word alignments, a common occurrence in translations of poetry. ^[The gap penalty is set to 0.01 to account for the fact that translations of poems often involve distant agreements between words.] Based on this formula, we search for the most likely alignment. An example of the aligned result is shown below:
-
-```
->| Tatsutahime give       god exist Reson emp         autumn tree leaf ??     scatter   inference
->| 立田姫ー手向けるーーーー神のあれ　ばこそーーーーーーー秋の木の葉の幣ーーーと散るーーーらめー [298]
->| 竜田姫は手向けをするべき神があるのでーーそのつかさどる秋の木の葉が幣のように散るのであろうよ [KBT]
-
->| Tatsuta+hime.....tamukeru............kami=no.are..=ba=koso.................aki=no.ki=no.ha=no.nusa=to.......chiru.....=rame [298]
->| Tatsuta+hime=ha..tamuke=wo.suru=beki.kami=ga.aru=node.....sono.tsukasadoru.aki=no.ki=no.ha=ga.nusa=no.yo=ni.chiru=no=dearou [KBT]
-```
-
-With such alignment, we can calculate the agreement and addition rates. Given the aligned sequences $S^{\prime}$ and $T^{\prime}$ ^[Naturally, in alignment, $|S^{\prime}| = |T^{\prime}|$.], the agreement rate $\text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime})$ using the alignment method is calculated as follows:
-
-$$
-\begin{align}
-\text{U}^{\prime}_{T}(S,T) &= 1-\frac{1}{|T|}\text{agreement}^{\prime}_{S}\\
-\text{agreement}^{\prime}_{S} &= \sum_{s_i \in S^{\prime}} \mathbb{I} \left(\text{match}(s_i^{\prime}, t_i^{\prime}) \notin U \right)
-\end{align}
-$$
-
-In this formula, any term with a prime ($\prime$) refers to the aligned text. The indicator function $\mathbb{I}$ returns 1 if the alignment is an agreement and 0 if it is not. Alignments with gaps are excluded from the calculation. For the calculation of the agreement, unmatch, and addition rates, we use the total number of tokens in the source text (before alignment) as the denominator.
-
-Dynamic programming is sensitive to issues such as word/chunk order changes (site swaps) in translations of poems, where phrases and word order are often rearranged. Additionally, the alignment method operates on a strict assumption that the aligned word pairs are exact matches, which may not hold in many cases. For this reason, we do not use the addition rate calculated by the alignment method for general statistical analysis but instead present it as part of case study explanations.
+動的計画法は、和歌の翻訳における語順の交換などの site swap に弱く、句の順序、語順が入れ替えられる訳の場合アライメントがうまくできなくなる。さらに、整列法はアライメントの 2 語対が一致するという厳しめの前提が設けてあり、この前提と現実とはかなり異なる可能性が高い。したがって、整列法で計算される追加率は、全体的に統計的に分析せず、ケーススターディの説明においてのみ提示する。
 
 ```{python}
 #| label: weight-function
@@ -1198,20 +1094,15 @@ def pipe(poem: str, translation: str, mode: int = 3, level: int = 3, gap_penalty
     print(alignment_output)
 ```
 
-## 翻訳の主観的意識と追加率の関係に関する統計モデリング Statistical modeling of the relationship between translation approach and the addition rate
+## 翻訳の主観的意識と追加率の関係に関する統計モデリング
 
-先行研究 [@Yamamoto2005Mathematical; @Yamamoto2019Analysis]  ではグループ・フィールド・同義レベルの一致率（言い換え率）、理論的・実験的追加率などの多くの指標を計算しているが、翻訳者別の追加率の平均と標準偏差しか提示していない。データの更新や、計算手順もすこし異なったので、結果の変化も生じる。そこで、新たに計算した追加率を対象に統計分析を行う。
+先行研究 [@Yamamoto2005Mathematical; @Yamamoto2019Analysis]  ではグループ・フィールド・同義レベルの一致率（言い換え率）、理論的・実験的追加率などの多くの指標を計算しているが、翻訳者別の追加率の平均と標準偏差しか提示していない。データの更新や、計算手順もすこし異なったので、結果の変化ga生じる。そこで、新たに計算した追加率を対象に統計分析を行う。
 
-訳者の翻訳意識が実践に移り、実際の現代語訳における追加率に影響を与えているかどうかを確認するために、統計モデリングを行う。具体的には、翻訳意識（`Focus`）が追加率（`additional_rate`）^[ここでは、バッグ法によって算出された追加率を用いる。] に与える影響を検討するために、ベータ分布^[計算された応答変数は、$(0, 1)$ の区間にあり、二項分布を仮定して用いることも考えられる。ただし、二項分布を用いる場合は、現代語訳文の全語数と追加に相当する語数の情報が必要であり、本稿の計算は @Yamamoto2019Analysis の計算結果を踏まえたため、全語数について情報が不足していることを前提としないベータ分布を用いる。] に基づく回帰モデルを採用した。このモデルは、訳者（`translator`）と歌（`poem`）を変動を統制するためにランダム効果としてモデルに入れている。統計モデルは付録を参照されたい。
+訳者の翻訳アプローチが実践に移り、実際の現代語訳における追加率に影響を与えているかを確認するために、統計モデリングを行う。具体的には、翻訳アプローチ（`Focus`）が追加率（`additional_rate`）^[ここでは前述したようにバッグ法によって算出された追加率を用いる。] に与える影響を検討するために、ベータ分布^[計算された応答変数は、$(0, 1)$ の区間にあり、二項分布を仮定して用いることも考えられる。ただし、二項分布を用いる場合は、現代語訳文の全語数と追加に相当する語数の情報が必要であり、本稿の計算は @Yamamoto2019Analysis の計算結果を踏まえたため、全語数について情報が不足していることを前提としないベータ分布を用いる。] に基づく回帰モデルを採用する。このモデルは、訳者（`translator`）と歌（`poem`）を変動を統制するためにランダム効果としてモデルに入れている。統計モデルは補足資料を参照されたい。
 
-モデルの推定は、Markov Chain Monte Carlo (MCMC) 法を用いる。具体的には、4 つのチェーンを使用し、各チェーンで 2000 回のイテレーションを行い、そのうち 1000 回をウォームアップ (burn-in) として設定する。`R` [@???] パッケージ `brms` パッケージ [@???] を用いてモデルを実装し、事後分布の収束の評価は R-hat 指標および有効サンプルサイズ (ESS) を提示し確認する。モデルの推定結果として、翻訳アプローチが追加率に与える影響を示し、事後分布をサンプリングし、事後分布の中央値と95% 事後最狭信用区間 (posterior highest credible interval) を報告する。
+モデルの推定は、Markov Chain Monte Carlo (MCMC) 法を用いる。具体的には、4 つのチェーンを使用し、各チェーンで 2000 回のイテレーションを行い、そのうち 1000 回をウォームアップ (burn-in) として設定する。`R` (`{r} version$version.string`) [@RCoreTeam2024Language] パッケージ `brms` (`{r} packageVersion("brms")`) [@Burkner2017Brms] を用いてモデルを実装し、事後分布の収束の評価は $ \hat{R} $ 指標および有効サンプルサイズ (ESS) を確認する。モデルの推定結果として、モデルから各アプローチの追加率をサンプリングし、事後分布の中央値と 95% の信用区間 (CrI) ^[ここでは、事後最狭信用区間 (Highest posterior density interval) を用いる。]を報告する。2 アプローチ間の追加率の差の事後分布も示す。
 
-Previous studies [@Yamamoto2005Mathematical; @Yamamoto2019Analysis] have calculated various metrics such as agreement rates (paraphrase rates) at the group, field, and synonym levels, as well as theoretical and practical addition rates. However, they only provided the mean and standard deviation of the addition rate by translator. Given the updates to the data and calculation procedures, the results may differ. Therefore, we conduct a new statistical analysis using the recalculated addition rates.
-
-To assess whether the translators' intended approaches influence the addition rate in contemporary translations, we perform statistical modeling. Specifically, we examine the effect of translation approach on the addition rate^[In this analysis, we use the addition rate calculated via the bag method.]. We employ a hierarchical model based on a beta distribution^[Since the response variable lies within the $(0, 1)$ interval, we considered using a binomial distribution. However, this would require detailed information on the total number of words in the translation and the number of additional elements. Based on @Yamamoto2019Analysis, we use a beta distribution, which does not assume this information.] to analyze this effect. Translator and poem are included as random effects to account for variability across these factors. Details of the statistical model are available in the appendix.
-
-We estimate the model's coefficients using the Markov Chain Monte Carlo (MCMC) method, running 4 chains with 2000 iterations each, with the first 1000 iterations used as warm-up (burn-in). The model is implemented using the `brms` package in R (`{r} version$version.string`) [@???], and we evaluate the convergence of the posterior distribution using the R-hat statistic and effective sample size (ESS). The results will reveal how translation focus influences the addition rate, and we will report the posterior median along with the 95% highest posterior credible interval (HDI).
-
+可視化と解釈について、@Yu2020Tradeoff を参考に、比較 2 群の差の事後分布の 95% の CrI が 0 をカバーしているかを観測するほか、2 群の差が 0 より大きい確率を同時に観測する：まず、95% の CrI が 0 をカバーしていない場合、2 群に差があると判断する；95% の CrI が 0 をカバーしていても、2 群の差が 0 より大きい確率が 95% より大きい、または 5% より小さい場合、傾向差があると認める。
 
 ```{R}
 #| label: data-process
@@ -1367,9 +1258,9 @@ model <- data %>%
   )
 ```
 
-## 「タツタ」歌の事例分析 Case Study of the "Tatsuta" Poem, No. 298
+## 「立田」歌の事例分析
 
-和歌に対する現代語訳は、なんらかの言い換えと追加を行っていることが分っても、その追加要素や言い換え要素の性格がわかっているわけではない。これら要素の性格は、アライメントにおける一致を確認しながら、コーパス言語学の視点から分析する。本稿では @Sinclair1996Search の拡張意味単位モデルの視座から示唆を得て、和歌の原文のコーパスレベルに観測されている傾向性が、センテンスレベルの対訳文でどのように処理されているかを明確にする。
+和歌に対する現代語訳は、なんらかの言い換えと追加あったことが分っても、その追加要素や言い換えの要素の性格がわかっているわけではない。これら要素の性格は、アライメントにおける一致を確認しながら、コーパス言語学の視座から分析を試みる。本稿では @Sinclair1996Search の拡張意味単位モデルの視座から示唆を得て、和歌の原文のコーパスレベルに観測されている傾向性が、センテンスレベルの対訳文でどのように処理されているかを明確にする。
 
 拡張意味単位モデルは以下の 4 つのレベルから対象言語単位の記述を行っている。
 
@@ -1382,104 +1273,66 @@ model <- data %>%
 
 和歌の性質とデータの量の少なさからして、確実に拡張意味単位を捉えることが難しいことがある。よって、本稿では単純に拡張意味単位の 4 つのレベルを 4 つの視座とみて、この 4 つの視座のうち、共出現の語、共出現の構文パターン、共出現の語の意味的まとまりで考えられる志向性から、10 人の翻訳でどのように処理されているかを分析する。
 
-@Yamamoto2005Mathematical では、現代語訳の紹介に歌枕「タツタ」の歌 298 番をとりあげている。本稿でも同じ歌をとりあげ、それが 10 人の翻訳、異なる翻訳の方針でどのように処理されているか、前掲の 3 つの視座から分析する。
+@Yamamoto2005Mathematical では、現代語訳の紹介に歌枕「立田」の歌 298 番をとりあげている。本稿でも同じ歌をとりあげ、それが 10 人の翻訳、異なる翻訳の方針でどのように処理されているか、前掲の 3 つの視座から分析する。
 
 コロケーションのレベルで確認すると、八代集全体における 54 首において、
-「タツタ」の文脈に頻出する内容語 (`chasenID`が60以前のもの) には「山」(30 as collocates and 15 as decomposition of tatsuta-yama)「紅葉づ」(17)「川」(15 as decomposition of tatsuta-gawa)「秋」(15)「見る」(12)「紅葉葉」(9)「錦」(9) があげられる。
-頻度5以上の語には、「神無備」(5)「姫」(8 as decomposition of tatsuta-hime) など神に関連する語と、「散る」(8)「流る」(5)「吹く」(6)「紅葉」(5)「黄葉」(5) など、落葉に関連する語が存在している。^[附録を参照する。]
+「立田」の文脈に頻出する内容語 ^[形態素解析システム Chasen を用いたため、Chasen の ID が 60 以前のもの]には「山」（30；うち共出現語として 15 あり、「立田山」の複合表現として 15 ある）「紅葉づ」（17）「川」（「立田川」の複合表現として 15 ある）「秋」（15）「見る」（12）「紅葉葉」（9）「錦」（9） があげられる。
+頻度5以上の語には、「神無備」（5）「姫」（うち「立田姫」の複合表現として 8 ある） など神に関連する語と、「散る」（8）「流る」（5）「吹く」（6）「紅葉」（5）「黄葉」（5） など、落葉に関連する語が存在している。^[詳細は補足資料を参照されたい。]
 
-共出現する構文パターンとして、動詞の終止形で終わる歌の少なさ (古今集 12 首の中で 1 首のみ) が観測される。また、古今集の中では、係り結びは 9 (12) 首観測されており、
+共出現する構文パターンとして、動詞の終止形で終わる歌の少なさ（古今集 12 首の中で 1 首のみ）が観測される。また、古今集の中では、係り結びは 9 首観測されており、
 余韻の残し方に特徴があると考えられる。これら終わり方の構文パターンが、翻訳における処理について考察する。
 
-共出現する語の性質は、内容語のコロケーションは基本的に、「タツタガワ」「タツタ（の）ヤマ」など地名を構成する「山・川」のグループ、秋の「神」に関連する関連語のグループに属している。秋・紅葉が有名な神聖な場所の歌枕の性質が伺える。
+共出現する語の性質は、内容語のコロケーションは基本的に、「立田川」「立田（の）山」など地名を構成する「山」「川」のグループのほか、秋の「神」に関連する関連語のグループが明瞭に見える。神聖なる場所の歌枕の性質が伺える。
 
-298 番歌の訳における追加要素のバリエーションを示しながら、以上のコーパスレベル・コレコティブレベルの要素が 298 番歌のセンテンスレベルで組み込まれるか、どのように組み込まれているかを確認する。
+298 番歌の訳における追加要素のバリエーションを示しながら、以上のコーパスレベル・大局レベルの要素が 298 番歌のセンテンスレベルで組み込まれるか、どのように組み込まれているかを確認し、ノンリテラル要素と捉えられるかを論じる。
 
+<!-- ::: {.callout-note} -->
+<!-- ### 拡張意味単位モデルの視座 -->
 
-While we know that contemporary translations of classical Japanese poetry often involve paraphrasing and adding elements, the precise nature of these additions and paraphrases remains unclear. To clarify the characteristics of these elements, we analyze the alignments and examine them from a corpus linguistics perspective. Drawing on Sinclair's Extended Unit of Meaning model [@Sinclair1996Search], this paper explores how the tendencies observed at the corpus level of the original text are reflected in the sentence-level translations.
+<!-- 意味の拡張単位モデルでは、意味の単位を以下の五つの要素に分けている [@Sinclair1996Search]。 @Sinclair1996Search は *true feeling* から「(not) [EXPRESS] [one's] *true feeling*」といった意味の拡張単位を抽出している例とりあげているので、この例で要素について @tbl-EUoM にまとめ説明する: -->
 
-The extended unit of meaning model describes linguistic units across four levels:
+<!-- | 要素                | 説明                                                    | 例                                                                                          | 方法                                | -->
+<!-- |:--------------------|:--------------------------------------------------------|:--------------------------------------------------------------------------------------------|:------------------------------------| -->
+<!-- | コア（core）        | 拡張意味単位における不変の成分                            | *true feeling*                                                                              | 検索語・フレーズとして使用。         | -->
+<!-- | コロケーション（collocation） | コアと語の共出現                                      | 高頻度共出現語 (*their*, *express*, *hide*, *reveal*) + *true feeling*                      | span $\pm$ 4、出現率50%以上。       | -->
+<!-- | 類連結（colligation）     | コアと構文・パターンとの共出現                | 所有格形容詞 (*thier/his/her/our*) + *true feeling*                                        | コンコーダンスによる観測・帰納。    | -->
+<!-- | 意味的志向（semantic preference） | コアと特定の意味の語群との共出現                        | **(not)EXPRESS** (*express/hide/reveal/conceal*) + *true feeling*                          | コンコーダンスによる観測・帰納。    | -->
+<!-- | 談話韻律（discourse prosody）    | 拡張意味単位全体の評価・態度・語用論的意味               | 否定語 + **EXPRESS** -> 「客観的・主観的できない」（reluctance/inability）                        | コンコーダンスによる観測・帰納。    | -->
 
-1. **Collocation**: The tendency of words to co-occur with other words [@Sinclair1970English, p. 15].
-2. **Colligation**: The tendency of words to co-occur with specific syntactic patterns or grammatical elements [cf., @Firth1968Selected, p. 183; @Sinclair1996Search, p. 11; @Sinclair2003Reading, p. 171].
-3. **Semantic preference**: The tendency of words to co-occur with particular semantic sets [@Sinclair2003Reading, p. 178].
-4. **Discourse prosody**: The specific attitudinal, emotional, or evaluative tendency expressed by the extended unit of meaning [@Sinclair2004Trust, p. 174].
+<!-- : 拡張意味単位の要素、説明、事例、操作例 {#tbl-EUoM} -->
 
-From the level of collocation to that of discourse prosody, the elements become less explicitly observable and more implicit [@Stubbs2001Words, pp. 87–88].
+<!-- 1. コア（core）は拡張意味単位における不変の成分である [@Sinclair2004Trust, p. 204]。*true feeling* がこの例におけるコアであり、検索語として使用されている。^[@Sinclair1996Search の例では、コアは実際には検索語に相当するものである。] -->
+<!-- 2. コロケーション（collocation）：コアと語の共出現関係である [@Sinclair1970English, p. 15]。*true feeling* のコンテキストでは、*their*, *express*, *hide*, *reveal* などがあげられる。@Sinclair1996Search では、コンテキストのウィンドーは 4 に、閾値は 50% の出現率に設定されている。^[@Koller1979Computer はにすべきであるとしている。] -->
+<!-- 3. 類連結（colligation）はコアと構文・パターンとの共出現関係である [cf., @Firth1968Selected, p. 183; @Sinclair1996Search, p. 11; @Sinclair2003Reading, p. 171]。例えば、*true feeling* の前方共出現に *thier/his/her/our* が多く、それらの性質は所有格形容詞であるため、所有格形容詞が *true feeling* の類連接と認める。この類連接は直接の観測ができないため、コンコーダンス・コロケーションリストによる観測・帰納に基づく。 -->
+<!-- 4. 意味的志向（semantic preference）はコアと特定の意味の語群（semantic set）との共出現関係 [@Sinclair2003Reading, p. 178]。例えば、*express/hide/reveal/conceal* など **EXPRESS** まとは **EXPRESS** の否定のグループが常に *true feeling* のコンテキストに生起している。この意味的志向も類連接同様、コンコーダンス・コロケーションリストによる観測・帰納に基づく。 -->
+<!-- 5. 談話韻律（discourse prosody）は拡張意味単位全体の評価・態度・語用論的意味 [@Sinclair2004Trust, p. 174]である。**EXPRESS**の左には*less/not*などの否定が頻繁に出現するため、*true feeling* については「客観的・主観的に表現できない」（reluctance/inability）といったネガティブな談話韻律が推測される。これも同様、コンコーダンス・コロケーションリストによる観測・帰納による。 -->
 
-Given the nature of classical poetry and the limited data available, capturing extended units of meaning with certainty is often challenging. Therefore, we treat the four levels of the extended unit as distinct perspectives. Through these perspectives—co-occurring words, syntactic patterns, and semantic sets—we analyze how the ten different translations handle the tendencies present in the original text.
+<!-- コア、コロケーションから談話韻律へと、直接な観測ができなくなり、明示的でなくなっていく [@Stubbs2001Words, pp. 87--88]。 -->
 
-@Yamamoto2005Mathematical uses poem #298 as an example to illustrate how the word "Tatsuta" is processed in contemporary translations. We analyze the same poem, focusing on how it is handled in the ten translations, each employing different translation approaches, based on the three perspectives mentioned above.
+<!-- 和歌の性質とデータの量の少なさからして、確実に拡張意味単位を捉えることが難しいことがある。よって、本稿では単純に拡張意味単位の 4 つのレベルを 4 つの視座とみて、この 4 つの視座のうち、共出現の語、共出現の構文パターン、共出現の語の意味的まとまりで考えられる志向性から、分類された 10 人の翻訳でどのように処理されているかを分析する。 -->
 
-At the level of collocation, we observe that in the *Hachidaishū* dataset, the following content words^[Content words are identified by `chasen`-based PoS number below 60.] frequently appear in the context of "Tatsuta": 山 (*yama*, "mountain") (30 as collocates, 15 as a decomposition of 立田山 *tatsuta-yama*, "Mt. Tatsuta"), 紅葉づ (*momidzu*, "(leaves) turning red") (17), 川 (*kawa*, "river") (15 as a decomposition of 立田川 *Tatsuta-gawa*, "River Tatsuta"), 秋 (*aki*, "autumn") (15), 見る (*miru*, "to see") (12), 葉 (*ha*, "leaves") (9), and 錦 (*nishiki*, "brocade") (9). Words related to gods, such as 神無備 (*Kamnabi*, "Kamnabi (proper noun)") (5) and 姫 (*hime*, "goddess/princess") (8 as a decomposition of 立田姫 *Tatsuta-hime*, "Goddess Tatsuta"), also frequently appear, along with words associated with falling leaves, such as 散る (*chiru*, "scattering") (8), 流る (*nagaru*, "flowing") (5), 吹く (*fuku*, "blowing") (6), 紅葉 (*momidzi*, "red leaves") (5), and 黄葉 (*momidzi*, "yellow leaves") (5).^[See the appendix for details.]
+<!-- 視座とする以上、いくつかのアダプテーションについて述べる。まず、拡張意味単位の本来の分析では要素の順序とコンテキスト・ウィンドーの設定はあるが、本稿では意味単位の共出現について順序の設定を考慮しない。57577の制限の中で、語の順番の入れ替えが多く、コアを中心とする線形配列が望ましくない。つぎに、出現率の閾値の設定はしない。テキストの数が少なく、大規模コーパスのようにロバストな結果として出すよりも、傾向を重視する。 -->
+<!-- ::: -->
 
-Regarding co-occurring syntactic patterns, we find that poems ending in the conclusive form of a verb are rare (only one in the *Kokinshū* out of twelve poems). Additionally, nine poems in the *Kokinshū* utilize the emphatic grammatical structure "kakarimusubi" (係り結び), which emphasizes a lingering resonance at the poem’s conclusion. We will examine how these distinctive syntactic patterns are handled in the translations.
+# 結果 {#sec-results}
 
-As for the semantic properties of the co-occurring words, the collocates of content words typically fall into two main groups: those related to place names (e.g., 立田川 *tatsuta-gawa*, "River Tatsuta", 立田の山 *tatsuta-no-yama*, "Mountain of Tatsuta") and those associated with the autumn goddess. These suggest that the poetic word "Tatsuta" is closely tied to a sacred location known for its autumnal colors.
+## 現代語訳の整理と分類
 
-Finally, we examine how the corpus-level and collective elements described above are incorporated into the sentence-level translations of poem #298, highlighting the variations in added elements across the ten translations.
-
-::: {.callout-note}
-### 拡張意味単位モデルの視座
-
-意味の拡張単位モデルでは、意味の単位を以下の五つの要素に分けている [@Sinclair1996Search]。 @Sinclair1996Search は *true feeling* から「(not) [EXPRESS] [one's] *true feeling*」といった意味の拡張単位を抽出している例とりあげているので、この例で要素について @tbl-EUoM にまとめ説明する:
-
-| 要素                | 説明                                                    | 例                                                                                          | 方法                                |
-|:--------------------|:--------------------------------------------------------|:--------------------------------------------------------------------------------------------|:------------------------------------|
-| コア（core）        | 拡張意味単位における不変の成分                            | *true feeling*                                                                              | 検索語・フレーズとして使用。         |
-| コロケーション（collocation） | コアと語の共出現                                      | 高頻度共出現語 (*their*, *express*, *hide*, *reveal*) + *true feeling*                      | span $\pm$ 4、出現率50%以上。       |
-| 類連結（colligation）     | コアと構文・パターンとの共出現                | 所有格形容詞 (*thier/his/her/our*) + *true feeling*                                        | コンコーダンスによる観測・帰納。    |
-| 意味的志向（semantic preference） | コアと特定の意味の語群との共出現                        | **(not)EXPRESS** (*express/hide/reveal/conceal*) + *true feeling*                          | コンコーダンスによる観測・帰納。    |
-| 談話韻律（discourse prosody）    | 拡張意味単位全体の評価・態度・語用論的意味               | 否定語 + **EXPRESS** -> 「客観的・主観的できない」（reluctance/inability）                        | コンコーダンスによる観測・帰納。    |
-
-: 拡張意味単位の要素、説明、事例、操作例 {#tbl-EUoM}
-
-1. コア（core）は拡張意味単位における不変の成分である [@Sinclair2004Trust, p. 204]。*true feeling* がこの例におけるコアであり、検索語として使用されている。^[@Sinclair1996Search の例では、コアは実際には検索語に相当するものである。]
-2. コロケーション（collocation）：コアと語の共出現関係である [@Sinclair1970English, p. 15]。*true feeling* のコンテキストでは、*their*, *express*, *hide*, *reveal* などがあげられる。@Sinclair1996Search では、コンテキストのウィンドーは 4 に、閾値は 50% の出現率に設定されている。^[@Koller1979Computer はにすべきであるとしている。]
-3. 類連結（colligation）はコアと構文・パターンとの共出現関係である [cf., @Firth1968Selected, p. 183; @Sinclair1996Search, p. 11; @Sinclair2003Reading, p. 171]。例えば、*true feeling* の前方共出現に *thier/his/her/our* が多く、それらの性質は所有格形容詞であるため、所有格形容詞が *true feeling* の類連接と認める。この類連接は直接の観測ができないため、コンコーダンス・コロケーションリストによる観測・帰納に基づく。
-4. 意味的志向（semantic preference）はコアと特定の意味の語群（semantic set）との共出現関係 [@Sinclair2003Reading, p. 178]。例えば、*express/hide/reveal/conceal* など **EXPRESS** まとは **EXPRESS** の否定のグループが常に *true feeling* のコンテキストに生起している。この意味的志向も類連接同様、コンコーダンス・コロケーションリストによる観測・帰納に基づく。
-5. 談話韻律（discourse prosody）は拡張意味単位全体の評価・態度・語用論的意味 [@Sinclair2004Trust, p. 174]である。**EXPRESS**の左には*less/not*などの否定が頻繁に出現するため、*true feeling* については「客観的・主観的に表現できない」（reluctance/inability）といったネガティブな談話韻律が推測される。これも同様、コンコーダンス・コロケーションリストによる観測・帰納による。
-
-コア、コロケーションから談話韻律へと、直接な観測ができなくなり、明示的でなくなっていく [@Stubbs2001Words, pp. 87--88]。
-
-和歌の性質とデータの量の少なさからして、確実に拡張意味単位を捉えることが難しいことがある。よって、本稿では単純に拡張意味単位の 4 つのレベルを 4 つの視座とみて、この 4 つの視座のうち、共出現の語、共出現の構文パターン、共出現の語の意味的まとまりで考えられる志向性から、分類された 10 人の翻訳でどのように処理されているかを分析する。
-
-視座とする以上、いくつかのアダプテーションについて述べる。まず、拡張意味単位の本来の分析では要素の順序とコンテキスト・ウィンドーの設定はあるが、本稿では意味単位の共出現について順序の設定を考慮しない。57577の制限の中で、語の順番の入れ替えが多く、コアを中心とする線形配列が望ましくない。つぎに、出現率の閾値の設定はしない。テキストの数が少なく、大規模コーパスのようにロバストな結果として出すよりも、傾向を重視する。
-:::
-
-# 結果 Results {#sec-results}
-
-## 現代語訳の整理と分類 Classification of contemporary translation approaches
-
-注釈書の前書き、導入部に記されている翻訳に対する認識・意識に基づき、10 人の翻訳アプローチをコミュニケーションの主体への視座の置き方に基づき、3 類に分類された：
+注釈書の前書き、導入部に記されている翻訳アプローチに関する意識と認識に基づき、10 人の翻訳アプローチをコミュニケーションの主体への視座の置き方によって 3 類に分類した：
 
 1. テキストの字義を重視する方針： @kaneko1933Kokin; @kubota1960Kokin; @katagiri1998Kokinhyoshaku
 2. 作者の意図を重視する方針： @okumura1978Kokin; @takeoka1976Kokin
 3. 読者の理解を重視する方針： @ozawa1971Kikon; @kyusojin1979Kokin
 
-内方針が明確に記されなかったのは @matsuda1968Shinshaku; @kojima1989Kokin; @komachiya1982Kokin である
+うち、明確に翻訳アプローチについて記されなかったのは @matsuda1968Shinshaku; @kojima1989Kokin; @komachiya1982Kokin である。
 
 この中で、原文の字義を重視する翻訳アプローチは、もっとも逐語訳に拘っている。作者の意図・感受を重視する・読者の理解を重視する翻訳アプローチでは、多少の語と語順の入れ替え、語句の補いを許容しているように述べている。
-
-Based on the prefaces and introductions in the annotation books, where the translators express their awareness, understanding, and intent regarding translation approaches, the approaches of the ten translators are classified into three categories according to their focus in the communication process:
-
-1. **Focus on the text's literal meaning (signal)**: @kaneko1933Kokin; @kubota1960Kokin; @katagiri1998Kokinhyoshaku
-2. **Focus on the author's intent (source)**: @okumura1978Kokin; @takeoka1976Kokin
-3. **Focus on the reader's comprehension (destination)**: @ozawa1971Kikon; @kyusojin1979Kokin
-
-The translation approach was not clearly stated in the works of @matsuda1968Shinshaku, @kojima1989Kokin, and @komachiya1982Kokin.
-
-Among these, the translators who focus on the literal meaning of the original text tend to adhere most closely to word-for-word translation. On the other hand, those who prioritize the author’s intent or the reader’s understanding tend to allow for some reordering of words and the supplementation of expressions.
 
 ### Text-focused approach: KNK, KBT, KTGR {.unnumbered}
 
 原文テキストの字義通りの解釈を重視する訳のグループは、原文に忠実に翻訳することに重みを置き、できるだけ語順や意味を変えずに翻訳を行う：@kaneko1933Kokin は「逐語訳」に徹し、語を加えたり、削除することを避けており、慎重に翻訳していると述べている；
-@kaneko1933Kokin は歌の意をそこねたり、調をあやまったりすることを恐れて、鏡花水月の訳法（あからさまに説明せず、ただその姿を眼前に思い浮ばせるようにする漢文の表現法）に従ひ、きわめて小心に、一字一語の出入をもゆるがせにせぬことを期したことを述べている。また、文体的には、金子の翻訳調はたとえば「くずをれる」のような古めかしいことばをわざと翻訳に入れるところなど、本居宣長の「遠鏡」に似ている。
+@kaneko1933Kokin は歌の意をそこねたり、調をあやまったりすることを恐れて、鏡花水月の訳法^[あからさまに説明せず、ただその姿を眼前に思い浮ばせるようにする漢文の表現法] に従い、きわめて小心に、一字一語の出入をもゆるがせにせぬことを期したことを述べている。また、文体的には、金子の翻訳調は例えば「くずをれる」のような古めかしいことばをわざと翻訳に入れるところなど、本居宣長の「遠鏡」に似ている。
 @kubota1960Kokin は、現代語訳の方針について、逐語訳にこだわり、語順を変えたり、新しい語を加えることを避けていると述べている。@katagiri1998Kokinhyoshaku も同様に、逐語訳を行い、和歌の省略や長大な増補を避け、可能な限り忠実に現代語訳しているとしている。
-
-The group of translations that emphasize a literal interpretation of the original text focuses on translating as faithfully as possible, minimizing changes in word order or meaning. @kaneko1933Kokin states that he follows a strict word-for-word approach, avoiding the addition or omission of words, and carefully translating to maintain the integrity of the original. He states that, fearing to distort the meaning or rhythm of the poems, he adhered to the *kyōkasuigetsu* (鏡花水月) method^[A classical Chinese expression that suggests presenting the essence of something without explicit explanation, allowing the reader to imagine it.], paying meticulous attention to every word without altering even a single word. Stylistically, Kaneko's translation resembles Motoori Norinaga's *Kokin Tōkagami* in his deliberate inclusion of archaic expressions.
-
-@kubota1960Kokin also emphasizes a strict adherence to word-for-word translation, avoiding changes in word order or word additions. Similarly, @katagiri1998Kokinhyoshaku follows the same approach, performing a literal translation while avoiding omissions or extensive additions, aiming to remain as faithful as possible to the original poems.
 
 ### Poet-focused approach: OKMR, TKOK {.unnumbered}
 
@@ -1490,53 +1343,29 @@ $$
 S=\left[\left(a+b+c+\dots+n\right)\times X \right]\times Y
 $$
 
-$S$ は翻訳された歌であり、$a, b, c, \dots, n$ のそれぞれは歌における語、$X$ は訳に含まれる要素であり、$Y$ は訳に効果的に加えられた要素である。$a,b,c, \dots, n$ それぞれの一般的普遍的意義は辞書で理解でき、それぞれの $+$ のしかたに相当するものは文法書を参照すれば了解できる」としている。@takeoka1976Kokin [p. 11] は $Y$ はふつうは 0 の値であるが、和歌にはいくつか効果的な要素が含まれる時、翻訳者は $Y$ に何らかの値、たとえば終助詞（わ、ね、よ）のようなものを付け加わえる。したがって、現代語訳作成のための重要な変数は $X$ となる。その $X$ は、語句の分割、対応する適切な現代語、語順、助詞・接続詞を含めた訳語、文の構造、話の流れ（談話）、場面の７つに分類されるとしている。このように、歌の筋より作者の意図を細部まで還元することを強調していると捉えられる。^[契沖の「古今和歌集余材抄」以来のの 7 種の注釈書の注を統合したはじめてのものである。竹岡はこの注釈書にて文学研究に分析的アプローチを組み込んでいる。竹岡は賀茂真淵、香川景樹の仕事を分析に根拠がないとして同意できないとしている一方で、契沖、本居宣長、富士谷成章 (1738–79) らの注釈を評価している。加えて、特に古典文法、語彙の観点から 7 種すべての古注間の違いについて慎重に議論している。]
-
-The group of translations that emphasize the poet’s intent focuses more on the underlying meaning and sensibility of the original text than on its surface meaning. @okumura1978Kokin [p. 7] states that the contemporary translation respects the wording and phrasing of the original poem, but rather than strictly interpreting the meaning of each poem, the emphasis is placed on conveying the basic intent of the poet. 
-
-In this approach, understanding the original intent takes precedence over a literal word-for-word translation. @takeoka1976Kokin [p. 21] explains that translation (into contemporary colloquial Japanese) is not a mere introduction or explanation of the plot of the original text, but rather aims to clarify the poet’s way of perceiving and feeling in all aspects, and then transposes these expressions into modern equivalents as faithfully as possible. While synonyms in the original poem are considered important, the emphasis is on preserving the poet’s intent and feelings. As a specific translation strategy, @takeoka1976Kokin [pp. 11–12] proposes the following unique theory:
-
-$$
-S=\left[\left(a+b+c+\dots+n\right)\times X \right]\times Y
-$$
-
-In this formula, $S$ represents the translated poem, $a, b, c, \dots, n$ are the individual words in the poem, $X$ represents the elements included in the translation, and $Y$ represents additional elements effectively included in the translation. Takeoka explains that the general universal meaning of $a, b, c, \dots, n$ can be understood through a dictionary, and the way they are combined (denoted by $+$) can be clarified by referencing grammar books. @takeoka1976Kokin [p. 11] also notes that $Y$ typically has a value of 0, but when effective elements are included in a poem, the translator adds a value to $Y$, such as a final particle (e.g., わ *wa*, ね *ne*, よ *yo*). Therefore, the most important variable for creating a contemporary translation is $X$. Takeoka divides $X$ into seven categories: word segmentation, corresponding modern vocabulary, word order, particles and conjunctions, sentence structure, discourse, and scene. This approach emphasizes fully conveying the poet’s intent rather than just the surface meaning of the poem’s structure.^[This method represents the first integrated analysis of the seven major commentaries on the *Kokinshū* since Keichū’s *Kokinshū Yozaishō*. Takeoka adopts an analytical approach in his literary studies, while rejecting the work of Kamo no Mabuchi and Kagawa Kageki as lacking in analytical foundation. However, he values the annotations of Keichū and Motoori Norinaga. Additionally, he carefully discusses the differences among all seven classical annotation books from the perspectives of the studies of classical Japanese grammar and vocabulary.]
+$S$ は翻訳された歌であり、$a, b, c, \dots, n$ のそれぞれは歌における語、$X$ は訳に含まれる要素であり、$Y$ は訳に効果的に加えられた要素である。$a,b,c, \dots, n$ それぞれの一般的普遍的意義は辞書で理解でき、それぞれの $+$ のしかたに相当するものは文法書を参照すれば了解できる」としている。@takeoka1976Kokin [p. 11] は $Y$ はふつうは 0 の値であるが、和歌にはいくつか効果的な要素が含まれる時、翻訳者は $Y$ に何らかの値、例えば終助詞（わ、ね、よ）のようなものを付け加わえる。したがって、現代語訳作成のための重要な変数は $X$ となる。その $X$ は、語句の分割、対応する適切な現代語、語順、助詞・接続詞を含めた訳語、文の構造、話の流れ（談話）、場面の７つに分類されるとしている。このように、歌の筋より作者の意図を細部まで還元することを強調していると捉えられる。^[契沖の「古今和歌集余材抄」以来のの 7 種の注釈書の注を統合したはじめてのものである。竹岡はこの注釈書にて文学研究に分析的アプローチを組み込んでいる。竹岡は賀茂真淵、香川景樹の仕事を分析に根拠がないとして同意できないとしている一方で、契沖、本居宣長、富士谷成章 (1738–79) らの注釈を評価している。加えて、特に古典文法、語彙の観点から 7 種すべての古注間の違いについて慎重に議論している。]
 
 ### Reader-focused approach: OZW, KSJ {.unnumbered}
 
 読者の理解を重視する訳のグループは、原文に忠実であることよりも、読者の内容の理解や解釈を読者に伝えることを重視している。そのため、語順を変えたり、新しい語を加えることもある。
 @ozawa1971Kikon は原作の語順・語法を変更することをいとわず、読者が理解しやすいように内容を優先した翻訳を行っている。 @ozawa1971Kikon [p. 46] は「口語訳はそれだけ独立しても意味がよくわかるように努めたので、時には原作の語順・語法を変えている」と述べており、逐語訳よりも内容の理解の方に力点が置かれている。@kyusojin1979Kokin は、平易な口語訳を採用し、必要に応じて語句を補っており、解釈を重視した翻訳を行っている。現代語訳の方針としては「歌意は、歌句に基づく平易な口語訳としたが、必要と思われる場合は字句を補った」と述べている [@kyusojin1979Kokin, p.6]。
 
-The group of translations that prioritize the reader’s understanding focuses more on conveying the meaning and interpretation of the original poem to the reader, rather than strictly adhering to the original text. This often involves changing the word order or inserting additional words. @ozawa1971Kikon does not avoid modify the word order and grammar of the original, prioritizing a translation that is easier for the reader to understand. @ozawa1971Kikon [p. 46] states that he made sure that the translation could stand alone and still be understood, even if it meant changing the word order or grammar of the original text. This highlights a focus on comprehension over literal word-for-word translation. Similarly, @kyusojin1979Kokin adopts a plain and accessible translation, supplementing expressions where necessary to prioritize interpretation. The translation approach is explained that the intent of the poem is expressed in a highly-readable translation based on the original poems, but additional words were added where necessary [@kyusojin1979Kokin, p. 6].
-
-### 不詳 Approaches that were not specified: KMCY, MTD, K&A {.unnumbered}
+### その他のアプローチ: KMCY, MTD, K&A {.unnumbered}
 
 現代語訳の方針について、 @komachiya1982Kokin, @matsuda1968Shinshaku, @kojima1989Kokin は明確に述べていない。
 
-うち、 @matsuda1968Shinshaku の現代語訳は他の 10 名の共同執筆者によって作られている。この注釈書冒頭のの解説には、現代語訳は今までの研究にしたがって作られたとは述べているものの、10 名の共著者の間での翻訳の共通認識、作成方針は明らかに述べられていない。また、松田は古今集の和歌について、歌人の感情についてだけでなく、選者の編集意識についても、解釈にも含めようとしていると述べている [@matsuda1968Shinshaku, p. 9]。各歌の後に、順次、「通釈」「語釈」「古注」「評」の項目を設け、解釈・鑑賞などが記されている。
+うち、 @matsuda1968Shinshaku の現代語訳は他の 10 名の共同執筆者によって作られている。この注釈書冒頭のの解説には、現代語訳は今までの研究にしたがって作られたとは述べているものの、10 名の共著者の間での翻訳の共通認識、作成方針は明らかに述べられていない。また、松田は古今集の和歌について、歌人の感情についてだけでなく、選者の編集意識についても、解釈にも含めようとしていると述べている [@matsuda1968Shinshaku, p. 9]。
 @kojima1989Kokin の特色の一つは注釈は江戸期 (1600–1868) だけでなく、これまでの注釈書では無視されてきた中世期 (1392–1600) に作られた注釈も取り入れていることである (pp. 481--482)。また、万葉集の和歌と用語が対比されて引用されている [@kojima1989Kokin, p. 480]。各歌の注釈としては「歌番号」「大意」「語句の注」「参考事項」の順で述べられている。他の注釈本と比べてさほど量的に違いはないが、付録にはさまざまな資料が含まれており、付録だけで本の 30 % を占めているほどである。
 
-The translation approach is not explicitly stated in the works of @komachiya1982Kokin, @matsuda1968Shinshaku, and @kojima1989Kokin.
+### まとめ {.unnumbered}
 
-Among these, the contemporary translation in @matsuda1968Shinshaku was produced by ten co-authors. Although the preface of the annotation book mentions that the translation was created based on previous research, it does not clarify the shared understanding or guidelines for translation among the ten co-authors. Additionally, Matsuda states that his interpretation of the *Kokinshū* not only includes the poets' emotions but also the editors' intentions in compiling the anthology [@matsuda1968Shinshaku, p. 9]. Following each poem, the annotation book includes sections titled "General Explanation (通釈 *Tsūshaku*)," "Word Explanation (語釈 *Goshaku*)," "Classical Commentaries (古注 *Kochū*)," and "Evaluations (評 *Hyō*)," providing interpretation and appreciation of the poems.
+それぞれの翻訳のアプローチを見る限り、ほとんどの作者が逐語訳を基本に原文の意味を変えない翻訳を試みているが、従来の注釈書の受け継ぎ方の特徴や情報伝達の力点の置き方がやはり異なっている。本稿では、「テキストの字義を重視」「作者の意図・感受の解釈を重視」「読者の理解を重視」「その他」のようにコミュニケーションモデルの観点から分類を行った。この中で、原文の字義を重視する翻訳アプローチは、もっとも逐語訳に拘っていた。作者の意図・感受を重視する・読者の理解を重視する翻訳アプローチでは、多少の語と語順の入れ替え、語句の補いを許容していた。ただし、この分類は互いに重なる部分もあるが予想される。
 
-One distinguishing feature of @kojima1989Kokin is that it incorporates annotations from the medieval period (1392–1600), which were often overlooked in previous annotation books, alongside annotations from the Edo period (1600–1868) (pp. 481--482). Additionally, comparisons and references to *Man'yōshū* poems and terms are frequently made [@kojima1989Kokin, p. 480].
+## 不一致率と追加率の推定結果
 
-### まとめ Summary {.unnumbered}
+追加率の計算結果は、@fig-data を参照する。不一致率は 0--88 % であった [@tbl-data-review]。TKOK の現代語訳がもっとも不一致率が低く 17.2 % (sd = 0.1)であった [@fig-unmatch-rate]。一方、OZW の現代語訳がもっとも高く 23% (sd = 0.112) であった [@fig-unmatch-rate]。既に述べたように、OZW は語順を変更することを惜しまないのに対して、竹岡は自身の方針に遵守して翻訳した。それが如実にデータとしてあらわれていたといえよう。
 
-それぞれの翻訳の方針を見る限り、ほとんどの作者が逐語訳を基本に原文の意味を変えない翻訳を試みているが、力点の置き方が若干異なっている。本稿では、「テキストの字義を重視」「作者の意図・感受の解釈を重視」「読者の理解を重視」「不詳」のようにコミュニケーションの観点から分類を行った。この中で、原文の字義を重視する翻訳アプローチは、もっとも逐語訳に拘っていた。作者の意図・感受を重視する・読者の理解を重視する翻訳アプローチでは、多少の語と語順の入れ替え、語句の補いを許容していた。ただし、この分類は、もちろんのこと、互いに重なる部分もあるが予想される。
-
-When examining the translation approaches, most translators aim to maintain the original meaning without altering it, primarily adhering to word-for-word translation, though the emphasis differs slightly. In this paper, we categorized these approaches from the perspective of the communication model into the following groups: text-focused approach, poet-focused approach, reader-focused approach, and approaches that were not specified. Among these, the text-focused approach was the most committed to word-for-word translation. On the other hand, approaches that prioritized the author’s intent or the reader's understanding allowed for some reordering of words and the supplementation of phrases. However, there is likely overlap among these categories. It should also be noted that these approaches are based on the translators' subjective awareness of their own translation strategies.
-
-## 不一致率と追加率の推定結果 Results of unmatch and addition rate estimates
-
-追加率の計算結果は、@fig-data を参照する。不一致率は 0--88 % である [@tbl-data-review]。TKOK の現代語訳がもっとも不一致率が低く 17.2 % (sd = 0.1)であった [@fig-unmatch-rate]。一方、OZW の現代語訳がもっとも高く 23% (sd = 0.112) であった [@fig-unmatch-rate]。既に述べたように、OZW は語順を変更することを惜しまないのに対して、竹岡は自身の方針に遵守して翻訳した。それが如実にデータとしてあらわれていた。
-
-10 種の現代語訳のうち、697番歌は、88.2% ともっとも不一致率の高い和歌であった [@tbl-data-review]。つまり、和歌の中のほとんどの語が訳されていないと見てよい。このような歌については「考察」で改めて確認する。
-
-Referring to @fig-data for the calculation results of the addition rate, we can observe that the unmatch rate ranges from 0% to 88% [@tbl-data-review]. TKOK's translation had the lowest unmatch rate at 17.2% (sd = 0.1) [@fig-unmatch-rate], while OZW's translation recorded the highest at 23% (sd = 0.112) [@fig-unmatch-rate]. As mentioned earlier, OZW showed greater flexibility in changing word order, whereas Takeoka adhered strictly to his translation principles, a difference clearly reflected in the data.
-
-Of the 10 contemporary translations analyzed, Poem #697 exhibited the highest unmatch rate at 88.2% [@tbl-data-review], indicating that most of the words in the poem were not literally translated. We will revisit these poems in the "Discussion" section for further analysis.
+10 種の現代語訳のうち、697番歌は、88.2% ともっとも不一致率の高い和歌であった [@tbl-data-review]。つまり、和歌の中のほとんどの語が訳されていないと見てよい。このような歌については次の例で確認する。
 
 ```{R}
 #| label: fig-data
@@ -1887,11 +1716,341 @@ data |>
   kable()
 ```
 
-## 統計モデルの推定結果：翻訳アプローチと追加率の関連 Results from statistical modeling: relationship between translation approach and addition rate
+### 不一致率の高い対訳 {.unnumbered}
 
-モデルから翻訳アプローチごとの現代語訳の追加率をサンプリングした [@fig-poster]。推定効果のいずれの R-hat も 1 になっており、1.1 を下回り収束が良好であると示した [@Brooks1998General]。検証したい効果について、有効サンプルサイズ (ESS) がすべて 2000 程度を達した。
+不一致率の高い歌の対訳対において、10 人の現代語訳に共通して欠落がみられたのは「序詞」「枕詞」「まわりくどい言い回し」の 3 種類あった。訳者の幾人かは意識的に「序詞」「枕詞」を訳さないで放置していることが観測された。例えば、@matsuda1968Shinshaku の現代語訳では、4 首は現代語訳の方がもとの歌より短くなっている。MTD (173) と MTD (665) の訳においては、枕詞「ひさかたの」「みつしほの」は省略されている。MTD (684) の MTD (697) の訳においては、枕詞も序詞も省略されている。これらの歌は当然不一致率も高い。特に、MTD (697) はもとの和歌よりもずっと短い^[KSJ (404) もまた極端に短く、序詞がやはり省略されている。]。MTD (697) では大和の枕詞「敷島の」が省略されている。元の歌は、「頃も」と「衣」が掛詞になっているが、その「衣」に掛かっていく序詞も省略されている。
 
-The model sampled the addition rates for each translation according to the translation approach [@fig-poster]. The $R^{\hat}$ values for all estimated effects were 1, indicating good convergence, as they remained below the threshold of 1.1 [cf., @Brooks1998General]. Additionally, the effective sample size (ESS) reached approximately 2000 in all cases.
+::: {fig-mtd-697}
+```
+mode=2; level=3; elements of poem=16; elements of translation=6;
+bag (E=1, F=0, G=0, U=15, T=1, AddRate=83.33%, UnmatchRate=93.75%);
+alignment (E=1, F=0, G=0, U=15, T=1, AddRate=83.33%, UnmatchRate=93.75%)
+>| しきしまのやまとにはあらぬからころもころもへずしてあふーーよしーーーもがな [697]
+>| ーーーーーーーーーーーーーーーーーー絶え間なくーー会いたいものだなあーーー [MTD]
+```
+
+697 番歌の @matsuda1968Shinshaku による現代語訳：アライメントの結果を書き換えている；「しきしまのやまとにはあらぬからころも」が省略されている。
+Contemporary translation of Poem #697 by @matsuda1968Shinshaku: The alignment has been revised; the *jokotoba* "Shikishima no Yamato ni wa aranu kara koromo" has been omitted.
+:::
+
+```{python}
+#| include: false
+
+op697 = '''
+01:000697:0001 A00 CH-JP-0000-00-0100 11 敷嶋 敷島 しきしま 敷島 しきしま
+01:000697:0002 A00 BG-08-0061-07-0100 61 の の の の の
+01:000697:0003 A00 BG-01-2590-01-0500 11 やまと 大和 やまと 大和 やまと
+01:000697:0003 A10 CH-29-0000-00-2800 11 やまと 大和 やまと 大和 やまと
+01:000697:0003 A20 CH-JP-0000-00-0300 11 やまと 大和 やまと 大和 やまと
+01:000697:0004 A00 BG-08-0061-05-0100 61 に に に に に
+01:000697:0005 A00 BG-08-0065-07-0100 65 は は は は は
+01:000697:0006 A00 BG-02-1200-01-0102 47 あら 有り あり 有ら あら
+01:000697:0007 A00 BG-03-1200-02-0800 74 ぬ ず ず ぬ ぬ
+01:000697:0007 A10 BG-09-0010-01-0100 74 ぬ ず ず ぬ ぬ
+01:000697:0008 B00 BG-01-4220-06-0800 02 唐衣 唐衣 からころも 唐衣 からころも
+01:000697:0008 C00 BG-01-2590-02-0600 02 唐 唐 から 唐 から
+01:000697:0008 C01 BG-01-4220-02-0200 02 衣 衣 ごろも 衣 ごろも
+01:000697:0009 A00 BG-01-1610-01-0401 02 ころ 頃 ころ 頃 ころ
+01:000697:0010 A00 BG-08-0065-08-0100 65 も も も も も
+01:000697:0011 A00 BG-02-1600-01-0200 47 へ 経 ふ 経 へ
+01:000697:0012 A00 BG-03-1200-02-0800 74 す ず ず ず ず
+01:000697:0012 A10 BG-09-0010-01-0100 74 す ず ず ず ず
+01:000697:0013 A00 BG-08-0064-38-0100 64 して して して して して
+01:000697:0014 A00 BG-02-1556-01-0206 47 逢 逢ふ あふ 逢ふ あふ
+01:000697:0014 A10 BG-02-3510-01-0100 47 逢 逢ふ あふ 逢ふ あふ
+01:000697:0015 A00 BG-01-1020-02-0100 02 よし 由 よし 由 よし
+01:000697:0015 A10 BG-01-3081-01-0800 02 よし 由 よし 由 よし
+01:000697:0015 A20 BG-01-3081-04-1200 02 よし 由 よし 由 よし
+01:000697:0016 A00 BG-03-1330-01-1400 69 もかな もがな もがな もがな もがな
+01:000697:0016 A10 BG-03-3012-03-2700 69 もかな もがな もがな もがな もがな
+01:000697:0016 A20 BG-08-0069-20-0100 69 もかな もがな もがな もがな もがな
+'''
+ct697 = '''
+1 matsuda 0697 1 55 00 00 BG-03-1600-02-140-A 絶え間なく たえまなく 絶え間なく
+1 matsuda 0697 3 55 00 00 BG-02-1240-04-010-A -- たえる 絶える
+1 matsuda 0697 3 55 00 00 BG-01-1610-03-010-A -- ま 間
+1 matsuda 0697 3 55 00 00 BG-09-0010-01-050-A -- ない ない
+1 matsuda 0697 0 47 21 04 BG-02-1556-01-020-A 会い あう 会う
+2 matsuda 0697 2 47 21 04 BG-02-3510-01-010-A 会い あう 会う
+1 matsuda 0697 0 74 53 01 BG-03-3012-03-020-A たい たい たい
+2 matsuda 0697 2 74 53 01 BG-09-0050-03-010-A たい たい たい
+1 matsuda 0697 0 21 00 00 BG-01-1000-03-010-A もの もの もの
+1 matsuda 0697 0 74 55 01 BG-09-0050-01-030-A だ だ だ
+1 matsuda 0697 0 69 00 00 BG-04-3200-03-030-A なあ なあ なあ
+2 matsuda 0697 2 69 00 00 BG-08-0069-11-040-A なあ なあ なあ
+1 matsuda 0697 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+'''
+
+pipe(poem=op697, translation=ct697, mode=2, level=3)
+```
+
+```{bash}
+#| include: false
+
+awk '$1 ~ /01:000346/ && $2 ~ /[ABD]0/ {printf "%s", $5}' ./data/hachidaishu/hachidai.db
+echo ""
+awk -v translator="okumura" '$3 ~ /0346/ && $0 ~ translator && $1 ~ /1/ && $4 ~ /[01]/ {printf "%s", $9}' ./data/translationExamples.txt
+```
+
+```{python}
+#| include: false
+
+op346 = '''
+01:000346:0001 A00 BG-01-2000-01-0102 14 わ 我 わ 我 わ
+01:000346:0002 A00 BG-08-0061-02-0100 61 か が が が が
+01:000346:0003 A00 BG-01-1911-03-0100 02 齢 齢 よはひ 齢 よはひ
+01:000346:0004 A00 BG-01-2000-02-0300 14 君 君 きみ 君 きみ
+01:000346:0005 A00 BG-08-0061-02-0100 61 か が が が が
+01:000346:0006 B00 BG-03-1600-09-1500 02 やちよ 八千世 やちよ 八千世 やちよ
+01:000346:0006 C00 BG-01-1950-04-0900 19 八千 八千 はっせん 八千 はっせん
+01:000346:0006 C01 BG-01-2610-01-0400 02 世 世 よ 世 よ
+01:000346:0007 A00 BG-08-0061-05-0100 61 に に に に に
+01:000346:0008 A00 BG-02-1250-03-1100 47 とり 取る とる 取り とり
+01:000346:0008 A10 BG-02-3061-04-0100 47 とり 取る とる 取り とり
+01:000346:0008 A20 BG-02-3700-04-0100 47 とり 取る とる 取り とり
+01:000346:0009 A00 BG-02-1556-05-0100 47 そへ 添ふ そふ 添へ そへ
+01:000346:0009 A10 BG-02-1580-02-0700 47 そへ 添ふ そふ 添へ そへ
+01:000346:0010 A00 BG-08-0064-16-0100 64 て て て て て
+01:000346:0011 A00 BG-02-1240-01-1300 47 とゝめ 留む とどむ 留め とどめ
+01:000346:0011 A10 BG-02-1512-01-0400 47 とゝめ 留む とどむ 留め とどめ
+01:000346:0012 A00 BG-02-1515-03-0100 47 をき 置く おく 置き おき
+01:000346:0013 A00 BG-09-0010-03-0100 74 て つ つ て て
+01:000346:0014 A00 BG-08-0064-26-0100 64 は ば ば ば ば
+01:000346:0015 A00 BG-02-3060-01-0101 47 思ひ 思ふ おもふ 思ひ おもひ
+01:000346:0016 A00 BG-02-1210-01-0304 47 て 出づ いづ 出で いで
+01:000346:0016 A10 BG-02-1530-01-0101 47 て 出づ いづ 出で いで
+01:000346:0016 A20 BG-02-1540-04-0601 47 て 出づ いづ 出で いで
+01:000346:0017 A00 BG-08-0061-05-0100 61 に に に に に
+01:000346:0018 A00 BG-02-3420-01-0100 47 せよ す す せよ せよ
+'''
+ct346 = '''
+1 okumura 0346 0 14 00 00 BG-01-2000-01-020-A 私 わたし 私
+1 okumura 0346 0 71 00 00 BG-08-0071-01-010-A の の の
+1 okumura 0346 0 02 00 00 BG-01-5800-02-050-A 命数 めいすう 命数
+1 okumura 0346 0 61 00 00 BG-08-0061-10-010-A を を を
+1 okumura 0346 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 okumura 0346 0 14 00 00 BG-01-1730-03-030-A あなた あなた あなた
+2 okumura 0346 2 14 00 00 BG-01-1731-02-030-A あなた あなた あなた
+3 okumura 0346 2 14 00 00 BG-01-2000-02-010-A あなた あなた あなた
+1 okumura 0346 0 71 00 00 BG-08-0071-01-010-A の の の
+1 okumura 0346 0 02 00 00 BG-01-5800-03-020-A 長寿 ちょうじゅ 長寿
+1 okumura 0346 0 71 00 00 BG-08-0071-01-010-A の の の
+1 okumura 0346 0 22 00 00 BG-01-1741-01-030-A 上 うえ 上
+1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
+1 okumura 0346 0 02 00 00 BG-03-1661-01-020-A さら さら さら
+1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
+1 okumura 0346 0 47 21 06 BG-02-1700-02-040-A 沿え そう 沿う
+1 okumura 0346 0 64 00 00 BG-08-0064-16-010-A て て て
+1 okumura 0346 0 47 12 04 BG-02-1240-01-020-A 残し のこす 残す
+1 okumura 0346 0 64 00 00 BG-08-0064-16-010-A て て て
+1 okumura 0346 0 48 08 04 BG-02-1515-03-010-A おき おく おく
+1 okumura 0346 0 74 58 03 BG-09-0030-03-030-A ましょ ます ます
+1 okumura 0346 0 74 70 01 BG-09-0010-02-010-A う う う
+1 okumura 0346 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 okumura 0346 0 57 00 00 BG-03-1000-02-010-A その その その
+1 okumura 0346 0 22 00 00 BG-01-1000-03-040-A 分 ぶん 分
+1 okumura 0346 0 61 00 00 BG-08-0061-10-010-A を を を
+1 okumura 0346 0 43 00 00 BG-05-0070-01-010-A お お お
+1 okumura 0346 0 47 06 04 BG-02-5810-04-010-A 生き いきる 生きる
+1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
+1 okumura 0346 0 47 17 01 BG-02-1220-01-030-A なる なる なる
+1 okumura 0346 0 22 00 00 BG-01-5620-04-110-A とき とき とき
+1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
+1 okumura 0346 0 65 00 00 BG-08-0065-07-010-A は は は
+1 okumura 0346 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 okumura 0346 0 55 00 00 BG-04-3140-01-040-A どうぞ どうぞ どうぞ
+1 okumura 0346 0 14 00 00 BG-01-2000-01-020-A 私 わたし 私
+1 okumura 0346 0 61 00 00 BG-08-0061-10-010-A を を を
+1 okumura 0346 0 47 12 04 BG-02-3050-03-070-A 思い出し おもいだす 思い出す
+1 okumura 0346 0 64 00 00 BG-08-0064-16-010-A て て て
+1 okumura 0346 1 48 19 09 BG-02-3770-05-030-A 下さい くださる 下さる
+1 okumura 0346 2 48 19 09 BG-02-3770-05-020-A -- くれる くれる
+1 okumura 0346 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+'''
+
+pipe(poem=op346, translation=ct346, mode=3, level=3, gap_penalty=0.01,u=10,g=20,e=50)
+```
+
+和歌と現代語訳の間にある回りくどい表現の不一致は、翻訳における「欠落」というより本稿の一致の探し方（アルゴリズムとして一対一で探索する）に課題が存在しているといえるが、一例をとりあげる。OKMR (#346) は、奥村の現代語訳は和歌の語をほとんど使わず、あえてつぎのように回りくどい表現を使っている：
+
+- 「とりそへて」=「さらにそえて」
+- 「とどめおきて」=「のこしておきましょう」
+
+特に整列法は、このような歌をうまくアライメントできなかった。
+
+### 追加率の高い対訳 {.unnumbered}
+
+MTD (#629) は追加率が高い訳のひとつである。この歌は「あやなし」「まだき」などの古語、「なくに」のような現代語には使われない語法が含まれている。これらの語は、現代語と分類語彙表番号で対応づけることができなかった。
+また「名の**たつ**」と「**たつ**たがは」の掛詞も存在する。
+
+追加率の平均値上位 10 首のうち、ほかにも 705 番歌、669 番歌、617 番歌など追加率の高かった和歌がある。705 番歌は「身」と「雨」に「降（経）る」の掛詞が含まれている。669 番歌と617番歌は、それぞれ「海藻目」と「ながめ」の掛詞がある。掛詞を含む歌が典型的であった。
+
+```{bash}
+#| include: false
+#| label: tatsuda-629
+
+awk '$1 ~ /01:000629/ && $2 ~ /[ABD]0/ {printf "%s", $5}' ./data/hachidaishu/hachidai.db
+echo ""
+awk -v translator="matsuda" '$3 ~ /0629/ && $0 ~ translator && $1 ~ /1/ && $4 ~ /[01]/ {printf "%s", $9}' ./data/translationExamples.txt
+```
+
+::: {fig-mtd-629}
+
+```
+mode=2; level=3; elements of poem=15; elements of translation=60;
+bag (E=1, F=2, G=6, U=6, T=9, AddRate=85.00%, UnmatchRate=40.00%);
+alignment (E=1, F=0, G=6, U=8, T=7, AddRate=88.33%, UnmatchRate=53.33%)
+args: translator:matsuda; poem No.0629; weight:(U=-1, G=10, F=13, E=17); gap penalty: 0.01
+
+1| ーーーーーーーーあやなくーーーてーーーーーーーーーーーーーーーーーーーーーーーーーー　[629]
+1| わけもなくもう無実の評判が立ってしまったいずれ二人の恋は遂げられないではいられないも  [MTD]
+
+2| ーーーーーーーーーーーーまたきなき名のー立田河わたらてやまーーんーー物ーーーーーーー　[629]
+2| のではあるがわけもなくもう無実の評判が立っーーーーーてしまったーいずれ二人の恋は遂げ  [MTD]
+
+3| ーーならーーなーーーーーーーくーーにーーーーーーーーーーーーーーーーーーーーーーーー  [629]
+3| られないではいられないものではあるがーーーーーーーーーーーーーーーーーーーーーーーー　[MTD]
+```
+
+629 番歌の @matsuda1968Shinshaku による現代語訳：アライメントの結果を書き換えている Contemporary translation of Poem #629 by @matsuda1968Shinshaku: The alignment results have been modified.
+:::
+
+```{python}
+#| include: false
+
+op629 = '''
+01:000629:0001 A00 BG-01-3072-03-1100 51 あやなく 文無し あやなし 文無く あやなく
+01:000629:0002 A00 BG-08-0064-16-0100 64 て て て て て
+01:000629:0003 A00 BG-03-1660-03-1100 55 またき 夙 まだき 夙 まだき
+01:000629:0004 B00 BG-01-3440-07-0700 02 なき名 無き名 なきな 無き名 なきな
+01:000629:0004 C00 BG-03-1200-02-0100 51 無い 無い ない 無い ない
+01:000629:0004 C01 BG-01-3102-02-0100 28 名 名 めい 名 めい
+01:000629:0005 A00 BG-08-0061-07-0100 61 の の の の の
+01:000629:0006 D00 CH-29-5250-01-0400 11 立田河 立田河 たつたがは 立田河 たつたがは
+01:000629:0006 E00 CH-29-0000-00-1800 11 立田 立田 たつた 立田 たつた
+01:000629:0006 E01 BG-08-0071-01-0100 71 の の の の の
+01:000629:0006 E02 BG-01-5250-01-0100 02 川 川 かわ 川 かわ
+01:000629:0007 A00 BG-02-1503-01-0201 47 わたら 渡る わたる 渡ら わたら
+01:000629:0007 A10 BG-02-1521-04-0100 47 わたら 渡る わたる 渡ら わたら
+01:000629:0007 A20 BG-02-1521-12-0100 47 わたら 渡る わたる 渡ら わたら
+01:000629:0008 A00 BG-08-0064-17-0100 64 て で で で で
+01:000629:0009 A00 BG-02-1502-03-0100 47 やま 止む やむ 止ま やま
+01:000629:0010 A00 BG-03-3012-03-2600 74 ん む む む む
+01:000629:0010 A10 BG-09-0010-02-0102 74 ん む む む む
+01:000629:0011 A00 BG-01-1000-03-0201 02 物 物 もの 物 もの
+01:000629:0011 A10 BG-01-4000-01-0800 02 物 物 もの 物 もの
+01:000629:0012 A00 BG-09-0010-02-0700 74 なら なり なり なら なら
+01:000629:0012 A10 BG-09-0050-01-0100 74 なら なり なり なら なら
+01:000629:0013 A00 BG-03-1200-02-0800 74 な ず ず な な
+01:000629:0013 A10 BG-09-0010-01-0100 74 な ず ず な な
+01:000629:0014 A00 BG-08-0071-05-0100 71 く く く く く
+01:000629:0015 A00 BG-08-0061-05-0100 61 に に に に に
+'''
+ct629 = '''
+1 matsuda 0629 0 02 00 00 BG-01-1113-01-030-A わけ わけ わけ
+2 matsuda 0629 2 02 00 00 BG-01-3070-01-030-A わけ わけ わけ
+1 matsuda 0629 1 65 00 00 BG-08-0065-08-010-A も も も
+1 matsuda 0629 2 65 00 00 BG-04-1130-01-200-A -- も も
+1 matsuda 0629 0 51 50 07 BG-03-1200-02-010-A なく ない ない
+1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 matsuda 0629 0 55 00 00 BG-03-1650-03-010-A もう もう もう
+2 matsuda 0629 2 55 00 00 BG-03-1992-07-030-A もう もう もう
+1 matsuda 0629 0 02 00 00 BG-03-1010-02-060-A 無実 むじつ 無実
+1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
+1 matsuda 0629 0 02 00 00 BG-01-3134-01-210-A 評判 ひょうばん 評判
+2 matsuda 0629 2 02 00 00 BG-01-3142-02-010-A 評判 ひょうばん 評判
+3 matsuda 0629 2 02 00 00 BG-01-3422-04-080-A 評判 ひょうばん 評判
+1 matsuda 0629 0 61 00 00 BG-08-0061-02-010-A が が が
+1 matsuda 0629 0 47 13 05 BG-02-1513-01-010-A 立っ たつ 立つ
+2 matsuda 0629 2 47 13 05 BG-02-1521-06-020-A 立っ たつ 立つ
+3 matsuda 0629 2 47 13 05 BG-02-3330-11-020-A 立っ たつ 立つ
+4 matsuda 0629 2 47 13 05 BG-02-3391-02-110-A 立っ たつ 立つ
+1 matsuda 0629 0 64 00 00 BG-08-0064-16-010-A て て て
+1 matsuda 0629 0 48 21 05 BG-02-1502-02-040-A しまっ しまう しまう
+2 matsuda 0629 2 48 21 05 BG-09-0010-03-050-A しまっ しまう しまう
+1 matsuda 0629 0 74 54 01 BG-09-0010-04-010-A た た た
+1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+1 matsuda 0629 0 14 00 00 BG-01-1000-01-110-A いずれ いずれ いずれ
+1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 matsuda 0629 0 16 00 00 BG-01-1950-13-020-A 二人 ふたり 二人
+1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
+1 matsuda 0629 0 17 00 00 BG-01-3020-11-030-A 恋 こい 恋
+2 matsuda 0629 2 17 00 00 BG-02-3060-03-070-A 恋 こい 恋
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 06 02 BG-02-3420-07-010-A 遂げ とげる 遂げる
+1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
+1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
+1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
+1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 06 02 BG-02-1200-02-010-A い いる いる
+2 matsuda 0629 2 47 06 02 BG-02-1210-03-010-A い いる いる
+3 matsuda 0629 2 47 06 02 BG-02-1530-07-010-A い いる いる
+1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
+1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
+1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
+1 matsuda 0629 0 21 00 00 BG-01-1000-03-010-A もの もの もの
+1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 17 01 BG-02-1200-01-010-A ある ある ある
+1 matsuda 0629 0 64 00 00 BG-08-0064-04-010-A が が が
+1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+1 matsuda 0629 0 02 00 00 BG-01-1113-01-030-A わけ わけ わけ
+2 matsuda 0629 2 02 00 00 BG-01-3070-01-030-A わけ わけ わけ
+1 matsuda 0629 1 65 00 00 BG-08-0065-08-010-A も も も
+1 matsuda 0629 2 65 00 00 BG-04-1130-01-200-A -- も も
+1 matsuda 0629 0 51 50 07 BG-03-1200-02-010-A なく ない ない
+1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 matsuda 0629 0 55 00 00 BG-03-1650-03-010-A もう もう もう
+2 matsuda 0629 2 55 00 00 BG-03-1992-07-030-A もう もう もう
+1 matsuda 0629 0 02 00 00 BG-03-1010-02-060-A 無実 むじつ 無実
+1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
+1 matsuda 0629 0 02 00 00 BG-01-3134-01-210-A 評判 ひょうばん 評判
+2 matsuda 0629 2 02 00 00 BG-01-3142-02-010-A 評判 ひょうばん 評判
+3 matsuda 0629 2 02 00 00 BG-01-3422-04-080-A 評判 ひょうばん 評判
+1 matsuda 0629 0 61 00 00 BG-08-0061-02-010-A が が が
+1 matsuda 0629 0 47 13 05 BG-02-1513-01-010-A 立っ たつ 立つ
+2 matsuda 0629 2 47 13 05 BG-02-1521-06-020-A 立っ たつ 立つ
+3 matsuda 0629 2 47 13 05 BG-02-3330-11-020-A 立っ たつ 立つ
+4 matsuda 0629 2 47 13 05 BG-02-3391-02-110-A 立っ たつ 立つ
+1 matsuda 0629 0 64 00 00 BG-08-0064-16-010-A て て て
+1 matsuda 0629 0 48 21 05 BG-02-1502-02-040-A しまっ しまう しまう
+2 matsuda 0629 2 48 21 05 BG-09-0010-03-050-A しまっ しまう しまう
+1 matsuda 0629 0 74 54 01 BG-09-0010-04-010-A た た た
+1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+1 matsuda 0629 0 14 00 00 BG-01-1000-01-110-A いずれ いずれ いずれ
+1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 matsuda 0629 0 16 00 00 BG-01-1950-13-020-A 二人 ふたり 二人
+1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
+1 matsuda 0629 0 17 00 00 BG-01-3020-11-030-A 恋 こい 恋
+2 matsuda 0629 2 17 00 00 BG-02-3060-03-070-A 恋 こい 恋
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 06 02 BG-02-3420-07-010-A 遂げ とげる 遂げる
+1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
+1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
+1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
+1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 06 02 BG-02-1200-02-010-A い いる いる
+2 matsuda 0629 2 47 06 02 BG-02-1210-03-010-A い いる いる
+3 matsuda 0629 2 47 06 02 BG-02-1530-07-010-A い いる いる
+1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
+1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
+1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
+1 matsuda 0629 0 21 00 00 BG-01-1000-03-010-A もの もの もの
+1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 17 01 BG-02-1200-01-010-A ある ある ある
+1 matsuda 0629 0 64 00 00 BG-08-0064-04-010-A が が が
+1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+'''
+
+pipe(poem=op629, translation=ct629, mode=2, level=3)
+```
+
+## 翻訳アプローチによる追加率の差
+
+本節では、統計モデリングを用いた翻訳アプローチによる追加率の差を検証する。モデルの推定した効果のいずれの $\hat{R}$ も 1 になっており、1.1 を下回り収束が良好であると示した [@Brooks1998General]。検証したい効果について、ESS がすべて 2000 程度を達した。
 
 ```{r}
 #| label: posterier-data
@@ -2040,18 +2199,14 @@ pred_diff_prob_g_0_annotation <- pred_addition_rate_diff |>
   select(Focus, annotation, description, prob_g_0)
 ```
 
-### 翻訳アプローチによる追加率の相違が小さい No Significant Differences in Addition Rate by Translation Approach {.unnumbered}
+### 翻訳アプローチによる追加率の相違が小さい {.unnumbered}
 
-モデルの可視化と解釈について、@Yu2020Tradeoff に類似した方法で、比較 2 群の差の事後分布の 95% の CrI が 0 をカバーしているかを観測する以外に、2 群の差が 0 より大きい確率を同時に確認する。まず、95% の CrI が 0 をカバーしていない場合、2 群に差があると判断する；95% の CrI が 0 をカバーしていても、2 群の差が 0 より大きい確率が 95% より大きい、または 5% より小さい場合、傾向差があると判断する。
+@fig-poster は翻訳アプローチごとの追加率の事後分布である。この図から、以下の情報が得られらた。
 
-その結果、(a) 追加率は、翻訳アプローチを問わず 現代語訳の要素の 50% 前後が、追加的な要素であることがわかった。この点は、観測データからも確認された。(b) 翻訳アプローチグループで比較した結果、2 グループの差の事後分布の 95% の CrI はすべて 0 をカバーしており、それぞれの 2 群の追加率は異なることが認められなかった。
+(a) 追加率は、翻訳アプローチを問わず 現代語訳の要素の 50% 前後が、追加的な要素であることがわかった。この点は、観測データからも確認された。
+
+(b) 翻訳アプローチグループで比較した結果、2 グループの差の事後分布の 95% の CrI はすべて 0 をカバーしており、それぞれの 2 群の追加率は異なることが認められなかった。
 傾向としては、`Reader-focused` 群の追加率に比べ `Other` 群の追加率が `{r} pred_diff_CrI_annotation |> filter(Focus == "Others - Reader-focused") |> pull(median) |> I()` 程度下回った (`{r} pred_diff_CrI_annotation |> filter(Focus == "Others - Reader-focused") |> pull(description) |> I()`, `{r} pred_diff_prob_g_0_annotation |> filter(Focus == "Others - Reader-focused") |> pull(description) |> I()`)。`Reader-focused` 群の追加率は、`Poet-focused` 群より `{r} pred_diff_CrI_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(median) |> I()` 程度下回った (`{r} pred_diff_CrI_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(description) |> I()`, `{r} pred_diff_prob_g_0_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(description) |> I()`) ことが観測されているが、傾向差の基準を満さなかった。
-
-For the visualization and interpretation of results from the model, following a method similar to @Yu2020Tradeoff, we observed whether the 95% CrI of the posterior distribution of the difference between two groups included 0, and we assessed the probability that the difference between the two groups was greater than 0. First, if the 95% CrI does not include 0, we conclude that there is a significant difference between the two groups. Even if the 95% CrI includes 0, if the probability that the difference is greater than 0 exceeds 95%, or is lower than 5%, we consider it a notable trend.
-
-The results were as follows: (a) Regardless of the translation approach, approximately 50% of the elements in the translation were additional elements, a finding corroborated by descriptive statistics. (b) When comparing the translation approach groups, the 95% CrI of the posterior distribution for the difference between groups included 0 in all cases, indicating no statistically significant differences in addition rates between the groups.
-
-A trend was observed where the addition rate of the `Other` group was approximately `{r} pred_diff_CrI_annotation |> filter(Focus == "Others - Reader-focused") |> pull(median) |> I()` lower than that of the `Reader-focused` group (`{r} pred_diff_CrI_annotation |> filter(Focus == "Others - Reader-focused") |> pull(description) |> I()`, `{r} pred_diff_prob_g_0_annotation |> filter(Focus == "Others - Reader-focused") |> pull(description) |> I()`). The addition rate for the `Reader-focused` group was approximately `{r} pred_diff_CrI_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(median) |> I()` lower than that of the `Poet-focused` group (`{r} pred_diff_CrI_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(description) |> I()`, `{r} pred_diff_prob_g_0_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(description) |> I()`), although this did not meet the threshold for a significant trend.
 
 ```{r}
 #| label: fig-poster
@@ -2216,11 +2371,9 @@ pred_addition_rate_diff  |>
   guides(fill = guide_legend(nrow = 3)) 
 ```
 
-### 訳者による追加率の変動より歌による変動のほうが大きい Variation in Addition Rates Is Greater Between Poems Than Between Translators {.unnumbered}
+### 訳者による追加率の変動より歌による変動のほうが大きい {.unnumbered}
 
-階層モデリングにおいて、訳者と歌をランダム切片としてモデル化している。各グループレベルがそれぞれ共有していると仮定した正規分布のパラメータである標準偏差の事後分布を可視化した [@fig-hyperparameter]。訳者グループの標準偏差の分布が歌グループのより左寄りでであった。訳者の間の変動よりも、歌の間の変動のほうが大きいことが伺える。つまり、ランダム効果の視点からは、歌が訳者に比べ追加率の変動に寄与していると考えられる。
-
-In hierarchical modeling, translators and poems are modeled as random intercepts. The posterior distribution of the standard deviations, which are parameters of the normal distribution shared by each group level, has been visualized [@fig-hyperparameter]. The standard deviation distribution for the translator group was greater than that of the poem group. This suggests that the variation between poems is greater than the variation between translators. In other words, from the perspective of random effects, poems contribute more to the variation in addition rates than translators.
+階層モデリングにおいて、訳者と歌をランダム切片としてモデル化している。訳者グループと歌グループがそれぞれ共有していると仮定した正規分布のパラメータである標準偏差の事後分布を可視化した [@fig-hyperparameter]。訳者グループの標準偏差の分布が歌グループのより左寄りでであった。訳者の間の変動よりも、歌の間の変動のほうが大きいことが伺える。つまり、ランダム効果の視点からは、歌が訳者に比べ追加率の変動に寄与していると考えられる。
 
 ```{r}
 #| label: fig-hyperparameter
@@ -2281,7 +2434,7 @@ post |>
   )
 ```
 
-## 298番「立田」歌の訳の事例分析 Case analysis of the translation of "Tatsuta" Poem #298
+## 298 番「立田」歌の訳の事例分析
 
 ```{bash}
 #| include: false
@@ -2302,21 +2455,13 @@ do
 done
 ```
 
-298 番「タツタ」の歌についての事例分析は、アライメントを示しながら進める。
+298 番「立田」の歌についての事例分析は、アライメントを示しながら進める。
 
-298 番歌の不一致率、翻訳における追加率のまとめは @tbl-tatsuta-review に提示している。ここでの計算は整列法の結果である。歌のトークン数 19 の内、アライメントの 2 語対が一致する数が、OZW 以外に 14 を越えた。OZW はやはり、文の入れ替えを行っているため、うまくアライメントができなかった。原文の要素の不一致率が低い水準にキープされており、訳における追加率は OZW を取り除き 50% -- 70% になっていた。1 語あたり 1.5 -- 1.7 語で訳されていた。さて、どのような追加要素になっているか確認していく。
-
-アライメントはプログラム出力を修正した上で @fig-alignment に整理した。生の出力は、supplementary materials (@sec-app-tatsuta) を参照されたい。
-
-The case analysis of the "Tatsuta" Poem #298 begins by illustrating the alignment.
-
-@tbl-tatsuta-review presents the unmatch rate and addition rate for the translations of "Tatsuta" Poem #298, calculated using the alignment method. Out of the 19 tokens in the poem, all translations except OZW aligned more than 14 word pairs. Due to its sentence reordering, OZW struggled to align effectively. The unmatch rate for elements in the original text remains low, while the addition rate for the translations (excluding OZW) ranges from 50% to 70%. On average, translators used 1.5 to 1.7 words per word in the original. Next, we examine the types of elements added.
-
-@fig-alignment shows the refined alignment from the alignment script output. For the raw output, refer to the supplementary materials (@sec-app-tatsuta).
+298 番歌の不一致率、翻訳における追加率のまとめは @tbl-tatsuta-review に提示している。ここでの計算は整列法の結果である。歌のトークン数 19 の内、アライメントの 2 語対が一致する数が、OZW 以外に 14 を越えた。OZW はやはり、文の入れ替えを行っているため、うまくアライメントができなかった。原文の要素の不一致率が低い水準にキープされており、訳における追加率は OZW を取り除き 50% -- 70% になっていた。1 語あたり 1.5 -- 1.7 語で訳されていた。アライメントはプログラム出力を修正した上で @fig-alignment に整理した。修正前の出力は補足資料を参照されたい。さて、どのような追加要素になっているか確認していく。
 
 ```{R}
 #| label: tbl-tatsuta-review
-#| tbl-cap: 「タツタ」歌 298 番の現代語訳の不一致率・追加率の概要 Overview of unmatch and addition rates in contemporary translations of "Tatsuta" Poem #298
+#| tbl-cap: 「立田」歌 298 番の現代語訳の不一致率・追加率の概要 Overview of unmatch and addition rates in contemporary translations of "Tatsuta" Poem #298
 
 read.csv("artifacts/calc_results.csv") |> filter(PoemID==298) |>
   mutate(
@@ -2351,7 +2496,6 @@ read.csv("artifacts/calc_results.csv") |> filter(PoemID==298) |>
 >| 【秋の末近くなって帰り道についた】龍田姫【が道中の無事を願って】ーーーーーーーーーー [KMCY]
 >| ーーーーーーー【秋も終りに近づき】竜田姫【がお帰りになる際に】ーーーーーーーーーーー [KSJ]
 >| ーーーーーーー【もはや秋の終りで】龍田姫【が帰り道にお着きになった】ーーーーーーーー [OZW]
-
 
 #  Dedicate something to the god
 >| ーーーーーーーーーーーーーーーーーーー手向けーーーーーーるーーーーーー神ーーーーのー [298]
@@ -2422,15 +2566,15 @@ read.csv("artifacts/calc_results.csv") |> filter(PoemID==298) |>
 
 ::::
 
-#### 共出現語の訳出 Additional elements regarding co-occurring words {.unnumbered}
+#### 共出現語の訳出 {.unnumbered}
 
-コーパスレベルの共出現語を確認する。「タツタ」歌において、内容語の「山」「川」「紅葉づ」「姫」「手向く」「紅葉葉」「神無備」「秋」「幣」「散る」の頻度が高い。298 番歌は典型的な「タツタ」歌として、「姫」「手向く」「幣」「秋を含めている。含まれている語のほとんどは、そのまま訳出された。298 番には出現しない「紅葉葉」「紅葉づ」などは、298 番歌において「木の葉」が暗示しているため、次のように処理されている：
+「立田」のコーパスレベルの共出現語を、内容語の「山」「川」「紅葉づ」「姫」「手向く」「紅葉葉」「神無備」「秋」「幣」「散る」の頻度が高い。298 番歌は典型的な「立田」の歌として、「姫」「手向く」「幣」「秋」を含めている。含まれている語のほとんどが、そのまま訳出されている。298 番には出現しない「紅葉葉」「紅葉づ」などは、298 番歌において「木の葉」が暗示しているため、次のように処理されている：
 
 - 紅葉した葉 [MTD]
 - 木の葉のもみじ [K&A]
 - 紅葉  [KSJ, OZW, OKMR]
 
-TKOK, KNK, KMCY は「このは」の処理をしなかった。
+KBT、TKOK、KNK、KMCY、KTGR は「このは」の処理をしなかった。
 
 また、コーパスレベルの共出現語「幣」について
 
@@ -2438,100 +2582,49 @@ TKOK, KNK, KMCY は「このは」の処理をしなかった。
 - 【手向けの】幣 [KNK]
 - 幣【を撒く】（ように）散（っている） [KTGR]
 
-のように追加は見られた。ただし、これらの追加が「タツタ」に帰属させるべきか、判断が難しい一面がある。「幣」に経由して間接的な情報と捉えて妥当であろう。
+のように追加は見られた。ただし、これらの追加が「立田」に帰属させるべきか、判断が難しい一面がある。「幣」に経由して間接的な情報と捉えて妥当であろう。
 
-基本的に、コーパスレベルにおいて「タツタ」の共出現要素の処理は、そのまま残す方針か、その他の要素より多く追加する方針かになっていることが伺える。また、「このは」のような共出現ではないものについては、大局的なコロケーションを踏まえ「紅葉」であるとして訳出されるケースが見られた。訳出の方針は、訳者を問わず安定的な翻訳になっている。
+基本的に、コーパスレベルにおいて「立田」の共出現要素の処理は、そのまま残す方針か、その他の要素より多く追加する方針かになっていることが伺える。また、「このは」のような共出現ではないものについては、大局的なコロケーションを踏まえ「紅葉」であるとして訳出されるケースが見られた。訳出の方針は、訳者を問わず安定的な翻訳になっている。
 
-訳と原文の差分において、コーパスレベルの共出現語について重要な情報が見えてくると推測できる。
+訳と原文の差分において、コーパスレベルの共出現語に関連する重要な情報が見えてくると推測できる。
 
-This section examines the translation process for co-occurring words at the corpus level. In the "Tatsuta" poem, content words such as "mountain" (*yama* 山), "river" (*kawa* 川), "to turn colored" (*momidzu* 紅葉づ), "princess/goddess" (*hime* 姫), "to dedicate offerings to the gods" (*tamuku* 手向く), "colored leaf" (*momiji-ba* 紅葉葉), "Kamnabi" (proper noun, *kamnabi* 神無備), "autumn" (*aki* 秋), "ritual paper" (*nusa* 幣), and "to be scattered" (*chiru* 散る) frequently appear. As a typical "Tatsuta" poem, Poem #298 includes "princess/goddess," "to dedicate offerings to the gods," "ritual paper," and "autumn." Most of the words from the original poem are translated directly. Words like "colored leaf" (*momidzi-ba* 紅葉葉) and "to get colored" (*momidzu* 紅葉づ), which do not explicitly appear in Poem #298, are implied by "leaves" (*konoha* 木の葉) and are translated as follows:
+#### 構文パターンの訳出 {.unnumbered}
 
-- 【紅葉した】葉 *[momiji shita] ha* ("[colored] leaves") [MTD]
-- 木の葉【のもみじ】 *konoha [no momiji]* ("[coloring of] leaves") [K&A] 
-- 紅葉 *[momiji]* ("[colored leaves]") [KSJ, OZW, OKMR]
+共出現する構文パターンとして、終止形で終わる歌の少なさ (古今集 12 首の中で 1 首のみ) が観測されている。特に、古今集の中では、係り結びは 12 首のうち 9 首が観測されている。これら文の終わり方などの構文パターンは、298 番歌の訳における処理について分析した。
 
-Translators TKOK, KNK, and KMCY did not address the translation of "leaves."
-
-For the corpus-level co-occurrence of "ritual paper," the following translations added extra elements:
-
-- 【色とりどりの】幣 *[irotoridori no] nusa* ("[colorful] ritual paper") [OZW]
-- 【手向けの】幣 *tamuke no nusa* ("ritual paper [offered to the gods]") [KNK]
-- 幣【を撒くように】 *nusa wo maku yo ni* ("ritual paper [scattered like]") [KTGR]
-
-These additions raise some challenges in determining whether they should be attributed specifically to "Tatsuta." However, interpreting them indirectly within the context of "ritual paper" seems reasonable.
-
-Overall, the process of co-occurring elements in "Tatsuta" either retains the original content or adds more compared to other factors. In cases where words like "leaves" do not explicitly co-occur, translators opted for "colored leaves," considering broader collocations. Regardless of the translator, the approach to translation remained consistent.
-
-The differences between the translations and the original text suggest that co-occurring words at the corpus level may offer important insights into translation choices.
-
-#### 構文パターンの訳出 Translation of grammatical patterns {.unnumbered}
-
-共出現する構文パターンとして、終止形で終わる歌の少なさ (古今集 12 首の中で 1 首のみ) が観測されている。また、古今集の中では、係り結びは 9 (12) 首と観測されており、
-余韻の残し方に特徴があると思われる。これら終わり方の構文パターンは、298 番歌の訳における処理について分析した。
-
-298 番歌の係り結びは、強意の「こそ」と推量の「らむ」の已然形「らめ」で形成されていた。その訳として、10 人の中の 7 人が「こそ」を残しており、さらに 9 人が文末において「強意」の「ノダ」構文を使用した。推量の「らむ」について 9 人が「だろう・でしょう」と訳した。唯一「だろう」で訳さない OZW は「だな」という詠嘆的な口調で訳されている。
+298 番歌の係り結びは、強意の「こそ」と推量の「らむ」の活用形「らめ」で形成されていた。その訳として、10 人の中の 7 人が「こそ」を残しており、さらに 9 人が文末において「強調」の「ノ [であろう・でしょう]」構文を使用している。推量の「らむ」について 9 人が「だろう・でしょう」と訳した。唯一「だろう」で訳さない OZW は「だな」という詠嘆的な口調で訳されている。
 KBT, K&A は文末にそれぞれ「よ」「ね」の終助詞を追加した。
 
-典型的な構文パターンとして、その訳出が非常にロバストなものになっていることが確認できた。ほかの係り受けを使わない「タツタ」歌の翻訳においても、この構文パターンが干渉して追加されているかいなか確認したところ、事例が見当たらなかった。つまり、特徴的な共出現の構文パターンの処理は、如実な訳であった。
+典型的な構文パターンとして、その訳出が非常にロバストなものになっていることが確認できた。ほかの係り受けを使わない「立田」歌の翻訳においても、この構文パターンが干渉して追加されているかいなか確認したところ、事例が見当たらなかった。つまり、特徴的な共出現の構文パターンの処理は、少なくともこの歌においては如実な訳であった。
 
-その他文法的な要素、格助詞の「と」、動詞の「-u」段変形の訳は、コーパスレベルにおいて「タツタ」の特徴的の共出現ではないが、観察した。その結果、次のようにそれぞれ多様な訳し方が確認された。
+その他文法的な要素、格助詞の「と」、動詞の基本形式「-u」（例えば「なる」）の訳は、コーパスレベルにおいては「立田」の特徴的の共出現ではないが、分析を試みた。その結果、次のようにそれぞれ多様な訳し方が確認された。
 
-[幣]「と」：
+[...幣]「**と**」：
 
-- [幣を撒く|幣の]ように [KTGR, KBT, MTD, OKMR, KNK]
-- [幣|手向けもの]として [TKOK, K&A]
-- [幣]となって [KMCY, KSJ, OZW]
+- [...幣を撒く|幣の]**ように** [KTGR, KBT, MTD, OKMR, KNK]
+- [...幣|手向けもの]**として** [TKOK, K&A]
+- [...幣]**となって** [KMCY, KSJ, OZW]
 
-[散]「る」
+[...散]「**る**」
 
-- [散っ]ている [KTGR, MTD, OKMR, TKOK, KMCY, KSJ, OZW]
-- [散]る [KBT, KNK, K&A]
+- [散っ]**ている** [KTGR, MTD, OKMR, TKOK, KMCY, KSJ, OZW]
+- [散]**る** [KBT, KNK, K&A]
 
-[手向け]「る」
+[...手向け]「**る**」
 
-- [手向けを]する [KTGR, K&A, KMCY]
-- [供え物をささげ|手向け]る [MTD, TKOK]
-- [手向けを|お手向け]なさる [OKMR, KNK]
-- [手向けを]するべき [KBT]
-- [手向け]られる [KSJ]
-- [それを供え]ていらっしゃる [OZW]
+- [...手向けを]**する** [KTGR, K&A, KMCY]
+- [...供え物をささげ|手向け]**る** [MTD, TKOK]
+- [...手向けを|お手向け]**なさる** [OKMR, KNK]
+- [...手向けを]**するべき** [KBT]
+- [...手向け]**られる** [KSJ]
+- [...それを供え]**ていらっしゃる** [OZW]
 
-コーパスレベルの共出現構文要素より訳の追加・言い換えの揺れが大きい。この中で動詞フレーズの訳され方の揺れについては、@Yamamoto2023Development でも報告されている。これらの追加要素と言い換えは、古語・現代語の言語変化・変異に由来したものと考えている。分類語彙表番号で一致と認定できず、現代語訳と原文の差分において抽出されるようになるが、ノンリテラル情報とは言い難い。
+このように、コーパスレベルの共出現構文要素より訳の追加・言い換えの揺れが大きかった。この中で、動詞フレーズの訳され方の揺れについては、理論よりも訳し方の揺れが大い @Yamamoto2023Development ことも報告されている。これらの追加要素と言い換えは、古語・現代語の言語変化・変異に由来したものと考えている。分類語彙表番号で一致と認定できず、現代語訳と原文の差分において抽出されるようになるが、ノンリテラル情報とは言い難い。
 
-Co-occurring grammatical patterns in the *Kokinshū* reveal a noticeable scarcity of poems ending in the conclusive form (only 1 out of 12), along with a frequent use of *kakarimusubi* (9 out of 12 poems), which contributes to a lingering tone at the end of the poems. This analysis focuses on how these grammatical patterns were handled in the translation of Poem #298.
+#### 共出現語の意味傾向の訳出 {.unnumbered}
 
-In Poem #298, the *kakarimusubi* is formed by the emphasis particle "こそ" (*koso*) and the inferential mood auxiliary verb "らむ" (*ramu*) in its conjugation "らめ" (*rame*). Of the 10 translators, 7 retained *koso*, and 9 used the EMPHASIS "の[でしょう]" (*no*) construction at the end of the sentence. Regarding inferential *ramu*, 9 translators rendered it as "だろう" (*darō*) or "でしょう" (*deshō*) ("likely modality/inferential mood"). OZW, the only translator who did not use "だろう" (*darō*), translated it with the exclamatory "だな" (*da na*). KBT and K&A added the final particles "よ" (*yo*) and "ね" (*ne*), respectively, at the sentence’s end.
-
-This confirms that the translation of this typical grammatical pattern is highly robust. In translations of other "Tatsuta" poems that do not use *kakarimusubi*, no instances were found where this grammatical pattern was added. Thus, the handling of these distinctive co-occurring grammatical patterns was consistently reflected in the translations.
-
-Other grammatical elements, such as the particle "と" (*to*) and the translation of the *-u* verb conjugation, were also observed, though they are not characteristic co-occurring elements of "Tatsuta" at the corpus level. The following variations in translation were noted:
-
-**幣「と」 (*nusa "to"*):**
-
-- 幣を撒く「ように」 *nusa wo maku [youni]* ("[like] scattering ritual paper") [KTGR, KBT, MTD, OKMR, KNK]
-- 幣「として」 *nusa [toshite]* ("[as] ritual paper") [TKOK, K&A]
-- 幣「となって」 *nusa [tonatte]* ("[becomes] ritual paper") [KMCY, KSJ, OZW]
-
-**散「る」 (*chir-[u]*):**
-
-- 散っ「ている」 *chir-[teiru]* ("scatter + [progressive aspect]") [KTGR, MTD, OKMR, TKOK, KMCY, KSJ, OZW]
-- 散「る」 *chir-[u]* ("scatter") [KBT, KNK, K&A]
-
-**手向け「る」 (*tamuker-[u]*):**
-
-- 手向けを「する」 *tamuke wo suru* ("[do] dedicating") [KTGR, K&A, KMCY]
-- 供え物をささげ「る」 *sonaemono wo sasager-[u]* | 手向け「る」 *tamuker-[u]* ("dedicate") [MTD, TKOK]
-- 手向けを「なさる」 *tamuke wo nasaru* | お手向けなさる *o-tamuke nasaru* ("[make+(honorific)] dedicating") [OKMR, KNK]
-- 手向けを「するべき」 *tamuke wo suru [beki]* ("[do + likely mood/modality] dedicating") [KBT]
-- 手向け「られる」 *tamuke [rareru]* ("dedicate + [honorific]") [KSJ]
-- それを供えて「いらっしゃる」 *sore wo sonaete [irassharu]* ("dedicate + [progressive aspect + honorific]") [OZW]
-
-The co-occurring grammatical elements at the corpus level show significant variation in the addition and paraphrasing of translations. The variability in how naked verb phrases are translated has also been reported in @Yamamoto2023Development. These additions and paraphrases likely stem from linguistic change and variation between classical and contemporary Japanese. While they cannot be identified using WLSP codes for identifying agreements, they emerge from the differences between the contemporary translations and the original text. But they are not considered non-literal information.
-
-#### 共出現語の意味傾向の訳出 Translation of semantic preferences {.unnumbered}
-
-「タツタ」のコーパスレベルでの共出現語の傾向としては、「タツタガワ」「タツタ(の)ヤマ」など地名を構成する「山・川」のグループ、秋の「神」に関連する関連語のグループに属していることがあげられる。秋・紅葉が有名な神聖な場所の歌枕として使われている性質が伺える。この傾向性は、298番の歌でどのように明確にされているかはやはり直接な追加がなかった。ただし、間接的な現象として、10 人の訳では、「タツタヒメ」「カミ」のまわりに追加要素が集中して出現していることが確認された。
-「タツタヒメ」に対する要素の追加は、10 人のうち 7 人が行っている：
+「立田」のコーパスレベルでの共出現語の傾向としては、「立田川」「立田（の）山」など地名を構成する「山・川」のグループと、秋の「神」に関連する関連語のグループに属していることがあげられる。秋・紅葉が有名な神聖な場所の歌枕として使われている性質が伺える。この傾向性は、298 番の歌でどのように明確にされているかについては、やはり直接な追加がなかった。ただし、間接的な現象として、10 人の訳では、「立田姫」「神」の周辺に追加要素が集中して出現していることが確認された。
+「立田姫」に対する要素の追加は、10 人のうち 7 人が行っている：
 
 - 【秋をつかさどる】龍田姫【が旅立ちにあたって】 [KTGR]
 - 【秋も終りに近づき秋の女神の】龍田姫【がお帰りになる】 [OKMR]
@@ -2541,7 +2634,7 @@ The co-occurring grammatical elements at the corpus level show significant varia
 - 【秋も終りに近づき】竜田姫【がお帰りになる際に】 [KSJ]
 - 【もはや秋の終りで】龍田姫【が帰り道にお着きになった】 [OZW]
 
-KBT, MTD, K&A の訳では「タツタヒメ」のまわりの追加が確認されなかった。
+KBT, MTD, K&A の訳では「立田姫」の周辺の追加が確認されなかった。
 「手向ける神」の文脈に確認できる追加は 5 人の訳から観測できた。
 
 - 【旅中】（供え物をささげる）【道祖】神 [MTD]
@@ -2550,547 +2643,127 @@ KBT, MTD, K&A の訳では「タツタヒメ」のまわりの追加が確認さ
 - 【旅の安全を祈って】手向け（られる）神 [KSJ]
 - 【道の】（神様）【にそれを】（供えていらっしゃる）＊ [OZW]
 
-K&A, KMCY, KTGR, KBT, TKOK は要素の追加を行わなかった。「タツタヒメ」「手向く」「カミ」の情報について、ほかの要素よりも重点的に情報の提供を行っていることが推測される。「タツタヒメ」が「秋の神」・秋の擬人化で、立田姫の「手向く」目的が「旅の安全」で、手向く対象の「神」が道の神、旅の神、道祖神であるといった、情報の補足が現代語訳と原文の差分で抽出できると考えられる。
+K&A, KMCY, KTGR, KBT, TKOK は要素の追加を行わなかった。「立田姫」「手向く」「神」の情報について、ほかの要素よりも重点的に情報の提供と補足を行っている。「立田姫」が「秋の神」・秋の擬人化で、立田姫の「手向く」目的が「旅の安全」で、手向く対象の「神」が道の神、旅の神、道祖神であるといった、情報の補足が現代語訳と原文の差分で抽出できよう。
 
-At the corpus level, the co-occurring words in "Tatsuta" tend to belong to groups like "mountain" and "river" (*yama* and *kawa*), which form place names such as "Tatsutagawa" (Tatsuta River) and "Tatsuta(no)yama" (Mountain of Tatsuta). Additionally, words related to the "gods" of autumn are prominent. These reflect the nature of *utamakura* (poetic place names), which represent sacred locations associated with autumn and autumn leaves. Although this tendency is not directly emphasized in Poem #298 through explicit additions, it was observed indirectly that additional elements often appeared around "Tatsutahime" (Goddess Tatsuta) and "kami" (god) in the translations by the 10 translators.
+# 考察 {#sec-discussion}
 
-Seven of the 10 translators added elements related to "Tatsutahime":
+## 追加率からみる翻訳アプローチと翻訳実践とのずれ
 
-- 【秋をつかさどる】龍田姫【が旅立ちにあたって】 *[aki wo tsukasadoru] Tatsutahime [ga tabidachi ni atatte]* ("[Autumn goddess] Tatsutahime [embarks on her journey]") [KTGR]
-- 【秋も終りに近づき秋の女神の】龍田姫【がお帰りになる】 *[aki mo owari ni chikazuki aki no megami no] Tatsutahime [ga okaeri ni naru]* ("[As autumn nears its end, the autumn goddess] Tatsutahime [returns home]") [OKMR]
-- 竜田姫【が旅にあって】 *Tatsutahime [ga tabi ni atte]* ("Tatsutahime [is on a journey]") [TKOK]
-- 立田姫【は秋の神だが】 *Tatsutahime [wa aki no kami da ga]* ("Tatsutahime [is the god of autumn]") [KNK]
-- 【帰り道についた】龍田姫【が道中の無事を願って】 *[kaerimichi ni tsuita] Tatsutahime [ga dōchū no buji wo negatte]* ("[As she reached her way home,] Tatsutahime [prays for a safe journey]") [KMCY]
-- 【秋も終りに近づき】竜田姫【がお帰りになる際に】 *[aki mo owari ni chikazuki] Tatsutahime [ga okaeri ni naru sai ni]* ("[As autumn nears its end,] Tatsutahime [returns home]") [KSJ]
-- 【もはや秋の終りで】龍田姫【が帰り道にお着きになった】 *[mohaya aki no owari de] Tatsutahime [ga kaerimichi ni otsuki ni natta]* ("[With autumn already at its end,] Tatsutahime [has arrived on her journey home]") [OZW]
+現代語訳における追加率の階層モデリングの結果、いずれの翻訳アプローチにおいても、相当の比例の追加要素が含まれえていることが再現できた。また、訳者の間の変動より、歌による変動のほうが大きいと考えられる。これらの注釈書では、多くの語の解釈が注釈によってすでに詳しく解説されていながらも、追加率が低下しているとは意味しなかった。訳者の翻訳アプローチがテキストを重視するにせよ、作者の意図を重視するにせよ、読者の読み易さを重視するにせよ、基本的に追加せざるをえない要素があると推測できよう。
 
-In the translations by KBT, MTD, and K&A, no additional elements were added around "Tatsutahime."
+ただし、追加要素の中では、それぞれの訳を具体的に確認すると、OZW が語順の入れ替えを許容するなり、TKOK の訳が著者の本意を重視するなりの方針は確実にその実践に反映されている。個別の歌を精査することで明確な差が見えてくるものの、大局的にその差が傾向としかいえなかった。それらの要素は、つまり、翻訳アプローチ、訳者の個人差に左右されないものが量として十分ある。また、
+追加率の平均値上位 10 首の歌を観察したところ、掛詞を用いた歌が特徴的であった。掛詞の役割を明確するには、訳での補足が求められており、現代語・古代語の差分で残る要素が多いと考えられる。したがって、量的には現代語訳によるノンリテラル要素の可視化が現実的であった。
 
-For the context of "the god to whom offerings are made," additional elements appeared in 5 translations:
-
-- 【旅中】（供え物をささげる）【道祖】神 *[tabi naka] (sonaemono wo sasageru) [dōso] kami* ("[During the journey] (offering a gift) [to the road] god") [MTD]
-- 【姫が道中の安全を祈って】手向け（をなさる）神 *[hime ga dōchū no anzen wo inotte] tamuke (wo nasaru) kami* ("[The goddess prays for safety during the journey] as she offers to the god") [OKMR]
-- 【それすら暮れて行かれる折には】【お】手向け（なさる）【道の】神【様】 *[sore sura kurete ikareru ori ni wa] [o]tamuke (nasaru) [michi no] kami[sama]* ("[At the time of her departure as the day ends,] the offering to the god [of the road]") [KNK]
-- 【旅の安全を祈って】手向け（られる）神 *[tabi no anzen wo inotte] tamuke (rareru) kami* ("[Praying for a safe journey,] the god receives the offering") [KSJ]
-- 【道の】（神様）【にそれを】（供えていらっしゃる）＊ *[michi no] (kamisama) [ni sore wo] (sonaete irassharu)* ("To the god [of the road,] (she is offering) [that]")＊ [OZW]
-
-K&A, KMCY, KTGR, KBT, and TKOK did not add elements in these contexts. It can be inferred that more emphasis is placed on providing additional information related to "Tatsutahime," "offerings," and "gods" than other elements. The differences between the original and contemporary translations suggest that "Tatsutahime" is the "autumn god" or a personification of autumn, the purpose of "offering" by Tatsutahime is for "safe travels," and the god receiving the offering is a road god, a travel god, or *dōsojin* (a deity protecting travelers).
-
-# 考察 Discussion {#sec-discussion}
-
-## 追加率からみる翻訳アプローチと翻訳実践とのずれ Gap between translation approaches and practices
-
-現代語訳における追加率の予測モデリングの結果、いずれの翻訳アプローチにおいても、相当の比例の追加要素が含まれえていることが再現できた。訳者の間の変動より、歌による変動のほうが大きいと考えられる。注釈書では、多くの語の解釈が注釈によって詳しく解説されていながらも、追加率が低下しているとはいえなかった。訳者の目線がテキストを重視するにせよ、作者の意図を重視するにせよ、読者の読み易さを重視するにせよ、基本的に追加せざるをえない要素があることがあると考えられる。
-
-ただし、中では、それぞれの訳を具体的に確認すると、 OZW が語順の入れ替えを許容するなり、TKOK の訳が著者の本意を重視するなりの方針は確実にその実践に反映されている。個別の歌を精査することで明確な差が見えてくるものの、大局的にその差が傾向としかいえなかった。それらの要素は、つまり、翻訳の目線、訳者の違いに左右されないものであり、その性質を明確する余地が残っている。現代語訳によるノンリテラル要素の可視化が十分考えられる。
-
-The statistical modeling of addition rates in contemporary translations shows that a substantial proportion of additional elements is present, regardless of the translation approach. It appears that variations between poems contribute more to the addition rate than variations between translators. Despite the detailed explanations of many words in annotation books, the addition rate has not significantly decreased. Whether translators focus on the text itself, the poet's intent, or making the translation more accessible to readers, there seem to be elements that inevitably require additions.
-
-Closer examination of individual translations reveals clear reflections of each translator's approach. For instance, OZW allows for changes in word order, while TKOK’s translations emphasize the author's intent. While analyzing specific poems uncovers distinct differences, these differences, when viewed collectively, tend to emerge as general trends rather than significant variations. These factors seem to go beyond the personal viewpoint and style of the translator, leaving room to further clarify the nature of these elements. The non-literal elements in contemporary translations could potentially be visualized more effectively.
-
-## 現代語訳における「欠落」の多くは序詞、枕詞 Many "omissions" in contemporary translations involve *jokotoba* and *makurakotoba*
-
-差分によるノンリテラル情報の抽出の際に、間接的な訳が望ましいと考えられるが、訳されない語の存在がないことが望ましくない。対訳文同士の不一致率が高い場合、なんらかの形で訳に含めている可能性はいなめないが翻訳において、欠落した要素が多いと考えられる。このような歌・訳の対がいくつか見られた。
-
-これらの対訳対を考察したところ、 10 人の現代語訳に共通して欠落がみられたのは「序詞」「枕詞」「まわりくどい言い回し」の３点であった。訳者の幾人かは意識的に「序詞」「枕詞」を訳さないで放置していることが観測された。たとえば、@matsuda1968Shinshaku の現代語訳では、4 首は現代語訳の方がもとの歌より短くなっている。MTD (173) と MTD (665) の訳においては、枕詞「ひさかたの」「みつしほの」は省略されている。MTD (684) の MTD (697) の訳においては、枕詞も序詞も省略されている。これらの歌は当然不一致率も高い。特に、MTD (697) はもとの和歌よりもずっと短い^[KSJ (404) もまた極端に短く、序詞がやはり省略されている。]。MTD (697) では大和の枕詞「敷島の」が省略されている。元の歌は、「頃も」と「衣」が掛詞になっているが、その「衣」に掛かっていく序詞も省略されている。
-
-このように、現代語文と歌の差分では、枕詞と序詞などについてのノンリテラル要素の抽出が難しいという一面が伺える。
-
-When extracting non-literal information through translation differences, it is preferable for indirect translations to be included, but it becomes problematic when certain words are entirely absent. A high unmatch rate between the original and the translation may indicate that some elements are incorporated in some form, but it is also likely that many elements have been omitted. Several such poem-translation pairs have been identified.
-
-Upon reviewing these pairs, three common omissions were observed across the 10 contemporary translations: *jokotoba* (prefatory phrases), *makurakotoba* (pillow words), and complex expressions. Some translators consciously chose to omit *jokotoba* and *makurakotoba* entirely. For example, in MTD’s translations, four of them are noticeably shorter than the original poems. In MTD (#173) and MTD (#665), the *makurakotoba* "hisakata no" and "mitsushio no" are omitted. In MTD (#684) and MTD (#697), both *makurakotoba* and *jokotoba* are omitted. Naturally, these omissions result in a high unmatch rate. Notably, MTD (#697) is much shorter than the original poem^[KSJ (#404) is also significantly shorter, with the *jokotoba* similarly omitted.]. In MTD (#697), the *makurakotoba* "Shikishima no," referring to "Yamato" (a proper noun), is omitted. In the original poem, there is a *kakekotoba* (pun) on "koromo" (meaning either "time" or "clothes"), but the *jokotoba* linked to "clothes" is also omitted.
-
-Thus, extracting non-literal elements such as *makurakotoba* and *jokotoba* from the differences between contemporary translations and the original poems proves to be a challenging task.
-
-::: {fig-mtd-697}
-```
-mode=2; level=3; elements of poem=16; elements of translation=6;
-bag (E=1, F=0, G=0, U=15, T=1, AddRate=83.33%, UnmatchRate=93.75%);
-alignment (E=1, F=0, G=0, U=15, T=1, AddRate=83.33%, UnmatchRate=93.75%)
->| しきしまのやまとにはあらぬからころもころもへずしてあふーーよしーーーもがな [697]
->| ーーーーーーーーーーーーーーーーーー絶え間なくーー会いたいものだなあーーー [MTD]
-```
-
-697 番歌の @matsuda1968Shinshaku による現代語訳：アライメントの結果を書き換えている；「しきしまのやまとにはあらぬからころも」が省略されている。
-Contemporary translation of Poem #697 by @matsuda1968Shinshaku: The alignment has been revised; the *jokotoba* "Shikishima no Yamato ni wa aranu kara koromo" has been omitted.
-:::
-
-```{python}
-#| include: false
-
-op697 = '''
-01:000697:0001 A00 CH-JP-0000-00-0100 11 敷嶋 敷島 しきしま 敷島 しきしま
-01:000697:0002 A00 BG-08-0061-07-0100 61 の の の の の
-01:000697:0003 A00 BG-01-2590-01-0500 11 やまと 大和 やまと 大和 やまと
-01:000697:0003 A10 CH-29-0000-00-2800 11 やまと 大和 やまと 大和 やまと
-01:000697:0003 A20 CH-JP-0000-00-0300 11 やまと 大和 やまと 大和 やまと
-01:000697:0004 A00 BG-08-0061-05-0100 61 に に に に に
-01:000697:0005 A00 BG-08-0065-07-0100 65 は は は は は
-01:000697:0006 A00 BG-02-1200-01-0102 47 あら 有り あり 有ら あら
-01:000697:0007 A00 BG-03-1200-02-0800 74 ぬ ず ず ぬ ぬ
-01:000697:0007 A10 BG-09-0010-01-0100 74 ぬ ず ず ぬ ぬ
-01:000697:0008 B00 BG-01-4220-06-0800 02 唐衣 唐衣 からころも 唐衣 からころも
-01:000697:0008 C00 BG-01-2590-02-0600 02 唐 唐 から 唐 から
-01:000697:0008 C01 BG-01-4220-02-0200 02 衣 衣 ごろも 衣 ごろも
-01:000697:0009 A00 BG-01-1610-01-0401 02 ころ 頃 ころ 頃 ころ
-01:000697:0010 A00 BG-08-0065-08-0100 65 も も も も も
-01:000697:0011 A00 BG-02-1600-01-0200 47 へ 経 ふ 経 へ
-01:000697:0012 A00 BG-03-1200-02-0800 74 す ず ず ず ず
-01:000697:0012 A10 BG-09-0010-01-0100 74 す ず ず ず ず
-01:000697:0013 A00 BG-08-0064-38-0100 64 して して して して して
-01:000697:0014 A00 BG-02-1556-01-0206 47 逢 逢ふ あふ 逢ふ あふ
-01:000697:0014 A10 BG-02-3510-01-0100 47 逢 逢ふ あふ 逢ふ あふ
-01:000697:0015 A00 BG-01-1020-02-0100 02 よし 由 よし 由 よし
-01:000697:0015 A10 BG-01-3081-01-0800 02 よし 由 よし 由 よし
-01:000697:0015 A20 BG-01-3081-04-1200 02 よし 由 よし 由 よし
-01:000697:0016 A00 BG-03-1330-01-1400 69 もかな もがな もがな もがな もがな
-01:000697:0016 A10 BG-03-3012-03-2700 69 もかな もがな もがな もがな もがな
-01:000697:0016 A20 BG-08-0069-20-0100 69 もかな もがな もがな もがな もがな
-'''
-ct697 = '''
-1 matsuda 0697 1 55 00 00 BG-03-1600-02-140-A 絶え間なく たえまなく 絶え間なく
-1 matsuda 0697 3 55 00 00 BG-02-1240-04-010-A -- たえる 絶える
-1 matsuda 0697 3 55 00 00 BG-01-1610-03-010-A -- ま 間
-1 matsuda 0697 3 55 00 00 BG-09-0010-01-050-A -- ない ない
-1 matsuda 0697 0 47 21 04 BG-02-1556-01-020-A 会い あう 会う
-2 matsuda 0697 2 47 21 04 BG-02-3510-01-010-A 会い あう 会う
-1 matsuda 0697 0 74 53 01 BG-03-3012-03-020-A たい たい たい
-2 matsuda 0697 2 74 53 01 BG-09-0050-03-010-A たい たい たい
-1 matsuda 0697 0 21 00 00 BG-01-1000-03-010-A もの もの もの
-1 matsuda 0697 0 74 55 01 BG-09-0050-01-030-A だ だ だ
-1 matsuda 0697 0 69 00 00 BG-04-3200-03-030-A なあ なあ なあ
-2 matsuda 0697 2 69 00 00 BG-08-0069-11-040-A なあ なあ なあ
-1 matsuda 0697 0 78 00 00 BG-16-0078-01-010-A 。 。 。
-'''
-
-pipe(poem=op697, translation=ct697, mode=2, level=3)
-```
-
-```{bash}
-#| include: false
-
-awk '$1 ~ /01:000346/ && $2 ~ /[ABD]0/ {printf "%s", $5}' ./data/hachidaishu/hachidai.db
-echo ""
-awk -v translator="okumura" '$3 ~ /0346/ && $0 ~ translator && $1 ~ /1/ && $4 ~ /[01]/ {printf "%s", $9}' ./data/translationExamples.txt
-```
-
-```{python}
-#| include: false
-
-op346 = '''
-01:000346:0001 A00 BG-01-2000-01-0102 14 わ 我 わ 我 わ
-01:000346:0002 A00 BG-08-0061-02-0100 61 か が が が が
-01:000346:0003 A00 BG-01-1911-03-0100 02 齢 齢 よはひ 齢 よはひ
-01:000346:0004 A00 BG-01-2000-02-0300 14 君 君 きみ 君 きみ
-01:000346:0005 A00 BG-08-0061-02-0100 61 か が が が が
-01:000346:0006 B00 BG-03-1600-09-1500 02 やちよ 八千世 やちよ 八千世 やちよ
-01:000346:0006 C00 BG-01-1950-04-0900 19 八千 八千 はっせん 八千 はっせん
-01:000346:0006 C01 BG-01-2610-01-0400 02 世 世 よ 世 よ
-01:000346:0007 A00 BG-08-0061-05-0100 61 に に に に に
-01:000346:0008 A00 BG-02-1250-03-1100 47 とり 取る とる 取り とり
-01:000346:0008 A10 BG-02-3061-04-0100 47 とり 取る とる 取り とり
-01:000346:0008 A20 BG-02-3700-04-0100 47 とり 取る とる 取り とり
-01:000346:0009 A00 BG-02-1556-05-0100 47 そへ 添ふ そふ 添へ そへ
-01:000346:0009 A10 BG-02-1580-02-0700 47 そへ 添ふ そふ 添へ そへ
-01:000346:0010 A00 BG-08-0064-16-0100 64 て て て て て
-01:000346:0011 A00 BG-02-1240-01-1300 47 とゝめ 留む とどむ 留め とどめ
-01:000346:0011 A10 BG-02-1512-01-0400 47 とゝめ 留む とどむ 留め とどめ
-01:000346:0012 A00 BG-02-1515-03-0100 47 をき 置く おく 置き おき
-01:000346:0013 A00 BG-09-0010-03-0100 74 て つ つ て て
-01:000346:0014 A00 BG-08-0064-26-0100 64 は ば ば ば ば
-01:000346:0015 A00 BG-02-3060-01-0101 47 思ひ 思ふ おもふ 思ひ おもひ
-01:000346:0016 A00 BG-02-1210-01-0304 47 て 出づ いづ 出で いで
-01:000346:0016 A10 BG-02-1530-01-0101 47 て 出づ いづ 出で いで
-01:000346:0016 A20 BG-02-1540-04-0601 47 て 出づ いづ 出で いで
-01:000346:0017 A00 BG-08-0061-05-0100 61 に に に に に
-01:000346:0018 A00 BG-02-3420-01-0100 47 せよ す す せよ せよ
-'''
-ct346 = '''
-1 okumura 0346 0 14 00 00 BG-01-2000-01-020-A 私 わたし 私
-1 okumura 0346 0 71 00 00 BG-08-0071-01-010-A の の の
-1 okumura 0346 0 02 00 00 BG-01-5800-02-050-A 命数 めいすう 命数
-1 okumura 0346 0 61 00 00 BG-08-0061-10-010-A を を を
-1 okumura 0346 0 79 00 00 BG-16-0079-01-010-A 、 、 、
-1 okumura 0346 0 14 00 00 BG-01-1730-03-030-A あなた あなた あなた
-2 okumura 0346 2 14 00 00 BG-01-1731-02-030-A あなた あなた あなた
-3 okumura 0346 2 14 00 00 BG-01-2000-02-010-A あなた あなた あなた
-1 okumura 0346 0 71 00 00 BG-08-0071-01-010-A の の の
-1 okumura 0346 0 02 00 00 BG-01-5800-03-020-A 長寿 ちょうじゅ 長寿
-1 okumura 0346 0 71 00 00 BG-08-0071-01-010-A の の の
-1 okumura 0346 0 22 00 00 BG-01-1741-01-030-A 上 うえ 上
-1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
-1 okumura 0346 0 02 00 00 BG-03-1661-01-020-A さら さら さら
-1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
-1 okumura 0346 0 47 21 06 BG-02-1700-02-040-A 沿え そう 沿う
-1 okumura 0346 0 64 00 00 BG-08-0064-16-010-A て て て
-1 okumura 0346 0 47 12 04 BG-02-1240-01-020-A 残し のこす 残す
-1 okumura 0346 0 64 00 00 BG-08-0064-16-010-A て て て
-1 okumura 0346 0 48 08 04 BG-02-1515-03-010-A おき おく おく
-1 okumura 0346 0 74 58 03 BG-09-0030-03-030-A ましょ ます ます
-1 okumura 0346 0 74 70 01 BG-09-0010-02-010-A う う う
-1 okumura 0346 0 79 00 00 BG-16-0079-01-010-A 、 、 、
-1 okumura 0346 0 57 00 00 BG-03-1000-02-010-A その その その
-1 okumura 0346 0 22 00 00 BG-01-1000-03-040-A 分 ぶん 分
-1 okumura 0346 0 61 00 00 BG-08-0061-10-010-A を を を
-1 okumura 0346 0 43 00 00 BG-05-0070-01-010-A お お お
-1 okumura 0346 0 47 06 04 BG-02-5810-04-010-A 生き いきる 生きる
-1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
-1 okumura 0346 0 47 17 01 BG-02-1220-01-030-A なる なる なる
-1 okumura 0346 0 22 00 00 BG-01-5620-04-110-A とき とき とき
-1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
-1 okumura 0346 0 65 00 00 BG-08-0065-07-010-A は は は
-1 okumura 0346 0 79 00 00 BG-16-0079-01-010-A 、 、 、
-1 okumura 0346 0 55 00 00 BG-04-3140-01-040-A どうぞ どうぞ どうぞ
-1 okumura 0346 0 14 00 00 BG-01-2000-01-020-A 私 わたし 私
-1 okumura 0346 0 61 00 00 BG-08-0061-10-010-A を を を
-1 okumura 0346 0 47 12 04 BG-02-3050-03-070-A 思い出し おもいだす 思い出す
-1 okumura 0346 0 64 00 00 BG-08-0064-16-010-A て て て
-1 okumura 0346 1 48 19 09 BG-02-3770-05-030-A 下さい くださる 下さる
-1 okumura 0346 2 48 19 09 BG-02-3770-05-020-A -- くれる くれる
-1 okumura 0346 0 78 00 00 BG-16-0078-01-010-A 。 。 。
-'''
-
-pipe(poem=op346, translation=ct346, mode=3, level=3, gap_penalty=0.01,u=10,g=20,e=50)
-```
-
-さて、和歌と現代語訳の間にある回りくどい表現についても、どうにかして一致させたいと願うかもしれないが、残念ながら、その願いを叶えることは技術的に難しい。例えば、OKMR (346) は、奥村の現代語訳は和歌の語をほとんど使わず、あえてつぎのように回りくどい表現を使っている。：
-
-- 「とりそへて」=「さらにそえて」
-- 「とどめおきて」=「のこしておきましょう」
-
-整列法は、このような歌をうまくアライメントできなかった。ある歌ことばと回りくどい言い方が同等の意味を持つことばを辞書に用意し、二者間の一致を実現させることは難しいと推察できよう。基本的に歌ことばと、そのまわりくどい言い方の一部との対応が可能になっているが、まわりくどい表現全体としての対応ができていない。この問題を語の対応の課題だと述べたものの、前述一対多の訳について言及したように一対多の訳と同様に、まわりくどい表現は元の歌ことばに情報を付随して生成されることが多いため、まわりくどい表現で対応で一致しない要素（つまり、訳のあまりもの）は、ノンリテラル要素を調べる目的からすれば、むしろ貴重なものなのである。
-
-It may seem desirable to align the complex expressions found in the original poem with those in the contemporary translation, but achieving this is technically challenging. For example, in OKMR (#346), Okumura’s contemporary translation uses very few words from the original poem, instead opting for the following complex expressions:
-
-- とりそえて *torisoete* = さらにそえて *sarani soete* ("additionally")
-- とどめおきて *todome okite* = のこしておきましょう *nokoshite okimashō* ("let's leave it")
-
-The alignment method struggles to handle expressions like this effectively. Creating a dictionary that pairs a single poetic word with a complex expression of equivalent meaning and achieves a perfect match is difficult. While it is sometimes possible to align certain poetic words with parts of complex expressions, it is rarely feasible to align the entire expression. This issue has been described as a problem of word alignment, and as previously mentioned in relation to one-to-many translations, complex expressions often add additional information to the original poetic words. As a result, the unmatched elements from these complex expressions (i.e., the leftover parts of the translation) are valuable when examining non-literal elements.
-
-## 現代語の追加の多くは掛詞 Many additions in contemporary translations involve kakekotoba (pun)
-
-MTD (#629) は、どの語も原文とは整列法においてほとんど一致しなかった。この歌は「あやなし」「まだき」などの古語、「なくに」のような現代語には使われない語法が含まれている。これらの語は、現代語と分類語彙表番号で対応づけることができない。
-また「名のたつ」と「たつたがは」の掛詞も存在する。
-
-追加率の平均値上位 10 首のうち、ほかにも 705 番歌、669 番歌、617 番歌など追加率の高かった和歌がある。705 番歌は「身」と「雨」に「降（経）る」の掛詞が含まれている。669 番歌と617番歌は、それぞれ「海藻目」と「ながめ」の掛詞がある。掛詞の役割を明確するには、訳での補足が求められており、現代語・古代語の差分で残る要素が多いと考えてよい。
-
-MTD (#629) shows that most words did not align well with the original poem using the alignment method. This poem includes archaic words such as あやなし *ayanashi* ("without reason") and まだき *madaki* ("early"), along with grammatical constructions like なくに *naku ni* (negation with interjection nuance), which are no longer used in contemporary Japanese. These terms cannot be mapped to their modern equivalents using WLSP codes. Additionally, the poem contains a *kakekotoba* (pivot word) involving 名の立つ *na no tatsu* ("to have a rumor") and 立田川 *Tatsutagawa* ("Tatsuta River").
-
-Among the top 10 poems with the highest average addition rates, other poems such as Poem #705, Poem #669, and Poem #617 also have high addition rates. Poem #705 features a *kakekotoba* involving 身 *mi* ("body") and 雨 *ame* ("rain"), with ふる (降る/経) *furu* serving a dual meaning: "(rain) to fall" and "(body) to age." Poem #669 and Poem #617 contain *kakekotoba* involving 海松目/見る目 *mirume* (a pun on "seaweed" and "to meet") and 眺め/長雨 *nagame* (a pun on "gaze/reverie" and "long rain"), respectively. To clarify the role of *kakekotoba*, supplemental information is often required in translations, and many elements likely remain unaligned when comparing contemporary and classical Japanese.
-
-```{bash}
-#| include: false
-#| label: tatsuda-629
-
-awk '$1 ~ /01:000629/ && $2 ~ /[ABD]0/ {printf "%s", $5}' ./data/hachidaishu/hachidai.db
-echo ""
-awk -v translator="matsuda" '$3 ~ /0629/ && $0 ~ translator && $1 ~ /1/ && $4 ~ /[01]/ {printf "%s", $9}' ./data/translationExamples.txt
-```
-
-::: {fig-mtd-629}
-
-```
-mode=2; level=3; elements of poem=15; elements of translation=60;
-bag (E=1, F=2, G=6, U=6, T=9, AddRate=85.00%, UnmatchRate=40.00%);
-alignment (E=1, F=0, G=6, U=8, T=7, AddRate=88.33%, UnmatchRate=53.33%)
-args: translator:matsuda; poem No.0629; weight:(U=-1, G=10, F=13, E=17); gap penalty: 0.01
-
-#  Without any reason,
-1| ーーーーーーーーあやなくーーーてーーーーーーーーーーーーーーーーーーーーーーーーーー　[629]
-1| わけもなくもう無実の評判が立ってしまったいずれ二人の恋は遂げられないではいられないも  [MTD]
-#  soon rumor has spreaded, the River Tatsuta, without crossing, [I cannot] stop,
-2| ーーーーーーーーーーーーまたきなき名のー立田河わたらてやまーーんーー物ーーーーーーー　[629]
-2| のではあるがわけもなくもう無実の評判が立っーーーーーてしまったーいずれ二人の恋は遂げ  [MTD]
-#  It is not possible...
-3| ーーならーーなーーーーーーーくーーにーーーーーーーーーーーーーーーーーーーーーーーー  [629]
-3| られないではいられないものではあるがーーーーーーーーーーーーーーーーーーーーーーーー　[MTD]
-```
-
-629 番歌の @matsuda1968Shinshaku による現代語訳：アライメントの結果を書き換えている Contemporary translation of Poem #629 by @matsuda1968Shinshaku: The alignment results have been modified.
-:::
-
-```{python}
-#| include: false
-
-op629 = '''
-01:000629:0001 A00 BG-01-3072-03-1100 51 あやなく 文無し あやなし 文無く あやなく
-01:000629:0002 A00 BG-08-0064-16-0100 64 て て て て て
-01:000629:0003 A00 BG-03-1660-03-1100 55 またき 夙 まだき 夙 まだき
-01:000629:0004 B00 BG-01-3440-07-0700 02 なき名 無き名 なきな 無き名 なきな
-01:000629:0004 C00 BG-03-1200-02-0100 51 無い 無い ない 無い ない
-01:000629:0004 C01 BG-01-3102-02-0100 28 名 名 めい 名 めい
-01:000629:0005 A00 BG-08-0061-07-0100 61 の の の の の
-01:000629:0006 D00 CH-29-5250-01-0400 11 立田河 立田河 たつたがは 立田河 たつたがは
-01:000629:0006 E00 CH-29-0000-00-1800 11 立田 立田 たつた 立田 たつた
-01:000629:0006 E01 BG-08-0071-01-0100 71 の の の の の
-01:000629:0006 E02 BG-01-5250-01-0100 02 川 川 かわ 川 かわ
-01:000629:0007 A00 BG-02-1503-01-0201 47 わたら 渡る わたる 渡ら わたら
-01:000629:0007 A10 BG-02-1521-04-0100 47 わたら 渡る わたる 渡ら わたら
-01:000629:0007 A20 BG-02-1521-12-0100 47 わたら 渡る わたる 渡ら わたら
-01:000629:0008 A00 BG-08-0064-17-0100 64 て で で で で
-01:000629:0009 A00 BG-02-1502-03-0100 47 やま 止む やむ 止ま やま
-01:000629:0010 A00 BG-03-3012-03-2600 74 ん む む む む
-01:000629:0010 A10 BG-09-0010-02-0102 74 ん む む む む
-01:000629:0011 A00 BG-01-1000-03-0201 02 物 物 もの 物 もの
-01:000629:0011 A10 BG-01-4000-01-0800 02 物 物 もの 物 もの
-01:000629:0012 A00 BG-09-0010-02-0700 74 なら なり なり なら なら
-01:000629:0012 A10 BG-09-0050-01-0100 74 なら なり なり なら なら
-01:000629:0013 A00 BG-03-1200-02-0800 74 な ず ず な な
-01:000629:0013 A10 BG-09-0010-01-0100 74 な ず ず な な
-01:000629:0014 A00 BG-08-0071-05-0100 71 く く く く く
-01:000629:0015 A00 BG-08-0061-05-0100 61 に に に に に
-'''
-ct629 = '''
-1 matsuda 0629 0 02 00 00 BG-01-1113-01-030-A わけ わけ わけ
-2 matsuda 0629 2 02 00 00 BG-01-3070-01-030-A わけ わけ わけ
-1 matsuda 0629 1 65 00 00 BG-08-0065-08-010-A も も も
-1 matsuda 0629 2 65 00 00 BG-04-1130-01-200-A -- も も
-1 matsuda 0629 0 51 50 07 BG-03-1200-02-010-A なく ない ない
-1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
-1 matsuda 0629 0 55 00 00 BG-03-1650-03-010-A もう もう もう
-2 matsuda 0629 2 55 00 00 BG-03-1992-07-030-A もう もう もう
-1 matsuda 0629 0 02 00 00 BG-03-1010-02-060-A 無実 むじつ 無実
-1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
-1 matsuda 0629 0 02 00 00 BG-01-3134-01-210-A 評判 ひょうばん 評判
-2 matsuda 0629 2 02 00 00 BG-01-3142-02-010-A 評判 ひょうばん 評判
-3 matsuda 0629 2 02 00 00 BG-01-3422-04-080-A 評判 ひょうばん 評判
-1 matsuda 0629 0 61 00 00 BG-08-0061-02-010-A が が が
-1 matsuda 0629 0 47 13 05 BG-02-1513-01-010-A 立っ たつ 立つ
-2 matsuda 0629 2 47 13 05 BG-02-1521-06-020-A 立っ たつ 立つ
-3 matsuda 0629 2 47 13 05 BG-02-3330-11-020-A 立っ たつ 立つ
-4 matsuda 0629 2 47 13 05 BG-02-3391-02-110-A 立っ たつ 立つ
-1 matsuda 0629 0 64 00 00 BG-08-0064-16-010-A て て て
-1 matsuda 0629 0 48 21 05 BG-02-1502-02-040-A しまっ しまう しまう
-2 matsuda 0629 2 48 21 05 BG-09-0010-03-050-A しまっ しまう しまう
-1 matsuda 0629 0 74 54 01 BG-09-0010-04-010-A た た た
-1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
-1 matsuda 0629 0 14 00 00 BG-01-1000-01-110-A いずれ いずれ いずれ
-1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
-1 matsuda 0629 0 16 00 00 BG-01-1950-13-020-A 二人 ふたり 二人
-1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
-1 matsuda 0629 0 17 00 00 BG-01-3020-11-030-A 恋 こい 恋
-2 matsuda 0629 2 17 00 00 BG-02-3060-03-070-A 恋 こい 恋
-1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
-1 matsuda 0629 0 47 06 02 BG-02-3420-07-010-A 遂げ とげる 遂げる
-1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
-1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
-1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
-1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
-1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
-1 matsuda 0629 0 47 06 02 BG-02-1200-02-010-A い いる いる
-2 matsuda 0629 2 47 06 02 BG-02-1210-03-010-A い いる いる
-3 matsuda 0629 2 47 06 02 BG-02-1530-07-010-A い いる いる
-1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
-1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
-1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
-1 matsuda 0629 0 21 00 00 BG-01-1000-03-010-A もの もの もの
-1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
-1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
-1 matsuda 0629 0 47 17 01 BG-02-1200-01-010-A ある ある ある
-1 matsuda 0629 0 64 00 00 BG-08-0064-04-010-A が が が
-1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
-1 matsuda 0629 0 02 00 00 BG-01-1113-01-030-A わけ わけ わけ
-2 matsuda 0629 2 02 00 00 BG-01-3070-01-030-A わけ わけ わけ
-1 matsuda 0629 1 65 00 00 BG-08-0065-08-010-A も も も
-1 matsuda 0629 2 65 00 00 BG-04-1130-01-200-A -- も も
-1 matsuda 0629 0 51 50 07 BG-03-1200-02-010-A なく ない ない
-1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
-1 matsuda 0629 0 55 00 00 BG-03-1650-03-010-A もう もう もう
-2 matsuda 0629 2 55 00 00 BG-03-1992-07-030-A もう もう もう
-1 matsuda 0629 0 02 00 00 BG-03-1010-02-060-A 無実 むじつ 無実
-1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
-1 matsuda 0629 0 02 00 00 BG-01-3134-01-210-A 評判 ひょうばん 評判
-2 matsuda 0629 2 02 00 00 BG-01-3142-02-010-A 評判 ひょうばん 評判
-3 matsuda 0629 2 02 00 00 BG-01-3422-04-080-A 評判 ひょうばん 評判
-1 matsuda 0629 0 61 00 00 BG-08-0061-02-010-A が が が
-1 matsuda 0629 0 47 13 05 BG-02-1513-01-010-A 立っ たつ 立つ
-2 matsuda 0629 2 47 13 05 BG-02-1521-06-020-A 立っ たつ 立つ
-3 matsuda 0629 2 47 13 05 BG-02-3330-11-020-A 立っ たつ 立つ
-4 matsuda 0629 2 47 13 05 BG-02-3391-02-110-A 立っ たつ 立つ
-1 matsuda 0629 0 64 00 00 BG-08-0064-16-010-A て て て
-1 matsuda 0629 0 48 21 05 BG-02-1502-02-040-A しまっ しまう しまう
-2 matsuda 0629 2 48 21 05 BG-09-0010-03-050-A しまっ しまう しまう
-1 matsuda 0629 0 74 54 01 BG-09-0010-04-010-A た た た
-1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
-1 matsuda 0629 0 14 00 00 BG-01-1000-01-110-A いずれ いずれ いずれ
-1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
-1 matsuda 0629 0 16 00 00 BG-01-1950-13-020-A 二人 ふたり 二人
-1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
-1 matsuda 0629 0 17 00 00 BG-01-3020-11-030-A 恋 こい 恋
-2 matsuda 0629 2 17 00 00 BG-02-3060-03-070-A 恋 こい 恋
-1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
-1 matsuda 0629 0 47 06 02 BG-02-3420-07-010-A 遂げ とげる 遂げる
-1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
-1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
-1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
-1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
-1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
-1 matsuda 0629 0 47 06 02 BG-02-1200-02-010-A い いる いる
-2 matsuda 0629 2 47 06 02 BG-02-1210-03-010-A い いる いる
-3 matsuda 0629 2 47 06 02 BG-02-1530-07-010-A い いる いる
-1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
-1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
-1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
-1 matsuda 0629 0 21 00 00 BG-01-1000-03-010-A もの もの もの
-1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
-1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
-1 matsuda 0629 0 47 17 01 BG-02-1200-01-010-A ある ある ある
-1 matsuda 0629 0 64 00 00 BG-08-0064-04-010-A が が が
-1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
-'''
-
-pipe(poem=op629, translation=ct629, mode=2, level=3)
-```
+一方で、歌と現代語訳の差分によるノンリテラル情報の抽出の際に、訳されなかった語の存在がないことが望ましくないので、不一致率の高い歌について調査を行った。その結果、翻訳の「欠落」の多くは序詞、枕詞と回りくどい表現であることが判明した。現代語文と歌の差分では、枕詞と序詞などについてのノンリテラル要素の抽出が難しい一面が伺える。
+ただし、回りくどい表現に関しては、基本的に歌ことばとその回りくどい言い方の一部との一致を確定できるが、回りくどい表現全体との一致ができなかった。この問題を語の一致の課題だと述べたものの、最初に一対多の訳について言及したように一対多の訳と同様に、回りくどい表現は元の歌ことばに情報を付随して生成されることが多いため、回りくどい表現で対応で一致しない要素（つまり、訳のあまりもの）は、ノンリテラル要素を調べる目的からすれば、むしろ貴重なものなのである。
 
 ## 翻訳で開示できるノンリテラル要素の類型化
 
-拡張意味単位からヒントともたった 3 つの観点で訳における追加要素を考察したところ、以下の類型化を提案できる。 
+ケーススタディーの分析に基づき、拡張意味単位からヒントを得た 3 つの観点で訳における追加要素について、以下の類型化を提案する。 
 
 1. コーパスレベルでの共出現語に由来した追加要素
-  - 共出現語の直接的な追加：「紅葉」など
-  - 共出現語に対する補足、つまり二次的・間接的な追加：「幣」の「色とりどり」「撒く」など
-2. 構文面での言語変化のギャップを埋める追加要素
-  - 分類語彙表番号で一致と認定できない助詞の変化：「と」の訳し方
-  - 動詞のハダカの形の増長：「手向ける」の訳し方
-3. 対象語の意味志向をめぐる追加要素
-  - コーパスレベルの共出現語の意味志向について余分に行っている補足：「神」をめぐる情報の補足
+  - 共出現語の直接的な追加：例えば、「木の葉」→「木の葉の**紅葉**」
+  - 共出現語に対する補足、つまり二次的・間接的な要素の追加：例えば、「**幣**」に「色とりどり」「撒く」
+2. 構文・文法面での言語変化のギャップを埋めるための追加要素
+  - 分類語彙表番号で一致と認定できなかった助詞の変化：例えば、「と」の複数の訳し方
+  - 動詞基本形に対する要素の追加：「手向ける」の複数の訳し方
+3. コーパスレベルの共出現語の意味群の全体的な傾向性をめぐる追加要素
+  - 共出現語の「秋」「神」の意味群にある語についての補足：「立田姫」「道祖神」の情報の補足
 
-可視化システムを構築する際にこれらの要素の区別が重要である。まず、「木の葉」に補足しての「紅葉」は、センテンスレベルではノンリテラルであるが、コーパスレベルでは共出現語であり、よってリテラルであるといえる。差分による可視化でもアクセスできることが確認できたが、その他 word association measure でも十分抽出できる。そのため、差分による可視化の必要性を低くなる。
-つぎに、構文の時代変化のギャップを埋めるための追加要素は、原文の語に由来するノンリテラル情報とは捉えられないため、除外する手続きを踏まなければならない。そして、共出現の語の集団的傾向性に関連する追加要素は、おそらく word association measure  では抽出できない。そこが差分による可視化の独自な利点と考えられる。
+翻訳との差分に基づく可視化システムを構築する際にこれらの要素の区別が重要である。まず、「木の葉」に補足しての「紅葉」は、センテンスレベルではノンリテラルであるが、コーパスレベルではリテラルな共出現語であるといえる。差分による可視化でもアクセスできることが確認できたものの、その他の共出現分析に用いる指標でも十分抽出できる。そのため、差分による可視化の必要性を低くなる。
 
-最後に、本稿では触れなかった拡張意味単位の第 4 のレベルである談話韻律の視点について補足する。談話韻律に相当する感情面の評価と、語の社会言語学的な属性は、 訳の追加要素では分からない情報と考えている。これらの属性を直接な補足と追加で明示化することはない。一部は現代語にある connotative term で言い換えられており、これら機能が相当する語の入れ替えであっても、その語自体が説明として直接成立しない。よって、これらの評価は、ほかの方法を求めるべきである。
+次に、構文の時代変化のギャップを埋めるための追加要素は、原文の語に由来するノンリテラル情報とは捉えられないため、除外する手続きを踏まなければならない。そして、共出現の語の全体的傾向性に関連する追加要素は、おそらく共出現語分析では抽出できない。翻訳との差分による可視化の独自な利点と考えられる。
 
-Based on the concept of extended meaning units, we analyzed additional elements in translations from three perspectives and propose the following categorization:
+最後に、本稿では触れなかった拡張意味単位の第 4 のレベルである談話韻律の視点について補足する。談話韻律に相当する感情面の評価と、語の社会言語学的な属性は、訳の追加要素では分からない情報と考えている。これらの属性を直接な補足と追加で明示化することはない。一部は現代語にある connotative term で言い換えられており、これら機能が相当する語の入れ替えはあっても、その入れ替え自体の談話韻律の説明として直接は成立しない。よって、これらの評価は、ほかの方法を求めるべきである。
 
-1. Additional elements derived from co-occurring words at the corpus level:
-   - Direct additions of co-occurring words: e.g., *momiji* (autumn leaves)
-   - Supplementary or secondary/indirect additions to co-occurring words: e.g., "colorful" or "scattering" in reference to *nusa* (ritual paper)
+## 現代語訳の知識としての信憑性
 
-2. Additional elements that fill gaps caused by language change, particularly grammatical shifts:
-   - Changes in grammatical structures that cannot be matched using WLSP codes: e.g., the translation of *to* (particle)
-   - Extensions of bare verb forms: e.g., the translation of *tamukeru* (to dedicate)
+10 人の翻訳と原文の差分による可視化のシステムは、10 人の個々の歌に対する知見を総合するという意味で、ある種のメタ分析や要約と見てよいと考えている。
 
-3. Additional elements related to the semantic preference of target words:
-   - Further supplementation of words based on their semantic preference at the corpus level: e.g., additional information surrounding *kami* (god)
+しかし、現代語訳に含める知識の可視化は、どこまで歌ことばのノンリテラル情報にアクセスできるか、可視化としてどの程度妥当で信頼できるかは、本稿では触れなかった。翻訳において、過剰に意味を付けることは解釈として妥当性と整合性を失う。本来のテキストのシンプルな意味や意図が、過剰な意味付けによって曖昧になり、読者がテキストを正しく理解することが難しくなりうる。そのような翻訳を可視化に応用すると、可視化自体の意味の信憑性がなくなる。その可能性は考慮すべき一環であり、いかに訳者の訳語の中からロバストな部分を見出すかは翻訳に基づく可視化の重要な課題である。
 
-Distinguishing these elements is essential when constructing a visualization system. For instance, supplementing "autumn leaves" (*momiji*) to "leaves" (*konoha*) may be considered non-literal at the sentence level but literal at the corpus level, as it represents co-occurring words. This can be identified through difference-based visualization, though word association measures are also effective. As a result, the necessity for difference-based visualization in this case is reduced.
+## 翻訳研究の知見による解釈の必要性
 
-Next, additional elements that bridge gaps caused by grammatical shifts over time should be excluded, as they do not represent non-literal information derived from the original text. 
+本研究は、翻訳研究として位置づけるものではないが、翻訳における要素の追加や、原文における要素の喪失などの現象は、翻訳研究における仮説と理論によって解釈する余地は大いにあると考えられる。
 
-Moreover, elements related to the collective semantic preference of co-occurring words may not be easily captured through word association measures, which is where difference-based visualization provides unique advantages.
+例えば、翻訳普遍性仮説 (translation universal hypothesis; cf., @Chesterman2004Hypotheses; @Edina2016Translation) における長さ増加の普遍性 (law of lenghtening, @Vinay1958Comparative) 、明示化の普遍性 (law of expicitation, @Baker1996Challenges; @Blum-Kulka1986Shifts) からしては、現代語訳の追加要素の存在が不思議なものではなく、むしろ翻訳における普遍的な現象である。特に明示化の普遍性は、本稿のいうノンリテラル要素の開示に関連性が強い。翻訳における明示化について、@Blum-Kulka1986Shifts では、翻訳者がソーステキストにはない cohensive marker^[@Nunan1993Introducing [p. 21] によると、書き手や話し手が文や発話の境界を越えて関係を確立し、テキスト内の文を結びつけるのに役立つ語やフレーズのことを指す。例えば、「そして」「しかし」「それ」などがあげられる。] をターゲットテキストで示すことが示唆されている。一方で、@Baker1996Challenges [p. 180] は、この問題を物事を暗黙的なままにしておくのではなく、明確に説明する傾向があるというように、より広く捉えられるようになった。「明示化」は、もともとは談話標識の訳文における増加傾向を指しており、本研究における要素の追加の一部の解釈としてありうる。とはいえ、すべての現象についてこの仮説で解釈されることが難しい^[実際、翻訳普遍性は、結局いずれも反例が存在するため、確率的な傾向、あるいは、普遍性とすることが妥当でであるとされてる [cf., @Pym2008Toury; @Tymoczko1998Computerized; @Chesterman2004Hypotheses; @Chesterman2010Why]。とりもなおさず、一般性といいつつ例外が認めているわけである。]。
+例えば、談話標識や cohensive marker の追加を取り除いても、分析事例においてはかなりの追加要素があった。すべての要素の追加が翻訳普遍性に帰結できなかった。
 
-Lastly, this paper did not cover the fourth level of extended meaning units—discourse prosody—in detail. Emotional values related to discourse prosody and the sociolinguistic characteristics of words are considered elements that cannot be captured through additional elements in translation. These attributes are not explicitly conveyed through direct supplementation or additions. In some cases, connotative terms in contemporary Japanese may paraphrase these aspects, but even when such terms are functionally equivalent, they do not provide direct explicitation. Therefore, alternative methods should be considered to evaluate these elements.
-
-## 翻訳の知識としての信憑性 Credibility of Knowledge in Translation
-
-本稿では触れていないが、10 人の翻訳と原文の差分による可視化のシステムは、10 人の個々の歌に対する知見を総合するという意味で、ある種のメタ分析と見てよい。
-
-しかし、現代語訳に含める知識の可視化は、どこまで歌ことばのノンリテラル情報にアクセスできるか、可視化としてどの程度妥当で、信頼できるかは、本稿では触れていない。たとえば、翻訳において、過剰に意味を付けることは解釈として妥当性と整合性を失う。本来のテキストのシンプルな意味や意図が、過剰な意味付けによって曖昧になり、読者がテキストを正しく理解することが難しくなりうる。そのような翻訳を可視化に応用すると、可視化自体の意味がなくなる。その可能性は考慮すべき一環であり、いかに訳者の訳語の中からロバストな部分を見出すかは翻訳に基づく可視化の重要な課題である。
-
-Although this paper does not address the credibility in detail, the system for visualizing differences between the 10 translations and the original text can be seen as a form of meta-analysis, in the sense that it systematically synthesizes the insights of the 10 individual translators regarding each poem.
-
-However, the paper does not explore how much the knowledge included in contemporary translations allows access to the non-literal aspects of the poetic language, or to what extent the translation is valid and reliable. For example, adding excessive interpretation in translation can undermine both validity and coherence. The original text’s simple meaning or intent may become ambiguous due to over-interpretation, making it difficult for readers to accurately understand the text. If such translations are applied to visualization, the visualization itself loses its credibility. This is a concern that must be considered. Finding robust elements within the translators’ choices is therefore a critical challenge for translation-based visualization.
-
-## 翻訳研究の知見による解釈の必要性 The Need for Interpretation through Translation Studies Insights
-
-本研究は、翻訳研究として位置づけるものではない、翻訳における要素の追加や、原文における要素の喪失などの現象は、翻訳研究における仮説と理論によって解釈する余地は大いにあると考えられる。
-
-例えば、翻訳普遍性仮説 (translation universal hypothesis; cf., @Chesterman2004Hypotheses; @Edina2016Translation) における長さ増加の普遍性 (law of lenghtening, @Vinay1958Comparative) 、明示化の普遍性 (law of expicitation, @Baker1996Challenges; @Blum-Kulka1986Shifts) からしては、現代語訳の追加要素の存在が不思議なものではなく、むしろ翻訳における普遍的な現象である。特に明示化の普遍性は、本稿のいうノンリテラル要素の開示に関連性が強い。翻訳における明示化について、@Blum-Kulka1986Shifts では、翻訳者がソーステキストにはない Cohensive marker^[According to @Nunan1993Introducing [p. 21], cohensive markers are “words and phrases which enable the writer or speaker to establish relationship across sentence or utterance boundaries, and which help to tie the sentences in a text together”.] をターゲットテキストで示すことが示唆されている。一方で、@Baker1996Challenges [p. 180] は、この問題を物事を暗黙的なままにしておくのではなく、明確に説明する傾向があるというように、より広く捉えられるようになった。「明示化」は、もともとは談話標識の訳文における増加傾向を指しており、本研究における要素の追加の一部の解釈としてありうる。とはいえ、すべての現象についてこの仮説で解釈されることが難しい^[実際、翻訳普遍性は、結局いずれも反例が存在するため、確率的な傾向、あるいは、普遍性とすることが妥当でであるとされてる [cf., @Pym2008Toury; @Tymoczko1998Computerized; @Chesterman2004Hypotheses; @Chesterman2010Why]。とりもなおさず、一般性といいつつ例外が認めているわけである。]。
-例えば、語の解釈にあたる要素の追加が談話標識の追加ではなかったが、分析事例においてはかなりの追加要素の割合を占めている。やはり、すべての要素の追加が翻訳普遍性に帰結できない。
-
-その他テキストの翻訳ではないが、翻訳の認知処理の研究では、例えば「リテラル翻訳仮説」(literal translation hypothesis)^[@Chesterman2011Reflections によれば、this hypothesis claims that when processing a given text chunk, translator tend to start from a literal version of the target text, and then work towards a freer version.] にも触れておくべきである。この仮説に基づき、認知処理と認知負荷の観点からのリテラル翻訳の可能性の度合い (translation literality) の操作化 [@@Carl2017Measuring] が 1. the word-order similarity of the source and the target text and 2. the number of possible different translation renderings のように考えている。いずれも、テキストとしての追加率、不一致率と異なった視点になっている。その中の 2 点目が筆者らのノンリテラル要素の可視化に関連する可能性があり、検討すべき metics である。
+他に、テキストの翻訳ではないが、翻訳の認知面の研究では、例えば「リテラル翻訳仮説」(literal translation hypothesis)^[@Chesterman2011Reflections によれば、this hypothesis claims that when processing a given text chunk, translator tend to start from a literal version of the target text, and then work towards a freer version.] にも触れておくべきである。この仮説に基づき、認知処理と認知負荷の観点からのリテラル翻訳の可能性の度合い (translation literality) の操作化 [@@Carl2017Measuring] が 1. 原文と訳文の語順の類似性と 2. 可能な異なる翻訳表現の数、といったように考えている。いずれも、本稿でいうテキストとしての追加率、不一致率と異なった視点になっている。その中の 2 点目が筆者らのノンリテラル要素の可視化に関連する可能性があり、検討すべき尺度であった。
 
 また、翻訳研究からの検討について、単位の一致の問題について、従来 translation equivalence [e.g., @Nida1969Theory] や translation unit [@Koller1979Einfuehrung, @Malmkjaer1998Unit] に関する議論が多かった。それらの視座から分析単位の影響を考察しなければならず、検討の余地は大いにある。
 
-This paper does not primarily position itself within translation studies, but phenomena such as the addition of elements in translation or the omission of elements from the original text can be interpreted through various hypotheses and theories in the field.
+## 方法論の改善余地
 
-For example, the translation universal hypothesis (cf. @Chesterman2004Hypotheses; @Edina2016Translation) introduces concepts like the law of lengthening (cf. @Vinay1958Comparative) and the law of explicitation (cf. @Baker1996Challenges; @Blum-Kulka1986Shifts), which help explain why additional elements appear in contemporary translations. These phenomena are seen as universal within translation. The law of explicitation, in particular, is highly relevant to the non-literal elements discussed in this paper. @Blum-Kulka1986Shifts suggests that translators often introduce cohesive markers absent from the source text when translating into the target text^[According to @Nunan1993Introducing [p. 21], cohesive markers are “words and phrases which enable the writer or speaker to establish relationships across sentence or utterance boundaries, and which help to tie the sentences in a text together.”]. Meanwhile, @Baker1996Challenges [p. 180] expanded the definition of explicitation, describing it as a broader tendency to explain things explicitly, rather than leaving them implicit. Originally, explicitation referred to an increase in discourse markers in translations, and this concept can help interpret some of the added elements discussed in this paper. However, not all phenomena fit into this hypothesis^[Translation universals tend to allow for exceptions, making them more probabilistic tendencies rather than strict universals [cf. @Pym2008Toury; @Tymoczko1998Computerized; @Chesterman2004Hypotheses; @Chesterman2010Why]. While they claim universality, exceptions are recognized.].
+本稿は完全にルールベースドな一致率の計算であり、一致の探索の一貫性と簡素さの面では優れている方法であると考えられる一方で、整列法に関しては動的計画法によるアライメントには課題を残している。古語と現代語では、片方が低リソース言語ではあるものの、ニューラルベースドな手法でのアライメントやマニュアルによるアライメントも視野に入れるべきである。例えば、@Palladino2022Using, @Camilleri2024Evaluating のように、@Palladino2022Using で提案された `Ugarti` プラットフォーム を介したアライメントで、一対多の対応の分析、訳し方の共通パターンと分岐パターン、非対応の品詞情報の分析など、より精緻なコントロールが期待される。
 
-For example, while not all added elements involve discourse markers, they still account for a significant proportion of the additional elements observed in the analyzed cases. Thus, not all added elements can be attributed solely to translation universals.
+## 分類語彙表番号の応用研究として
 
-In addition to this, research focusing on the cognitive aspects of translation, such as the literal translation hypothesis^[According to @Chesterman2011Reflections, this hypothesis claims that when processing a given text chunk, translators tend to start with a literal version of the target text, then work towards a freer version.], offers additional insights. This hypothesis suggests that translation literality can be operationalized through 1) word-order similarity between the source and target texts, and 2) the number of potential translation renderings available for a given text [cf. @Carl2017Measuring]. These factors provide a different perspective from the addition and unmatch rates discussed in this paper. The second point, in particular, may provide useful metrics for visualizing non-literal elements and is worth further exploration.
+本稿における（不）一致率・追加率の計算では、言語処理のアライメントモデルではなく安定的な分類番号を用いた。とりわけ、バッグ法は、句や語の入れ替えに関係せず、意味の一致を検出できた。意味の分類体系が、同一の意味の語を階層的に対応づけることの有用性が古語研究で再確認できた。本研究では、まだ旧分類語彙表番号を用いているが、現在 @Asahara2022CHJWLSP によって古語への分類語彙番号が付与されていることによって広げられる研究の可能性が十分期待できるであろう。ただし、分類語彙表番号は、2024年現時点において概念レベルまでであって、類義語、同義語、同語異表記のメタコード・識別子として一致の検出への対応は、研究者各自で目標に沿ったアダプテーションが求められている。本稿で採用している意味付与もまた、その修正を重ねていく必要がある。この点において、意味体系の作り方に関して検討する余地があると考えている。
 
-Moreover, translation studies have long discussed the issue of analytical units, focusing on translation equivalence [e.g., @Nida1969Theory] and translation units [cf. @Koller1979Einfuehrung; @Malmkjaer1998Unit]. The impact of these analytical units requires careful consideration and offers significant possibilities for further investigation.
+<!-- ## 翻訳一般性仮説の観点から見る現代語訳の操作 -->
 
-## 方法論の改善余地 Room for Methodological Improvement
+<!-- 翻訳における言い換え、追加、省略について、翻訳研究の観点からしばしば、翻訳一般性（普遍性）の仮説で解釈されている。@Chesterman2004Hypotheses と @Edina2016Translation に基づいて、翻訳において潜在的にかかわりうる翻訳一般性を以下に整理している： -->
 
-本稿のように、完全にルールベースドによる一致率の計算であり、対応づけの一貫性の簡素さの面では優れると考えられる一方で、整列法に関しては動的計画法によるアライメントには課題を残している。古語と現代語では、片方が低リソース言語ではあるが、ニューラルベースドな手法でのアライメントや、マニュアルによるアライメントも視野に入れるべきである。例えば、@Palladino2022Using, @Camilleri2024Evaluating のように、@Palladino2022Using で提案された Ugarti プラットフォーム を介したアライメントで、一対多の対応の分析、訳し方の積集合と分岐パターン、非対応の品詞情報の分析など、より精緻なコントロールが期待される。
+<!-- - 単純化 (cf. law of simplication)：ソース言語の言語面、あるいは、情報面の翻訳における単純化 [@Baker1996Challenges] -->
+<!-- - 標準化・慣習化 (cf. law of standardization / conventionalization)^[その逆として、ソース干渉の定理 (law of interference) が提起されている。それは、翻訳において外国語・外国文化を翻訳において伝わるようにする傾向を指す [@Tully2014Translation, p. 295]。] -->
+<!--   - ソース言語の外国的特徴 (foreign feature) をターゲット言語のの文化へと修正し [@Tully2014Translation, p. 295]、 -->
+<!--   - 翻訳のプロセスにおいてターゲット言語における典型的なパターンを踏襲し、ないしはそれを強調する [@Baker1993Corpus，p. 176] -->
+<!--   - ソーステキストのテーマがターゲットテキストのレパートリーに変換される傾向がある [@Toury1995Descriptive, p. 268]  -->
+<!-- - 長さ増加の定理 (law of lenghtening)：ターゲットテキストのがソーステキストより長い傾向 [@Vinay1958Comparative] -->
+<!-- - 明示化の定理 (law of expicitation)：@Blum-Kulka1986Shifts では、翻訳者がソーステキストにはない Cohensive marker^[According to @Nunan1993Introducing [p. 21], cohensive markers are “words and phrases which enable the writer or speaker to establish relationship across sentence or utterance boundaries, and which help to tie the sentences in a text together”.] をターゲットテキストで示すことが示唆されている。@Baker1996Challenges [p. 180] は、この問題を「翻訳では『物事を暗黙的なままにしておくのではなく、明確に説明する』傾向がある」とより広く捉えられるようになった。ただし、ここで明示化とは、翻訳文や書き下し文で使用される品詞（接続詞、副詞、関係代名詞の使用など）の追加で原文の情報を明示化することを指す [@Jia2022Myth; @Puurtinen2004Corpusbased; @Palumbo2009Key]。^[明示化の反対に、暗示化 (law of implicitation) もあり、暗示化とは、暗示のプロセスは「原文では明確に明示されている情報を暗示的にする」ことである [@Bednar2015Social, p: 3]。] -->
+<!-- - 重複削減の定理 (reduction of repetition)：翻訳において、原文に存在する重複が減少する [@Baker1993Corpus] -->
 
-While this paper’s rule-based approach to calculating the agreement rate offers advantages in simplicity and consistency, challenges remain, particularly in alignment using dynamic programming methods. Although historical Japanese from certain periods qualifies as a low-resource language, it would be valuable to explore neural-based alignment methods alongside manual alignment. For instance, as suggested by @Palladino2022Using and @Camilleri2024Evaluating, the Ugarti platform introduced by @Palladino2022Using offers greater precision. This platform enables detailed analysis of one-to-many and many-to-many correspondence patterns in translations, as well as part-of-speech analysis for non-aligned elements.
+<!-- 本稿では、現代語訳の追加要素の存在について、長さ増加の普遍性、明示化の普遍性からしては、それが不思議なものではなく、むしろ翻訳における普遍的な現象である。 -->
+<!-- ただし、追加要素が、最終的に本稿の最終目的である歌ことばのノンリテラル的情報の可視化につながっていくかいなかについて、単純な問題ではない。 -->
 
-## As an application using the WLSP semantic category
+<!-- - 明示化のルールは、語の説明的補足よりも、翻訳研究ではわかりやすくするための文法的・機能的要素の追加が注目されている。つまり、個々の歌ことばの明示化のための要素ではなく、文の意味の明示化のための要素が主眼になっている。歌ことばのノンリテラル要素の可視化においては、文法的機能的な要素が古今和歌集の翻訳の多くを占めることは望ましくないとしている。 -->
+<!-- - 実際、明示化に見えたことは、通時的な変化や、文化的なギャップである可能性もあり [@Mauranen2008Universal p. 39; @Yamamoto2019Analysis, p. 68]  、ノンリテラル要素の可視化においては、文化的ギャップを埋める明示化のほうが望ましい。 -->
+<!-- - 文体的に明瞭な表現にする、いわゆる言語の様式（言い換え）の平易化を介した明示化と、翻訳の操作でノンリテラル的な要素の提示による明示化の区別も重要である。後者は情報の詳細化につながるため、本稿においては後者が望ましい。 -->
 
-本稿における（不）一致率・追加率の計算では、言語処理のアライメントモデルではなく安定的な分類番号を用いた。とくにバッグ法は、句や語の入れ替えに関係せず、意味の一致を検出できる。意味の分類体系が、同一の意味の語を階層的に対応づけることの有用性が古語研究で再確認できた。本研究では、まだ旧分類語彙表番号を用いているが、現在 @Asahara2022CHJWLSP によって古語への分類語彙番号が付与されていることによって広げられる研究の可能性が十分期待できるであろう。ただし、分類語彙表番号は、2024年現時点において概念レベルまでであって、類義語、同義語、同語異表記のメタコードとして一致の検出への対応が研究者各自で目標にそった追加的付与が求められている。本稿で採用している意味付与もまた、その修正を重ねていく必要がある。この点において、意味体系の作り方に関して検討する余地があると考えている。
+<!-- ケーススタディの例では、文法的・機能的要素、様式の平易化、通時的変化でない、語の明示化の要素とみられるものも多く観測されていたため、一応、ノンリテラル要素の抽出として価値があると考えている。 -->
 
-In this paper, the calculation of the unmatch and addition rates did not rely on an alignment model from natual language processing but instead used a stable semantic classification metacode system, WLSP. The bag method, in particular, can detect semantic agreements without being influenced by word order changes. The utility of a hierarchical classification system that groups words with the same meaning was reaffirmed in the study of old Japanese. While this study still employs the old-version WLSP codes, the potential for expanded research is promising with the assignment of classification codes to classical Japanese by @Asahara2022CHJWLSP in the Corpus of Historical Japanese. However, as of 2024, the WLSP codes are assigned only at the group level, meaning the CHJ-WLSP cannot currently be used as direct token identifiers. Researchers will need to apply additional tagging to detect semantic agreement, including identifiers for synonyms, homonyms, and orthographic variants, depending on their research goals. The WLSP codes used in this paper will also require ongoing refinement. There remains significant potential to further explore how to build a more effective semantic category code system.
+<!-- 一方で、翻訳における省略の現象に関連する普遍性については、単純化と、暗示化と、重複の削除^[重複の削除は、前節で説明した現象を包括しているため、前節を参照されたい。] があると思われる。 -->
+<!-- 単純化というのは、 -->
 
-## 翻訳一般性仮説の観点から見る現代語訳の操作
+<!-- 1. 翻訳において表現が欠落するか、 -->
+<!-- 2. 情報が欠落するか、または -->
+<!-- 3. 語彙の豊富さ・密度が減るか、 -->
 
-翻訳における言い換え、追加、省略について、翻訳研究の観点からしばしば、翻訳一般性（普遍性）の仮説で解釈されている。@Chesterman2004Hypotheses と @Edina2016Translation に基づいて、翻訳において潜在的にかかわりうる翻訳一般性を以下に整理している：
+<!-- といった 3 つの側面がある。本稿の目的とかかかるのは、表現の欠落と情報の欠落である。表現が欠落することは、必ずしも情報の欠落を意味しているというわけではないが、語の追加もまた情報の追加を意味しない。この点については、暗示化と関連している。暗示化は、つまり、情報をターゲットテキストの語彙的要素・文法的要素に隠すことであり、情報量を削らない。本稿の議論では、現代語訳と原文の情報量が同等であることを前提にしていることに注意されたい。^[古語の意味は、筆者らが不可知・不可視であると捉える立場に立ち、訳者ができれば情報の欠落なく訳していると仮定している。] -->
+<!-- この場合、表現の追加・省略は、訳者が強調したい情報が明らかにし、重要でないと思われている情報が背景にする、いわゆる注意力の配分の問題であると考えられる。追加要素の分析の価値が見出される。ただし、本稿の前提が強めの仮説であることを認めざるをえない、欠落の情報があり暗示化することも確認されていることは、つまり可視化において背景化された情報が不可視のままを意味している。翻訳に基づくノンリテラル可視化の課題のひとつと考えられる。 -->
 
-- 単純化 (cf. law of simplication)：ソース言語の言語面、あるいは、情報面の翻訳における単純化 [@Baker1996Challenges]
-- 標準化・慣習化 (cf. law of standardization / conventionalization)^[その逆として、ソース干渉の定理 (law of interference) が提起されている。それは、翻訳において外国語・外国文化を翻訳において伝わるようにする傾向を指す [@Tully2014Translation, p. 295]。]
-  - ソース言語の外国的特徴 (foreign feature) をターゲット言語のの文化へと修正し [@Tully2014Translation, p. 295]、
-  - 翻訳のプロセスにおいてターゲット言語における典型的なパターンを踏襲し、ないしはそれを強調する [@Baker1993Corpus，p. 176]
-  - ソーステキストのテーマがターゲットテキストのレパートリーに変換される傾向がある [@Toury1995Descriptive, p. 268] 
-- 長さ増加の定理 (law of lenghtening)：ターゲットテキストのがソーステキストより長い傾向 [@Vinay1958Comparative]
-- 明示化の定理 (law of expicitation)：@Blum-Kulka1986Shifts では、翻訳者がソーステキストにはない Cohensive marker^[According to @Nunan1993Introducing [p. 21], cohensive markers are “words and phrases which enable the writer or speaker to establish relationship across sentence or utterance boundaries, and which help to tie the sentences in a text together”.] をターゲットテキストで示すことが示唆されている。@Baker1996Challenges [p. 180] は、この問題を「翻訳では『物事を暗黙的なままにしておくのではなく、明確に説明する』傾向がある」とより広く捉えられるようになった。ただし、ここで明示化とは、翻訳文や書き下し文で使用される品詞（接続詞、副詞、関係代名詞の使用など）の追加で原文の情報を明示化することを指す [@Jia2022Myth; @Puurtinen2004Corpusbased; @Palumbo2009Key]。^[明示化の反対に、暗示化 (law of implicitation) もあり、暗示化とは、暗示のプロセスは「原文では明確に明示されている情報を暗示的にする」ことである [@Bednar2015Social, p: 3]。]
-- 重複削減の定理 (reduction of repetition)：翻訳において、原文に存在する重複が減少する [@Baker1993Corpus]
+<!-- 翻訳の標準化・慣習化の普遍性も古今和歌集の現代語訳において、追加と省略、とりわけ言い換え操作の解釈として考えられる。したし、「古今和歌集の注釈書における現代日本語訳」というのは、極めて特殊な例であると考えられる。同言語内の通時的変種間の翻訳であるため、いわゆる外国的な性質の保留はつまり古風的に訳すことになり、しかし、注釈書にある翻訳であるため文学的に訳す必要がない。標準化・慣習化はこのケースでは、どのような現象につながるかは不明であり、翻訳の操作の内実について検討する余地がある。 -->
 
-本稿では、現代語訳の追加要素の存在について、長さ増加の普遍性、明示化の普遍性からしては、それが不思議なものではなく、むしろ翻訳における普遍的な現象である。
-ただし、追加要素が、最終的に本稿の最終目的である歌ことばのノンリテラル的情報の可視化につながっていくかいなかについて、単純な問題ではない。
-
-- 明示化のルールは、語の説明的補足よりも、翻訳研究ではわかりやすくするための文法的・機能的要素の追加が注目されている。つまり、個々の歌ことばの明示化のための要素ではなく、文の意味の明示化のための要素が主眼になっている。歌ことばのノンリテラル要素の可視化においては、文法的機能的な要素が古今和歌集の翻訳の多くを占めることは望ましくないとしている。
-- 実際、明示化に見えたことは、通時的な変化や、文化的なギャップである可能性もあり [@Mauranen2008Universal p. 39; @Yamamoto2019Analysis, p. 68]  、ノンリテラル要素の可視化においては、文化的ギャップを埋める明示化のほうが望ましい。
-- 文体的に明瞭な表現にする、いわゆる言語の様式（言い換え）の平易化を介した明示化と、翻訳の操作でノンリテラル的な要素の提示による明示化の区別も重要である。後者は情報の詳細化につながるため、本稿においては後者が望ましい。
-
-ケーススタディの例では、文法的・機能的要素、様式の平易化、通時的変化でない、語の明示化の要素とみられるものも多く観測されていたため、一応、ノンリテラル要素の抽出として価値があると考えている。
-
-一方で、翻訳における省略の現象に関連する普遍性については、単純化と、暗示化と、重複の削除^[重複の削除は、前節で説明した現象を包括しているため、前節を参照されたい。] があると思われる。
-単純化というのは、
-
-1. 翻訳において表現が欠落するか、
-2. 情報が欠落するか、または
-3. 語彙の豊富さ・密度が減るか、
-
-といった 3 つの側面がある。本稿の目的とかかかるのは、表現の欠落と情報の欠落である。表現が欠落することは、必ずしも情報の欠落を意味しているというわけではないが、語の追加もまた情報の追加を意味しない。この点については、暗示化と関連している。暗示化は、つまり、情報をターゲットテキストの語彙的要素・文法的要素に隠すことであり、情報量を削らない。本稿の議論では、現代語訳と原文の情報量が同等であることを前提にしていることに注意されたい。^[古語の意味は、筆者らが不可知・不可視であると捉える立場に立ち、訳者ができれば情報の欠落なく訳していると仮定している。]
-この場合、表現の追加・省略は、訳者が強調したい情報が明らかにし、重要でないと思われている情報が背景にする、いわゆる注意力の配分の問題であると考えられる。追加要素の分析の価値が見出される。ただし、本稿の前提が強めの仮説であることを認めざるをえない、欠落の情報があり暗示化することも確認されていることは、つまり可視化において背景化された情報が不可視のままを意味している。翻訳に基づくノンリテラル可視化の課題のひとつと考えられる。
-
-翻訳の標準化・慣習化の普遍性も古今和歌集の現代語訳において、追加と省略、とりわけ言い換え操作の解釈として考えられる。したし、「古今和歌集の注釈書における現代日本語訳」というのは、極めて特殊な例であると考えられる。同言語内の通時的変種間の翻訳であるため、いわゆる外国的な性質の保留はつまり古風的に訳すことになり、しかし、注釈書にある翻訳であるため文学的に訳す必要がない。標準化・慣習化はこのケースでは、どのような現象につながるかは不明であり、翻訳の操作の内実について検討する余地がある。
-
-このように、現代語訳における追加と省略は、一部は翻訳普遍性仮説で説明することができた。すべての現象についてこの仮説で解釈されることが難しい^[実際、その普遍性は、これらの一般性定理は、結局いずれも反例が存在するため、確率的な傾向、あるいは、普遍性とすることが妥当でであるとされてる [cf., @Pym2008Toury; @Tymoczko1998Computerized; @Chesterman2004Hypotheses; @Chesterman2010Why]。とりもなおさず、一般性といいつつ例外が認めているわけである。
-] が翻訳を用いて語の非字義的な要素の可視化を目指す本稿では、翻訳普遍性の仮説から価値と課題と両方がみられた。
+<!-- このように、現代語訳における追加と省略は、一部は翻訳普遍性仮説で説明することができた。すべての現象についてこの仮説で解釈されることが難しい^[実際、その普遍性は、これらの一般性定理は、結局いずれも反例が存在するため、確率的な傾向、あるいは、普遍性とすることが妥当でであるとされてる [cf., @Pym2008Toury; @Tymoczko1998Computerized; @Chesterman2004Hypotheses; @Chesterman2010Why]。とりもなおさず、一般性といいつつ例外が認めているわけである。 -->
+<!-- ] が翻訳を用いて語の非字義的な要素の可視化を目指す本稿では、翻訳普遍性の仮説から価値と課題と両方がみられた。 -->
 
 <!-- 仮説への批判: -->
 <!-- 贝克对翻译英语语料库的研究（TEC，Laviosa，1997，1998）局限于英语作为目标语言或源语言，而忽视了作者、体裁和源语言的起源（Martin，2017；Tsai，2020）。 -->
 <!-- Pym (2010，第 78 页) 认为，普遍性要求某种语言现象只出现在翻译文本中，而在其他文本中不出现。他认为，这些语言普遍性应该属于翻译文本特征的分类之一。另一方面，实证研究结果（例如Puurtinen，2004 年；Saldanha，2004 年；Becher，2011 年）指出，并非所有翻译都存在此类固有特征，因此研究人员不得不认为，所揭示的现象不可能与所有类型的文本及其翻译背景相关（Tymoczko，1998 年）。 -->
 <!-- Tymoczko (1998)等人指出了相关的缺陷。每当需要生成或检验关于普遍性的假设时，就会建立翻译语料库。然而，对于什么应该或不应该算作翻译以纳入该语料库，却并不清楚。例如，我们需要回答一些棘手的问题来决定这一重大步骤，包括询问如果翻译是由目标语言的母语人士完成的并且是最近出版的，是否应该纳入。问题可能还涉及它们是否可以归类为好或坏，或者它们是否由受过训练的专业人士、业余爱好者、团体、粉丝或个人完成，并包含改编或版本。在构建这样的语料库时，需要明确在何处划清纳入项目的界限。 -->
 
-# 結論 Conclusion {#sec-conclusions}
+# 結論 {#sec-conclusions}
 
-本論文では、古今集の現代語訳から原文のノンリテラル要素の可視化の材料として有用である根拠を示すために、古今集の現代語訳 10 種類における追加要素の分析を行った。
+本稿では、古今集の現代語訳から原文のノンリテラル要素の可視化の材料として有用である根拠を示すために、古今集の現代語訳 10 種類における追加要素の分析を行った。
 
-具体的に、古今和歌集の現代語訳の概要について説明し、20 世紀における和歌の現代語訳の翻訳アプローチを、注釈書における訳者の記している内容に基づた整理を行った。訳者の翻訳の意識は、コミュニケーションモデルの視点から、歌人の作意 (source) を重視する、テキストの文字通りの意味 (signal) を重視する、読者 (destination) を重視する、と明確でないもの 4 種類に分類できた。
+具体的に、古今和歌集の現代語訳の概要について説明し、20 世紀における和歌の現代語訳の翻訳アプローチを、注釈書における訳者の記している内容に基づた整理を行った。訳者の翻訳の意識は、コミュニケーションモデルの視点から、歌人の作意 (source) を重視する、テキストの文字通りの意味 (signal) を重視する、読者 (destination) を重視する、とその他明確でないもの 4 種類に分類できた。
 
 それらの主観的な翻訳意識・翻訳アプローチが訳における追加と一致の客観的に指標に反映されているかいついて、 @Yamamoto2019Analysis で行った追加率の計算手順を明示的にし、より明確な設定と更新データを用いた再計算を行った。古語と現代語訳の語レベルの非一致率、現代語訳における追加率の計算と統計モデリングにより、翻訳アプローチにかかわらず現代語訳における情報の追加が普遍的であり、訳者間の追加率の変動が歌間の追加率の変動より小さいことを示した。
 
-追加要素が十分ノンリテラル要素として成立するかを検討するために、298 番「タツタ」歌の現代語訳の事例を 10 つ同時にアライメントとして提示し、対象語のコーパスレベルの共出現語、共出現構文パターン、共出現語の意味志向がセンテンスレベルの現代語訳でどのように処理されているかを調査した。その結果、コーパスレベルの共出現傾向をもつ単位の場合、センテンスレベルでの処理が 10 人の間で安定的な処理が見られた。コーパスレベルで共出現傾向にない要素の追加がよりバリエーションを示している。とりわけ注意すべき現象は、コーパスレベルの共出現語が訳の推論に用いられることと、コーパスレベルの共出現語の意味志向に関連する語が訳においてより多く補足的説明をもつことであった。一方で、構文面の追加は、言語変化のギャップを埋めるためのものであった。
+追加要素が十分ノンリテラル要素として成立するかを検討するために、298 番「立田」歌の現代語訳の事例を 10 つ同時にアライメントとして提示し、対象語のコーパスレベルの共出現語、共出現構文パターン、共出現語の意味志向がセンテンスレベルの現代語訳でどのように処理されているかを調査した。その結果、コーパスレベルの共出現傾向をもつ単位の場合、センテンスレベルでの処理が 10 人の間で安定的な処理が見られた。コーパスレベルで共出現傾向にない要素の追加がよりバリエーションを示している。とりわけ注意すべき現象は、コーパスレベルの共出現語が訳の推論に用いられることと、コーパスレベルの共出現語の意味志向（全体的な意味の傾向）に関連する語が訳においてより多く補足的説明をもつことであった。一方で、構文面の追加は、言語変化のギャップを埋めるためのものであった。
 
-以上により、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、和歌辞典とは異なる解釈材料として、和歌のノンリテラル情報を補足説明するために利用できることを示した。同時に、言語変化のギャップを埋めるための要素の除外や、翻訳における信頼性の高い要素の取り立て方の工夫の重要性を示唆している。
+以上により、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、和歌辞典とは異なる解釈材料として、和歌のノンリテラル情報を補足説明するために利用できることを示した。しかし同時に、言語変化のギャップを埋めるための要素の除外や、翻訳における信頼性の高い要素の取り立て方の工夫の重要性を示唆している。
 
-In this paper, we analyzed the additional elements in 10 different contemporary translations of the *Kokinshū* to demonstrate their usefulness in visualizing the non-literal elements of the original text.
+# 補足材料
 
-We specifically outlined the background of contemporary translations of the *Kokinshū* and categorized the various translation approaches of the 20th century based on commentary provided by the translators. These approaches can be grouped into four categories from a communication model perspective: emphasis on the poet’s intent (source), emphasis on the literal meaning of the text (signal), emphasis on the reader (destination), and approaches that were not clearly defined.
+補足資料は、
 
-To determine whether these subjective awarenesses of translation approaches were reflected in the objective measures of additions and agreement, we recalculated the addition rates using a clearer methodology and updated data, following the procedure established in @Yamamoto2019Analysis. Statistical modeling of the unmatch rates between the original poems and the contemporary translations, along with the addition rates, revealed that information was universally added regardless of the translation approach, and that variations in addition rates between translators were smaller than variations between individual poems.
+# 謝辞
 
-To assess whether the added elements qualify as non-literal elements, we aligned the contemporary translations of Poem #298 "Tatsuta" across 10 translations and examined how co-occurring words at the corpus level, co-occurring grammatical patterns, and the semantic preferences of these words were handled in the sentence-level translations. The results showed that for units with a strong co-occurrence tendency at the corpus level, sentence-level processing was relatively consistent across the 10 translators. In contrast, elements that did not exhibit a co-occurrence tendency at the corpus level showed greater variation in the additional elements. Notable findings included the use of co-occurring words at the corpus level to inform inference in translation, as well as the tendency to provide supplementary explanations for words related to the semantic preferences of co-occurring words. Meanwhile, additions related to grammatical patterns were primarily used to bridge gaps caused by linguistic changes.
+# 附録 {.appendix .unnumbered}
 
-This study demonstrates that even contemporary translations of classical Japanese poetry, which may adhere strictly to literal or word-for-word translation, can serve as valuable interpretive tools, distinct from dictionaries, to supplement non-literal information embedded in poetic language. It also highlights the importance of excluding elements added to address linguistic gaps and emphasizes the need to carefully select reliable elements in translation for further study.
-
-# 附録 Appendix {.appendix .unnumbered}
-
-## 追加率のモデル Statistcal model for addition rate {.appendix .unnumbered}
+## 追加率のモデル {.appendix .unnumbered}
 
 $$
 \begin{aligned}
@@ -3238,7 +2911,7 @@ model |> summary()
 <!-- - $u_{\phi_{\text{poem}_i}}$ は精度パラメータ $\phi_i$ の詩歌ごとのランダム効果であり、正規分布に従うと仮定される。 -->
 <!-- - $\sigma_{\text{translator}}$, $\sigma_{\text{poem}}$, $\sigma_{\phi_{\text{poem}}}$ はそれぞれ、訳者および詩歌、精度パラメータに対するランダム効果の標準偏差であり、Student-t 分布に従うと仮定される。 -->
 
-## 「タツタ」の概要 {#sec-app-tatsuta .appendix .unnumbered}
+## 「立田」の概要 {#sec-app-tatsuta .appendix .unnumbered}
 
 八代集にある「たつた」は以下に示す。
 

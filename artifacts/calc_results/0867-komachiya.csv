@@ -1,0 +1,2 @@
+translator,poem_id,poem_size,translation_size,total_match_bag,unmatch_bag,exact_match_bag,field_match_bag,group_match_bag,addition_rate_bag,unmatch_rate_bag,total_match_alignment,unmatch_alignment,exact_match_alignment,field_match_alignment,group_match_alignment,addition_rate_alignment,unmatch_rate_alignment
+komachiya,0867,15,24,11,4,6,0,5,0.5416666666666667,0.26666666666666666,8,7,6,0,2,0.6666666666666667,0.4666666666666667
