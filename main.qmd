@@ -70,7 +70,7 @@ format:
     code-links:
       - text: Data Import Code
         icon: file-code
-        href: 'https://github.com/idiig/jjadh-replication/tree/main'
+        href: 'https://github.com/idiig/replication-test/tree/main'
     theme: default
     toc: true
     toc-title: 目次
