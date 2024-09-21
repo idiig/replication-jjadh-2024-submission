@@ -1,4 +1,4 @@
-# Reproduction of Chen2024 for JJADH
+# Reproduction of XXXX for XXXX
 
 This repository is dedicated to the reproduction of the content from the JJADH paper by Chen2024.
 The project uses [`nix`](https://github.com/NixOS/nix) to create a temporary environment for the reproduction of the results.
