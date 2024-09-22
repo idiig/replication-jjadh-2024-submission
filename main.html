@@ -12,7 +12,7 @@
 <meta name="dcterms.date" content="2024-09-01">
 <meta name="keywords" content="歌ことば, 現代語訳, ノンリテラル情報">
 
-<title>古今和歌集の現代日本語訳における追加率要素の分析</title>
+<title>古今和歌集の現代語訳における追加率と追加要素の分析</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -178,7 +178,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">古今和歌集の現代日本語訳における追加率要素の分析</h1>
+<h1 class="title">古今和歌集の現代語訳における追加率と追加要素の分析</h1>
 </div>
 
 
@@ -234,7 +234,7 @@ window.Quarto = {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>注釈書における翻訳における要素の追加を利用した古今和歌集の歌ことばのノンリテラル情報の可視化をこれまで行われてきたが、それら注釈における現代語訳や、現代語訳における追加要素に関する詳細の分析が示されていない。本稿の目的は、いままでの研究に用いられてきた古今集の現代語訳 10 種が、ノンリテラル要素の可視化に適している材料であるかについて詳細な分析を行うことである。まず、古今集の注釈における現代語訳について概観し、訳者の翻訳の意識についてまとめた。つぎに、直訳語をもたない歌ことばが原文に占める割合（不一致率）と現代語訳における追加要素の割合（追加率）の計算で、現代語訳の要素の追加と一致の実態を把握した。最後に、具体例を示し、現代語訳における追加要素の事例分析を行った。 分析の結果、和歌の現代語訳の訳者の翻訳意識は、主観的に、作意中心・テキスト中心・読者中心と不明 4 類に分類できた。しかし、客観的には、翻訳意識が異なったとしても、計量的には同じ程度の追加要素を多く含めていた。B分析事例においては、センテンスレベルの訳においても、要素の追加にコーパスレベルの共出現傾向に基づく推論があり、語の意味の志向性について補足要素を多く足していることが確認できた。以上により、現代語訳をノンリテラルレベルの可視化に適用できることを示した。 Previous research has explored the visualization of non-literal information in the Kokinshū’s poetic words (歌語) through the addition of elements in translations found in annotation books. However, detailed analysis of the contemporary Japanese translations in these annotations and the additional elements within them has not been conducted. This paper aims to provide a comprehensive analysis of whether the ten contemporary Japanese translations of the Kokinshū used in earlier studies are suitable for visualizing non-literal elements. First, the paper reviews the contemporary Japanese translations used in the annotations of the Kokinshū and examines the translators’ approaches to their work. It then calculates the unmatch rate—the proportion of poetic words without direct equivalents—and the addition rate—the proportion of additional elements in the translations—to clarify how elements were added and matched. Lastly, specific examples are provided, along with a detailed case analysis of the additional elements in these translations. The analysis reveals that translators’ subjective approaches can be categorized into four types: intention-focused, text-focused, reader-focused, and unclear. However, from both quantitative and statistical perspectives, despite these differing approaches, the translations include a similar amount of additional elements. In case analysis, it was confirmed that at the sentence level, the addition of elements relied on co-occurrence tendencies at the corpus level, with many supplementary elements added to refine the directional meaning of words. These findings demonstrate that contemporary Japanese translations can be effectively used to visualize non-literal aspects of the original poetic words.</p>
+    <p>筆者らは、古今和歌集の歌ことばのノンリテラル情報を可視化するシステムを開発してきたが、それに用いた現代語訳や追加要素の詳細な分析は行われていなかった。本研究の目的は、古今和歌集の現代語訳10種類が、ノンリテラル要素の可視化に適しているかどうかを分析することである。まず、現代語訳について概観し、訳者の翻訳意識を作意中心・テキスト中心・読者中心・不明の4種に分類した。次に、直訳語を持たない歌ことばの割合（不一致率）と、現代語訳における追加要素の割合（追加率）を計算し、どの訳も多くの追加要素を含むことを確認した。さらに、具体例を示し、コーパスレベルの共出現傾向に基づく推論が現代語訳にどのように反映されているかを分析した。これにより、現代語訳がノンリテラル情報の可視化に適用できることを示した。 Previous research has developed a system for visualizing non-literal information in the Kokinshū’s poetic words by adding elements in translations found in annotation books. However, detailed analysis of these translations and the added elements has not been conducted. This study aims to evaluate whether the ten contemporary Japanese translations of the Kokinshū used in prior studies are suitable for visualizing non-literal elements. First, we review these translations and categorize the translators’ approaches as poet-focused, text-focused, reader-focused, or unclear. We then calculate the unmatch rate (the proportion of poetic words without direct equivalents) and the addition rate (the proportion of added elements) to see how elements were incorporated. Finally, we provide case analyses of specific examples, showing how corpus-level co-occurrence tendencies influenced the addition of elements to clarify meanings. Our findings show that despite varied approaches, the translations contain similar levels of added elements, suggesting that contemporary translations can effectively visualize the non-literal aspects of the Kokinshū’s original text.</p>
   </div>
 </div>
 
@@ -315,42 +315,27 @@ window.Quarto = {
 <h1 data-number="1"><span class="header-section-number">1</span> はじめに</h1>
 <section id="目的と結論の概要" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="目的と結論の概要"><span class="header-section-number">1.1</span> 目的と結論の概要</h2>
-<p>本稿の目的は、原文との非一致率、訳文においての追加率の計算と対応事例の追加要素の分析におけるという二つの側面から、和歌の現代語訳が、たとえ直訳・逐語訳に拘っているとしても、訳し方の意図が異なっても、解釈材料として、和歌における語の非字義的な情報を補足説明するために利用できることを示すことである。</p>
-<p>本研究の主要な貢献は以下にある。</p>
-<ol type="1">
-<li>材料として、著作権の消滅した <span class="citation" data-cites="kaneko1933Kokin">金子 (<a href="#ref-kaneko1933Kokin" role="doc-biblioref">1933</a>)</span> における古今和歌集の現代語訳における初の語彙データを公開した。</li>
-<li>古今和歌集の口語訳の歴史的変遷を俯瞰し、特に20世紀における和歌の注釈書における現代語訳の訳し方の調査と整理を行った。</li>
-<li>古語と現代語訳の語レベルの非一致率、現代語訳における追加率の計算により、翻訳アプローチにかかわらず現代語訳における情報の追加が普遍的であることを示した。</li>
-<li>具体的な現代語訳の事例を提示し、対象語のコーパスレベルの共出現語、共出現語の全体的な志向性がセンテンスレベルの現代語訳それぞれにに反映される可能性の有無を確認できた。</li>
-</ol>
-<p>以上により、現代語訳をノンリテラル情報の可視化への応用が現実的であることを示した。</p>
+<p>本稿の目的は、和歌の現代語訳が、直訳や逐語訳であっても、訳者の意図が異なっても、ノンリテラル要素を補足する解釈材料として利用できるかを検討することである。この目的を達成するため、原文との不一致率と訳文における追加率を計算し、さらに具体的な事例を通じて追加要素の分析を行った。</p>
+<p>具体的には、和歌の現代語訳におけるノンリテラル要素の可視化とその応用可能性について検討した。古今和歌集の口語訳の歴史的な変遷を俯瞰し、20世紀における注釈書10種類の現代語訳に見られる翻訳アプローチを分類した。また、古語と現代語訳の語レベルの非一致率と現代語訳における追加率を計算し、翻訳アプローチにかかわらず、現代語訳にノンリテラル要素が追加されていることを確認した。これにより、現代語訳が直訳や逐語訳にとどまらず、原文の理解を補足する役割を果たしている可能性が示された。さらに、具体的な現代語訳の事例を提示し、対象語のコーパスレベルの共出現語、共出現語の全体的な志向性がセンテンスレベルの現代語訳それぞれに反映されているかどうかを検討した。以上の結果から、現代語訳をノンリテラル情報の可視化への応用が現実的であることを示した。</p>
 </section>
 <section id="背景" class="level2 page-columns page-full" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="背景"><span class="header-section-number">1.2</span> 背景</h2>
+<p>和歌に見られるノンリテラル要素の概要を説明し、現代語訳を用いたこれらの要素の可視化に関する問題や課題について述べる。これまでの研究において素材の分析が十分に行われていなかった点を指摘し、翻訳および関連研究の紹介を通して、その意義を再確認する。</p>
 <section id="和歌と和歌におけるノンリテラル要素" class="level3 page-columns page-full" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="和歌と和歌におけるノンリテラル要素"><span class="header-section-number">1.2.1</span> 和歌と和歌におけるノンリテラル要素</h3>
-<p>古今和歌集仮名序にあるように、歌人が「心に思ふもの」を見聞きした自然界の物事に託しており、直接明言することが珍しい。和歌のことば（以降「歌ことば」とする）を字義通り理解したところで、その「心に思ふもの」には直接アクセスしているとはいえない。古今集の恋の歌を例にあげよう：</p>
+<p>古今和歌集仮名序に見られるように、歌人は「心に思ふもの」を自然界の物事に託して表現することが多く、直接的に明言することは稀である。和歌のことば（以下「歌ことば」）を字義通りに理解したとしても、その「心に思ふもの」には直接アクセスすることはできない。例えば、古今集の恋の歌を例にとると、</p>
 <blockquote class="blockquote">
-<p>初雁の鳴きこそわたれ世の中の人の心の秋しうければ (古今・恋五・貫之)</p>
+<p>初雁の鳴きこそわたれ世の中の人の心の秋しうければ（古今・恋五・貫之）</p>
 </blockquote>
-<p>このテキストを読むとして、それぞれの語の字義的・リテラルな意味がわかれば、文字通り<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>には理解できる。しかし、歌ことば辞典で「秋【あき】」<span class="citation" data-cites="katagiri1983Uta">(<a href="#ref-katagiri1983Uta" role="doc-biblioref">片桐 1983, 3</a>)</span> を調べると、リテラルな意味だけでは読まれていない情報があることに気付く。</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;初雁が鳴いて渡ってくるのだが、人の心の秋が来るのが悲しいので（筆者訳）。</p></div></div><blockquote class="blockquote">
-<p>秋【あき】 […]「秋」と「飽」を掛け、過ぎ去ってゆく秋と過ぎ去ってゆく愛を惜しむことが多かった。【脚注】[雁の]「鳴く」を人が「泣く」と同列にしか把握しない […]</p>
+<p>この歌を字義通りに解釈すれば、各語の意味は理解できるかもしれないが、「心に思ふもの」を読み取ることは難しい<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。しかし、歌ことば辞典で「秋【あき】」<span class="citation" data-cites="katagiri1983Uta">(<a href="#ref-katagiri1983Uta" role="doc-biblioref">片桐 1983, 3</a>)</span> を調べると、リテラルな意味では意図的に表現しない、あるいは客観的に表現できない情報が含まれていることに気づく。</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;初雁が鳴いて渡ってくるのだが、人の心の秋が来るのが悲しいので（筆者訳）</p></div></div><blockquote class="blockquote">
+<p>秋【あき】 […]「秋」と「飽」を掛け、過ぎ去ってゆく秋と過ぎ去ってゆく愛を惜しむことが多かった。【脚注】[雁の]「鳴く」を人が「泣く」と同列にしか把握しない […]<span class="citation" data-cites="katagiri1983Uta">(<a href="#ref-katagiri1983Uta" role="doc-biblioref">片桐 1983, 3</a>)</span></p>
 </blockquote>
-<p>この記述に従い読み解いていけば、恋人の心が「飽き（秋）」て、歌人が「泣（鳴）」いている「失恋」の話であろうと推測される。このように「秋」から読み取る「飽きる恋」の情報は、原文の文脈（周辺語）ではノンリテラル的、つまりノンリテラルであるため、語の文字通りの意味だけでは読み取れない。厳密に語のノンリテラル情報の範囲を限定することが難しいが、ここでは限定として 2 つとりあげる：</p>
-<ol type="1">
-<li>物理的にテキストに出現しない</li>
-<li>性質上ではその語由来の連想にかかわる説明か、その語の言語変種（地域方言・社会方言・時代・年代など）にかかわる説明</li>
-</ol>
+<p><span class="citation" data-cites="katagiri1983Uta">片桐 (<a href="#ref-katagiri1983Uta" role="doc-biblioref">1983, 3</a>)</span> によると、恋人の心が「飽き（秋）」て、歌人が「泣（鳴）」いている「失恋」の物語と解釈することができる。このように、「秋」という表現から読み取る「飽きる恋」の情報は、原文の文脈（周辺語）ではノンリテラルであり、語の字義通りの意味だけでは受け取れない。和歌の深い意味を引き出すためには、表面的な字義を超えたノンリテラルな解釈が求められることがわかる。</p>
 </section>
 <section id="現代語訳の追加要素に基づく歌ことばのノンリテラル要素の可視化" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="現代語訳の追加要素に基づく歌ことばのノンリテラル要素の可視化"><span class="header-section-number">1.2.2</span> 現代語訳の追加要素に基づく歌ことばのノンリテラル要素の可視化</h3>
-<p>このようなノンリテラル的要素の可視化に向けて、古今和歌集の 10 人の現代日本語訳をベースにした可視化システムは、筆者らがこれまでに開発を行ってきた <span class="citation" data-cites="Yamamoto2005Mathematical Yamamoto2006Extraction chin2022Tango Chen2024Translationbased">(<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">Yamamoto 2005</a>, <a href="#ref-Yamamoto2006Extraction" role="doc-biblioref">2006</a>; <a href="#ref-chin2022Tango" role="doc-biblioref">陳, ホドシチェク, and 山元 2022</a>; <a href="#ref-Chen2024Translationbased" role="doc-biblioref">Chen, Yamamoto, and Hodošček 2024</a>)</span>。理論背景としてコミュニケーションモデルに立脚し、古語と現代語訳との相対化に見えてくる補足要素に歌ことばのノンリテラル情報が含まれていることしている。</p>
-<p>ここでの現代語訳との相対化というのは、現代語の要素（要素の決め方も重要な課題であり、本稿では対象としない）の集合から和歌の原文の要素を取り除き、現代語にしか存在しない要素を諸手法により引き立てることである。この考えが <span class="citation" data-cites="kondo2001Ngram">近藤 and 近藤 (<a href="#ref-kondo2001Ngram" role="doc-biblioref">2001</a>)</span>, <span class="citation" data-cites="kondo2011Heian">近藤 (<a href="#ref-kondo2011Heian" role="doc-biblioref">2011</a>)</span> では「引き算」と称している。しかし、引き算で残った要素、つまり現代語訳で追加された要素は、どのような性格であるか、ノンリテラル要素に捉えられるかいなか、明確にする必要がある。</p>
-<p>翻訳における要素の追加などの処理と操作に関して、<span class="citation" data-cites="Koller1979Einfuehrung">Koller (<a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">[2004] 1979, 249</a>)</span> では翻訳者による「介入 (Eingriff)」としている。「無害」とされる介入には、目的言語の読者の不足している背景知識や、デノテーション・コノテーション面の情報、そして、言語内的、社会文化的、間テキスト的な情報の損失を補うための注釈付き翻訳手法の結果としての追加が含まれていると指摘している <span class="citation" data-cites="Koller1979Einfuehrung">(<a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">Koller [2004] 1979, 249</a>)</span>。そこで、翻訳が注釈・辞書同様に解釈資料としてノンリテラル的な情報の抽出に有効な材料と認識しうる。</p>
-<p>ただし、翻訳における追加は読者の理解力を過大評価・過小評価した産物にもありうる <span class="citation" data-cites="Nida1964Science Koller1979Einfuehrung">(<a href="#ref-Nida1964Science" role="doc-biblioref">Eugene Albert Nida 1964, 155</a>; <a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">Koller [2004] 1979, pp249–250</a>)</span>。この点においては、訳者による翻訳の追加要素のバリエーションは無視してはならない。古今和歌集の歌ことばの解釈資料としての現代語訳の有用性については、<span class="citation" data-cites="Chen2024Translationbased">Chen, Yamamoto, and Hodošček (<a href="#ref-Chen2024Translationbased" role="doc-biblioref">2024</a>)</span> では触れたものの、そのバリエーションについて十分説明されていない。材料として和歌の口語訳の歴史、使用してきた 10 人の現代語の背景や、訳者個人個人の翻訳の見方を踏まえ再検討する余地が大いにある。</p>
-<p>したがって、本稿では材料として使用してきた 10 種類現代語訳の成立背景、追加要素の量的性質、質的性質について分析を行う。前述にあったように、翻訳における追加は読者の理解力の過大評価・過小評価に基づき生成された産物である可能性があるため、異なる訳者が和歌の情報をどこまで現代読者に開示しているか、あるいは開示できるか、それぞれ独自の考えがあるはずである。訳者の翻訳アプローチの意識を整理し、その異同を明確にする。そして、10 人の翻訳の実践としてにはそれぞれ主観的に意識している翻訳アプローチを守っているかを客観的に分析することで、翻訳の普遍的な課題と限界を考察することができよう。</p>
-<p>以上の知見を踏まえ、ノンリテラル的要素の可視化システムの根拠をより明確にでき、さらにその改善の方向性をも明確にできる。</p>
+<p>筆者らはこれまで、古今和歌集の10種類の現代日本語訳を基に、歌ことばのノンリテラル要素を可視化するシステムを開発してきた <span class="citation" data-cites="Yamamoto2005Mathematical Yamamoto2006Extraction chin2022Tango Chen2024Translationbased">(<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">Yamamoto 2005</a>, <a href="#ref-Yamamoto2006Extraction" role="doc-biblioref">2006</a>; <a href="#ref-chin2022Tango" role="doc-biblioref"><strong>chin2022Tango?</strong></a>; <a href="#ref-Chen2024Translationbased" role="doc-biblioref">Chen, Yamamoto, and Hodošček 2024</a>)</span>。このシステムは、古語と現代語訳を比較し、浮かび上がる補足要素によってノンリテラル情報を可視化している。この手法は、<span class="citation" data-cites="kondo2001Ngram">(<a href="#ref-kondo2001Ngram" role="doc-biblioref"><strong>kondo2001Ngram?</strong></a>)</span> と <span class="citation" data-cites="kondo2011Heian">近藤 (<a href="#ref-kondo2011Heian" role="doc-biblioref">2011</a>)</span> によって「引き算」とも呼ばれている。ただし、引き算で残る現代語訳の追加要素がどのような性質を持ち、ノンリテラル要素として扱えるかについては、より詳細な検討が必要である。 翻訳における要素の追加について、<span class="citation" data-cites="Koller1979Einfuehrung">Koller (<a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">[2004] 1979, 249</a>)</span> は、翻訳者の「介入 (Eingriff)」であり、原作を尊重し、価値を変えない形で、読者の不足する背景知識やデノテーション・コノテーション情報、言語内的、社会文化的、間テキスト的な情報 (intertextual information) を補うことが含まれると指摘している <span class="citation" data-cites="Koller1979Einfuehrung">(<a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">Koller [2004] 1979, 249</a>)</span>。これにより、翻訳は注釈や辞書と同様に、ノンリテラル情報を解釈するための有効な資料となる。 しかし、翻訳の追加要素は、読者の理解力を過大評価または過小評価した結果として現れる場合もある <span class="citation" data-cites="Nida1964Science Koller1979Einfuehrung">(<a href="#ref-Nida1964Science" role="doc-biblioref">Nida 1964, 155</a>; <a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">Koller [2004] 1979, 249–50</a>)</span>。そのため、訳者による翻訳の追加要素のバリエーションを無視することはできない。古今和歌集の歌ことばを解釈する資料として現代語訳が有用であると <span class="citation" data-cites="Chen2024Translationbased">Chen, Yamamoto, and Hodošček (<a href="#ref-Chen2024Translationbased" role="doc-biblioref">2024</a>)</span> でも言及されているが、そのバリエーションについては十分な説明が行われていない。和歌の口語訳の背景や訳者毎の翻訳アプローチを再検討する必要がある。 本稿では、これまで使用してきた10種類の現代語訳について、その成立背景や追加要素の量的および質的な分析を行う。翻訳における追加要素が読者の理解力を反映して生成されたものである可能性を考慮し、異なる訳者が和歌のノンリテラル要素をどの程度表現できたかを検討する。訳者の翻訳アプローチを整理し、その違いを明らかにすることで、翻訳の普遍的な課題と限界を考察する。 この分析により、ノンリテラル要素の可視化システムの根拠をより明確にし、その改善の方向性を示すことができる。</p>
 </section>
 </section>
 <section id="問題意識と本稿の構成" class="level2" data-number="1.3">
@@ -753,17 +738,17 @@ E, &amp; \text{if } \text{LCS}(s,t) \geq 17 \\
 <p>先行研究 <span class="citation" data-cites="Yamamoto2005Mathematical Yamamoto2019Analysis">(<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">Yamamoto 2005</a>; <a href="#ref-Yamamoto2019Analysis" role="doc-biblioref">Yamamoto and Hodošček 2019</a>)</span> ではグループ・フィールド・同義レベルの一致率（言い換え率）、理論的・実験的追加率などの多くの指標を計算しているが、翻訳者別の追加率の平均と標準偏差しか提示していない。データの更新や、計算手順もすこし異なったので、結果の変化ga生じる。そこで、新たに計算した追加率を対象に統計分析を行う。</p>
 <p>訳者の翻訳アプローチが実践に移り、実際の現代語訳における追加率に影響を与えているかを確認するために、統計モデリングを行う。具体的には、翻訳アプローチ（<code>Focus</code>）が追加率（<code>additional_rate</code>）<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> に与える影響を検討するために、ベータ分布<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> に基づく回帰モデルを採用する。このモデルは、訳者（<code>translator</code>）と歌（<code>poem</code>）を変動を統制するためにランダム効果としてモデルに入れている。統計モデルは補足資料を参照されたい。</p>
 <div class="no-row-height column-margin column-container"><div id="fn9"><p><sup>9</sup>&nbsp;ここでは前述したようにバッグ法によって算出された追加率を用いる。</p></div><div id="fn10"><p><sup>10</sup>&nbsp;計算された応答変数は、<span class="math inline">(0, 1)</span> の区間にあり、二項分布を仮定して用いることも考えられる。ただし、二項分布を用いる場合は、現代語訳文の全語数と追加に相当する語数の情報が必要であり、本稿の計算は <span class="citation" data-cites="Yamamoto2019Analysis">Yamamoto and Hodošček (<a href="#ref-Yamamoto2019Analysis" role="doc-biblioref">2019</a>)</span> の計算結果を踏まえたため、全語数について情報が不足していることを前提としないベータ分布を用いる。</p></div><div id="fn11"><p><sup>11</sup>&nbsp;ここでは、事後最狭信用区間 (Highest posterior density interval) を用いる。</p></div></div><p>モデルの推定は、Markov Chain Monte Carlo (MCMC) 法を用いる。具体的には、4 つのチェーンを使用し、各チェーンで 2000 回のイテレーションを行い、そのうち 1000 回をウォームアップ (burn-in) として設定する。<code>R</code> (R version 4.3.3 (2024-02-29)) <span class="citation" data-cites="RCoreTeam2024Language">(<a href="#ref-RCoreTeam2024Language" role="doc-biblioref">R Core Team 2024</a>)</span> パッケージ <code>brms</code> (2.21.0) <span class="citation" data-cites="Burkner2017Brms">(<a href="#ref-Burkner2017Brms" role="doc-biblioref">Bürkner 2017</a>)</span> を用いてモデルを実装し、事後分布の収束の評価は $ $ 指標および有効サンプルサイズ (ESS) を確認する。モデルの推定結果として、モデルから各アプローチの追加率をサンプリングし、事後分布の中央値と 95% の信用区間 (CrI) <a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>を報告する。2 アプローチ間の追加率の差の事後分布も示す。</p>
-<p>可視化と解釈について、<span class="citation" data-cites="Yu2020Tradeoff">Yu and Tamaoka (<a href="#ref-Yu2020Tradeoff" role="doc-biblioref">2020</a>)</span> を参考に、比較 2 群の差の事後分布の 95% の CrI が 0 をカバーしているかを観測するほか、2 群の差が 0 より大きい確率を同時に観測する：まず、95% の CrI が 0 をカバーしていない場合、2 群に差があると判断する；95% の CrI が 0 をカバーしていても、2 群の差が 0 より大きい確率が 95% より大きい、または 5% より小さい場合、傾向差があると認める。</p>
+<p>可視化と解釈について、<span class="citation" data-cites="Yu2020Tradeeffect">Yu and Tamaoka (<a href="#ref-Yu2020Tradeeffect" role="doc-biblioref">2020</a>)</span> を参考に、比較 2 群の差の事後分布の 95% の CrI が 0 をカバーしているかを観測するほか、2 群の差が 0 より大きい確率を同時に観測する：まず、95% の CrI が 0 をカバーしていない場合、2 群に差があると判断する；95% の CrI が 0 をカバーしていても、2 群の差が 0 より大きい確率が 95% より大きい、または 5% より小さい場合、傾向差があると認める。</p>
 </section>
 <section id="立田歌の事例分析" class="level2 page-columns page-full" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="立田歌の事例分析"><span class="header-section-number">3.4</span> 「立田」歌の事例分析</h2>
-<p>和歌に対する現代語訳は、なんらかの言い換えと追加あったことが分っても、その追加要素や言い換えの要素の性格がわかっているわけではない。これら要素の性格は、アライメントにおける一致を確認しながら、コーパス言語学の視座から分析を試みる。本稿では <span class="citation" data-cites="Sinclair1996Search">J. M. Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> の拡張意味単位モデルの視座から示唆を得て、和歌の原文のコーパスレベルに観測されている傾向性が、センテンスレベルの対訳文でどのように処理されているかを明確にする。</p>
+<p>和歌に対する現代語訳は、なんらかの言い換えと追加あったことが分っても、その追加要素や言い換えの要素の性格がわかっているわけではない。これら要素の性格は、アライメントにおける一致を確認しながら、コーパス言語学の視座から分析を試みる。本稿では <span class="citation" data-cites="Sinclair1996Search">Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> の拡張意味単位モデルの視座から示唆を得て、和歌の原文のコーパスレベルに観測されている傾向性が、センテンスレベルの対訳文でどのように処理されているかを明確にする。</p>
 <p>拡張意味単位モデルは以下の 4 つのレベルから対象言語単位の記述を行っている。</p>
 <ol type="1">
-<li>コロケーション（collocation）：他の語の共出現関係 <span class="citation" data-cites="Sinclair1970English">(<a href="#ref-Sinclair1970English" role="doc-biblioref">J. M. Sinclair, Jones, and Daley 1970, 15</a>)</span></li>
-<li>類連結（colligation）：構文パターンや文法的要素との共出現関係 <span class="citation" data-cites="Firth1968Selected Sinclair1996Search Sinclair2003Reading">(cf., <a href="#ref-Firth1968Selected" role="doc-biblioref">Firth and Palmer 1968, 183</a>; <a href="#ref-Sinclair1996Search" role="doc-biblioref">J. M. Sinclair 1996, 11</a>; <a href="#ref-Sinclair2003Reading" role="doc-biblioref">J. Sinclair 2003, 171</a>)</span></li>
-<li>意味的志向（semantic preference）：特定の意味の語群（semantic set）との共出現関係 <span class="citation" data-cites="Sinclair2003Reading">(<a href="#ref-Sinclair2003Reading" role="doc-biblioref">J. Sinclair 2003, 178</a>)</span></li>
-<li>談話韻律（discourse prosody）：拡張意味単位全体の評価・態度・語用論的意味 <span class="citation" data-cites="Sinclair2004Trust">(<a href="#ref-Sinclair2004Trust" role="doc-biblioref">J. M. Sinclair 2004, 174</a>)</span></li>
+<li>コロケーション（collocation）：他の語の共出現関係 <span class="citation" data-cites="Sinclair1970English">(<a href="#ref-Sinclair1970English" role="doc-biblioref">Sinclair, Jones, and Daley 1970, 15</a>)</span></li>
+<li>類連結（colligation）：構文パターンや文法的要素との共出現関係 <span class="citation" data-cites="Firth1968Selected Sinclair1996Search Sinclair2003Reading">(cf., <a href="#ref-Firth1968Selected" role="doc-biblioref">Firth 1968, 183</a>; <a href="#ref-Sinclair1996Search" role="doc-biblioref">Sinclair 1996, 11</a>; <a href="#ref-Sinclair2003Reading" role="doc-biblioref">2003, 171</a>)</span></li>
+<li>意味的志向（semantic preference）：特定の意味の語群（semantic set）との共出現関係 <span class="citation" data-cites="Sinclair2003Reading">(<a href="#ref-Sinclair2003Reading" role="doc-biblioref">Sinclair 2003, 178</a>)</span></li>
+<li>談話韻律（discourse prosody）：拡張意味単位全体の評価・態度・語用論的意味 <span class="citation" data-cites="Sinclair2004Trust">(<a href="#ref-Sinclair2004Trust" role="doc-biblioref">Sinclair 2004, 174</a>)</span></li>
 </ol>
 <p>コロケーションから談話韻律へと、直接な観測ができなくなり、明示的でなくなっていく <span class="citation" data-cites="Stubbs2001Words">(<a href="#ref-Stubbs2001Words" role="doc-biblioref">Stubbs 2001, 87–88</a>)</span>。</p>
 <p>和歌の性質とデータの量の少なさからして、確実に拡張意味単位を捉えることが難しいことがある。よって、本稿では単純に拡張意味単位の 4 つのレベルを 4 つの視座とみて、この 4 つの視座のうち、共出現の語、共出現の構文パターン、共出現の語の意味的まとまりで考えられる志向性から、10 人の翻訳でどのように処理されているかを分析する。</p>
@@ -1178,7 +1163,7 @@ Figure&nbsp;5: 629 番歌の <span class="citation" data-cites="matsuda1968Shins
 <li><p>翻訳アプローチグループで比較した結果、2 グループの差の事後分布の 95% の CrI はすべて 0 をカバーしており、それぞれの 2 群の追加率は異なることが認められなかった。 傾向としては、<code>Reader-focused</code> 群の追加率に比べ <code>Other</code> 群の追加率が <span class="math inline">-4\%</span> 程度下回った (<span class="math inline">\mathrm{posterior\; median} = -0.04\%; 95\%\;\mathrm{CrI} = [-0.13, 0.05]</span>, <span class="math inline">P(\Delta&gt;0) = 14\%</span>)。<code>Reader-focused</code> 群の追加率は、<code>Poet-focused</code> 群より <span class="math inline">6\%</span> 程度下回った (<span class="math inline">\mathrm{posterior\; median} = 0.06\%; 95\%\;\mathrm{CrI} = [-0.03, 0.16]</span>, <span class="math inline">P(\Delta&gt;0) = 91.6\%</span>) ことが観測されているが、傾向差の基準を満さなかった。</p></li>
 </ol>
 <div class="cell page-columns page-full" data-messge="false" data-laylayout-nrow="2">
-<div id="fig-poster" class="cell quarto-figure quarto-figure-center quarto-float anchored page-columns page-full" data-messge="false" data-laylayout-nrow="2">
+<div id="fig-poster" class="cell quarto-figure quarto-figure-center quarto-float anchored page-columns page-full" data-laylayout-nrow="2" data-messge="false">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
 <div aria-describedby="fig-poster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
 <div class="cell-output-display page-columns page-full">
@@ -1494,9 +1479,9 @@ Figure&nbsp;8: 10人の訳者のアライメント（筆者がアライメント
 <section id="翻訳研究の知見による解釈の必要性" class="level2 page-columns page-full" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="翻訳研究の知見による解釈の必要性"><span class="header-section-number">5.4</span> 翻訳研究の知見による解釈の必要性</h2>
 <p>本研究は、翻訳研究として位置づけるものではないが、翻訳における要素の追加や、原文における要素の喪失などの現象は、翻訳研究における仮説と理論によって解釈する余地は大いにあると考えられる。</p>
-<p>例えば、翻訳普遍性仮説 (translation universal hypothesis; cf., <span class="citation" data-cites="Chesterman2004Hypotheses">Chesterman (<a href="#ref-Chesterman2004Hypotheses" role="doc-biblioref">2004</a>)</span>; <span class="citation" data-cites="Edina2016Translation">Edina (<a href="#ref-Edina2016Translation" role="doc-biblioref">2016</a>)</span>) における長さ増加の普遍性 (law of lenghtening, <span class="citation" data-cites="Vinay1958Comparative">Vinay (<a href="#ref-Vinay1958Comparative" role="doc-biblioref">1958</a>)</span>) 、明示化の普遍性 (law of expicitation, <span class="citation" data-cites="Baker1996Challenges">Baker (<a href="#ref-Baker1996Challenges" role="doc-biblioref">1996</a>)</span>; <span class="citation" data-cites="Blum-Kulka1986Shifts">Blum-Kulka and House (<a href="#ref-Blum-Kulka1986Shifts" role="doc-biblioref">1986</a>)</span>) からしては、現代語訳の追加要素の存在が不思議なものではなく、むしろ翻訳における普遍的な現象である。特に明示化の普遍性は、本稿のいうノンリテラル要素の開示に関連性が強い。翻訳における明示化について、<span class="citation" data-cites="Blum-Kulka1986Shifts">Blum-Kulka and House (<a href="#ref-Blum-Kulka1986Shifts" role="doc-biblioref">1986</a>)</span> では、翻訳者がソーステキストにはない cohensive marker<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a> をターゲットテキストで示すことが示唆されている。一方で、<span class="citation" data-cites="Baker1996Challenges">Baker (<a href="#ref-Baker1996Challenges" role="doc-biblioref">1996, 180</a>)</span> は、この問題を物事を暗黙的なままにしておくのではなく、明確に説明する傾向があるというように、より広く捉えられるようになった。「明示化」は、もともとは談話標識の訳文における増加傾向を指しており、本研究における要素の追加の一部の解釈としてありうる。とはいえ、すべての現象についてこの仮説で解釈されることが難しい<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>。 例えば、談話標識や cohensive marker の追加を取り除いても、分析事例においてはかなりの追加要素があった。すべての要素の追加が翻訳普遍性に帰結できなかった。</p>
-<div class="no-row-height column-margin column-container"><div id="fn17"><p><sup>17</sup>&nbsp;<span class="citation" data-cites="Nunan1993Introducing">Nunan (<a href="#ref-Nunan1993Introducing" role="doc-biblioref">1993, 21</a>)</span> によると、書き手や話し手が文や発話の境界を越えて関係を確立し、テキスト内の文を結びつけるのに役立つ語やフレーズのことを指す。例えば、「そして」「しかし」「それ」などがあげられる。</p></div><div id="fn18"><p><sup>18</sup>&nbsp;実際、翻訳普遍性は、結局いずれも反例が存在するため、確率的な傾向、あるいは、普遍性とすることが妥当でであるとされてる <span class="citation" data-cites="Pym2008Toury Tymoczko1998Computerized Chesterman2004Hypotheses Chesterman2010Why">(cf., <a href="#ref-Pym2008Toury" role="doc-biblioref">Pym 2008</a>; <a href="#ref-Tymoczko1998Computerized" role="doc-biblioref">Tymoczko 1998</a>; <a href="#ref-Chesterman2004Hypotheses" role="doc-biblioref">Chesterman 2004</a>, <a href="#ref-Chesterman2010Why" role="doc-biblioref">2010</a>)</span>。とりもなおさず、一般性といいつつ例外が認めているわけである。</p></div><div id="fn19"><p><sup>19</sup>&nbsp;<span class="citation" data-cites="Chesterman2011Reflections">Chesterman (<a href="#ref-Chesterman2011Reflections" role="doc-biblioref">2011</a>)</span> によれば、this hypothesis claims that when processing a given text chunk, translator tend to start from a literal version of the target text, and then work towards a freer version.</p></div></div><p>他に、テキストの翻訳ではないが、翻訳の認知面の研究では、例えば「リテラル翻訳仮説」(literal translation hypothesis)<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a> にも触れておくべきである。この仮説に基づき、認知処理と認知負荷の観点からのリテラル翻訳の可能性の度合い (translation literality) の操作化 <span class="citation" data-cites="Carl2017Measuring">(@ <a href="#ref-Carl2017Measuring" role="doc-biblioref">Carl and Schaeffer 2017</a>)</span> が 1. 原文と訳文の語順の類似性と 2. 可能な異なる翻訳表現の数、といったように考えている。いずれも、本稿でいうテキストとしての追加率、不一致率と異なった視点になっている。その中の 2 点目が筆者らのノンリテラル要素の可視化に関連する可能性があり、検討すべき尺度であった。</p>
-<p>また、翻訳研究からの検討について、単位の一致の問題について、従来 translation equivalence <span class="citation" data-cites="Nida1969Theory">(cf., <a href="#ref-Nida1969Theory" role="doc-biblioref">Eugene A. Nida and Taber [1982] 1969</a>)</span> や translation unit <span class="citation" data-cites="Koller1979Einfuehrung Malmkjaer2008Unit">(cf., <a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">Koller [2004] 1979</a>; <a href="#ref-Malmkjaer2008Unit" role="doc-biblioref">Malmkjær 2008</a>)</span> に関する議論が多かった。それらの視座から分析単位の影響を考察しなければならず、検討の余地は大いにある。</p>
+<p>例えば、翻訳普遍性仮説 (translation universal hypothesis; cf., <span class="citation" data-cites="Chesterman2004Hypotheses">Chesterman (<a href="#ref-Chesterman2004Hypotheses" role="doc-biblioref">2004</a>)</span>; <span class="citation" data-cites="Edina2016Translation">Edina (<a href="#ref-Edina2016Translation" role="doc-biblioref">2016</a>)</span>) における長さ増加の普遍性 (law of lenghtening, <span class="citation" data-cites="Vinay1958Comparative">Vinay (<a href="#ref-Vinay1958Comparative" role="doc-biblioref">1958</a>)</span>) 、明示化の普遍性 (law of expicitation, <span class="citation" data-cites="Baker1996Challenges">Baker (<a href="#ref-Baker1996Challenges" role="doc-biblioref">1996</a>)</span>; <span class="citation" data-cites="Blum-Kulka1986Shifts">Blum-Kulka (<a href="#ref-Blum-Kulka1986Shifts" role="doc-biblioref">1986</a>)</span>) からしては、現代語訳の追加要素の存在が不思議なものではなく、むしろ翻訳における普遍的な現象である。特に明示化の普遍性は、本稿のいうノンリテラル要素の開示に関連性が強い。翻訳における明示化について、<span class="citation" data-cites="Blum-Kulka1986Shifts">Blum-Kulka (<a href="#ref-Blum-Kulka1986Shifts" role="doc-biblioref">1986</a>)</span> では、翻訳者がソーステキストにはない cohensive marker<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a> をターゲットテキストで示すことが示唆されている。一方で、<span class="citation" data-cites="Baker1996Challenges">Baker (<a href="#ref-Baker1996Challenges" role="doc-biblioref">1996, 180</a>)</span> は、この問題を物事を暗黙的なままにしておくのではなく、明確に説明する傾向があるというように、より広く捉えられるようになった。「明示化」は、もともとは談話標識の訳文における増加傾向を指しており、本研究における要素の追加の一部の解釈としてありうる。とはいえ、すべての現象についてこの仮説で解釈されることが難しい<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>。 例えば、談話標識や cohensive marker の追加を取り除いても、分析事例においてはかなりの追加要素があった。すべての要素の追加が翻訳普遍性に帰結できなかった。</p>
+<div class="no-row-height column-margin column-container"><div id="fn17"><p><sup>17</sup>&nbsp;<span class="citation" data-cites="Nunan1993Introducing">Nunan (<a href="#ref-Nunan1993Introducing" role="doc-biblioref">1993, 21</a>)</span> によると、書き手や話し手が文や発話の境界を越えて関係を確立し、テキスト内の文を結びつけるのに役立つ語やフレーズのことを指す。例えば、「そして」「しかし」「それ」などがあげられる。</p></div><div id="fn18"><p><sup>18</sup>&nbsp;実際、翻訳普遍性は、結局いずれも反例が存在するため、確率的な傾向、あるいは、普遍性とすることが妥当でであるとされてる <span class="citation" data-cites="Pym2008Tourys Tymoczko1998Computerized Chesterman2004Hypotheses Chesterman2010Why">(cf., <a href="#ref-Pym2008Tourys" role="doc-biblioref">Pym 2008</a>; <a href="#ref-Tymoczko1998Computerized" role="doc-biblioref">Tymoczko 1998</a>; <a href="#ref-Chesterman2004Hypotheses" role="doc-biblioref">Chesterman 2004</a>, <a href="#ref-Chesterman2010Why" role="doc-biblioref">2010</a>)</span>。とりもなおさず、一般性といいつつ例外が認めているわけである。</p></div><div id="fn19"><p><sup>19</sup>&nbsp;<span class="citation" data-cites="Chesterman2011Reflections">Chesterman (<a href="#ref-Chesterman2011Reflections" role="doc-biblioref">2011</a>)</span> によれば、this hypothesis claims that when processing a given text chunk, translator tend to start from a literal version of the target text, and then work towards a freer version.</p></div></div><p>他に、テキストの翻訳ではないが、翻訳の認知面の研究では、例えば「リテラル翻訳仮説」(literal translation hypothesis)<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a> にも触れておくべきである。この仮説に基づき、認知処理と認知負荷の観点からのリテラル翻訳の可能性の度合い (translation literality) の操作化 <span class="citation" data-cites="Carl2017Measuring">(@ <a href="#ref-Carl2017Measuring" role="doc-biblioref">Carl and Schaeffer 2017</a>)</span> が 1. 原文と訳文の語順の類似性と 2. 可能な異なる翻訳表現の数、といったように考えている。いずれも、本稿でいうテキストとしての追加率、不一致率と異なった視点になっている。その中の 2 点目が筆者らのノンリテラル要素の可視化に関連する可能性があり、検討すべき尺度であった。</p>
+<p>また、翻訳研究からの検討について、単位の一致の問題について、従来 translation equivalence <span class="citation" data-cites="Nida1969Theory">(cf., <a href="#ref-Nida1969Theory" role="doc-biblioref">Nida and Taber [1982] 1969</a>)</span> や translation unit <span class="citation" data-cites="Koller1979Einfuehrung Malmkjaer2008Unit">(cf., <a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">Koller [2004] 1979</a>; <a href="#ref-Malmkjaer2008Unit" role="doc-biblioref">Malmkjær 2008</a>)</span> に関する議論が多かった。それらの視座から分析単位の影響を考察しなければならず、検討の余地は大いにある。</p>
 </section>
 <section id="方法論の改善余地" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="方法論の改善余地"><span class="header-section-number">5.5</span> 方法論の改善余地</h2>
@@ -1568,7 +1553,7 @@ Asahara, Masayuki, Nao Ikegami, Tai Suzuki, Taro Ichimura, Asuko Kondo, Sachi Ka
 Baker, Mona. 1996. <span>“The Challenges That Lie Ahead: <span class="nocase">Corpus-based</span> Translation Studies.”</span> In <em>Terminology, <span>LSP</span> and <span>Translation</span>: <span>Studies</span> in Language Engineering in Honour of <span>Juan C</span>. <span>Sager</span></em>, edited by Harold Somers, 175. Benjamins <span>Translation Library</span>. John Benjamins Publishing Company. <a href="https://doi.org/10.1075/btl.18.17bak">https://doi.org/10.1075/btl.18.17bak</a>.
 </div>
 <div id="ref-Blum-Kulka1986Shifts" class="csl-entry" role="listitem">
-Blum-Kulka, Shoshana, and J. House. 1986. <span>“Shifts of <span>Cohesion</span> and <span>Coherence</span> in <span>Translation</span>.”</span> In <em>Interlingual and <span>Intercultural Communication</span></em>, 17–35. T<span>ü</span>bingen: G<span>ű</span>nter Narr.
+Blum-Kulka, Shoshana. 1986. <span>“Shifts of <span>Cohesion</span> and <span>Coherence</span> in <span>Translation</span>.”</span> In <em>Interlingual and <span>Intercultural Communication</span></em>, edited by Juliane House and Shoshana Blum-Kulka, 17–35. T<span>ü</span>bingen: G<span>ű</span>nter Narr.
 </div>
 <div id="ref-Brooks1998General" class="csl-entry" role="listitem">
 Brooks, Stephen P., and Andrew Gelman. 1998. <span>“General <span>Methods</span> for <span>Monitoring Convergence</span> of <span>Iterative Simulations</span>.”</span> <em>Journal of Computational and Graphical Statistics</em> 7 (4): 434–55. <a href="https://doi.org/ggfntd">https://doi.org/ggfntd</a>.
@@ -1598,7 +1583,7 @@ Chesterman, Andrew. 2004. <span>“Hypotheses about Translation Universals.”</
 Edina, Robin. 2016. <span>“Translation <span>Universals Revisited</span>.”</span> <em>FORUM</em> 15 (January). <a href="https://doi.org/10.1075/forum.15.1.03rob">https://doi.org/10.1075/forum.15.1.03rob</a>.
 </div>
 <div id="ref-Firth1968Selected" class="csl-entry" role="listitem">
-Firth, J. R., and F. R. Palmer. 1968. <em><span>Selected Papers, 1952-59</span></em>. Harlow: Prentice Hall Press.
+Firth, John Rupert. 1968. <em><span>Selected Papers, 1952-59</span></em>. Edited by Frank Robert Palmer. Harlow: Prentice Hall Press.
 </div>
 <div id="ref-Hodoscek2022Developmenta" class="csl-entry" role="listitem">
 Hodošček, Bor, and Hilofumi Yamamoto. 2022. <span>“Development of Datasets of the <span>Hachidaish<span>ū</span></span> and Tools for the Understanding of the Characteristics and Historical Evolution of Classical <span>Japanese</span> Poetic Vocabulary.”</span> In <em>Digital <span>Humanities</span> 2022 <span>Conference Abstracts</span></em>, 647–48. Tokyo: The University of Tokyo.
@@ -1613,7 +1598,7 @@ Malmkjær, Kirsten. 2008. <span>“Unit of <span>Translation</span>.”</span> I
 Nida, Eugene Albert. 1964. <em>Toward a <span>Science</span> of <span>Translating</span>: <span>With Special Reference</span> to <span>Principles</span> and <span>Procedures Involved</span> in <span>Bible Translating</span></em>. Brill Archive.
 </div>
 <div id="ref-Nida1969Theory" class="csl-entry" role="listitem">
-Nida, Eugene A., and Charles R. Taber. [1982] 1969. <em>The <span>Theory</span> and <span>Practice</span> of <span>Translation</span>: <span>With Special Reference</span> to <span>Bible Translating</span></em>. Reprint edition. Leiden: Brill Academic Pub.
+Nida, Eugene Albert, and Charles Russell Taber. [1982] 1969. <em>The <span>Theory</span> and <span>Practice</span> of <span>Translation</span>: <span>With Special Reference</span> to <span>Bible Translating</span></em>. Reprint edition. Leiden: Brill Academic Pub.
 </div>
 <div id="ref-Nunan1993Introducing" class="csl-entry" role="listitem">
 Nunan, David. 1993. <em>Introducing Discourse Analysis</em>. 1. publ. Penguin <span>English</span> Applied Linguistics. London: Penguin English.
@@ -1621,7 +1606,7 @@ Nunan, David. 1993. <em>Introducing Discourse Analysis</em>. 1. publ. Penguin <s
 <div id="ref-Palladino2022Using" class="csl-entry" role="listitem">
 Palladino, Chiara, Farnoosh Shamsian, and Tariq Yousef. 2022. <span>“Using <span>Parallel Corpora</span> to <span>Evaluate Translations</span> of <span>Ancient Greek Literary Texts</span>. <span>An Application</span> of <span>Text Alignment</span> for <span>Digital Philology Research</span>.”</span> <em>Journal of Computational Literary Studies</em> 1 (1). <a href="https://doi.org/10.48694/jcls.100">https://doi.org/10.48694/jcls.100</a>.
 </div>
-<div id="ref-Pym2008Toury" class="csl-entry" role="listitem">
+<div id="ref-Pym2008Tourys" class="csl-entry" role="listitem">
 Pym, Anthony. 2008. <span>“On <span>Toury</span>’s Laws of How Translators Translate.”</span> In <em>Beyond <span>Descriptive Translation Studies</span>: <span>Investigations</span> in Homage to <span>Gideon Toury</span></em>, edited by Anthony Pym, Miriam Shlesinger, and Daniel Simeoni, 311–28. Benjamins <span>Translation Library</span>. John Benjamins Publishing Company. <a href="https://doi.org/10.1075/btl.75.24pym">https://doi.org/10.1075/btl.75.24pym</a>.
 </div>
 <div id="ref-RCoreTeam2024Language" class="csl-entry" role="listitem">
@@ -1636,11 +1621,11 @@ Schramm, Wilbur Lang. 1954. <em>The Process and Effects of Mass Communication</e
 <div id="ref-Shiozawa1993Motoori" class="csl-entry" role="listitem">
 Shiozawa, Kazuko. 1993. <span>“Motoori <span>Norinaga</span>, "<span>Kokinshu Tokagami</span>" Ni Okeru Keijo Jodoshi: ’Shiyaru’, ’Sashiyaru’ o Megutte (<span>Motoori Norinaga</span>’s Humble Auxiliary Verb in the <span>Kokinshu Tokagami</span>: ’Shiyaru’, ’Sashiyaru’).”</span> <em>Kindaigo Kenkyu (Study of Contemporary Vocabulary)</em> 9: 143–60.
 </div>
-<div id="ref-Sinclair2003Reading" class="csl-entry" role="listitem">
-Sinclair, John. 2003. <em>Reading <span>Concordances</span></em>. First Edition. London: Pearson ESL.
-</div>
 <div id="ref-Sinclair1996Search" class="csl-entry" role="listitem">
 Sinclair, John McHardy. 1996. <span>“The <span>Search</span> for <span>Units</span> of <span>Meaning</span>.”</span> <em>Textus</em> 9: 75–106.
+</div>
+<div id="ref-Sinclair2003Reading" class="csl-entry" role="listitem">
+———. 2003. <em>Reading <span>Concordances</span></em>. First Edition. London: Pearson ESL.
 </div>
 <div id="ref-Sinclair2004Trust" class="csl-entry" role="listitem">
 ———. 2004. <em>Trust the <span>Text</span>: <span>Language</span>, <span>Corpus</span> and <span>Discourse</span></em>. Edited by Ronald Carter. 1st ed. London ; New York: Routledge. <a href="https://doi.org/10.4324/9780203594070">https://doi.org/10.4324/9780203594070</a>.
@@ -1672,7 +1657,7 @@ Yamamoto, Hilofumi, Bor Hodoscek, and Xudong Chen. 2023. <span>“Development of
 <div id="ref-Yamamoto2019Analysis" class="csl-entry" role="listitem">
 Yamamoto, Hilofumi, and Bor Hodošček. 2019. <span>“An <span>Analysis</span> of the <span>Differences Between Classical</span> and <span>Contemporary Poetic Vocabulary</span> of the <span>Kokinshu</span>.”</span> In <em>The 9th <span>Conference</span> of <span>Japanese Association</span> for <span>Digital Humanities</span> (<span>JADH2019</span>) <span>“<span>Localization</span> in <span>Global DH</span>”</span></em>, 68–71. Japanese Association for Digital Humanities.
 </div>
-<div id="ref-Yu2020Tradeoff" class="csl-entry" role="listitem">
+<div id="ref-Yu2020Tradeeffect" class="csl-entry" role="listitem">
 Yu, Shaoyun, and Katsuo Tamaoka. 2020. <span>“Trade-Off Effect in the Processing of <span>Korean</span> Case-Drop Sentences: <span>An</span> Eye Tracking Investigation.”</span> <em>Human Behaviour and Brain</em>, June. <a href="https://doi.org/10.37716/HBAB.2020010203">https://doi.org/10.37716/HBAB.2020010203</a>.
 </div>
 <div id="ref-kyusojin1979Kokin" class="csl-entry" role="listitem">
@@ -1700,7 +1685,7 @@ Yu, Shaoyun, and Katsuo Tamaoka. 2020. <span>“Trade-Off Effect in the Processi
 ———. 1998. <em><span>古今和歌集全評釈</span></em>. Vol. 上中下. 東京: 講談社.
 </div>
 <div id="ref-kubota1960Kokin" class="csl-entry" role="listitem">
-窪田空穂. 1960. <em>古今和歌集評釈</em>. Vol. 上中下. Tokyo: Tokyodo.
+窪田空穂. 1960. <em>古今和歌集評釈</em>. Vol. 上中下. 東京: 東京堂.
 </div>
 <div id="ref-takeoka1976Kokin" class="csl-entry" role="listitem">
 竹岡正夫. 1976. <em><span>古今和歌集全評釈: 古注七種集成</span></em>. Vol. 上下. 東京: 右文書院.
@@ -1708,59 +1693,40 @@ Yu, Shaoyun, and Katsuo Tamaoka. 2020. <span>“Trade-Off Effect in the Processi
 <div id="ref-kondo2011Heian" class="csl-entry" role="listitem">
 近藤泰弘. 2011. <span>“<span>平安時代の漢文訓読語の分類</span>.”</span> <em>訓点語と訓点資料 = Diacritical language and diacritical materials / 訓点語学会 編</em> 127 (September): 120–31.
 </div>
-<div id="ref-kondo2001Ngram" class="csl-entry" role="listitem">
-近藤泰弘, and 近藤みゆき. 2001. <span>“<span>N-gramの手法による言語テキストの分析方法–現代語対話表現の自動抽出に及ぶ</span>.”</span> <em>漢字文献情報処理研究 / 漢字文献情報処理研究会 編</em>, no. 2 (October): 50–55.
-</div>
 <div id="ref-kaneko1933Kokin" class="csl-entry" role="listitem">
 金子元臣. 1933. <em>古今和歌集評釈: 昭和新版</em>. 東京: 明治書院.
 </div>
-<div id="ref-chin2022Tango" class="csl-entry" role="listitem">
-陳旭東, ホドシチェクボル, and 山元啓史. 2022. <span>“<span>単語アライメントの誤り対応を用いた歌ことばのコノテーション検出</span>.”</span> <em>じんもんこん2022論文集</em> 2022 (December): 111–18.
-</div>
 </div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{chen2024,
   author = {Chen, Xudong and Hodošček, Bor and Yamamoto, Hilofumi},
-  title = {古今和歌集の現代日本語訳における追加率要素の分析},
+  title = {古今和歌集の現代語訳における追加率と追加要素の分析},
   date = {2024-09-01},
   doi = {10.17928/jjadh.0.0_0},
   langid = {en},
-  abstract = {注釈書における翻訳における要素の追加を利用した古今和歌集の歌ことばのノンリテラル情報の可視化をこれまで行われてきたが、それら注釈における現代語訳や、現代語訳における追加要素に関する詳細の分析が示されていない。本稿の目的は、いままでの研究に用いられてきた古今集の現代語訳
-    10
-    種が、ノンリテラル要素の可視化に適している材料であるかについて詳細な分析を行うことである。まず、古今集の注釈における現代語訳について概観し、訳者の翻訳の意識についてまとめた。つぎに、直訳語をもたない歌ことばが原文に占める割合（不一致率）と現代語訳における追加要素の割合（追加率）の計算で、現代語訳の要素の追加と一致の実態を把握した。最後に、具体例を示し、現代語訳における追加要素の事例分析を行った。
-    分析の結果、和歌の現代語訳の訳者の翻訳意識は、主観的に、作意中心・テキスト中心・読者中心と不明
-    4
-    類に分類できた。しかし、客観的には、翻訳意識が異なったとしても、計量的には同じ程度の追加要素を多く含めていた。B分析事例においては、センテンスレベルの訳においても、要素の追加にコーパスレベルの共出現傾向に基づく推論があり、語の意味の志向性について補足要素を多く足していることが確認できた。以上により、現代語訳をノンリテラルレベルの可視化に適用できることを示した。
-    Previous research has explored the visualization of non-literal
-    information in the Kokinshū’s poetic words (歌語) through the
-    addition of elements in translations found in annotation books.
-    However, detailed analysis of the contemporary Japanese translations
-    in these annotations and the additional elements within them has not
-    been conducted. This paper aims to provide a comprehensive analysis
-    of whether the ten contemporary Japanese translations of the
-    Kokinshū used in earlier studies are suitable for visualizing
-    non-literal elements. First, the paper reviews the contemporary
-    Japanese translations used in the annotations of the Kokinshū and
-    examines the translators’ approaches to their work. It then
-    calculates the unmatch rate—the proportion of poetic words without
-    direct equivalents—and the addition rate—the proportion of
-    additional elements in the translations—to clarify how elements were
-    added and matched. Lastly, specific examples are provided, along
-    with a detailed case analysis of the additional elements in these
-    translations. The analysis reveals that translators’ subjective
-    approaches can be categorized into four types: intention-focused,
-    text-focused, reader-focused, and unclear. However, from both
-    quantitative and statistical perspectives, despite these differing
-    approaches, the translations include a similar amount of additional
-    elements. In case analysis, it was confirmed that at the sentence
-    level, the addition of elements relied on co-occurrence tendencies
-    at the corpus level, with many supplementary elements added to
-    refine the directional meaning of words. These findings demonstrate
-    that contemporary Japanese translations can be effectively used to
-    visualize non-literal aspects of the original poetic words.}
+  abstract = {筆者らは、古今和歌集の歌ことばのノンリテラル情報を可視化するシステムを開発してきたが、それに用いた現代語訳や追加要素の詳細な分析は行われていなかった。本研究の目的は、古今和歌集の現代語訳10種類が、ノンリテラル要素の可視化に適しているかどうかを分析することである。まず、現代語訳について概観し、訳者の翻訳意識を作意中心・テキスト中心・読者中心・不明の4種に分類した。次に、直訳語を持たない歌ことばの割合（不一致率）と、現代語訳における追加要素の割合（追加率）を計算し、どの訳も多くの追加要素を含むことを確認した。さらに、具体例を示し、コーパスレベルの共出現傾向に基づく推論が現代語訳にどのように反映されているかを分析した。これにより、現代語訳がノンリテラル情報の可視化に適用できることを示した。
+    Previous research has developed a system for visualizing non-literal
+    information in the Kokinshū’s poetic words by adding elements in
+    translations found in annotation books. However, detailed analysis
+    of these translations and the added elements has not been conducted.
+    This study aims to evaluate whether the ten contemporary Japanese
+    translations of the Kokinshū used in prior studies are suitable for
+    visualizing non-literal elements. First, we review these
+    translations and categorize the translators’ approaches as
+    poet-focused, text-focused, reader-focused, or unclear. We then
+    calculate the unmatch rate (the proportion of poetic words without
+    direct equivalents) and the addition rate (the proportion of added
+    elements) to see how elements were incorporated. Finally, we provide
+    case analyses of specific examples, showing how corpus-level
+    co-occurrence tendencies influenced the addition of elements to
+    clarify meanings. Our findings show that despite varied approaches,
+    the translations contain similar levels of added elements,
+    suggesting that contemporary translations can effectively visualize
+    the non-literal aspects of the Kokinshū’s original text.}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-chen2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Chen, Xudong, Bor Hodošček, and Hilofumi Yamamoto. 2024.
-<span>“古今和歌集の現代日本語訳における追加率要素の分析.”</span> Journal
-of Japanese Association for Digital Humanities. September 1, 2024. <a href="https://doi.org/10.17928/jjadh.0.0_0">https://doi.org/10.17928/jjadh.0.0_0</a>.
+<span>“古今和歌集の現代語訳における追加率と追加要素の分析.”</span>
+Journal of Japanese Association for Digital Humanities. September 1,
+2024. <a href="https://doi.org/10.17928/jjadh.0.0_0">https://doi.org/10.17928/jjadh.0.0_0</a>.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">

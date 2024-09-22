@@ -72,6 +72,7 @@
           pandoc
           R
           rstudio
+          librsvg
           # posit
           python312
           glibcLocalesUtf8
