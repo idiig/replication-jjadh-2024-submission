@@ -1354,7 +1354,6 @@ When examining the translation approaches, most translators aim to maintain the 
 
 ## Results of unmatch and addition rate estimates
 
-
 Referring to @fig-data for the calculation results of the addition rate, we can observe that the unmatch rate ranges from 0% to 88% [@tbl-data-review]. TKOK's translation had the lowest unmatch rate at 17.2% (sd = 0.1) [@fig-unmatch-rate], while OZW's translation recorded the highest at 23% (sd = 0.112) [@fig-unmatch-rate]. As mentioned earlier, OZW showed greater flexibility in changing word order, whereas Takeoka adhered strictly to his translation principles, a difference clearly reflected in the data.
 
 Of the 10 contemporary translations analyzed, Poem #697 exhibited the highest unmatch rate at 88.2% [@tbl-data-review], indicating that most of the words in the poem were not literally translated. We will revisit these poems in the "Discussion" section for further analysis.
@@ -2329,6 +2328,7 @@ Thus, extracting non-literal elements such as *makurakotoba* and *jokotoba* from
 mode=2; level=3; elements of poem=16; elements of translation=6;
 bag (E=1, F=0, G=0, U=15, T=1, AddRate=83.33%, UnmatchRate=93.75%);
 alignment (E=1, F=0, G=0, U=15, T=1, AddRate=83.33%, UnmatchRate=93.75%)
+
 >| しきしまのやまとにはあらぬからころもころもへずしてあふーーよしーーーもがな [697]
 >| ーーーーーーーーーーーーーーーーーー絶え間なくーー会いたいものだなあーーー [MTD]
 ```

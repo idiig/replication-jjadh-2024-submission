@@ -1692,7 +1692,7 @@ data |>
 
 不一致率の高い歌の対訳対において、10 人の現代語訳に共通して欠落がみられたのは「序詞」「枕詞」「まわりくどい言い回し」の 3 種類あった。訳者の幾人かは意識的に「序詞」「枕詞」を訳さないで放置していることが観測された。例えば、@matsuda1968Shinshaku の現代語訳では、4 首は現代語訳の方がもとの歌より短くなっている。MTD (173) と MTD (665) の訳においては、枕詞「ひさかたの」「みつしほの」は省略されている。MTD (684) の MTD (697) の訳においては、枕詞も序詞も省略されている。これらの歌は当然不一致率も高い。特に、MTD (697) はもとの和歌よりもずっと短い^[KSJ (404) もまた極端に短く、序詞がやはり省略されている。]。MTD (697) では大和の枕詞「敷島の」が省略されている。元の歌は、「頃も」と「衣」が掛詞になっているが、その「衣」に掛かっていく序詞も省略されている。
 
-![697 番歌の @matsuda1968Shinshaku による現代語訳：アライメントの結果を書き換えている；「しきしまのやまとにはあらぬからころも」が省略されている。Contemporary translation of Poem #697 by @matsuda1968Shinshaku: The alignment has been revised; the *jokotoba* "Shikishima no Yamato ni wa aranu kara koromo" has been omitted.](./figures/matsuda-697.svg){#fig-mtd-697}
+![697 番歌の @matsuda1968Shinshaku による現代語訳：アライメントの結果を書き換えている；「しきしまのやまとにはあらぬからころも」が省略されている。Contemporary translation of Poem #697 by @matsuda1968Shinshaku: The alignment has been revised; the *jokotoba* "Shikishima no Yamato ni wa aranu kara koromo" has been omitted.](./figures/matsuda-697.svg){#fig-mtd-697 width=100%}
 
 ```{python}
 #| include: false
@@ -1855,7 +1855,7 @@ echo ""
 awk -v translator="matsuda" '$3 ~ /0629/ && $0 ~ translator && $1 ~ /1/ && $4 ~ /[01]/ {printf "%s", $9}' ./data/translationExamples.txt
 ```
 
-![629 番歌の @matsuda1968Shinshaku による現代語訳：アライメントの結果を書き換えている Contemporary translation of Poem #629 by @matsuda1968Shinshaku: The alignment results have been modified.](./figures/matsuda-629.svg){#fig-mtd-629}
+![629 番歌の @matsuda1968Shinshaku による現代語訳：アライメントの結果を書き換えている Contemporary translation of Poem #629 by @matsuda1968Shinshaku: The alignment results have been modified.](./figures/matsuda-629.svg){#fig-mtd-629 width=100%}
 
 ```{python}
 #| include: false
@@ -2424,9 +2424,9 @@ read.csv("artifacts/calc_results.csv") |> filter(PoemID==298) |>
 
 ::: {#fig-alignment layout-nrow=2}
 
-![アライメント（前半）：たつたひめ 手向ける神の あればこそ Alignment (first half): Tatsutahime tamukeru kami no areba koso '(There is) the god exits for Tatsutahime to dedicate (things), so that ...'](./figures/tatsuta-1.svg){#fig-alignment-1}
+![アライメント（前半）：たつたひめ 手向ける神の あればこそ Alignment (first half): Tatsutahime tamukeru kami no areba koso '(There is) the god exits for Tatsutahime to dedicate (things), so that ...'](./figures/tatsuta-1.svg){#fig-alignment-1 width=100%}
 
-![アライメント（後半）：秋の木の葉の 幣と散るらめ Alignment (second half): aki no konoha no nusa to chiru rame 'leaves of autumn may be scattered as scared papers (which is dedicated to the god)'](./figures/tatsuta-2.svg){#fig-alignment-2}
+![アライメント（後半）：秋の木の葉の 幣と散るらめ Alignment (second half): aki no konoha no nusa to chiru rame 'leaves of autumn may be scattered as scared papers (which is dedicated to the god)'](./figures/tatsuta-2.svg){#fig-alignment-2 width=100%}
 
 10人の訳者のアライメント（筆者がアライメント推定プログロムの出力を修正して作成）：「【】」は追加と判断する要素である；「（）」は言い換えと判断する要素である。「＊」は、句の順序の入れ替えで対応しうる文・語である。「・」は直訳されていないと判断する要素のプレースホルダーである。 Alignment of translations by 10 translators (the author corrected the output of the alignment estimation program): Elements in "【】" are judged as additions, those in "（ ）" are considered paraphrases, "＊" indicates phrases or words aligned through sentence reordering, and "・" represents elements judged not to be translated directly.
 
