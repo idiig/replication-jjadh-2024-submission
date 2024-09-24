@@ -58,6 +58,8 @@ div.csl-indent {
 <script src="main_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="main_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="main_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="main_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="main_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -121,20 +123,23 @@ window.Quarto = {
   <li><a href="#和歌と和歌におけるノンリテラル要素" id="toc-和歌と和歌におけるノンリテラル要素" class="nav-link" data-scroll-target="#和歌と和歌におけるノンリテラル要素"><span class="header-section-number">1.2.1</span> 和歌と和歌におけるノンリテラル要素</a></li>
   <li><a href="#現代語訳の追加要素に基づく歌ことばのノンリテラル要素の可視化" id="toc-現代語訳の追加要素に基づく歌ことばのノンリテラル要素の可視化" class="nav-link" data-scroll-target="#現代語訳の追加要素に基づく歌ことばのノンリテラル要素の可視化"><span class="header-section-number">1.2.2</span> 現代語訳の追加要素に基づく歌ことばのノンリテラル要素の可視化</a></li>
   </ul></li>
-  <li><a href="#sec-materials" id="toc-sec-materials" class="nav-link" data-scroll-target="#sec-materials"><span class="header-section-number">1.3</span> データ：古今集、注釈と現代語訳</a></li>
-  <li><a href="#古今集" id="toc-古今集" class="nav-link" data-scroll-target="#古今集"><span class="header-section-number">1.4</span> 古今集</a></li>
-  <li><a href="#古今集の注釈と現代日本語訳" id="toc-古今集の注釈と現代日本語訳" class="nav-link" data-scroll-target="#古今集の注釈と現代日本語訳"><span class="header-section-number">1.5</span> 古今集の注釈と現代日本語訳</a></li>
-  <li><a href="#世紀の注釈における現代語訳とデータの概要" id="toc-世紀の注釈における現代語訳とデータの概要" class="nav-link" data-scroll-target="#世紀の注釈における現代語訳とデータの概要"><span class="header-section-number">1.6</span> 20世紀の注釈における現代語訳とデータの概要</a></li>
   </ul></li>
-  <li><a href="#sec-methods" id="toc-sec-methods" class="nav-link" data-scroll-target="#sec-methods"><span class="header-section-number">2</span> 方法</a>
+  <li><a href="#sec-materials" id="toc-sec-materials" class="nav-link" data-scroll-target="#sec-materials"><span class="header-section-number">2</span> データ：古今集、注釈と現代語訳</a>
   <ul class="collapse">
-  <li><a href="#文献調査による翻訳アプローチの分類" id="toc-文献調査による翻訳アプローチの分類" class="nav-link" data-scroll-target="#文献調査による翻訳アプローチの分類"><span class="header-section-number">2.1</span> 文献調査による翻訳アプローチの分類</a></li>
-  <li><a href="#追加率不一致率の計算" id="toc-追加率不一致率の計算" class="nav-link" data-scroll-target="#追加率不一致率の計算"><span class="header-section-number">2.2</span> 追加率・不一致率の計算</a></li>
-  <li><a href="#立田歌の事例分析" id="toc-立田歌の事例分析" class="nav-link" data-scroll-target="#立田歌の事例分析"><span class="header-section-number">2.3</span> 「立田」歌の事例分析</a></li>
+  <li><a href="#古今集" id="toc-古今集" class="nav-link" data-scroll-target="#古今集"><span class="header-section-number">2.1</span> 古今集</a></li>
+  <li><a href="#古今集の注釈と現代日本語訳" id="toc-古今集の注釈と現代日本語訳" class="nav-link" data-scroll-target="#古今集の注釈と現代日本語訳"><span class="header-section-number">2.2</span> 古今集の注釈と現代日本語訳</a></li>
+  <li><a href="#世紀の注釈における現代語訳とデータの概要" id="toc-世紀の注釈における現代語訳とデータの概要" class="nav-link" data-scroll-target="#世紀の注釈における現代語訳とデータの概要"><span class="header-section-number">2.3</span> 20世紀の注釈における現代語訳とデータの概要</a></li>
   </ul></li>
-  <li><a href="#sec-results" id="toc-sec-results" class="nav-link" data-scroll-target="#sec-results"><span class="header-section-number">3</span> 結果</a>
+  <li><a href="#sec-methods" id="toc-sec-methods" class="nav-link" data-scroll-target="#sec-methods"><span class="header-section-number">3</span> 方法</a>
   <ul class="collapse">
-  <li><a href="#現代語訳の整理と分類" id="toc-現代語訳の整理と分類" class="nav-link" data-scroll-target="#現代語訳の整理と分類"><span class="header-section-number">3.1</span> 現代語訳の整理と分類</a>
+  <li><a href="#文献調査による翻訳アプローチの分類" id="toc-文献調査による翻訳アプローチの分類" class="nav-link" data-scroll-target="#文献調査による翻訳アプローチの分類"><span class="header-section-number">3.1</span> 文献調査による翻訳アプローチの分類</a></li>
+  <li><a href="#追加率不一致率の計算" id="toc-追加率不一致率の計算" class="nav-link" data-scroll-target="#追加率不一致率の計算"><span class="header-section-number">3.2</span> 追加率・不一致率の計算</a></li>
+  <li><a href="#翻訳アプローチによる追加率の差の統計モデリング" id="toc-翻訳アプローチによる追加率の差の統計モデリング" class="nav-link" data-scroll-target="#翻訳アプローチによる追加率の差の統計モデリング"><span class="header-section-number">3.3</span> 翻訳アプローチによる追加率の差の統計モデリング</a></li>
+  <li><a href="#立田歌の事例分析" id="toc-立田歌の事例分析" class="nav-link" data-scroll-target="#立田歌の事例分析"><span class="header-section-number">3.4</span> 「立田」歌の事例分析</a></li>
+  </ul></li>
+  <li><a href="#sec-results" id="toc-sec-results" class="nav-link" data-scroll-target="#sec-results"><span class="header-section-number">4</span> 結果</a>
+  <ul class="collapse">
+  <li><a href="#現代語訳の整理と分類" id="toc-現代語訳の整理と分類" class="nav-link" data-scroll-target="#現代語訳の整理と分類"><span class="header-section-number">4.1</span> 現代語訳の整理と分類</a>
   <ul class="collapse">
   <li><a href="#text-focused-approach-knk-kbt-ktgr" id="toc-text-focused-approach-knk-kbt-ktgr" class="nav-link" data-scroll-target="#text-focused-approach-knk-kbt-ktgr">Text-focused approach: KNK, KBT, KTGR</a></li>
   <li><a href="#poet-focused-approach-okmr-tkok" id="toc-poet-focused-approach-okmr-tkok" class="nav-link" data-scroll-target="#poet-focused-approach-okmr-tkok">Poet-focused approach: OKMR, TKOK</a></li>
@@ -142,33 +147,30 @@ window.Quarto = {
   <li><a href="#その他のアプローチ-kmcy-mtd-ka" id="toc-その他のアプローチ-kmcy-mtd-ka" class="nav-link" data-scroll-target="#その他のアプローチ-kmcy-mtd-ka">その他のアプローチ: KMCY, MTD, K&amp;A</a></li>
   <li><a href="#まとめ" id="toc-まとめ" class="nav-link" data-scroll-target="#まとめ">まとめ</a></li>
   </ul></li>
-  <li><a href="#不一致率と追加率の推定結果" id="toc-不一致率と追加率の推定結果" class="nav-link" data-scroll-target="#不一致率と追加率の推定結果"><span class="header-section-number">3.2</span> 不一致率と追加率の推定結果</a>
+  <li><a href="#不一致率と追加率の推定結果" id="toc-不一致率と追加率の推定結果" class="nav-link" data-scroll-target="#不一致率と追加率の推定結果"><span class="header-section-number">4.2</span> 不一致率と追加率の推定結果</a>
   <ul class="collapse">
   <li><a href="#不一致率の高い対訳" id="toc-不一致率の高い対訳" class="nav-link" data-scroll-target="#不一致率の高い対訳">不一致率の高い対訳</a></li>
   <li><a href="#追加率の高い対訳" id="toc-追加率の高い対訳" class="nav-link" data-scroll-target="#追加率の高い対訳">追加率の高い対訳</a></li>
   </ul></li>
-  <li><a href="#翻訳アプローチによる追加率の差" id="toc-翻訳アプローチによる追加率の差" class="nav-link" data-scroll-target="#翻訳アプローチによる追加率の差"><span class="header-section-number">3.3</span> 翻訳アプローチによる追加率の差</a>
+  <li><a href="#翻訳アプローチによる追加率の差" id="toc-翻訳アプローチによる追加率の差" class="nav-link" data-scroll-target="#翻訳アプローチによる追加率の差"><span class="header-section-number">4.3</span> 翻訳アプローチによる追加率の差</a>
   <ul class="collapse">
   <li><a href="#翻訳アプローチによる追加率の相違が小さい" id="toc-翻訳アプローチによる追加率の相違が小さい" class="nav-link" data-scroll-target="#翻訳アプローチによる追加率の相違が小さい">翻訳アプローチによる追加率の相違が小さい</a></li>
   <li><a href="#訳者による追加率の変動より歌による変動のほうが大きい" id="toc-訳者による追加率の変動より歌による変動のほうが大きい" class="nav-link" data-scroll-target="#訳者による追加率の変動より歌による変動のほうが大きい">訳者による追加率の変動より歌による変動のほうが大きい</a></li>
   </ul></li>
-  <li><a href="#番立田歌の訳の事例分析" id="toc-番立田歌の訳の事例分析" class="nav-link" data-scroll-target="#番立田歌の訳の事例分析"><span class="header-section-number">3.4</span> 298 番「立田」歌の訳の事例分析</a></li>
+  <li><a href="#番立田歌の訳の事例分析" id="toc-番立田歌の訳の事例分析" class="nav-link" data-scroll-target="#番立田歌の訳の事例分析"><span class="header-section-number">4.4</span> 298 番「立田」歌の訳の事例分析</a></li>
   </ul></li>
-  <li><a href="#sec-discussion" id="toc-sec-discussion" class="nav-link" data-scroll-target="#sec-discussion"><span class="header-section-number">4</span> 考察</a>
+  <li><a href="#sec-discussion" id="toc-sec-discussion" class="nav-link" data-scroll-target="#sec-discussion"><span class="header-section-number">5</span> 考察</a>
   <ul class="collapse">
-  <li><a href="#追加率からみる翻訳アプローチと翻訳実践とのずれ" id="toc-追加率からみる翻訳アプローチと翻訳実践とのずれ" class="nav-link" data-scroll-target="#追加率からみる翻訳アプローチと翻訳実践とのずれ"><span class="header-section-number">4.1</span> 追加率からみる翻訳アプローチと翻訳実践とのずれ</a></li>
-  <li><a href="#追加率からみる翻訳アプローチと翻訳実践とのずれ-1" id="toc-追加率からみる翻訳アプローチと翻訳実践とのずれ-1" class="nav-link" data-scroll-target="#追加率からみる翻訳アプローチと翻訳実践とのずれ-1"><span class="header-section-number">4.2</span> 追加率からみる翻訳アプローチと翻訳実践とのずれ</a></li>
-  <li><a href="#翻訳における追加要素の類型化" id="toc-翻訳における追加要素の類型化" class="nav-link" data-scroll-target="#翻訳における追加要素の類型化"><span class="header-section-number">4.3</span> 翻訳における追加要素の類型化</a></li>
-  <li><a href="#現代語訳の知識としての信憑性" id="toc-現代語訳の知識としての信憑性" class="nav-link" data-scroll-target="#現代語訳の知識としての信憑性"><span class="header-section-number">4.4</span> 現代語訳の知識としての信憑性</a></li>
-  <li><a href="#翻訳研究の知見による解釈の必要性" id="toc-翻訳研究の知見による解釈の必要性" class="nav-link" data-scroll-target="#翻訳研究の知見による解釈の必要性"><span class="header-section-number">4.5</span> 翻訳研究の知見による解釈の必要性</a></li>
-  <li><a href="#翻訳研究の知見による解釈の必要性-1" id="toc-翻訳研究の知見による解釈の必要性-1" class="nav-link" data-scroll-target="#翻訳研究の知見による解釈の必要性-1"><span class="header-section-number">4.6</span> 翻訳研究の知見による解釈の必要性</a></li>
-  <li><a href="#方法論の改善余地" id="toc-方法論の改善余地" class="nav-link" data-scroll-target="#方法論の改善余地"><span class="header-section-number">4.7</span> 方法論の改善余地</a></li>
-  <li><a href="#翻訳研究の知見による解釈の必要性-2" id="toc-翻訳研究の知見による解釈の必要性-2" class="nav-link" data-scroll-target="#翻訳研究の知見による解釈の必要性-2"><span class="header-section-number">4.8</span> 翻訳研究の知見による解釈の必要性</a></li>
-  <li><a href="#分類語彙表番号の応用研究として" id="toc-分類語彙表番号の応用研究として" class="nav-link" data-scroll-target="#分類語彙表番号の応用研究として"><span class="header-section-number">4.9</span> 分類語彙表番号の応用研究として</a></li>
+  <li><a href="#追加率からみる翻訳アプローチと翻訳実践とのずれ" id="toc-追加率からみる翻訳アプローチと翻訳実践とのずれ" class="nav-link" data-scroll-target="#追加率からみる翻訳アプローチと翻訳実践とのずれ"><span class="header-section-number">5.1</span> 追加率からみる翻訳アプローチと翻訳実践とのずれ</a></li>
+  <li><a href="#翻訳における追加要素の類型化" id="toc-翻訳における追加要素の類型化" class="nav-link" data-scroll-target="#翻訳における追加要素の類型化"><span class="header-section-number">5.2</span> 翻訳における追加要素の類型化</a></li>
+  <li><a href="#現代語訳の知識としての信憑性" id="toc-現代語訳の知識としての信憑性" class="nav-link" data-scroll-target="#現代語訳の知識としての信憑性"><span class="header-section-number">5.3</span> 現代語訳の知識としての信憑性</a></li>
+  <li><a href="#翻訳研究の知見による解釈の必要性" id="toc-翻訳研究の知見による解釈の必要性" class="nav-link" data-scroll-target="#翻訳研究の知見による解釈の必要性"><span class="header-section-number">5.4</span> 翻訳研究の知見による解釈の必要性</a></li>
+  <li><a href="#方法論の改善余地" id="toc-方法論の改善余地" class="nav-link" data-scroll-target="#方法論の改善余地"><span class="header-section-number">5.5</span> 方法論の改善余地</a></li>
+  <li><a href="#分類語彙表番号の応用研究として" id="toc-分類語彙表番号の応用研究として" class="nav-link" data-scroll-target="#分類語彙表番号の応用研究として"><span class="header-section-number">5.6</span> 分類語彙表番号の応用研究として</a></li>
   </ul></li>
-  <li><a href="#sec-conclusions" id="toc-sec-conclusions" class="nav-link" data-scroll-target="#sec-conclusions"><span class="header-section-number">5</span> 結論</a>
+  <li><a href="#sec-conclusions" id="toc-sec-conclusions" class="nav-link" data-scroll-target="#sec-conclusions"><span class="header-section-number">6</span> 結論</a>
   <ul class="collapse">
-  <li><a href="#結論" id="toc-結論" class="nav-link" data-scroll-target="#結論"><span class="header-section-number">5.1</span> 結論</a></li>
+  <li><a href="#結論" id="toc-結論" class="nav-link" data-scroll-target="#結論"><span class="header-section-number">6.1</span> 結論</a></li>
   </ul></li>
   
   
@@ -262,20 +264,23 @@ window.Quarto = {
   <li><a href="#和歌と和歌におけるノンリテラル要素" id="toc-和歌と和歌におけるノンリテラル要素"><span class="header-section-number">1.2.1</span> 和歌と和歌におけるノンリテラル要素</a></li>
   <li><a href="#現代語訳の追加要素に基づく歌ことばのノンリテラル要素の可視化" id="toc-現代語訳の追加要素に基づく歌ことばのノンリテラル要素の可視化"><span class="header-section-number">1.2.2</span> 現代語訳の追加要素に基づく歌ことばのノンリテラル要素の可視化</a></li>
   </ul></li>
-  <li><a href="#sec-materials" id="toc-sec-materials"><span class="header-section-number">1.3</span> データ：古今集、注釈と現代語訳</a></li>
-  <li><a href="#古今集" id="toc-古今集"><span class="header-section-number">1.4</span> 古今集</a></li>
-  <li><a href="#古今集の注釈と現代日本語訳" id="toc-古今集の注釈と現代日本語訳"><span class="header-section-number">1.5</span> 古今集の注釈と現代日本語訳</a></li>
-  <li><a href="#世紀の注釈における現代語訳とデータの概要" id="toc-世紀の注釈における現代語訳とデータの概要"><span class="header-section-number">1.6</span> 20世紀の注釈における現代語訳とデータの概要</a></li>
   </ul></li>
-  <li><a href="#sec-methods" id="toc-sec-methods"><span class="header-section-number">2</span> 方法</a>
+  <li><a href="#sec-materials" id="toc-sec-materials"><span class="header-section-number">2</span> データ：古今集、注釈と現代語訳</a>
   <ul>
-  <li><a href="#文献調査による翻訳アプローチの分類" id="toc-文献調査による翻訳アプローチの分類"><span class="header-section-number">2.1</span> 文献調査による翻訳アプローチの分類</a></li>
-  <li><a href="#追加率不一致率の計算" id="toc-追加率不一致率の計算"><span class="header-section-number">2.2</span> 追加率・不一致率の計算</a></li>
-  <li><a href="#立田歌の事例分析" id="toc-立田歌の事例分析"><span class="header-section-number">2.3</span> 「立田」歌の事例分析</a></li>
+  <li><a href="#古今集" id="toc-古今集"><span class="header-section-number">2.1</span> 古今集</a></li>
+  <li><a href="#古今集の注釈と現代日本語訳" id="toc-古今集の注釈と現代日本語訳"><span class="header-section-number">2.2</span> 古今集の注釈と現代日本語訳</a></li>
+  <li><a href="#世紀の注釈における現代語訳とデータの概要" id="toc-世紀の注釈における現代語訳とデータの概要"><span class="header-section-number">2.3</span> 20世紀の注釈における現代語訳とデータの概要</a></li>
   </ul></li>
-  <li><a href="#sec-results" id="toc-sec-results"><span class="header-section-number">3</span> 結果</a>
+  <li><a href="#sec-methods" id="toc-sec-methods"><span class="header-section-number">3</span> 方法</a>
   <ul>
-  <li><a href="#現代語訳の整理と分類" id="toc-現代語訳の整理と分類"><span class="header-section-number">3.1</span> 現代語訳の整理と分類</a>
+  <li><a href="#文献調査による翻訳アプローチの分類" id="toc-文献調査による翻訳アプローチの分類"><span class="header-section-number">3.1</span> 文献調査による翻訳アプローチの分類</a></li>
+  <li><a href="#追加率不一致率の計算" id="toc-追加率不一致率の計算"><span class="header-section-number">3.2</span> 追加率・不一致率の計算</a></li>
+  <li><a href="#翻訳アプローチによる追加率の差の統計モデリング" id="toc-翻訳アプローチによる追加率の差の統計モデリング"><span class="header-section-number">3.3</span> 翻訳アプローチによる追加率の差の統計モデリング</a></li>
+  <li><a href="#立田歌の事例分析" id="toc-立田歌の事例分析"><span class="header-section-number">3.4</span> 「立田」歌の事例分析</a></li>
+  </ul></li>
+  <li><a href="#sec-results" id="toc-sec-results"><span class="header-section-number">4</span> 結果</a>
+  <ul>
+  <li><a href="#現代語訳の整理と分類" id="toc-現代語訳の整理と分類"><span class="header-section-number">4.1</span> 現代語訳の整理と分類</a>
   <ul>
   <li><a href="#text-focused-approach-knk-kbt-ktgr" id="toc-text-focused-approach-knk-kbt-ktgr">Text-focused approach: KNK, KBT, KTGR</a></li>
   <li><a href="#poet-focused-approach-okmr-tkok" id="toc-poet-focused-approach-okmr-tkok">Poet-focused approach: OKMR, TKOK</a></li>
@@ -283,33 +288,30 @@ window.Quarto = {
   <li><a href="#その他のアプローチ-kmcy-mtd-ka" id="toc-その他のアプローチ-kmcy-mtd-ka">その他のアプローチ: KMCY, MTD, K&amp;A</a></li>
   <li><a href="#まとめ" id="toc-まとめ">まとめ</a></li>
   </ul></li>
-  <li><a href="#不一致率と追加率の推定結果" id="toc-不一致率と追加率の推定結果"><span class="header-section-number">3.2</span> 不一致率と追加率の推定結果</a>
+  <li><a href="#不一致率と追加率の推定結果" id="toc-不一致率と追加率の推定結果"><span class="header-section-number">4.2</span> 不一致率と追加率の推定結果</a>
   <ul>
   <li><a href="#不一致率の高い対訳" id="toc-不一致率の高い対訳">不一致率の高い対訳</a></li>
   <li><a href="#追加率の高い対訳" id="toc-追加率の高い対訳">追加率の高い対訳</a></li>
   </ul></li>
-  <li><a href="#翻訳アプローチによる追加率の差" id="toc-翻訳アプローチによる追加率の差"><span class="header-section-number">3.3</span> 翻訳アプローチによる追加率の差</a>
+  <li><a href="#翻訳アプローチによる追加率の差" id="toc-翻訳アプローチによる追加率の差"><span class="header-section-number">4.3</span> 翻訳アプローチによる追加率の差</a>
   <ul>
   <li><a href="#翻訳アプローチによる追加率の相違が小さい" id="toc-翻訳アプローチによる追加率の相違が小さい">翻訳アプローチによる追加率の相違が小さい</a></li>
   <li><a href="#訳者による追加率の変動より歌による変動のほうが大きい" id="toc-訳者による追加率の変動より歌による変動のほうが大きい">訳者による追加率の変動より歌による変動のほうが大きい</a></li>
   </ul></li>
-  <li><a href="#番立田歌の訳の事例分析" id="toc-番立田歌の訳の事例分析"><span class="header-section-number">3.4</span> 298 番「立田」歌の訳の事例分析</a></li>
+  <li><a href="#番立田歌の訳の事例分析" id="toc-番立田歌の訳の事例分析"><span class="header-section-number">4.4</span> 298 番「立田」歌の訳の事例分析</a></li>
   </ul></li>
-  <li><a href="#sec-discussion" id="toc-sec-discussion"><span class="header-section-number">4</span> 考察</a>
+  <li><a href="#sec-discussion" id="toc-sec-discussion"><span class="header-section-number">5</span> 考察</a>
   <ul>
-  <li><a href="#追加率からみる翻訳アプローチと翻訳実践とのずれ" id="toc-追加率からみる翻訳アプローチと翻訳実践とのずれ"><span class="header-section-number">4.1</span> 追加率からみる翻訳アプローチと翻訳実践とのずれ</a></li>
-  <li><a href="#追加率からみる翻訳アプローチと翻訳実践とのずれ-1" id="toc-追加率からみる翻訳アプローチと翻訳実践とのずれ-1"><span class="header-section-number">4.2</span> 追加率からみる翻訳アプローチと翻訳実践とのずれ</a></li>
-  <li><a href="#翻訳における追加要素の類型化" id="toc-翻訳における追加要素の類型化"><span class="header-section-number">4.3</span> 翻訳における追加要素の類型化</a></li>
-  <li><a href="#現代語訳の知識としての信憑性" id="toc-現代語訳の知識としての信憑性"><span class="header-section-number">4.4</span> 現代語訳の知識としての信憑性</a></li>
-  <li><a href="#翻訳研究の知見による解釈の必要性" id="toc-翻訳研究の知見による解釈の必要性"><span class="header-section-number">4.5</span> 翻訳研究の知見による解釈の必要性</a></li>
-  <li><a href="#翻訳研究の知見による解釈の必要性-1" id="toc-翻訳研究の知見による解釈の必要性-1"><span class="header-section-number">4.6</span> 翻訳研究の知見による解釈の必要性</a></li>
-  <li><a href="#方法論の改善余地" id="toc-方法論の改善余地"><span class="header-section-number">4.7</span> 方法論の改善余地</a></li>
-  <li><a href="#翻訳研究の知見による解釈の必要性-2" id="toc-翻訳研究の知見による解釈の必要性-2"><span class="header-section-number">4.8</span> 翻訳研究の知見による解釈の必要性</a></li>
-  <li><a href="#分類語彙表番号の応用研究として" id="toc-分類語彙表番号の応用研究として"><span class="header-section-number">4.9</span> 分類語彙表番号の応用研究として</a></li>
+  <li><a href="#追加率からみる翻訳アプローチと翻訳実践とのずれ" id="toc-追加率からみる翻訳アプローチと翻訳実践とのずれ"><span class="header-section-number">5.1</span> 追加率からみる翻訳アプローチと翻訳実践とのずれ</a></li>
+  <li><a href="#翻訳における追加要素の類型化" id="toc-翻訳における追加要素の類型化"><span class="header-section-number">5.2</span> 翻訳における追加要素の類型化</a></li>
+  <li><a href="#現代語訳の知識としての信憑性" id="toc-現代語訳の知識としての信憑性"><span class="header-section-number">5.3</span> 現代語訳の知識としての信憑性</a></li>
+  <li><a href="#翻訳研究の知見による解釈の必要性" id="toc-翻訳研究の知見による解釈の必要性"><span class="header-section-number">5.4</span> 翻訳研究の知見による解釈の必要性</a></li>
+  <li><a href="#方法論の改善余地" id="toc-方法論の改善余地"><span class="header-section-number">5.5</span> 方法論の改善余地</a></li>
+  <li><a href="#分類語彙表番号の応用研究として" id="toc-分類語彙表番号の応用研究として"><span class="header-section-number">5.6</span> 分類語彙表番号の応用研究として</a></li>
   </ul></li>
-  <li><a href="#sec-conclusions" id="toc-sec-conclusions"><span class="header-section-number">5</span> 結論</a>
+  <li><a href="#sec-conclusions" id="toc-sec-conclusions"><span class="header-section-number">6</span> 結論</a>
   <ul>
-  <li><a href="#結論" id="toc-結論"><span class="header-section-number">5.1</span> 結論</a></li>
+  <li><a href="#結論" id="toc-結論"><span class="header-section-number">6.1</span> 結論</a></li>
   </ul></li>
   <li><a href="#データの公開利用" id="toc-データの公開利用">データの公開利用</a></li>
   <li><a href="#補足材料" id="toc-補足材料">補足材料</a></li>
@@ -322,7 +324,7 @@ window.Quarto = {
 <section id="目的と結論の概要" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="目的と結論の概要"><span class="header-section-number">1.1</span> 目的と結論の概要</h2>
 <p>本稿の目的は、和歌の現代語訳が、直訳や逐語訳であっても、訳者の意図が異なっても、ノンリテラル要素を補足する解釈材料として利用できるかを検討することである。この目的を達成するため、原文との不一致率と訳文における追加率を計算し、さらに具体的な事例を通じて追加要素の分析を行った。</p>
-<p>具体的には、和歌の現代語訳におけるノンリテラル要素の可視化とその応用可能性について検討した。古今和歌集の口語訳の歴史的な変遷を俯瞰し、20世紀における注釈書10種類の現代語訳に見られる翻訳アプローチを分類した。また、古語と現代語訳の語レベルの非一致率と現代語訳における追加率を計算し、翻訳アプローチにかかわらず、現代語訳にノンリテラル要素が追加されていることを確認した。これにより、現代語訳が直訳や逐語訳にとどまらず、原文の理解を補足する役割を果たしている可能性が示された。さらに、具体的な現代語訳の事例を提示し、対象語のコーパスレベルの共出現語、共出現語の全体的な志向性がセンテンスレベルの現代語訳それぞれに反映されているかどうかを検討した。以上の結果から、現代語訳をノンリテラル情報の可視化への応用が現実的であることを示した。</p>
+<p>具体的には、和歌の現代語訳におけるノンリテラル要素の可視化とその応用可能性について検討した。古今和歌集の口語訳の歴史的な変遷を俯瞰し、20世紀における注釈書10種類の現代語訳に見られる翻訳アプローチを分類した。また、古語と現代語訳の語レベルの非一致率と現代語訳における追加率と不一致率を計算し、翻訳アプローチにかかわらず、現代語訳にノンリテラル要素が追加されていることと、原文要素の欠落が避けられている傾向を確認した。これにより、現代語訳が直訳や逐語訳にとどまらず、原文の理解を補足する役割を果たしている可能性が示された。さらに、具体的な現代語訳の事例を提示し、対象語のコーパスレベルの共出現語、共出現語の全体的な志向性がセンテンスレベルの現代語訳それぞれに反映されているかどうかを検討した。以上の結果から、現代語訳をノンリテラル情報の可視化への応用が現実的であることを示した。</p>
 </section>
 <section id="背景" class="level2 page-columns page-full" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="背景"><span class="header-section-number">1.2</span> 背景</h2>
@@ -344,220 +346,254 @@ window.Quarto = {
 <p>筆者らはこれまで、古今和歌集の10種類の現代日本語訳を基に、歌ことばのノンリテラル要素を可視化するシステムを開発してきた <span class="citation" data-cites="Yamamoto2005Mathematical Yamamoto2006Extraction Chen2024Translationbased">(<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">Yamamoto 2005</a>, <a href="#ref-Yamamoto2006Extraction" role="doc-biblioref">2006</a>; <a href="#ref-Chen2024Translationbased" role="doc-biblioref">Chen, Yamamoto, and Hodošček 2024</a>)</span>。このシステムは、古語と現代語訳を比較し、浮かび上がる補足要素によってノンリテラル情報を可視化している。この手法は、<span class="citation" data-cites="kondo2001Ngrama">近藤みゆき. (<a href="#ref-kondo2001Ngrama" role="doc-biblioref">2001</a>)</span> と <span class="citation" data-cites="kondo2011Heian">近藤泰弘. (<a href="#ref-kondo2011Heian" role="doc-biblioref">2011</a>)</span> によって「引き算」とも呼ばれている。ただし、引き算で残る現代語訳の追加要素がどのような性質を持ち、ノンリテラル要素として扱えるかについては、より詳細な検討が必要である。 翻訳における要素の追加について、<span class="citation" data-cites="Koller1979Einfuehrung">Koller (<a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">[2004] 1979, 249</a>)</span> は、翻訳者の「介入 (Eingriff)」であり、原作を尊重し、価値を変えない形で、読者の不足する背景知識やデノテーション・コノテーション情報、言語内的、社会文化的、間テキスト的な情報 (intertextual information) を補うことが含まれると指摘している <span class="citation" data-cites="Koller1979Einfuehrung">(<a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">Koller [2004] 1979, 249</a>)</span>。これにより、翻訳は注釈や辞書と同様に、ノンリテラル情報を解釈するための有効な資料となる。 しかし、翻訳の追加要素は、読者の理解力を過大評価または過小評価した結果として現れる場合もある <span class="citation" data-cites="Nida1964Science Koller1979Einfuehrung">(<a href="#ref-Nida1964Science" role="doc-biblioref">Nida 1964, 155</a>; <a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">Koller [2004] 1979, 249–50</a>)</span>。そのため、訳者による翻訳の追加要素のバリエーションを無視することはできない。古今和歌集の歌ことばを解釈する資料として現代語訳が有用であると <span class="citation" data-cites="Chen2024Translationbased">Chen, Yamamoto, and Hodošček (<a href="#ref-Chen2024Translationbased" role="doc-biblioref">2024</a>)</span> でも言及されているが、そのバリエーションについては十分な説明が行われていない。和歌の口語訳の背景や訳者毎の翻訳アプローチを再検討する必要がある。 本稿では、これまで使用してきた10種類の現代語訳について、その成立背景や追加要素の量的および質的な分析を行う。翻訳における追加要素が読者の理解力を反映して生成されたものである可能性を考慮し、異なる訳者が和歌のノンリテラル要素をどの程度表現できたかを検討する。訳者の翻訳アプローチを整理し、その違いを明らかにすることで、翻訳の普遍的な課題と限界を考察する。 この分析により、ノンリテラル要素の可視化システムの根拠をより明確にし、その改善の方向性を示すことができる。次節では、材料について説明を行う。</p>
 </section>
 </section>
-<section id="sec-materials" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="sec-materials"><span class="header-section-number">1.3</span> データ：古今集、注釈と現代語訳</h2>
-<p>本節では、材料として使用する古今集の概要を説明し、和歌、古今集、注釈書、そしてその現代語訳の歴史的背景について概観する。</p>
 </section>
-<section id="古今集" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="古今集"><span class="header-section-number">1.4</span> 古今集</h2>
+<section id="sec-materials" class="level1 page-columns page-full" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> データ：古今集、注釈と現代語訳</h1>
+<p>本節では、材料として使用する古今集の概要を説明し、和歌、古今集、注釈書、そしてその現代語訳の歴史的背景について概観する。</p>
+<section id="古今集" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="古今集"><span class="header-section-number">2.1</span> 古今集</h2>
 <p>和歌は「歌」と称されるように、もともと宮廷で声を上げて詠まれるものであり、当時の話しことばが基礎となっている。古今集は、その名が示す通り、古代の歌と当時の歌を集めたものであり、『万葉集』に収められた7世紀から8世紀の和歌も含まれている。これには、山部赤人、柿本人麻呂、額田王など、和歌史において重要な歌人の作品が仮名で記録されている。</p>
 <p>また、古今集は、後に続く勅撰和歌集（二十一代集）の先駆けとして成立し、和歌の基本的な形式を確立した。編者である紀貫之による「仮名序」は、和歌の理論書としても位置付けられており、後の和歌文学や日本文学全般において重要な資料となっている。「源氏物語」「土佐日記」「伊勢物語」などの古典作品に多くの和歌が引用されていることからも、古今集は文学研究の基本資料としての役割を果たしている。また、話しことばの特徴を持つことから、日本語の歴史的変遷を知る上でも貴重な資料である。</p>
 </section>
-<section id="古今集の注釈と現代日本語訳" class="level2 page-columns page-full" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="古今集の注釈と現代日本語訳"><span class="header-section-number">1.5</span> 古今集の注釈と現代日本語訳</h2>
+<section id="古今集の注釈と現代日本語訳" class="level2 page-columns page-full" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="古今集の注釈と現代日本語訳"><span class="header-section-number">2.2</span> 古今集の注釈と現代日本語訳</h2>
 <p>古今集は、日本古典文学の中で多くの注釈書を生み出しており、それ自体が一つの研究分野として確立されている <span class="citation" data-cites="kubota1960Kokin">(<a href="#ref-kubota1960Kokin" role="doc-biblioref">窪田 1960, 上中下:319</a>)</span>。これらの注釈書に含まれる現代語訳は、主に読者が和歌を理解しやすくするために書かれており、翻訳家の目的は和歌の解釈を伝えることにある。ここでは、近代以前と近代以降の注釈の歴史を簡単に概観し、特に明治以降に注釈書に掲載された現代語訳について考察する。</p>
 <p>近代（1868年）以前には、多くの古今集の注釈書が出版されており、1600年から1868年の間に70以上の注釈書が存在している <span class="citation" data-cites="kojima1989Kokin">(<a href="#ref-kojima1989Kokin" role="doc-biblioref">小島 and 新井 1989, 447–50</a>)</span>。表 <a href="#tbl-annotation" class="quarto-xref">Table&nbsp;1</a> に、近代以前の代表的な注釈書を5つ示す。</p>
 <p>北村季吟の『八代集抄』は、古今集を含む8つの勅撰和歌集<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>を対象とした注釈書であり、108巻（50冊）にも及ぶ大著である。契沖（1640–1701）の『古今和歌集余材抄』は、初の本格的な古今集の研究書であり <span class="citation" data-cites="ozawa1971Kikon">(<a href="#ref-ozawa1971Kikon" role="doc-biblioref">小沢 1971, 36</a>)</span>、その後の注釈の基礎を築いた。賀茂真淵（1697–1767）の『古今和歌集打聴』は、契沖の研究を継承しつつも、古今集以前の歌、特に万葉集に焦点を当てている。</p>
 <div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;八代集とは、古今集、後撰集、拾遺集、後拾遺集、金葉集、詞花集、千載集、新古今集の8つの勅撰和歌集を指す。</p></div><div id="fn3"><p><sup>3</sup>&nbsp;本居の意図は、古今集を注釈することではなく、和歌の価値を広く伝えることにあった。そのため、他の現代語訳と同等に扱うことはできない。<span class="citation" data-cites="Shiozawa1993Motoori">Shiozawa (<a href="#ref-Shiozawa1993Motoori" role="doc-biblioref">1993</a>)</span> によれば、宣長の翻訳が江戸時代の口語表現をどのように反映しているかは不明であり、実際に使われていた語彙や意味の検証が必要であるため、本研究では対象外とする。</p></div></div><p>本居宣長の『古今和歌集遠鏡』は、すべての和歌を当時の口語に翻訳する試みであったが<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>、その目的は他の注釈書とは異なっている。香川景樹（1768–1843）の『古今和歌集正義』は、従来の注釈書を強く批判し、新しい視点を提示している <span class="citation" data-cites="ozawa1971Kikon matsuda1968Shinshaku">(<a href="#ref-ozawa1971Kikon" role="doc-biblioref">小沢 1971, 36</a>; <a href="#ref-matsuda1968Shinshaku" role="doc-biblioref">松田 1968, 上下:58</a>)</span>。これらの注釈書は、後の注釈書に大きな影響を与え続けている。</p>
 <p>現代においても、古今集の注釈書は重版や改訂を重ね、30以上の注釈書が存在している。</p>
-<div id="tbl-annotation" class="quarto-float anchored page-columns page-full">
+<!-- | Author                       | Year   | Annotation book title                         | -->
+<!-- | Author 著者                   | Year 発行年  | Annotation book title  注釈書名       | -->
+<!-- | ---------------------------- | ------ | --------------------------------------------- | -->
+<!-- | Kitamura Kigin 北村季吟        | 1682   | *Hachidaishūshō* 八代集抄                   | -->
+<!-- | Keichū 契沖                    | 1692   | *Kokinwakashū Yozaishō* 古今和歌集余材抄    | -->
+<!-- | Kamo no Mabuchi 賀茂真淵       | 1784   | *Kokinwakashū Uchigiki* 古今和歌集打聴      | -->
+<!-- | Motoori Norinaga 本居宣長       | 1793?  | *Kokinwakashū Tōkagami* 古今和歌集遠鏡     | -->
+<!-- | Kagawa Kageki 香川景樹         | 1832   | *Kokinwakashū Seigi* 古今和歌集正義         | -->
+<!-- 近代前（1600--1868）の古今集の代表的な注釈書 Representative annotation books of *Kokinshū* before modern times (1600--1868) -->
+<div class="cell page-columns page-full">
+<div id="tbl-annotation" class="cell quarto-float anchored page-columns page-full">
 <figure class="quarto-float quarto-float-tbl figure page-columns page-full">
 <div aria-describedby="tbl-annotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<!-- | Author                       | Year   | Annotation book title                         | -->
-<table class="table">
+<div class="cell-output-display">
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <colgroup>
-<col style="width: 35%">
-<col style="width: 7%">
-<col style="width: 56%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Author 著者</th>
-<th>Year 発行年</th>
-<th>Annotation book title 注釈書名</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">著者<br>
+Author</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">発行年<br>
+Year</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">注釈書名<br>
+Annotation Book Title</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Kitamura Kigin 北村季吟</td>
-<td>1682</td>
-<td><em>Hachidaishūshō</em> 八代集抄</td>
+<td style="text-align: left;">Kitamura Kigin 北村季吟</td>
+<td style="text-align: left;">1682</td>
+<td style="text-align: left;">Hachidaishūshō 八代集抄</td>
 </tr>
 <tr class="even">
-<td>Keichū 契沖</td>
-<td>1692</td>
-<td><em>Kokinwakashū Yozaishō</em> 古今和歌集余材抄</td>
+<td style="text-align: left;">Keichū 契沖</td>
+<td style="text-align: left;">1692</td>
+<td style="text-align: left;">Kokinwakashū Yozaishō 古今和歌集余材抄</td>
 </tr>
 <tr class="odd">
-<td>Kamo no Mabuchi 賀茂真淵</td>
-<td>1784</td>
-<td><em>Kokinwakashū Uchigiki</em> 古今和歌集打聴</td>
+<td style="text-align: left;">Kamo no Mabuchi 賀茂真淵</td>
+<td style="text-align: left;">1784</td>
+<td style="text-align: left;">Kokinwakashū Uchigiki 古今和歌集打聴</td>
 </tr>
 <tr class="even">
-<td>Motoori Norinaga 本居宣長</td>
-<td>1793?</td>
-<td><em>Kokinwakashū Tōkagami</em> 古今和歌集遠鏡</td>
+<td style="text-align: left;">Motoori Norinaga 本居宣長</td>
+<td style="text-align: left;">1793?</td>
+<td style="text-align: left;">Kokinwakashū Tōkagami 古今和歌集遠鏡</td>
 </tr>
 <tr class="odd">
-<td>Kagawa Kageki 香川景樹</td>
-<td>1832</td>
-<td><em>Kokinwakashū Seigi</em> 古今和歌集正義</td>
+<td style="text-align: left;">Kagawa Kageki 香川景樹</td>
+<td style="text-align: left;">1832</td>
+<td style="text-align: left;">Kokinwakashū Seigi 古今和歌集正義</td>
 </tr>
 </tbody>
 </table>
+
+
+</div>
+</div>
 </div>
 <figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-tbl margin-caption" id="tbl-annotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1: 近代前（1600–1868）の古今集の代表的な注釈書 Representative annotation books of <em>Kokinshū</em> before modern times (1600–1868)
 </figcaption>
 </figure>
 </div>
+</div>
 </section>
-<section id="世紀の注釈における現代語訳とデータの概要" class="level2 page-columns page-full" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="世紀の注釈における現代語訳とデータの概要"><span class="header-section-number">1.6</span> 20世紀の注釈における現代語訳とデータの概要</h2>
+<section id="世紀の注釈における現代語訳とデータの概要" class="level2 page-columns page-full" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="世紀の注釈における現代語訳とデータの概要"><span class="header-section-number">2.3</span> 20世紀の注釈における現代語訳とデータの概要</h2>
 <p>21世紀に入っても、現代語訳を含む多くの注釈書が出版されているが、これまでの可視化システムの研究では、近代以降に出版された古今集の現代語訳に焦点を当ててきた <a href="#tbl-CT-data" class="quarto-xref">Table&nbsp;2</a>。これらの現代語訳は本研究の対象であり、データとしても使用されている。</p>
 <p>データフォーマットは、<span class="citation" data-cites="Hodoscek2022Developmenta">Hodošček and Yamamoto (<a href="#ref-Hodoscek2022Developmenta" role="doc-biblioref">2022</a>)</span> による space-delimited format に準拠しており、トークンタイプの識別子（メタコード）として旧分類語彙表番号を使用している。データセットの特徴として、多義語には複数の分類語彙表番号が付与され、複合語についてはその下位分解も同時に提供されている。これにより、様々な基準でフレキシブルな分析が可能となっている。</p>
 <p>ただし、これらの注釈書から文字化されたデータには、和歌の現代語訳に関する著作権、校訂著作権、翻刻著作権などが含まれるため、すべてのデータを公開することはできない。</p>
 <!-- |     | Abbr. | Reference          | Manuscript  | Token count | Type count | Document count | -->
-<div id="tbl-CT-data" class="quarto-float anchored page-columns page-full">
+<!-- |     | Abbr. 略号 | Annotation book 注釈書  | Manuscript 底本  | Token count トークン数 | Type count タイプ数 | Document count 文書数 | -->
+<!-- |-----|-------|--------------------|-------------|------------:|-----------:|---------------:| -->
+<!-- | 1   | KNK   | @kaneko1933Kokin        | Teika 定家 | 42,439      | 3,356      | 1,000          | -->
+<!-- | 2   | KBT   | @kubota1960Kokin          | Teika 定家 | 32,210      | 2,701      | 1,000          | -->
+<!-- | 3   | MTD   | @matsuda1968Shinshaku     | Teika 定家 | 31,860      | 3,007      | 1,000          | -->
+<!-- | 4   | OZW   | @ozawa1971Kikon           | Teika 定家  | 36,173      | 3,384      | 1,000          | -->
+<!-- | 5   | TKOK  | @takeoka1976Kokin         | Teika 定家  | 29,844      | 2,861      | 1,000          | -->
+<!-- | 6   | OKMR  | @okumura1978Kokin         | Teika 定家  | 32,321      | 3,153      | 1,000          | -->
+<!-- | 7   | KSJ   | @kyusojin1979Kokin        | Teika 定家  | 34,050      | 2,770      | 1,000          | -->
+<!-- | 8   | KMCY  | @komachiya1982Kokin       | Teika 定家  | 30,869      | 2,692      | 1,000          | -->
+<!-- | 9   | K&A   | @kojima1989Kokin          | Teika 定家  | 33,867      | 2,955      | 1,000          | -->
+<!-- | 10  | KTGR  | @katagiri1998Kokinhyoshaku| Teika 定家  | 36,362      | 2,882      | 1,000          | -->
+<!-- |     | Total |                           |             | 339,995     | 8,252      | 10,000         | -->
+<!-- : 古今和歌集の短歌の20世紀の現代語訳 10 種：トークン・タイプ数の集計においては、複合表現の場合、その下位分解をカウントしていない Summary of 10 modern Japanese translations of *Kokin Wakashū* from the 20th century: Token and type counts exclude decomposition of compound expressions. {#tbl-CT-data} -->
+<div class="cell page-columns page-full">
+<div id="tbl-CT-data" class="cell quarto-float anchored page-columns page-full">
 <figure class="quarto-float quarto-float-tbl figure page-columns page-full">
 <div aria-describedby="tbl-CT-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table">
+<div class="cell-output-display">
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
 <colgroup>
-<col style="width: 5%">
-<col style="width: 8%">
-<col style="width: 23%">
-<col style="width: 15%">
-<col style="width: 15%">
-<col style="width: 13%">
-<col style="width: 18%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
-<th></th>
-<th>Abbr. 略号</th>
-<th>Annotation book 注釈書</th>
-<th>Manuscript 底本</th>
-<th style="text-align: right;">Token count トークン数</th>
-<th style="text-align: right;">Type count タイプ数</th>
-<th style="text-align: right;">Document count 文書数</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">略号<br>
+Abbreviation</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">注釈書<br>
+Annotation Book</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">底本<br>
+Manuscript</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">トークン数<br>
+Token Count</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">タイプ数<br>
+Type Count</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">文書数<br>
+Document Count</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td>KNK</td>
-<td><span class="citation" data-cites="kaneko1933Kokin">金子 (<a href="#ref-kaneko1933Kokin" role="doc-biblioref">1933</a>)</span></td>
-<td>Teika 定家</td>
-<td style="text-align: right;">42,439</td>
-<td style="text-align: right;">3,356</td>
-<td style="text-align: right;">1,000</td>
+<td style="text-align: left;">KNK</td>
+<td style="text-align: left;">金子 (1933)</td>
+<td style="text-align: left;">Teika 定家</td>
+<td style="text-align: right;">42439</td>
+<td style="text-align: right;">3356</td>
+<td style="text-align: right;">1000</td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td>KBT</td>
-<td><span class="citation" data-cites="kubota1960Kokin">窪田 (<a href="#ref-kubota1960Kokin" role="doc-biblioref">1960</a>)</span></td>
-<td>Teika 定家</td>
-<td style="text-align: right;">32,210</td>
-<td style="text-align: right;">2,701</td>
-<td style="text-align: right;">1,000</td>
+<td style="text-align: left;">KBT</td>
+<td style="text-align: left;">窪田 (1960)</td>
+<td style="text-align: left;">Teika 定家</td>
+<td style="text-align: right;">32210</td>
+<td style="text-align: right;">2701</td>
+<td style="text-align: right;">1000</td>
 </tr>
 <tr class="odd">
-<td>3</td>
-<td>MTD</td>
-<td><span class="citation" data-cites="matsuda1968Shinshaku">松田 (<a href="#ref-matsuda1968Shinshaku" role="doc-biblioref">1968</a>)</span></td>
-<td>Teika 定家</td>
-<td style="text-align: right;">31,860</td>
-<td style="text-align: right;">3,007</td>
-<td style="text-align: right;">1,000</td>
+<td style="text-align: left;">MTD</td>
+<td style="text-align: left;">松田 (1968)</td>
+<td style="text-align: left;">Teika 定家</td>
+<td style="text-align: right;">31860</td>
+<td style="text-align: right;">3007</td>
+<td style="text-align: right;">1000</td>
 </tr>
 <tr class="even">
-<td>4</td>
-<td>OZW</td>
-<td><span class="citation" data-cites="ozawa1971Kikon">小沢 (<a href="#ref-ozawa1971Kikon" role="doc-biblioref">1971</a>)</span></td>
-<td>Teika 定家</td>
-<td style="text-align: right;">36,173</td>
-<td style="text-align: right;">3,384</td>
-<td style="text-align: right;">1,000</td>
+<td style="text-align: left;">OZW</td>
+<td style="text-align: left;">小沢 (1971)</td>
+<td style="text-align: left;">Teika 定家</td>
+<td style="text-align: right;">36173</td>
+<td style="text-align: right;">3384</td>
+<td style="text-align: right;">1000</td>
 </tr>
 <tr class="odd">
-<td>5</td>
-<td>TKOK</td>
-<td><span class="citation" data-cites="takeoka1976Kokin">竹岡 (<a href="#ref-takeoka1976Kokin" role="doc-biblioref">1976</a>)</span></td>
-<td>Teika 定家</td>
-<td style="text-align: right;">29,844</td>
-<td style="text-align: right;">2,861</td>
-<td style="text-align: right;">1,000</td>
+<td style="text-align: left;">TKOK</td>
+<td style="text-align: left;">竹岡 (1976)</td>
+<td style="text-align: left;">Teika 定家</td>
+<td style="text-align: right;">29844</td>
+<td style="text-align: right;">2861</td>
+<td style="text-align: right;">1000</td>
 </tr>
 <tr class="even">
-<td>6</td>
-<td>OKMR</td>
-<td><span class="citation" data-cites="okumura1978Kokin">奥村 (<a href="#ref-okumura1978Kokin" role="doc-biblioref">1978</a>)</span></td>
-<td>Teika 定家</td>
-<td style="text-align: right;">32,321</td>
-<td style="text-align: right;">3,153</td>
-<td style="text-align: right;">1,000</td>
+<td style="text-align: left;">OKMR</td>
+<td style="text-align: left;">奥村 (1978)</td>
+<td style="text-align: left;">Teika 定家</td>
+<td style="text-align: right;">32321</td>
+<td style="text-align: right;">3153</td>
+<td style="text-align: right;">1000</td>
 </tr>
 <tr class="odd">
-<td>7</td>
-<td>KSJ</td>
-<td><span class="citation" data-cites="kyusojin1979Kokin">久曽神 (<a href="#ref-kyusojin1979Kokin" role="doc-biblioref">1979</a>)</span></td>
-<td>Teika 定家</td>
-<td style="text-align: right;">34,050</td>
-<td style="text-align: right;">2,770</td>
-<td style="text-align: right;">1,000</td>
+<td style="text-align: left;">KSJ</td>
+<td style="text-align: left;">久曽神 (1979)</td>
+<td style="text-align: left;">Teika 定家</td>
+<td style="text-align: right;">34050</td>
+<td style="text-align: right;">2770</td>
+<td style="text-align: right;">1000</td>
 </tr>
 <tr class="even">
-<td>8</td>
-<td>KMCY</td>
-<td><span class="citation" data-cites="komachiya1982Kokin">小町谷 (<a href="#ref-komachiya1982Kokin" role="doc-biblioref">1982</a>)</span></td>
-<td>Teika 定家</td>
-<td style="text-align: right;">30,869</td>
-<td style="text-align: right;">2,692</td>
-<td style="text-align: right;">1,000</td>
+<td style="text-align: left;">KMCY</td>
+<td style="text-align: left;">駒井 (1982)</td>
+<td style="text-align: left;">Teika 定家</td>
+<td style="text-align: right;">30869</td>
+<td style="text-align: right;">2692</td>
+<td style="text-align: right;">1000</td>
 </tr>
 <tr class="odd">
-<td>9</td>
-<td>K&amp;A</td>
-<td><span class="citation" data-cites="kojima1989Kokin">小島 and 新井 (<a href="#ref-kojima1989Kokin" role="doc-biblioref">1989</a>)</span></td>
-<td>Teika 定家</td>
-<td style="text-align: right;">33,867</td>
-<td style="text-align: right;">2,955</td>
-<td style="text-align: right;">1,000</td>
+<td style="text-align: left;">K&amp;A</td>
+<td style="text-align: left;">小島・新井 (1989)</td>
+<td style="text-align: left;">Teika 定家</td>
+<td style="text-align: right;">33867</td>
+<td style="text-align: right;">2955</td>
+<td style="text-align: right;">1000</td>
 </tr>
 <tr class="even">
-<td>10</td>
-<td>KTGR</td>
-<td><span class="citation" data-cites="katagiri1998Kokinhyoshaku">片桐 (<a href="#ref-katagiri1998Kokinhyoshaku" role="doc-biblioref">1998</a>)</span></td>
-<td>Teika 定家</td>
-<td style="text-align: right;">36,362</td>
-<td style="text-align: right;">2,882</td>
-<td style="text-align: right;">1,000</td>
+<td style="text-align: left;">KTGR</td>
+<td style="text-align: left;">片桐 (1998)</td>
+<td style="text-align: left;">Teika 定家</td>
+<td style="text-align: right;">36362</td>
+<td style="text-align: right;">2882</td>
+<td style="text-align: right;">1000</td>
 </tr>
 <tr class="odd">
-<td></td>
-<td>Total</td>
-<td></td>
-<td></td>
-<td style="text-align: right;">339,995</td>
-<td style="text-align: right;">8,252</td>
-<td style="text-align: right;">10,000</td>
+<td style="text-align: left;">Total</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: right;">339995</td>
+<td style="text-align: right;">8252</td>
+<td style="text-align: right;">10000</td>
 </tr>
 </tbody>
 </table>
+
+
+</div>
+</div>
 </div>
 <figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-tbl margin-caption" id="tbl-CT-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: 古今和歌集の短歌の20世紀の現代語訳 10 種：トークン・タイプ数の集計においては、複合表現の場合、その下位分解をカウントしていない Summary of 10 modern Japanese translations of <em>Kokin Wakashū</em> from the 20th century: Token and type counts exclude decomposition of compound expressions.
+Table&nbsp;2: 古今和歌集の20世紀の現代語訳 10 種 10 contemporary Japanese translations of <em>Kokin Wakashū</em> from the 20th century.
 </figcaption>
 </figure>
 </div>
+</div>
 </section>
 </section>
-<section id="sec-methods" class="level1 page-columns page-full" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> 方法</h1>
+<section id="sec-methods" class="level1 page-columns page-full" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 方法</h1>
 <p>現代語訳からノンリテラル要素を効率的に抽出できるかを、次の2つのステップで確認する。まず、訳者の翻訳アプローチを明らかにし、ノンリテラル情報の扱いについての記述を精査する。次に、それぞれの翻訳実践が、訳者の翻訳アプローチをどの程度反映しているかを調査する。つまり、注釈書における現代語訳の方針に関する文献調査を行い、訳者が翻訳の際にどこに重点を置いているかを分類する。次に、原文要素の不一致率と訳文における追加率を算出し、要素の追加が翻訳アプローチによる差があるかどうかを統計的に検証する。また、追加された要素がノンリテラル要素として認められるかどうか、事例分析によって検討する。具体的な方法については、次節で詳述する。</p>
-<section id="文献調査による翻訳アプローチの分類" class="level2 page-columns page-full" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="文献調査による翻訳アプローチの分類"><span class="header-section-number">2.1</span> 文献調査による翻訳アプローチの分類</h2>
-<p>本節では、20世紀の古今集注釈書における現代語訳の執筆方針について文献調査を行い、整理する。<span class="citation" data-cites="Yamamoto2005Mathematical">Yamamoto (<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">2005, 102</a>)</span> では、訳者の理論的考えを踏まえつつ、それぞれの現代語訳を実際に観察し、「逐語訳 (word-for-word)」「作者の意思の尊重 (intention-oriented)」「字句を補う (supplement for words)」「語順・語法を変える (word change)」「不詳 (not mentioned)」のように分類しているが、「作者の意思の尊重 (intention-oriented)」は翻訳の目標・フォーカスであり、その他は具体的な訳し方である、分類の視座が統一されていない。そのため、基準の統一た分類が必要である。ここでは、<span class="citation" data-cites="Yamamoto2005Mathematical">Yamamoto (<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">2005</a>)</span> で採用された <span class="citation" data-cites="Schramm1954Process">Schramm (<a href="#ref-Schramm1954Process" role="doc-biblioref">1954</a>)</span> のコミュニケーションモデルの観点から翻訳の力点の置き方の分類を行う（Figure 1）。</p>
+<section id="文献調査による翻訳アプローチの分類" class="level2 page-columns page-full" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="文献調査による翻訳アプローチの分類"><span class="header-section-number">3.1</span> 文献調査による翻訳アプローチの分類</h2>
+<p>本節では、20世紀の古今集注釈書における現代語訳の執筆方針について文献調査を行い、整理する。<span class="citation" data-cites="Yamamoto2005Mathematical">Yamamoto (<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">2005, 102</a>)</span> では、訳者の理論的考えを踏まえつつ、それぞれの現代語訳を実際に観察し、「逐語訳 (word-for-word)」「作者の意思の尊重 (intention-oriented)」「字句を補う (supplement for words)」「語順・語法を変える (word change)」「不詳 (not mentioned)」のように分類しているが、「作者の意思の尊重 (intention-oriented)」は翻訳の目標・フォーカスであり、その他は具体的な訳し方である、分類の視座が統一されていない。そのため、基準の統一た分類が必要である。ここでは、<span class="citation" data-cites="Yamamoto2005Mathematical">Yamamoto (<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">2005</a>)</span> で採用された <span class="citation" data-cites="Schramm1954Process">Schramm (<a href="#ref-Schramm1954Process" role="doc-biblioref">1954</a>)</span> のコミュニケーションモデルの観点から翻訳の力点の置き方の分類を行う (<a href="#fig-schramm-schema" class="quarto-xref">Figure&nbsp;1</a>)。</p>
 <p>現代語訳のコミュニケーションモデルは、2つのサブプロセスを含んでいる。翻訳者が、10世紀のサブプロセスの受信者でありながら、20世紀のサブプロセスの発信者である。2つのサブプロセスの経験野をコミュニケートする役割を果たしている。</p>
 <p>このモデルの考え方に基づき、翻訳アプローチを3つに分類する：</p>
 <ol type="1">
@@ -604,9 +640,9 @@ Figure&nbsp;1: <strong>コミュニケーションモデルから見る翻訳ア
 </figure>
 </div>
 </section>
-<section id="追加率不一致率の計算" class="level2 page-columns page-full" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="追加率不一致率の計算"><span class="header-section-number">2.2</span> 追加率・不一致率の計算</h2>
-<p>読者本位や歌人本位の訳文は、解釈や推論の追加が多く含まれる可能性が高く、ノンリテラル要素を多く抽出できると考えられる。しかし、訳者が主観的に読者本位・歌人本位のアプローチを意識しても、翻訳実践と翻訳アプローチの間にずれが生じることがある。そのため、追加率を客観的に調査し、このずれを明確にする必要がある。各訳者が自身の翻訳アプローチにどれほど一貫しているかを、実際の和歌と現代語訳の不一致率で計算する。不一致率の計算方法として、要素の順序や重複を考慮しない集合演算（バッグ法）と、要素の順序や重複を考慮するアライメント（整列法）を用いる。手順は、<span class="citation" data-cites="Yamamoto2005Mathematical">Yamamoto (<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">2005</a>)</span> と <span class="citation" data-cites="Yamamoto2019Analysis">Yamamoto and Hodošček (<a href="#ref-Yamamoto2019Analysis" role="doc-biblioref">2019</a>)</span> でも説明されているが、詳細な手順は示されていなかったため、本稿では計算のプロセスをより明確にする。 <span class="citation" data-cites="Yamamoto2005Mathematical">Yamamoto (<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">2005</a>)</span> と <span class="citation" data-cites="Yamamoto2019Analysis">Yamamoto and Hodošček (<a href="#ref-Yamamoto2019Analysis" role="doc-biblioref">2019</a>)</span> のアプローチでは、語の複数の意味をメタコードで同時に保持し、不一致率の計算を行っている。デフォルトの分類語彙表番号、または複合語において一致語がある場合、その下位分解やその他の意味の一致可能性については考慮しない。このアプローチのメリットは、複合表現の一致を優先し、多義語のいずれかの意味が一致する可能性を計算に含めることにある。 計算において、重要な前提は、翻訳者が100%の情報を翻訳に含めようとする努力を行っていると見なすことである。そのため、現代語に形式的に一致する語がない場合でも、原文のいずれかの要素と1対1で対応していると仮定し、追加率からその分を差し引く<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。しかし、歌ことばに対応する語が明らかに存在しない場合、それは情報の欠落を訳者が認識していることを意味し、逐語訳の前提が理論的であることを示す。また、対応単位が変動するため、訳語の数のカウントが変わり、訳者ごとの追加率の比較が直感的でなくなることもある。 本稿では、追加率の計算手順を明確化し、結果の再現性を補足する。計算の調整は、当初の結論に影響を与えない。本稿の計算では、デフォルトの分類語彙表のメタコードと分解された最小単位を統一した上で実施する。<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<section id="追加率不一致率の計算" class="level2 page-columns page-full" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="追加率不一致率の計算"><span class="header-section-number">3.2</span> 追加率・不一致率の計算</h2>
+<p>本稿では、訳における追加率は情報の補足の量を操作するものとし、原文における不一致率は原文の情報の欠落の量を操作するものとする。ノンリテラル情報の抽出は、追加率の高く、不一致率の低い訳が望ましい。そのため、追加率を客観的に調査し、このずれを明確にする必要がある。追加率と不一致率の計算方法として、要素の順序や重複を考慮しない集合演算（バッグ法）と、要素の順序や重複を考慮するアライメント（整列法）を用いる。手順は、<span class="citation" data-cites="Yamamoto2005Mathematical">Yamamoto (<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">2005</a>)</span> と <span class="citation" data-cites="Yamamoto2019Analysis">Yamamoto and Hodošček (<a href="#ref-Yamamoto2019Analysis" role="doc-biblioref">2019</a>)</span> でも説明されているが、詳細な手順は示されていなかったため、本稿では計算のプロセスをより明確にする。 <span class="citation" data-cites="Yamamoto2005Mathematical">Yamamoto (<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">2005</a>)</span> と <span class="citation" data-cites="Yamamoto2019Analysis">Yamamoto and Hodošček (<a href="#ref-Yamamoto2019Analysis" role="doc-biblioref">2019</a>)</span> のアプローチでは、語の複数の意味をメタコードで同時に保持し、不一致率の計算を行っている。デフォルトの分類語彙表番号、または複合語において一致語がある場合、その下位分解やその他の意味の一致可能性については考慮しない。このアプローチのメリットは、複合表現の一致を優先し、多義語のいずれかの意味が一致する可能性を計算に含めることにある。 計算において、重要な前提は、翻訳者が100%の情報を翻訳に含めようとする努力を行っていると見なすことである。そのため、現代語に形式的に一致する語がない場合でも、原文のいずれかの要素と1対1で対応していると仮定し、追加率からその分を差し引く<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。しかし、歌ことばに対応する語が明らかに存在しない場合、それは情報の欠落を訳者が認識していることを意味し、逐語訳の前提が理論的であることを示す。また、対応単位が変動するため、訳語の数のカウントが変わり、訳者ごとの追加率の比較が直感的でなくなることもある。 本稿では、追加率の計算手順を明確化し、結果の再現性を補足する。計算の調整は、当初の結論に影響を与えない。本稿の計算では、デフォルトの分類語彙表のメタコードと分解された最小単位を統一した上で実施する。<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;これを純粋なアノテーション (pure annotation) と呼ぶ</p></div><div id="fn5"><p><sup>5</sup>&nbsp;計算スクリプトは、他の選択肢も提供している。</p></div></div><section id="旧分類語彙表番号旧-wlsp-番号に基づく一致の層づけ" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="旧分類語彙表番号旧-wlsp-番号に基づく一致の層づけ">旧分類語彙表番号（旧 WLSP 番号）に基づく一致の層づけ</h4>
 <p>歌ことばと現代語訳の「一致・不一致」は、以下のように4つのレベルに層づけされる。これは、二語のメタコード（旧 WLSP 番号）の最長共通部分列 (Longest Common Subsequence, LCS) <span class="citation" data-cites="Sankoff1972Matching Traum2000Generation">(<a href="#ref-Sankoff1972Matching" role="doc-biblioref">Sankoff 1972</a>; <a href="#ref-Traum2000Generation" role="doc-biblioref">Traum and Habash 2000</a>)</span> の長さによって決定される。</p>
@@ -648,8 +684,8 @@ E, &amp; \text{if } \text{LCS}(s,t) \geq 17 \\
 <p>バッグ法を用いた追加率の計算は、現代語訳における和歌原文の追加要素を、順序関係を考慮せず、2つのテキストを集合と見なし、一致語の数から算出する。ソーステキスト（和歌）<span class="math inline">S=(s_i)_{i \in \mathbb{Z}^{+}}</span> とターゲットテキスト（現代語訳） <span class="math inline">T=(t_i)_{i \in \mathbb{Z}^{+}}</span> が与えられた場合、ターゲットテキストにおける追加率は以下の式で計算される。</p>
 <p><span class="math display">
 \begin{align}
-\text{U}_{T}(S,T) &amp;= 1 - \frac{1}{|T|}\text{agreement}_{S}\\
-\text{agreement}_{S} &amp;= \sum_{s_i \in S} \mathbb{I} \left( \exists t_j \in T \text{ such that } \text{match}(s_i, t_j) \notin U \right)
+\text{Addition Rate}(S,T) &amp;= 1 - \frac{1}{|T|}\text{agreement}_{S}\\
+\text{agreement}_{S}(S,T) &amp;= \sum_{s_i \in S} \mathbb{I} \left( \exists t_j \in T \text{ such that } \text{match}(s_i, t_j) \notin U \right)
 \end{align}
 </span></p>
 <p><span class="math inline">\text{agreement}_{S}</span> は、ソーステキストにおいて一致語をもつトークンの数であり、<span class="math inline">\frac{1}{|T|}\text{agreement}_{S}</span> を一致率（バッグ法）と定義する。分母はターゲットテキストのトークン数 <span class="math inline">|T|</span> である。<span class="math inline">s_i</span>, <span class="math inline">t_j</span> はそれぞれソーステキストの <span class="math inline">i</span> 番目と、ターゲットテキストの <span class="math inline">j</span> 番目のトークンを意味する。追加率は、1から一致率を引くことで計算される。<span class="math inline">\mathbb{I}</span> は指示関数（indicator function）で、条件が真（<span class="math inline">s_i</span> が訳で一致語をもつ）の場合は1を、偽（<span class="math inline">s_i</span> が訳で一致語をもたない）の場合は0を返す。<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
@@ -657,17 +693,17 @@ E, &amp; \text{if } \text{LCS}(s,t) \geq 17 \\
 <p>不一致率についても同様に、ソーステキストに存在する要素のうち、ターゲットテキストで一致語が存在しない割合として計算する。この場合、分母はソーステキストのトークン数 <span class="math inline">|S|</span> となる。</p>
 <p><span class="math display">
 \begin{align}
-\text{U}_{S}(S,T) &amp;= 1 - \frac{1}{|S|}\text{agreement}_{S}
+\text{UnmatchRate}(S,T) &amp;= 1 - \frac{1}{|S|}\text{agreement}_{S}
 \end{align}
 </span></p>
 <p>バッグ法で算出された追加率をもとに、訳者の主観的な翻訳アプローチがどの程度影響を与えているかを統計的に検証する。また、不一致率については、初歩的な記述統計を用いて確認する。</p>
 </section>
-<section id="整列法による追加率の計算" class="level4 unnumbered page-columns page-full">
-<h4 class="unnumbered anchored" data-anchor-id="整列法による追加率の計算">整列法による追加率の計算</h4>
+<section id="整列法による追加率不一致率の計算" class="level4 unnumbered page-columns page-full">
+<h4 class="unnumbered anchored" data-anchor-id="整列法による追加率不一致率の計算">整列法による追加率・不一致率の計算</h4>
 <p>整列法による計算は、まずアライメント（整列）を推定し、次に整列された2語の一致数をもとに追加率を求める方法である。集合としてではなく、シーケンスとして順序を考慮する計算方法を用いる。</p>
 <p>本稿では、分類語彙表番号を用いた動的計画法（Dynamic Programming）に基づきアライメントを行う。動的計画法を用いて2つのシーケンス間のアライメントを計算するスコア関数は、以下のように定義される。</p>
-<p>$$ <span class="math display">\begin{align}
-\text{S}_{\text{DP}}(i, j) &amp;=
+<p><span class="math display">
+\text{S}_{\text{DP}}(i, j) =
 \begin{cases}
 0 &amp; \text{if } i = 0 \text{ or } j = 0 \\
 \max
@@ -676,38 +712,42 @@ E, &amp; \text{if } \text{LCS}(s,t) \geq 17 \\
 \text{S}_{\text{DP}}(i-1, j-1) + \text{weight}(s_i, t_j) \\
 \text{S}_{\text{DP}}(i, j-1) - \text{gap}
 \end{cases} &amp; i &gt; 0 \text{ and } j &gt; 0
-\end{cases}\\
-
-\text{weight}(s,t) &amp;=
+\end{cases}
+</span></p>
+<p>このスコア関数 <span class="math inline">\text{S}_{\text{DP}}(i,j)</span> は、ソーステキストのシーケンス <span class="math inline">S</span> とターゲットテキストのシーケンス <span class="math inline">T</span> の部分列の位置 <span class="math inline">i</span> および <span class="math inline">j</span> までの最適なアライメントスコアを再帰的に計算するものである。重み付け関数 <span class="math inline">\text{weight}(s,t)</span> は、LCS の値をそのまま使用し、Unmatch の場合は <span class="math inline">-1</span> のペナルティを与える（次式参照）。</p>
+<p><span class="math display">
+\text{weight}(s,t) =
 \begin{cases}
 -1, &amp; \text{if } \text{match}(s,t) \in U \\
 10, &amp; \text{if } \text{match}(s,t) \in G \\
 13, &amp; \text{if } \text{match}(s,t) \in F \\
 17, &amp; \text{if } \text{match}(s,t) \in E \\
-\end{cases}\\
-
-\text{gap} &amp;= 0.01
-\end{align}</span> $$</p>
-<p>このスコア関数 <span class="math inline">\text{S}_{\text{DP}}(i,j)</span> は、ソーステキストのシーケンス <span class="math inline">S</span> とターゲットテキストのシーケンス <span class="math inline">T</span> の部分列の位置 <span class="math inline">i</span> および <span class="math inline">j</span> までの最適なアライメントスコアを再帰的に計算するものである。重み付け関数 <span class="math inline">\text{weight}(s,t)</span> は、LCS の値をそのまま使用し、Unmatch の場合は <span class="math inline">-1</span> のペナルティを与える。ギャップ（空白）の挿入には、ペナルティ (gap penalty) として <span class="math inline">0.01</span> を設定する。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> この手法により、最も適したアライメントを探索する。整列後の例は以下の通りである。</p>
+\end{cases}
+</span></p>
+<p>ギャップ（空白）の挿入には、ペナルティ (gap penalty) として <span class="math inline">0.01</span> を設定する。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> この手法により、最も適したアライメントを探索する。整列後の例は以下の通りである。</p>
 <div class="no-row-height column-margin column-container"><div id="fn8"><p><sup>8</sup>&nbsp;和歌の翻訳では、語の対応が遠くなることが多いため、ギャップペナルティを <span class="math inline">0.01</span> とすることで遠くの語の対応を許容している。</p></div></div><pre><code>&gt;| 立田姫ーー手向けるーーーー神のあれ　ばこそーーーーーーー秋の木の葉の幣ーーーと散るーーーらめー [298]
 &gt;| 竜田姫は、手向けをするべき神があるのでーーそのつかさどる秋の木の葉が幣のように散るのであろうよ [KBT]</code></pre>
 <p>整列されたシーケンス <span class="math inline">S^{\prime}</span> と <span class="math inline">T^{\prime}</span> を用いて、一致率と追加率を計算する。整列法による一致率 <span class="math inline">\text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime})</span> の計算式は以下の通りである。</p>
 <p><span class="math display">
 \begin{align}
-\text{U}^{\prime}_{T}(S,T) &amp;= 1-\frac{1}{|T|}\text{agreement}^{\prime}_{S}\\
-\text{agreement}^{\prime}_{S}) &amp;= \sum_{s_i \in S^{\prime}} \mathbb{I} \left(\text{match}(s_i^{\prime}, t_i^{\prime}) \notin U \right)
+\text{Addition Rate}^{\prime}(S,T) &amp;= 1-\frac{1}{|T|}\text{agreement}^{\prime}_{S}\\
+\text{Unmatch Rate}^{\prime}(S,T) &amp;= 1-\frac{1}{|S|}\text{agreement}^{\prime}_{S}\\
+\text{agreement}^{\prime}_{S}(S,T) &amp;= \sum_{s_i \in S^{\prime}} \mathbb{I} \left(\text{match}(s_i^{\prime}, t_i^{\prime}) \notin U \right)
 \end{align}
 </span></p>
 <p>ここで、prime (<span class="math inline">\prime</span>) 記号がついているものは整列後のテキストを指す。指示関数 <span class="math inline">\mathbb{I}</span> は、アライメントで2語が一致する場合に1を返し、不一致の場合は0を返す。ギャップが含まれるアライメントは計算対象としない。また、一致率・不一致率・追加率の計算では、分母を整列前のソーステキストのトークン数に設定する。</p>
 <p>動的計画法は、語順の変更や句の並び替えに対して弱いため、語順や句順が大きく異なる訳では、アライメントが適切に行えない場合がある。また、整列法は、アライメントされた2語が完全に一致するという厳しい前提があり、実際の翻訳状況とは異なることが多い。そのため、整列法で計算された追加率は、統計的な分析には用いず、個別のケーススタディで説明を行う。</p>
-<p>先行研究 <span class="citation" data-cites="Yamamoto2005Mathematical Yamamoto2019Analysis">(<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">Yamamoto 2005</a>; <a href="#ref-Yamamoto2019Analysis" role="doc-biblioref">Yamamoto and Hodošček 2019</a>)</span> では、グループ・フィールド・同義レベルの一致率や、理論的・実験的追加率などの指標を計算しているが、翻訳者別の追加率の平均と標準偏差のみが提示されている。今回、データの更新や計算手順の変更により、結果に変化が生じるため、新たに計算した追加率を対象に統計分析を行う。</p>
-<p>訳者の翻訳アプローチが実際の現代語訳における追加率にどのような影響を与えているかを確認するために、統計モデリングを行う。具体的には、翻訳アプローチ（<code>Focus</code>）が追加率（<code>additional_rate</code>）に与える影響を検討するため、ベータ分布に基づく回帰モデルを採用する。ここでは、前述のバッグ法によって算出された追加率を応答変数として用いる。ベータ分布を用いる理由は、応答変数が <span class="math inline">(0, 1)</span> の範囲にあり、二項分布の代替として適しているためである。また、訳者（<code>translator</code>）と歌（<code>poem</code>）の変動を統制するためにランダム効果をモデルに含めている。モデルの詳細については補足資料を参照されたい。</p>
+</section>
+</section>
+<section id="翻訳アプローチによる追加率の差の統計モデリング" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="翻訳アプローチによる追加率の差の統計モデリング"><span class="header-section-number">3.3</span> 翻訳アプローチによる追加率の差の統計モデリング</h2>
+<p>読者本位や歌人本位の訳文は、解釈や推論の追加が多く含まれる可能性が高く、ノンリテラル要素を多く抽出できると考えられる。しかし、訳者が主観的に読者本位・歌人本位のアプローチを意識しても、翻訳実践と翻訳アプローチの間にずれが生じることがある。各訳者が自身の翻訳アプローチにどれほど一貫しているかを、現代語訳の追加率と翻訳アプローチの関連の視点から検証する。翻訳アプローチによる追加率の差が統計的に見られない場合、和歌の翻訳実践に必然的に要素の追加が伴うことを意味すると考えている。先行研究 <span class="citation" data-cites="Yamamoto2005Mathematical Yamamoto2019Analysis">(<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">Yamamoto 2005</a>; <a href="#ref-Yamamoto2019Analysis" role="doc-biblioref">Yamamoto and Hodošček 2019</a>)</span> では、グループ・フィールド・同義レベルの一致率や、理論的・実験的追加率などの指標を計算しているが、翻訳者別の追加率の平均と標準偏差のみが提示されている。それぞれの値は訳者の意図・アプローチに沿った結果か、現代語訳において常なる結果かを調査する必要がある。</p>
+<p>データの更新や計算手順の変更により、結果に変化が生じるため、新たに計算した追加率を対象に統計分析を行う。具体的には、翻訳アプローチ（<code>Focus</code>）が追加率（<code>Addition Rate</code>）に与える影響を検討するため、ベータ分布に基づく回帰モデルを採用する。ここでは、前述のバッグ法によって算出された追加率を応答変数として用いる。ベータ分布を用いる理由は、応答変数が <span class="math inline">(0, 1)</span> の範囲にあり、二項分布の代替として適しているためである。また、訳者（<code>Translator</code>）と歌（<code>Poem ID</code>）の変動を統制するためにランダム効果をモデルに含めている。モデルの詳細については補足資料を参照されたい。</p>
 <p>モデルの推定には Markov Chain Monte Carlo (MCMC) 法を使用し、4 つのチェーンそれぞれで 2000 回のイテレーションを行い、そのうち 1000 回をウォームアップ (burn-in) とする。<code>R</code> (R version 4.3.3 (2024-02-29)) <span class="citation" data-cites="RCoreTeam2024Language">(<a href="#ref-RCoreTeam2024Language" role="doc-biblioref">R Core Team 2024</a>)</span> のパッケージ <code>brms</code> (2.21.0) <span class="citation" data-cites="Burkner2017Brms">(<a href="#ref-Burkner2017Brms" role="doc-biblioref">Bürkner 2017</a>)</span> を使用してモデルを実装し、事後分布の収束は <span class="math inline">\hat{R}</span> 指標および有効サンプルサイズ (ESS) により評価する。モデルの推定結果として、各アプローチの追加率の事後分布をサンプリングし、中央値と 95% の信用区間 (CrI) を報告する。なお、信用区間には事後最狭信用区間 (Highest Posterior Density Interval) を用いる。また、アプローチ間の追加率の差についても、事後分布を示す。</p>
-<p>可視化と解釈のため、<span class="citation" data-cites="Yu2020Tradeeffect">Yu and Tamaoka (<a href="#ref-Yu2020Tradeeffect" role="doc-biblioref">2020</a>)</span> の手法に基づき、2 群の差の事後分布の 95% CrI が 0 をカバーしているかを確認する。また、2 群の差が 0 より大きい確率も観測する。具体的には、95% CrI が 0 をカバーしていない場合には 2 群の間に差があると判断し、0 をカバーしている場合でも、差が 0 より大きい確率が 95% より大きい、または 5% より小さい場合には、傾向ありと認める。</p>
+<p>事後分布の可視化と解釈は、<span class="citation" data-cites="Yu2020Tradeeffect">Yu and Tamaoka (<a href="#ref-Yu2020Tradeeffect" role="doc-biblioref">2020</a>)</span> の手法を参考とする。2 群の差の事後分布の 95% CrI が 0 をカバーしているかを確認する。また、2 群の差が 0 より大きい確率も観測する。具体的には、95% CrI が 0 をカバーしていない場合には 2 群の間に差があると判断し、0 をカバーしている場合でも、差が 0 より大きい確率が 95% より大きい、または 5% より小さい場合には、傾向ありと認める。</p>
 </section>
-</section>
-<section id="立田歌の事例分析" class="level2 page-columns page-full" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="立田歌の事例分析"><span class="header-section-number">2.3</span> 「立田」歌の事例分析</h2>
+<section id="立田歌の事例分析" class="level2 page-columns page-full" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="立田歌の事例分析"><span class="header-section-number">3.4</span> 「立田」歌の事例分析</h2>
 <p>現代語訳の和歌には、何らかの言い換えや追加が行われることがあるが、その要素の性質や内容が必ずしも明確ではない。これらの要素の性質を明らかにするため、アライメントにおける一致を確認しつつ、コーパス言語学の観点から分析を行う。本稿では、<span class="citation" data-cites="Sinclair1996Search">Sinclair (<a href="#ref-Sinclair1996Search" role="doc-biblioref">1996</a>)</span> の拡張意味単位モデルを参考にし、和歌の原文に見られるコーパスレベルの傾向が、対訳文のセンテンスレベルでどのように処理されているかを明らかにする。 拡張意味単位モデルは、コロケーション（collocation; 他の語の共出現関係）<span class="citation" data-cites="Sinclair1970English">(<a href="#ref-Sinclair1970English" role="doc-biblioref">Sinclair, Jones, and Daley 1970, 15</a>)</span>、コリゲーション（colligation; 構文パターンや文法的要素との共出現関係）<span class="citation" data-cites="Firth1968Selected Sinclair1996Search Sinclair2003Reading">(cf., <a href="#ref-Firth1968Selected" role="doc-biblioref">Firth 1968, 183</a>; <a href="#ref-Sinclair1996Search" role="doc-biblioref">Sinclair 1996, 11</a>; <a href="#ref-Sinclair2003Reading" role="doc-biblioref">2003, 171</a>)</span>、意味的志向（semantic preference; 特定の意味の語群との共出現関係）<span class="citation" data-cites="Sinclair2003Reading">(<a href="#ref-Sinclair2003Reading" role="doc-biblioref">Sinclair 2003, 178</a>)</span>、そして談話韻律（discource prosody; 拡張意味単位全体の評価・態度・語用論的意味）<span class="citation" data-cites="Sinclair2004Trust">(<a href="#ref-Sinclair2004Trust" role="doc-biblioref">Sinclair 2004, 174</a>)</span>の 4 つのレベルで対象言語単位を記述する。このモデルにおいて、コロケーションから談話韻律へと進むにつれて、直接的な観測が難しくなり、明示的ではなくなる <span class="citation" data-cites="Stubbs2001Words">(<a href="#ref-Stubbs2001Words" role="doc-biblioref">Stubbs 2001, 87–88</a>)</span>。 和歌の性質とデータの量が少ないため、すべての拡張意味単位を正確に捉えることは困難である。したがって、本稿では、拡張意味単位の 4 つのレベルを 4 つの視座として、それぞれ共出現の語、構文パターン、語の意味的まとまりについて、10 人の翻訳者がどのように処理しているかを分析する。</p>
 <p><span class="citation" data-cites="Yamamoto2005Mathematical">Yamamoto (<a href="#ref-Yamamoto2005Mathematical" role="doc-biblioref">2005</a>)</span> では、現代語訳の紹介に歌枕「立田」の歌 298 番をとりあげている。本稿でも同じ歌をとりあげ、それが 10 人の翻訳、異なる翻訳の方針でどのように処理されているか、前掲の 3 つの視座から分析する。</p>
 <p>コロケーションのレベルで確認すると、八代集全体における 54 首において、 「立田」の文脈に頻出する内容語 <a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>には「山」（30；うち共出現語として 15 あり、「立田山」の複合表現として 15 ある）「紅葉づ」（17）「川」（「立田川」の複合表現として 15 ある）「秋」（15）「見る」（12）「紅葉葉」（9）「錦」（9） があげられる。 頻度5以上の語には、「神無備」（5）「姫」（うち「立田姫」の複合表現として 8 ある） など神に関連する語と、「散る」（8）「流る」（5）「吹く」（6）「紅葉」（5）「黄葉」（5） など、落葉に関連する語が存在している。<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
@@ -736,10 +776,10 @@ E, &amp; \text{if } \text{LCS}(s,t) \geq 17 \\
 <!-- ::: -->
 </section>
 </section>
-<section id="sec-results" class="level1 page-columns page-full" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> 結果</h1>
-<section id="現代語訳の整理と分類" class="level2 page-columns page-full" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="現代語訳の整理と分類"><span class="header-section-number">3.1</span> 現代語訳の整理と分類</h2>
+<section id="sec-results" class="level1 page-columns page-full" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 結果</h1>
+<section id="現代語訳の整理と分類" class="level2 page-columns page-full" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="現代語訳の整理と分類"><span class="header-section-number">4.1</span> 現代語訳の整理と分類</h2>
 <p>注釈書の前書きや導入部に記されている翻訳アプローチに関する意識と認識に基づき、10 人の翻訳者のアプローチをコミュニケーションの主体に対する視座の置き方によって、以下の 3 類に分類した。</p>
 <ol type="1">
 <li><p><strong>テキストの字義を重視する方針</strong>: <span class="citation" data-cites="kaneko1933Kokin">金子 (<a href="#ref-kaneko1933Kokin" role="doc-biblioref">1933</a>)</span>, <span class="citation" data-cites="kubota1960Kokin">窪田 (<a href="#ref-kubota1960Kokin" role="doc-biblioref">1960</a>)</span>, <span class="citation" data-cites="katagiri1998Kokinhyoshaku">片桐 (<a href="#ref-katagiri1998Kokinhyoshaku" role="doc-biblioref">1998</a>)</span></p></li>
@@ -777,8 +817,8 @@ S=\left[\left(a+b+c+\dots+n\right)\times X \right]\times Y
 <p>それぞれの翻訳アプローチを見る限り、ほとんどの作者が逐語訳を基本とし、原文の意味を変えない翻訳を試みているが、従来の注釈書の継承の仕方や情報伝達における重点の置き方には違いが見られる。本稿では、「テキストの字義を重視」「作者の意図・感受の解釈を重視」「読者の理解を重視」「その他」というコミュニケーションモデルの観点から分類を行った。この中で、原文の字義を重視する翻訳アプローチは、最も逐語訳にこだわっていた。作者の意図や感受を重視する、または読者の理解を重視する翻訳アプローチでは、語順や語句の多少の入れ替えや補いを許容していた。ただし、この分類には重なり合う部分もあると考えられる。</p>
 </section>
 </section>
-<section id="不一致率と追加率の推定結果" class="level2 page-columns page-full" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="不一致率と追加率の推定結果"><span class="header-section-number">3.2</span> 不一致率と追加率の推定結果</h2>
+<section id="不一致率と追加率の推定結果" class="level2 page-columns page-full" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="不一致率と追加率の推定結果"><span class="header-section-number">4.2</span> 不一致率と追加率の推定結果</h2>
 <p>追加率の計算結果を <a href="#fig-data" class="quarto-xref">Figure&nbsp;2</a> に示す。不一致率は 0–88 % の範囲であった <a href="#tbl-data-review" class="quarto-xref">Table&nbsp;3</a>。中でも、TKOK の現代語訳が最も不一致率が低く、17.2 % (sd = 0.1) であった <a href="#fig-unmatch-rate" class="quarto-xref">Figure&nbsp;3</a>。一方、OZW の現代語訳が最も高く、23% (sd = 0.112) であった <a href="#fig-unmatch-rate" class="quarto-xref">Figure&nbsp;3</a>。既に述べたように、OZW は語順を変更することをいとわないのに対し、竹岡は自身の方針に忠実に翻訳を行っている。この差がデータに明確に表れていると言える。</p>
 <p>10 種の現代語訳のうち、697番歌は不一致率が 88.2% と最も高い和歌であった <a href="#tbl-data-review" class="quarto-xref">Table&nbsp;3</a>。つまり、和歌の中のほとんどの語が訳されていないことを示している。このような歌については、次の例で確認する。</p>
 <div class="cell page-columns page-full" data-messge="false">
@@ -818,23 +858,37 @@ Figure&nbsp;3: 訳者別の不一致率の確率分布（明確な対応をも�
 <div aria-describedby="tbl-data-review-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-data-review" style="flex-basis: 100.0%;justify-content: center;">
-<div id="tbl-data-review-1" class="do-not-create-environment quarto-float anchored">
+<div class="quarto-layout-cell-subref" data-ref-parent="tbl-data-review">
+<div id="tbl-data-review-1" class="table do-not-create-environment quarto-float anchored" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-subfloat-tbl figure">
 <div aria-describedby="tbl-data-review-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-data-review-1" class="do-not-create-environment table table-sm table-striped small">
+<table id="tbl-data-review-1" class="table do-not-create-environment table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">variable</th>
-<th style="text-align: right;">min</th>
-<th style="text-align: right;">max</th>
-<th style="text-align: right;">median</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">sd</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">最小値<br>
+Min.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">最大値<br>
+Max.</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">中央値<br>
+Median</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">平均値<br>
+Mean</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">標準偏差<br>
+sd</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">UnmatchRate</td>
+<td style="text-align: left;">不一致率 (Unmatch Rate)</td>
 <td style="text-align: right;">0.000</td>
 <td style="text-align: right;">0.882</td>
 <td style="text-align: right;">0.188</td>
@@ -842,7 +896,7 @@ Figure&nbsp;3: 訳者別の不一致率の確率分布（明確な対応をも�
 <td style="text-align: right;">0.110</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">AdditionRate</td>
+<td style="text-align: left;">追加率 (Addition Rate)</td>
 <td style="text-align: right;">0.053</td>
 <td style="text-align: right;">0.864</td>
 <td style="text-align: right;">0.600</td>
@@ -853,23 +907,35 @@ Figure&nbsp;3: 訳者別の不一致率の確率分布（明確な対応をも�
 </table>
 </div>
 <figcaption class="quarto-float-caption-margin quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-data-review-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) 不一致率・追加率の概要 Summary of unmatch and addition rates
+(a) 不一致率・追加率の概要 Data ummary of unmatch and addition rates
 </figcaption>
 </figure>
+</div>
+
+
 </div>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-data-review" style="flex-basis: 45.0%;justify-content: center;">
-<div id="tbl-data-review-2" class="do-not-create-environment quarto-float anchored">
+<div class="quarto-layout-cell-subref" data-ref-parent="tbl-data-review">
+<div id="tbl-data-review-2" class="table do-not-create-environment quarto-float anchored" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-subfloat-tbl figure">
 <div aria-describedby="tbl-data-review-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-data-review-2" class="do-not-create-environment table table-sm table-striped small">
+<table id="tbl-data-review-2" class="table do-not-create-environment table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Translator</th>
-<th style="text-align: left;">PoemID</th>
-<th style="text-align: right;">UnmatchRate</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">訳者<br>
+Translator</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">歌番<br>
+Poem ID</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">不一致率<br>
+Unmatch Rate</th>
 </tr>
 </thead>
 <tbody>
@@ -902,104 +968,122 @@ Figure&nbsp;3: 訳者別の不一致率の確率分布（明確な対応をも�
 </table>
 </div>
 <figcaption class="quarto-float-caption-margin quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-data-review-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) 不一致率のもっとも高い歌・訳対 Poems and translations with the highest unmatch rates
+(b) 不一致率の最も高い対訳（上位 5 対） Poem-translation pairs with the highest unmatch rates (top 5)
 </figcaption>
 </figure>
+</div>
+
+
 </div>
 </div>
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 10.0%;justify-content: flex-start;">
 <p>&nbsp;</p>
 </div>
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-data-review" style="flex-basis: 45.0%;justify-content: center;">
-<div id="tbl-data-review-3" class="do-not-create-environment quarto-float anchored">
+<div class="quarto-layout-cell-subref" data-ref-parent="tbl-data-review">
+<div id="tbl-data-review-3" class="table do-not-create-environment quarto-float anchored" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-subfloat-tbl figure">
 <div aria-describedby="tbl-data-review-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-data-review-3" class="do-not-create-environment table table-sm table-striped small">
+<table id="tbl-data-review-3" class="table do-not-create-environment table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Translator</th>
-<th style="text-align: left;">PoemID</th>
-<th style="text-align: right;">AdditionRate</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">訳者<br>
+Translator</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">歌番<br>
+Poem ID</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">不一致率<br>
+Unmatch Rate</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">TKOK</td>
-<td style="text-align: left;">173</td>
-<td style="text-align: right;">0.053</td>
+<td style="text-align: left;">KNK</td>
+<td style="text-align: left;">880</td>
+<td style="text-align: right;">0.864</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">TKOK</td>
-<td style="text-align: left;">343</td>
-<td style="text-align: right;">0.091</td>
+<td style="text-align: left;">OKMR</td>
+<td style="text-align: left;">736</td>
+<td style="text-align: right;">0.857</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">TKOK</td>
-<td style="text-align: left;">478</td>
-<td style="text-align: right;">0.115</td>
+<td style="text-align: left;">KNK</td>
+<td style="text-align: left;">705</td>
+<td style="text-align: right;">0.857</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">MTD</td>
-<td style="text-align: left;">661</td>
-<td style="text-align: right;">0.133</td>
+<td style="text-align: left;">KNK</td>
+<td style="text-align: left;">868</td>
+<td style="text-align: right;">0.854</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">TKOK</td>
-<td style="text-align: left;">744</td>
-<td style="text-align: right;">0.143</td>
+<td style="text-align: left;">KNK</td>
+<td style="text-align: left;">364</td>
+<td style="text-align: right;">0.851</td>
 </tr>
 </tbody>
 </table>
 </div>
 <figcaption class="quarto-float-caption-margin quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-data-review-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(c) 不一致率のもっとも低い歌・訳対 Poems and translations with the lowest unmatch rates
+(c) 追加率の最も高い対訳（上位 5 対） Poem-translation pairs with the highest addition rates (top 5)
 </figcaption>
 </figure>
+</div>
+
+
 </div>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-data-review" style="flex-basis: 45.0%;justify-content: center;">
-<div id="tbl-data-review-4" class="do-not-create-environment quarto-float anchored">
+<div class="quarto-layout-cell-subref" data-ref-parent="tbl-data-review">
+<div id="tbl-data-review-4" class="table do-not-create-environment quarto-float anchored" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-subfloat-tbl figure">
 <div aria-describedby="tbl-data-review-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-data-review-4" class="do-not-create-environment table table-sm table-striped small">
+<table id="tbl-data-review-4" class="table do-not-create-environment table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">PoemID</th>
-<th style="text-align: left;">variable</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">sd</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">歌番<br>
+Poem ID</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">平均値<br>
+Mean</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">標準偏差<br>
+sd</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">718</td>
-<td style="text-align: left;">UnmatchRate</td>
 <td style="text-align: right;">0.481</td>
 <td style="text-align: right;">0.078</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">703</td>
-<td style="text-align: left;">UnmatchRate</td>
 <td style="text-align: right;">0.472</td>
 <td style="text-align: right;">0.109</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">576</td>
-<td style="text-align: left;">UnmatchRate</td>
 <td style="text-align: right;">0.467</td>
 <td style="text-align: right;">0.070</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">150</td>
-<td style="text-align: left;">UnmatchRate</td>
 <td style="text-align: right;">0.447</td>
 <td style="text-align: right;">0.084</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">515</td>
-<td style="text-align: left;">UnmatchRate</td>
 <td style="text-align: right;">0.440</td>
 <td style="text-align: right;">0.164</td>
 </tr>
@@ -1007,55 +1091,61 @@ Figure&nbsp;3: 訳者別の不一致率の確率分布（明確な対応をも�
 </table>
 </div>
 <figcaption class="quarto-float-caption-margin quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-data-review-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(d) 現代語訳の不一致率のもっとも高い歌 Poem with the highest unmatch rate in contemporary translations
+(d) 平均不一致率の最も高い歌（上位 5 首） Poem with the highest average unmatch rate in contemporary translations (top 5)
 </figcaption>
 </figure>
+</div>
+
+
 </div>
 </div>
 <div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 10.0%;justify-content: flex-start;">
 <p>&nbsp;</p>
 </div>
 <div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="tbl-data-review" style="flex-basis: 45.0%;justify-content: center;">
-<div id="tbl-data-review-5" class="do-not-create-environment quarto-float anchored">
+<div class="quarto-layout-cell-subref" data-ref-parent="tbl-data-review">
+<div id="tbl-data-review-5" class="table do-not-create-environment quarto-float anchored" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
 <figure class="quarto-float quarto-subfloat-tbl figure">
 <div aria-describedby="tbl-data-review-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-data-review-5" class="do-not-create-environment table table-sm table-striped small">
+<table id="tbl-data-review-5" class="table do-not-create-environment table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">PoemID</th>
-<th style="text-align: left;">variable</th>
-<th style="text-align: right;">mean</th>
-<th style="text-align: right;">sd</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">歌番<br>
+Poem ID</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">平均値<br>
+Mean</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">標準偏差<br>
+sd</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">669</td>
-<td style="text-align: left;">AdditionRate</td>
 <td style="text-align: right;">0.773</td>
 <td style="text-align: right;">0.046</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">420</td>
-<td style="text-align: left;">AdditionRate</td>
 <td style="text-align: right;">0.773</td>
 <td style="text-align: right;">0.065</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">705</td>
-<td style="text-align: left;">AdditionRate</td>
 <td style="text-align: right;">0.771</td>
 <td style="text-align: right;">0.052</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">749</td>
-<td style="text-align: left;">AdditionRate</td>
 <td style="text-align: right;">0.768</td>
 <td style="text-align: right;">0.052</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">143</td>
-<td style="text-align: left;">AdditionRate</td>
 <td style="text-align: right;">0.767</td>
 <td style="text-align: right;">0.059</td>
 </tr>
@@ -1063,9 +1153,12 @@ Figure&nbsp;3: 訳者別の不一致率の確率分布（明確な対応をも�
 </table>
 </div>
 <figcaption class="quarto-float-caption-margin quarto-subfloat-caption quarto-subfloat-tbl" id="tbl-data-review-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(e) 現代語訳の追加率のもっとも高い歌 Poem with the highest addition rate in contemporary translations
+(e) 平均追加率の最も高い歌（上位 5 首） Poem with the highest average addition rate in contemporary translations (top 5)
 </figcaption>
 </figure>
+</div>
+
+
 </div>
 </div>
 </div>
@@ -1089,7 +1182,7 @@ Figure&nbsp;4: 697番歌の <span class="citation" data-cites="matsuda1968Shinsh
 </figcaption>
 </figure>
 </div>
-<p>和歌と現代語訳の間に見られる回りくどい表現の不一致は、翻訳における「欠落」というよりも、本稿の一致の探し方（アルゴリズムとして一対一で探索する）に課題があると言えるが、一例を挙げる。OKMR (#346) において、奥村の現代語訳は和歌の語をほとんど使用せず、あえて次のように回りくどい表現を用いている：</p>
+<p>和歌と現代語訳の間に見られるまわりくどい表現の不一致は、翻訳における「欠落」というよりも、本稿の一致の探し方（アルゴリズムとして一対一で探索する）に課題があると言えるが、一例を挙げる。OKMR (#346) において、奥村の現代語訳は和歌の語をほとんど使用せず、あえて次のようにまわりくどい表現を用いている：</p>
 <ul>
 <li>「とりそへて」=「さらにそえて」</li>
 <li>「とどめおきて」=「のこしておきましょう」</li>
@@ -1112,8 +1205,8 @@ Figure&nbsp;5: 629 番歌の <span class="citation" data-cites="matsuda1968Shins
 </div>
 </section>
 </section>
-<section id="翻訳アプローチによる追加率の差" class="level2 page-columns page-full" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="翻訳アプローチによる追加率の差"><span class="header-section-number">3.3</span> 翻訳アプローチによる追加率の差</h2>
+<section id="翻訳アプローチによる追加率の差" class="level2 page-columns page-full" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="翻訳アプローチによる追加率の差"><span class="header-section-number">4.3</span> 翻訳アプローチによる追加率の差</h2>
 <p>本節では、統計モデリングを用いて翻訳アプローチによる追加率の差を検証する。モデルが推定した効果のいずれの <span class="math inline">\hat{R}</span> も 1 であり、1.1 を下回って収束が良好であることが示された <span class="citation" data-cites="Brooks1998General">(<a href="#ref-Brooks1998General" role="doc-biblioref">Brooks and Gelman 1998</a>)</span>。検証対象の効果について、ESS はすべて 2000 程度に達した。</p>
 <section id="翻訳アプローチによる追加率の相違が小さい" class="level3 unnumbered page-columns page-full">
 <h3 class="unnumbered anchored" data-anchor-id="翻訳アプローチによる追加率の相違が小さい">翻訳アプローチによる追加率の相違が小さい</h3>
@@ -1123,7 +1216,7 @@ Figure&nbsp;5: 629 番歌の <span class="citation" data-cites="matsuda1968Shins
 <li><p>翻訳アプローチグループ間で比較した結果、2 グループ間の差の事後分布の 95% CrI はすべて 0 を含んでおり、それぞれの 2 グループの追加率に有意な差は認められなかった。傾向としては、<code>Reader-focused</code> 群の追加率に比べ、<code>Other</code> 群の追加率が <span class="math inline">-4\%</span> 程度下回った (<span class="math inline">\mathrm{posterior\; median} = -0.04\%; 95\%\;\mathrm{CrI} = [-0.13, 0.05]</span>, <span class="math inline">P(\Delta&gt;0) = 14\%</span>)。また、<code>Reader-focused</code> 群の追加率は <code>Poet-focused</code> 群よりも <span class="math inline">6\%</span> 程度下回った (<span class="math inline">\mathrm{posterior\; median} = 0.06\%; 95\%\;\mathrm{CrI} = [-0.03, 0.16]</span>, <span class="math inline">P(\Delta&gt;0) = 91.6\%</span>) ことが観測されているが、傾向差の基準には達しなかった。</p></li>
 </ol>
 <div class="cell page-columns page-full" data-messge="false" data-laylayout-nrow="2">
-<div id="fig-poster" class="cell quarto-figure quarto-figure-center quarto-float anchored page-columns page-full" data-messge="false" data-laylayout-nrow="2">
+<div id="fig-poster" class="cell quarto-figure quarto-figure-center quarto-float anchored page-columns page-full" data-laylayout-nrow="2" data-messge="false">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
 <div aria-describedby="fig-poster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
 <div class="cell-output-display page-columns page-full">
@@ -1177,8 +1270,8 @@ Figure&nbsp;7: グループレベルのハイパーパラメータの事後分�
 </div>
 </section>
 </section>
-<section id="番立田歌の訳の事例分析" class="level2 page-columns page-full" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="番立田歌の訳の事例分析"><span class="header-section-number">3.4</span> 298 番「立田」歌の訳の事例分析</h2>
+<section id="番立田歌の訳の事例分析" class="level2 page-columns page-full" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="番立田歌の訳の事例分析"><span class="header-section-number">4.4</span> 298 番「立田」歌の訳の事例分析</h2>
 <p>298 番「立田」の歌についての事例分析は、アライメントを示しながら進める。</p>
 <p>298 番歌の不一致率および翻訳における追加率のまとめは、<a href="#tbl-tatsuta-review" class="quarto-xref">Table&nbsp;4</a> に示している。ここでの計算は整列法の結果に基づいている。歌のトークン数 19 のうち、アライメントで一致する 2 語対の数が OZW を除いて 14 を超えた。OZW は文の入れ替えを行っているため、アライメントがうまく行われなかった。原文の要素の不一致率は低い水準に保たれており、訳における追加率は OZW を除くと 50% から 70% となっていた。1 語あたり 1.5 から 1.7 語で訳されていた。アライメントはプログラムの出力を修正した上で <a href="#fig-alignment" class="quarto-xref">Figure&nbsp;8</a> に整理している。修正前の出力については補足資料を参照されたい。さて、どのような追加要素があるか確認していく。</p>
 <div class="cell page-columns page-full">
@@ -1186,15 +1279,30 @@ Figure&nbsp;7: グループレベルのハイパーパラメータの事後分�
 <figure class="quarto-float quarto-float-tbl figure page-columns page-full">
 <div aria-describedby="tbl-tatsuta-review-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="do-not-create-environment cell table table-sm table-striped small">
+<div>
+<table class="table do-not-create-environment cell table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Translator</th>
-<th style="text-align: left;">PoemID</th>
-<th style="text-align: left;">Method</th>
-<th style="text-align: right;">TotalMatch</th>
-<th style="text-align: right;">UnmatchRate</th>
-<th style="text-align: right;">AdditionRate</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">訳者<br>
+Translator</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">歌番<br>
+Poem ID</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">計算手法<br>
+Method</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">一致数<br>
+Agreement Count</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">不一致率<br>
+Unmatch Rate</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">追加率<br>
+Addition Rate</th>
 </tr>
 </thead>
 <tbody>
@@ -1280,10 +1388,13 @@ Figure&nbsp;7: グループレベルのハイパーパラメータの事後分�
 </tr>
 </tbody>
 </table>
+
+
+</div>
 </div>
 </div>
 <figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-tbl margin-caption" id="tbl-tatsuta-review-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4: 「立田」歌 298 番の現代語訳の不一致率・追加率の概要 Overview of unmatch and addition rates in contemporary translations of “Tatsuta” Poem
+Table&nbsp;4: 「立田」歌 298 番の現代語訳の不一致率・追加率の概要 Summary of unmatch and addition rates in contemporary translations of “Tatsuta” Poem
 </figcaption>
 </figure>
 </div>
@@ -1398,50 +1509,41 @@ Figure&nbsp;8: 10人の訳者のアライメント（筆者がアライメント
 </section>
 </section>
 </section>
-<section id="sec-discussion" class="level1 page-columns page-full" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> 考察</h1>
-<section id="追加率からみる翻訳アプローチと翻訳実践とのずれ" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="追加率からみる翻訳アプローチと翻訳実践とのずれ"><span class="header-section-number">4.1</span> 追加率からみる翻訳アプローチと翻訳実践とのずれ</h2>
-</section>
-<section id="追加率からみる翻訳アプローチと翻訳実践とのずれ-1" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="追加率からみる翻訳アプローチと翻訳実践とのずれ-1"><span class="header-section-number">4.2</span> 追加率からみる翻訳アプローチと翻訳実践とのずれ</h2>
+<section id="sec-discussion" class="level1 page-columns page-full" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 考察</h1>
+<section id="追加率からみる翻訳アプローチと翻訳実践とのずれ" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="追加率からみる翻訳アプローチと翻訳実践とのずれ"><span class="header-section-number">5.1</span> 追加率からみる翻訳アプローチと翻訳実践とのずれ</h2>
 <p>現代語訳における追加率の階層モデリングの結果、いずれの翻訳アプローチにおいても、相当な割合で追加要素が含まれていることが確認された。また、訳者間の変動よりも、歌による変動のほうが大きいと考えられる。これらの注釈書では、多くの語の解釈がすでに注釈によって詳しく説明されているにもかかわらず、追加率が低いわけではなかった。訳者が翻訳アプローチとしてテキストを重視するにせよ、作者の意図を重視するにせよ、読者の読みやすさを重視するにせよ、基本的に追加せざるをえない要素が存在すると推測できる。</p>
 <p>ただし、追加要素の中で、それぞれの訳を具体的に確認すると、OZW が語順の入れ替えを許容したり、TKOK が作者の意図を重視したりする方針は確実にその実践に反映されている。個別の歌を精査することで明確な差が見えてくるものの、全体としてはその差は傾向の域を超えなかった。それらの要素は、翻訳アプローチや訳者の個人差に左右されない量として十分に存在している。また、追加率の平均値が高い上位 10 首の歌を観察したところ、掛詞を用いた歌が顕著であった。掛詞の役割を明確にするには、訳において補足が求められており、現代語と古代語の差分で多くの要素が残ると考えられる。したがって、現代語訳によるノンリテラル要素の可視化は、量的に実現可能である。</p>
-<p>一方、歌と現代語訳の差分からノンリテラル情報を抽出する際、訳されていない語がないことが望ましく、これが不一致率の高い歌の調査につながった。その結果、翻訳の「欠落」の多くは序詞や枕詞、回りくどい表現であることが明らかになった。現代語文と歌の差分では、枕詞や序詞に関するノンリテラル要素の抽出が難しいことがわかった。ただし、回りくどい表現については、基本的に歌ことばとその回りくどい言い回しの一部が一致することが確認されたが、回りくどい表現全体との一致は見られなかった。</p>
-<p>この問題は語の一致の課題として指摘されているが、最初に述べた一対多の訳と同様に、回りくどい表現は元の歌ことばに情報を付加して生成されることが多い。そのため、回りくどい表現で一致しない要素、つまり「訳のあまりもの」は、ノンリテラル要素を調べる上でむしろ貴重なものであるといえる。</p>
+<p>一方、歌と現代語訳の差分からノンリテラル情報を抽出する際、訳されていない語がないことが望ましく、これが不一致率の高い歌の調査につながった。その結果、翻訳の「欠落」の多くは序詞や枕詞、まわりくどい表現であることが明らかになった。現代語文と歌の差分では、枕詞や序詞に関するノンリテラル要素の抽出が難しいことがわかった。ただし、まわりくどい表現については、基本的に歌ことばとそのまわりくどい言い回しの一部が一致することが確認されたが、まわりくどい表現全体との一致は見られなかった。</p>
+<p>この問題は語の一致の課題として指摘されているが、最初に述べた一対多の訳と同様に、まわりくどい表現は元の歌ことばに情報を付加して生成されることが多い。そのため、まわりくどい表現で一致しない要素、つまり「訳のあまりもの」は、ノンリテラル要素を調べる上でむしろ貴重なものであるといえる。</p>
 </section>
-<section id="翻訳における追加要素の類型化" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="翻訳における追加要素の類型化"><span class="header-section-number">4.3</span> 翻訳における追加要素の類型化</h2>
+<section id="翻訳における追加要素の類型化" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="翻訳における追加要素の類型化"><span class="header-section-number">5.2</span> 翻訳における追加要素の類型化</h2>
 <p>ケーススタディーの分析に基づき、拡張意味単位からヒントを得た3つの観点で訳における追加要素について、以下の類型化を提案する。</p>
 <p>翻訳における追加要素には、いくつかの異なるパターンが見られる。まず、コーパスレベルで共出現する語に由来する追加がある。例えば、「木の葉」という語に対して「木の葉の紅葉」といった直接的な要素を付け加えたり、「幣」に「色とりどり」「撒く」といった二次的な要素を補足したりする場合がこれに該当する。 次に、構文や文法の変化による追加が挙げられる。これは、例えば「と」のように、文法的な役割が変わった助詞を複数の異なる訳し方で説明する場合や、「手向ける」という動詞の基本形を訳す際に、その行動の背景や目的を説明する要素を付け加える場合がこれに含まれる。 さらに、コーパスレベルの共出現語が持つ意味群全体に対して追加が行われることもある。特に、「秋」や「神」といった語群に関する補足が必要とされる場合、例えば「立田姫」や「道祖神」のような情報を付け加えて、読者に背景知識を提供する。このような追加は、共出現語の意味や関連性を強調し、現代語訳で理解を深める役割を果たしている。</p>
 <p>翻訳との差分に基づく可視化システムを構築する際に、これらの要素の区別が重要である。まず、「木の葉」に補足しての「紅葉」は、センテンスレベルではノンリテラルであるが、コーパスレベルではリテラルな共出現語であるといえる。差分による可視化でもアクセスできることが確認できたものの、その他の共出現分析に用いる指標でも十分抽出できる。そのため、差分による可視化の必要性は低くなる。</p>
 <p>次に、構文の時代変化のギャップを埋めるための追加要素は、原文の語に由来するノンリテラル情報とは捉えられないため、除外する手続きを踏まなければならない。そして、共出現の語の全体的傾向性に関連する追加要素は、おそらく共出現語分析では抽出できない。翻訳との差分による可視化は独自な利点を持つと考えられる。</p>
 <p>最後に、本稿では触れなかった拡張意味単位の第4のレベルである談話韻律の視点について補足する。談話韻律に相当する感情面の評価と、語の社会言語学的な属性は、訳の追加要素では分からない情報と考えている。これらの属性を直接的な補足と追加で明示化することはない。一部は現代語にあるconnotative termで言い換えられており、これら機能が相当する語の入れ替えはあっても、その入れ替え自体の談話韻律の説明として直接は成立しない。よって、これらの評価は他の方法を求めるべきである。</p>
 </section>
-<section id="現代語訳の知識としての信憑性" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="現代語訳の知識としての信憑性"><span class="header-section-number">4.4</span> 現代語訳の知識としての信憑性</h2>
+<section id="現代語訳の知識としての信憑性" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="現代語訳の知識としての信憑性"><span class="header-section-number">5.3</span> 現代語訳の知識としての信憑性</h2>
 <p>10人の翻訳と原文の差分を可視化するシステムは、各訳者が個々の歌に対して持つ知見を総合し、メタ分析や要約として機能すると考えられる。しかし、現代語訳に含まれる知識が、歌ことばのノンリテラルな情報にどこまでアクセスできるか、また可視化としてどの程度の妥当性や信頼性を持つかについては、本稿では取り扱っていない。</p>
 <p>翻訳において、過剰な意味付けは解釈の妥当性や整合性を損なう可能性がある。元のテキストが持つシンプルな意味や意図が、余計な意味付けによって曖昧になり、読者が正しく理解することを困難にするおそれがある。そのような翻訳を可視化に応用すると、可視化そのものの信憑性が損なわれる可能性があるため、慎重に考慮する必要がある。いかにして訳者の訳語から信頼性の高い部分を抽出するかが、翻訳に基づく可視化の重要な課題となる。</p>
 </section>
-<section id="翻訳研究の知見による解釈の必要性" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="翻訳研究の知見による解釈の必要性"><span class="header-section-number">4.5</span> 翻訳研究の知見による解釈の必要性</h2>
-</section>
-<section id="翻訳研究の知見による解釈の必要性-1" class="level2 page-columns page-full" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="翻訳研究の知見による解釈の必要性-1"><span class="header-section-number">4.6</span> 翻訳研究の知見による解釈の必要性</h2>
+<section id="翻訳研究の知見による解釈の必要性" class="level2 page-columns page-full" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="翻訳研究の知見による解釈の必要性"><span class="header-section-number">5.4</span> 翻訳研究の知見による解釈の必要性</h2>
 <p>本研究は、翻訳研究自体を目的としているわけではないが、翻訳における要素の追加や原文における要素の喪失といった現象は、翻訳研究における仮説や理論に基づいて解釈する余地が十分にあると考えられる。</p>
 <p>例えば、翻訳普遍性仮説（translation universal hypothesis）における「長さの増加の普遍性」（law of lengthening）や「明示化の普遍性」（law of explicitation）は、現代語訳における追加要素の存在を説明する際に有効である<span class="citation" data-cites="Chesterman2004Hypotheses Edina2016Translation Vinay1958Comparative Baker1996Challenges Blum-Kulka1986Shifts">(<a href="#ref-Chesterman2004Hypotheses" role="doc-biblioref">Chesterman 2004</a>; <a href="#ref-Edina2016Translation" role="doc-biblioref">Edina 2016</a>; <a href="#ref-Vinay1958Comparative" role="doc-biblioref">Vinay 1958</a>; <a href="#ref-Baker1996Challenges" role="doc-biblioref">Baker 1996</a>; <a href="#ref-Blum-Kulka1986Shifts" role="doc-biblioref">Blum-Kulka 1986</a>)</span>。これらの仮説に基づけば、現代語訳における追加要素は、翻訳における普遍的な現象であり、特に明示化の普遍性は本稿で言うノンリテラル要素の追加と深く関係している。翻訳における明示化について、<span class="citation" data-cites="Blum-Kulka1986Shifts">Blum-Kulka (<a href="#ref-Blum-Kulka1986Shifts" role="doc-biblioref">1986</a>)</span> は、翻訳者がソーステキストにはない cohesive marker<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>をターゲットテキストに追加することを指摘している。一方で、<span class="citation" data-cites="Baker1996Challenges">Baker (<a href="#ref-Baker1996Challenges" role="doc-biblioref">1996, 180</a>)</span> は、この問題を、物事を暗黙的に残さずに明確に説明する傾向として捉えている。このような「明示化」はもともと談話標識や cohesive marker の訳文における増加傾向を指しており、本研究における要素の追加の一部はこの仮説から説明できる。ただし、すべての現象をこの仮説で解釈することは難しい。実際、翻訳普遍性仮説には反例も存在し、確率的な傾向として捉えられることが妥当であるとされている<span class="citation" data-cites="Pym2008Tourys Tymoczko1998Computerized Chesterman2004Hypotheses Chesterman2010Why">(<a href="#ref-Pym2008Tourys" role="doc-biblioref">Pym 2008</a>; <a href="#ref-Tymoczko1998Computerized" role="doc-biblioref">Tymoczko 1998</a>; <a href="#ref-Chesterman2004Hypotheses" role="doc-biblioref">Chesterman 2004</a>, <a href="#ref-Chesterman2010Why" role="doc-biblioref">2010</a>)</span>。例えば、談話標識や cohesive marker の追加を取り除いた場合でも、分析事例において多くの追加要素が確認された。したがって、すべての追加要素が翻訳普遍性仮説に基づくものとは言い切れない。</p>
 <div class="no-row-height column-margin column-container"><div id="fn14"><p><sup>14</sup>&nbsp;<span class="citation" data-cites="Nunan1993Introducing">Nunan (<a href="#ref-Nunan1993Introducing" role="doc-biblioref">1993, 21</a>)</span> によると、cohesive marker とは、書き手や話し手が文や発話の境界を越えて関係を確立し、テキスト内の文を結びつけるのに役立つ語やフレーズのことを指す。例えば、「そして」「しかし」「それ」などが含まれる。</p></div></div><p>また、翻訳の認知的側面に関連する仮説として、「リテラル翻訳仮説」（literal translation hypothesis）も検討に値する。この仮説では、翻訳者がテキストを処理する際、まずリテラルな（逐語的な）訳を基にし、そこから自由な表現に向かう傾向があるとされる<span class="citation" data-cites="Chesterman2011Reflections">(<a href="#ref-Chesterman2011Reflections" role="doc-biblioref">Chesterman 2011</a>)</span>。この仮説に基づいて、認知処理と認知負荷の観点からリテラル翻訳の度合いを測定するための指標が提案されており<span class="citation" data-cites="Carl2017Measuring">(<a href="#ref-Carl2017Measuring" role="doc-biblioref">Carl and Schaeffer 2017</a>)</span>、例えば、1) 原文と訳文の語順の類似性、2) 可能な異なる翻訳表現の数、などが挙げられる。これらの指標は本稿で言及するテキストの追加率や不一致率とは異なる視点を提供するが、特に2点目はノンリテラル要素の可視化に関連する可能性があり、今後の研究課題として検討する価値がある。</p>
-<p>さらに、翻訳研究における「単位」と「一致」に関する問題も重要である。従来の翻訳研究では、翻訳等価性（translation equivalence）や翻訳単位（translation unit）に関する議論が多く行われてきた<span class="citation" data-cites="Nida1969Theory Koller1979Einfuehrung Malmkjaer2008Unit">(<a href="#ref-Nida1969Theory" role="doc-biblioref">Nida and Taber [1982] 1969</a>; <a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">Koller [2004] 1979</a>; <a href="#ref-Malmkjaer2008Unit" role="doc-biblioref">Malmkjær 2008</a>)</span>。これらの視点から、翻訳における分析単位がどのように影響するかについての考察が必要であり、さらなる研究の余地がある。</p>
+<p>さらに、翻訳研究における「一致の単位」に関する問題も重要である。従来の翻訳研究では、翻訳等価性（translation equivalence）や翻訳単位（translation unit）に関する議論が多く行われてきた<span class="citation" data-cites="Nida1969Theory Koller1979Einfuehrung Malmkjaer2008Unit">(<a href="#ref-Nida1969Theory" role="doc-biblioref">Nida and Taber [1982] 1969</a>; <a href="#ref-Koller1979Einfuehrung" role="doc-biblioref">Koller [2004] 1979</a>; <a href="#ref-Malmkjaer2008Unit" role="doc-biblioref">Malmkjær 2008</a>)</span>。これらの視点から、翻訳における分析単位がどのように影響するかについての考察が必要であり、さらなる研究の余地がある。</p>
 </section>
-<section id="方法論の改善余地" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="方法論の改善余地"><span class="header-section-number">4.7</span> 方法論の改善余地</h2>
-</section>
-<section id="翻訳研究の知見による解釈の必要性-2" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="翻訳研究の知見による解釈の必要性-2"><span class="header-section-number">4.8</span> 翻訳研究の知見による解釈の必要性</h2>
+<section id="方法論の改善余地" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="方法論の改善余地"><span class="header-section-number">5.5</span> 方法論の改善余地</h2>
 <p>本稿での一致率の計算は完全にルールベースの手法に基づいており、一貫性と簡素さの面では優れた方法であると考えられる。しかし、整列法（アライメント）については、動的計画法を用いたアライメントに課題が残る。古語と現代語の間では、一方が低リソース言語であることから、ニューラルネットワークを用いた手法や手動によるアライメントも検討する必要がある。例えば、<span class="citation" data-cites="Palladino2022Using">Palladino, Shamsian, and Yousef (<a href="#ref-Palladino2022Using" role="doc-biblioref">2022</a>)</span> および <span class="citation" data-cites="Camilleri2024Evaluating">Camilleri (<a href="#ref-Camilleri2024Evaluating" role="doc-biblioref">2024</a>)</span> が提案する <code>Ugarit</code> プラットフォームを活用したアライメント手法では、一対多の対応関係の分析や、訳出パターンの共通点と分岐点、非対応の品詞情報の分析など、より精緻なコントロールが可能になると期待される。</p>
 </section>
-<section id="分類語彙表番号の応用研究として" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="分類語彙表番号の応用研究として"><span class="header-section-number">4.9</span> 分類語彙表番号の応用研究として</h2>
+<section id="分類語彙表番号の応用研究として" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="分類語彙表番号の応用研究として"><span class="header-section-number">5.6</span> 分類語彙表番号の応用研究として</h2>
 <p>本稿における（不）一致率および追加率の計算では、言語処理のアライメントモデルではなく、安定した分類番号を用いた。特に、バッグ法は、句や語の入れ替えに依存せず、意味の一致を検出する上で有効であった。意味の分類体系が、同じ意味を持つ語を階層的に対応づけることの有用性は、古語研究においても再確認された。本研究では、旧分類語彙表番号を使用しているが、近年は <span class="citation" data-cites="Asahara2022CHJWLSP">Asahara et al. (<a href="#ref-Asahara2022CHJWLSP" role="doc-biblioref">2022</a>)</span> によって、古語に対して新たな分類語彙番号が付与されており、これによって研究の可能性がさらに広がることが期待される。ただし、分類語彙表番号は2024年現在、概念レベルまでの対応であり、類義語、同義語、同語異表記などのメタコードや識別子としての一致検出にはまだ対応していない。そのため、研究者各自が研究の目標に合わせて適切にアダプテーションを行う必要がある。本稿で採用している意味付与の方法も、さらなる修正が求められる。この点において、意味体系の構築方法について、今後の検討の余地があると考えている。</p>
 <!-- ## 翻訳一般性仮説の観点から見る現代語訳の操作 -->
 <!-- 翻訳における言い換え、追加、省略について、翻訳研究の観点からしばしば、翻訳一般性（普遍性）の仮説で解釈されている。@Chesterman2004Hypotheses と @Edina2016Translation に基づいて、翻訳において潜在的にかかわりうる翻訳一般性を以下に整理している： -->
@@ -1475,10 +1577,10 @@ Figure&nbsp;8: 10人の訳者のアライメント（筆者がアライメント
 <!-- Tymoczko (1998)等人指出了相关的缺陷。每当需要生成或检验关于普遍性的假设时，就会建立翻译语料库。然而，对于什么应该或不应该算作翻译以纳入该语料库，却并不清楚。例如，我们需要回答一些棘手的问题来决定这一重大步骤，包括询问如果翻译是由目标语言的母语人士完成的并且是最近出版的，是否应该纳入。问题可能还涉及它们是否可以归类为好或坏，或者它们是否由受过训练的专业人士、业余爱好者、团体、粉丝或个人完成，并包含改编或版本。在构建这样的语料库时，需要明确在何处划清纳入项目的界限。 -->
 </section>
 </section>
-<section id="sec-conclusions" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> 結論</h1>
-<section id="結論" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="結論"><span class="header-section-number">5.1</span> 結論</h2>
+<section id="sec-conclusions" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 結論</h1>
+<section id="結論" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="結論"><span class="header-section-number">6.1</span> 結論</h2>
 <p>本稿では、古今和歌集の現代語訳を通じて、原文に含まれるノンリテラル要素を可視化するための材料としての有用性を示すことを目的とし、10種類の現代語訳における追加要素の分析を行った。</p>
 <p>具体的には、古今和歌集の現代語訳の全体像を紹介し、20世紀における和歌の現代語訳の翻訳アプローチを、注釈書に記された訳者の意識に基づいて整理した。これにより、訳者の翻訳姿勢を、コミュニケーションモデルの視点から「歌人の作意（source）を重視する」「テキストの字義（signal）を重視する」「読者（destination）を重視する」「その他の明確でないもの」の4種類に分類した。</p>
 <p>これらの主観的な翻訳意識や翻訳アプローチが、訳文における追加要素や一致率にどのように反映されているかを検討するために、<span class="citation" data-cites="Yamamoto2019Analysis">Yamamoto and Hodošček (<a href="#ref-Yamamoto2019Analysis" role="doc-biblioref">2019</a>)</span> で行われた追加率の計算手順を明確化し、より明確な設定と更新データを用いて再計算を行った。古語と現代語訳における語レベルでの非一致率および現代語訳における追加率の計算と統計モデリングにより、翻訳アプローチに関わらず、現代語訳には普遍的に情報の追加が見られ、訳者間の追加率の変動が歌間の追加率の変動よりも小さいことを示した。</p>

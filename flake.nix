@@ -35,8 +35,10 @@
             IRkernel
             whereami
             png
+            svglite
             reticulate
             knitr
+            kableExtra
             glossr
             cmdstanr
             rmarkdown

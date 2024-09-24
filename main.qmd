@@ -126,6 +126,7 @@ crossref:
 library(fitdistrplus)
 library(tidyverse)
 library(knitr)
+library(kableExtra)
 library(rstatix)
 
 library(brms)
@@ -184,20 +185,46 @@ theme_set_b <- function() {
 }
 ```
 
+```{r}
+#| label: output-kable-function
+
+# Define a function to create a kable table
+# Require kableExtra and knitr
+create_kable_table <- function(data, cols) {
+  # Check if the output format is HTML
+  if (knitr::is_html_output()) {
+    # Replace '\n' with '<br>' for line breaks in HTML
+    cols <- gsub("\n", "<br>", cols)
+    data |> kable(col.names = cols, escape = FALSE, format = "html") %>%
+      kable_styling()
+    
+  # Check if the output format is LaTeX
+  } else if (knitr::is_latex_output()) {
+    # Replace '\n' with '\\' for line breaks in LaTeX
+    cols <- gsub("\n", "\\\\", cols)
+    data |> kable(col.names = cols, escape = FALSE, format = "latex") %>%
+      kable_styling(latex_options = "hold_position")
+    
+  # Default case: create a regular table without line breaks
+  } else {
+    data |> kable(col.names = cols)
+  }
+}
+```
+
 # はじめに
 
 ## 目的と結論の概要
 
 本稿の目的は、和歌の現代語訳が、直訳や逐語訳であっても、訳者の意図が異なっても、ノンリテラル要素を補足する解釈材料として利用できるかを検討することである。この目的を達成するため、原文との不一致率と訳文における追加率を計算し、さらに具体的な事例を通じて追加要素の分析を行った。
 
-具体的には、和歌の現代語訳におけるノンリテラル要素の可視化とその応用可能性について検討した。古今和歌集の口語訳の歴史的な変遷を俯瞰し、20世紀における注釈書10種類の現代語訳に見られる翻訳アプローチを分類した。また、古語と現代語訳の語レベルの非一致率と現代語訳における追加率を計算し、翻訳アプローチにかかわらず、現代語訳にノンリテラル要素が追加されていることを確認した。これにより、現代語訳が直訳や逐語訳にとどまらず、原文の理解を補足する役割を果たしている可能性が示された。さらに、具体的な現代語訳の事例を提示し、対象語のコーパスレベルの共出現語、共出現語の全体的な志向性がセンテンスレベルの現代語訳それぞれに反映されているかどうかを検討した。以上の結果から、現代語訳をノンリテラル情報の可視化への応用が現実的であることを示した。
+具体的には、和歌の現代語訳におけるノンリテラル要素の可視化とその応用可能性について検討した。古今和歌集の口語訳の歴史的な変遷を俯瞰し、20世紀における注釈書10種類の現代語訳に見られる翻訳アプローチを分類した。また、古語と現代語訳の語レベルの非一致率と現代語訳における追加率と不一致率を計算し、翻訳アプローチにかかわらず、現代語訳にノンリテラル要素が追加されていることと、原文要素の欠落が避けられている傾向を確認した。これにより、現代語訳が直訳や逐語訳にとどまらず、原文の理解を補足する役割を果たしている可能性が示された。さらに、具体的な現代語訳の事例を提示し、対象語のコーパスレベルの共出現語、共出現語の全体的な志向性がセンテンスレベルの現代語訳それぞれに反映されているかどうかを検討した。以上の結果から、現代語訳をノンリテラル情報の可視化への応用が現実的であることを示した。
 
 ## 背景
 
 和歌に見られるノンリテラル要素の概要を説明し、現代語訳を用いたこれらの要素の可視化に関する問題や課題について述べる。これまでの研究において素材の分析が十分に行われていなかった点を指摘し、翻訳および関連研究の紹介を通して、その意義を再確認する。
 
 ### 和歌と和歌におけるノンリテラル要素
-
 
 古今和歌集仮名序に見られるように、歌人は「心に思ふもの」を自然界の物事に託して表現することが多く、直接的に明言することは稀である。和歌のことば（以下「歌ことば」）を字義通りに理解したとしても、その「心に思ふもの」には直接アクセスすることはできない。例えば、古今集の恋の歌を例にとると、
 
@@ -211,14 +238,13 @@ theme_set_b <- function() {
 
 ### 現代語訳の追加要素に基づく歌ことばのノンリテラル要素の可視化 
 
-
 筆者らはこれまで、古今和歌集の10種類の現代日本語訳を基に、歌ことばのノンリテラル要素を可視化するシステムを開発してきた [@Yamamoto2005Mathematical; @Yamamoto2006Extraction; @Chen2024Translationbased]。このシステムは、古語と現代語訳を比較し、浮かび上がる補足要素によってノンリテラル情報を可視化している。この手法は、@kondo2001Ngrama と @kondo2011Heian によって「引き算」とも呼ばれている。ただし、引き算で残る現代語訳の追加要素がどのような性質を持ち、ノンリテラル要素として扱えるかについては、より詳細な検討が必要である。
 翻訳における要素の追加について、@Koller1979Einfuehrung [p. 249] は、翻訳者の「介入 (Eingriff)」であり、原作を尊重し、価値を変えない形で、読者の不足する背景知識やデノテーション・コノテーション情報、言語内的、社会文化的、間テキスト的な情報 (intertextual information) を補うことが含まれると指摘している [@Koller1979Einfuehrung, p. 249]。これにより、翻訳は注釈や辞書と同様に、ノンリテラル情報を解釈するための有効な資料となる。
 しかし、翻訳の追加要素は、読者の理解力を過大評価または過小評価した結果として現れる場合もある [@Nida1964Science, p. 155; @Koller1979Einfuehrung, pp.249--250]。そのため、訳者による翻訳の追加要素のバリエーションを無視することはできない。古今和歌集の歌ことばを解釈する資料として現代語訳が有用であると @Chen2024Translationbased でも言及されているが、そのバリエーションについては十分な説明が行われていない。和歌の口語訳の背景や訳者毎の翻訳アプローチを再検討する必要がある。
 本稿では、これまで使用してきた10種類の現代語訳について、その成立背景や追加要素の量的および質的な分析を行う。翻訳における追加要素が読者の理解力を反映して生成されたものである可能性を考慮し、異なる訳者が和歌のノンリテラル要素をどの程度表現できたかを検討する。訳者の翻訳アプローチを整理し、その違いを明らかにすることで、翻訳の普遍的な課題と限界を考察する。
 この分析により、ノンリテラル要素の可視化システムの根拠をより明確にし、その改善の方向性を示すことができる。次節では、材料について説明を行う。
 
-## データ：古今集、注釈と現代語訳 {#sec-materials}
+# データ：古今集、注釈と現代語訳 {#sec-materials}
 
 本節では、材料として使用する古今集の概要を説明し、和歌、古今集、注釈書、そしてその現代語訳の歴史的背景について概観する。
 
@@ -240,20 +266,73 @@ theme_set_b <- function() {
 
 現代においても、古今集の注釈書は重版や改訂を重ね、30以上の注釈書が存在している。
 
-::: {#tbl-annotation}
-
 <!-- | Author                       | Year   | Annotation book title                         | -->
-| Author 著者                   | Year 発行年  | Annotation book title  注釈書名       |
-| ---------------------------- | ------ | --------------------------------------------- |
-| Kitamura Kigin 北村季吟        | 1682   | *Hachidaishūshō* 八代集抄                   |
-| Keichū 契沖                    | 1692   | *Kokinwakashū Yozaishō* 古今和歌集余材抄    |
-| Kamo no Mabuchi 賀茂真淵       | 1784   | *Kokinwakashū Uchigiki* 古今和歌集打聴      |
-| Motoori Norinaga 本居宣長       | 1793?  | *Kokinwakashū Tōkagami* 古今和歌集遠鏡     |
-| Kagawa Kageki 香川景樹         | 1832   | *Kokinwakashū Seigi* 古今和歌集正義         |
+<!-- | Author 著者                   | Year 発行年  | Annotation book title  注釈書名       | -->
+<!-- | ---------------------------- | ------ | --------------------------------------------- | -->
+<!-- | Kitamura Kigin 北村季吟        | 1682   | *Hachidaishūshō* 八代集抄                   | -->
+<!-- | Keichū 契沖                    | 1692   | *Kokinwakashū Yozaishō* 古今和歌集余材抄    | -->
+<!-- | Kamo no Mabuchi 賀茂真淵       | 1784   | *Kokinwakashū Uchigiki* 古今和歌集打聴      | -->
+<!-- | Motoori Norinaga 本居宣長       | 1793?  | *Kokinwakashū Tōkagami* 古今和歌集遠鏡     | -->
+<!-- | Kagawa Kageki 香川景樹         | 1832   | *Kokinwakashū Seigi* 古今和歌集正義         | -->
 
-: 近代前（1600--1868）の古今集の代表的な注釈書 Representative annotation books of *Kokinshū* before modern times (1600--1868)
+<!-- 近代前（1600--1868）の古今集の代表的な注釈書 Representative annotation books of *Kokinshū* before modern times (1600--1868) -->
 
-:::
+```{r}
+#| label: tbl-annotation
+#| tbl-cap: "近代前（1600--1868）の古今集の代表的な注釈書 Representative annotation books of *Kokinshū* before modern times (1600--1868)"
+
+main.title <- "近代前（1600−1868）の古今集の代表的な注釈書"
+subtitle <- expression(paste("Representative annotation books of ", italic("Kokinshū"), " before modern times (1600−1868)"))
+cols <- c("著者\nAuthor", "発行年\nYear", "注釈書名\nAnnotation Book Title")
+
+# Create the data frame without italic
+data_annotation <- data.frame(
+  Author = c("Kitamura Kigin 北村季吟", "Keichū 契沖", "Kamo no Mabuchi 賀茂真淵", 
+             "Motoori Norinaga 本居宣長", "Kagawa Kageki 香川景樹"),
+  Year = c(1682, 1692, 1784, "1793?", 1832),
+  AnnotationBook = c(
+    "Hachidaishūshō 八代集抄",
+    "Kokinwakashū Yozaishō 古今和歌集余材抄",
+    "Kokinwakashū Uchigiki 古今和歌集打聴",
+    "Kokinwakashū Tōkagami 古今和歌集遠鏡",
+    "Kokinwakashū Seigi 古今和歌集正義"
+  )
+)
+
+# Create the text table with bilingual column names
+tab <- ggtexttable(
+  data_annotation, rows = NULL, 
+  cols = cols,
+  theme = ttheme(
+    base_size = 8,
+    colnames.style = colnames_style(
+      fill = "white",
+      hjust = 0,
+      x = 0,
+      ),
+    tbody.style = tbody_style(
+      fill = "white",
+      hjust = as.vector(matrix(c(0, 0, 0), ncol = 3, nrow = nrow(data_annotation), byrow = TRUE)),
+      x = as.vector(matrix(c(0, 0, 0), ncol = 3, nrow = nrow(data_annotation), byrow = TRUE)),
+      ),
+    )
+)
+
+# Add footnote and save the table as an SVG file
+tab <- tab |>
+  tab_add_hline(at.row = c(1, 2), row.side = "top", linewidth = 3, linetype = 1) |>
+  tab_add_title(text = subtitle, face = "plain", size = 11) |>
+  tab_add_title(text = main.title, face = "bold", size = 16, padding = unit(0.5, "line")) |>
+  tab_add_hline(at.row = 8, row.side = "bottom", linewidth = 3, linetype = 1)
+
+# Save the table as an SVG file with a specified width of 150mm
+invisible(svg("figures/table-1.svg", width = 200 / 25.4, height = 100 / 25.4))
+grid::grid.draw(tab)
+invisible(dev.off())
+
+# Output
+create_kable_table(data_annotation, cols)
+```
 
 ## 20世紀の注釈における現代語訳とデータの概要
 
@@ -264,21 +343,100 @@ theme_set_b <- function() {
 ただし、これらの注釈書から文字化されたデータには、和歌の現代語訳に関する著作権、校訂著作権、翻刻著作権などが含まれるため、すべてのデータを公開することはできない。
 
 <!-- |     | Abbr. | Reference          | Manuscript  | Token count | Type count | Document count | -->
-|     | Abbr. 略号 | Annotation book 注釈書  | Manuscript 底本  | Token count トークン数 | Type count タイプ数 | Document count 文書数 |
-|-----|-------|--------------------|-------------|------------:|-----------:|---------------:|
-| 1   | KNK   | @kaneko1933Kokin        | Teika 定家 | 42,439      | 3,356      | 1,000          |
-| 2   | KBT   | @kubota1960Kokin          | Teika 定家 | 32,210      | 2,701      | 1,000          |
-| 3   | MTD   | @matsuda1968Shinshaku     | Teika 定家 | 31,860      | 3,007      | 1,000          |
-| 4   | OZW   | @ozawa1971Kikon           | Teika 定家  | 36,173      | 3,384      | 1,000          |
-| 5   | TKOK  | @takeoka1976Kokin         | Teika 定家  | 29,844      | 2,861      | 1,000          |
-| 6   | OKMR  | @okumura1978Kokin         | Teika 定家  | 32,321      | 3,153      | 1,000          |
-| 7   | KSJ   | @kyusojin1979Kokin        | Teika 定家  | 34,050      | 2,770      | 1,000          |
-| 8   | KMCY  | @komachiya1982Kokin       | Teika 定家  | 30,869      | 2,692      | 1,000          |
-| 9   | K&A   | @kojima1989Kokin          | Teika 定家  | 33,867      | 2,955      | 1,000          |
-| 10  | KTGR  | @katagiri1998Kokinhyoshaku| Teika 定家  | 36,362      | 2,882      | 1,000          |
-|     | Total |                           |             | 339,995     | 8,252      | 10,000         |
+<!-- |     | Abbr. 略号 | Annotation book 注釈書  | Manuscript 底本  | Token count トークン数 | Type count タイプ数 | Document count 文書数 | -->
+<!-- |-----|-------|--------------------|-------------|------------:|-----------:|---------------:| -->
+<!-- | 1   | KNK   | @kaneko1933Kokin        | Teika 定家 | 42,439      | 3,356      | 1,000          | -->
+<!-- | 2   | KBT   | @kubota1960Kokin          | Teika 定家 | 32,210      | 2,701      | 1,000          | -->
+<!-- | 3   | MTD   | @matsuda1968Shinshaku     | Teika 定家 | 31,860      | 3,007      | 1,000          | -->
+<!-- | 4   | OZW   | @ozawa1971Kikon           | Teika 定家  | 36,173      | 3,384      | 1,000          | -->
+<!-- | 5   | TKOK  | @takeoka1976Kokin         | Teika 定家  | 29,844      | 2,861      | 1,000          | -->
+<!-- | 6   | OKMR  | @okumura1978Kokin         | Teika 定家  | 32,321      | 3,153      | 1,000          | -->
+<!-- | 7   | KSJ   | @kyusojin1979Kokin        | Teika 定家  | 34,050      | 2,770      | 1,000          | -->
+<!-- | 8   | KMCY  | @komachiya1982Kokin       | Teika 定家  | 30,869      | 2,692      | 1,000          | -->
+<!-- | 9   | K&A   | @kojima1989Kokin          | Teika 定家  | 33,867      | 2,955      | 1,000          | -->
+<!-- | 10  | KTGR  | @katagiri1998Kokinhyoshaku| Teika 定家  | 36,362      | 2,882      | 1,000          | -->
+<!-- |     | Total |                           |             | 339,995     | 8,252      | 10,000         | -->
 
-: 古今和歌集の短歌の20世紀の現代語訳 10 種：トークン・タイプ数の集計においては、複合表現の場合、その下位分解をカウントしていない Summary of 10 modern Japanese translations of *Kokin Wakashū* from the 20th century: Token and type counts exclude decomposition of compound expressions. {#tbl-CT-data}
+<!-- : 古今和歌集の短歌の20世紀の現代語訳 10 種：トークン・タイプ数の集計においては、複合表現の場合、その下位分解をカウントしていない Summary of 10 modern Japanese translations of *Kokin Wakashū* from the 20th century: Token and type counts exclude decomposition of compound expressions. {#tbl-CT-data} -->
+
+```{r}
+#| label: tbl-CT-data
+#| tbl-cap: "古今和歌集の20世紀の現代語訳 10 種 10 contemporary Japanese translations of *Kokin Wakashū* from the 20th century."
+#| message: false
+
+# Main title and subtitle for the table
+main.title <- "古今集の 20 世紀の現代語訳 10 種"
+subtitle <- expression(paste("10 contemporary Japanese translations of ", italic("Kokinshū"), " from the 20th century"))
+footnote <- paste0(
+  "トークン・タイプ数の集計においては、複合表現の場合、その下位分解をカウントしていない。",
+  " Token and type counts exclude decomposition of compound expressions."
+) |> 
+ strwrap(width = 80) |> 
+ paste(collapse = "\n")
+cols = c(
+  "略号\nAbbreviation", "注釈書\nAnnotation Book", "底本\nManuscript", 
+  "トークン数\nToken Count", "タイプ数\nType Count", "文書数\nDocument Count"
+  )
+
+# Create the data frame with formatted numbers
+data_summary <- data.frame(
+  Abbr = c("KNK", "KBT", "MTD", "OZW", "TKOK", "OKMR", "KSJ", "KMCY", "K&A", "KTGR", "Total"),
+  AnnotationBook = c(
+    "金子 (1933)", "窪田 (1960)", "松田 (1968)", "小沢 (1971)", 
+    "竹岡 (1976)", "奥村 (1978)", "久曽神 (1979)", "駒井 (1982)", 
+    "小島・新井 (1989)", "片桐 (1998)", ""
+    ),
+  Manuscript = c(
+    "Teika 定家", "Teika 定家", "Teika 定家", "Teika 定家", 
+    "Teika 定家", "Teika 定家", "Teika 定家", "Teika 定家", 
+    "Teika 定家", "Teika 定家", ""
+    ),
+  TokenCount = c(42439, 32210, 31860, 36173, 29844, 32321, 34050, 30869, 33867, 36362, 339995),
+  TypeCount = c(3356, 2701, 3007, 3384, 2861, 3153, 2770, 2692, 2955, 2882, 8252),
+  DocumentCount = c(1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 10000)
+)
+
+# Create the text table with bilingual column names
+tab <- data_summary |>
+  mutate(
+    TokenCount = formatC(TokenCount, format = "d", big.mark = ","),
+    TypeCount = formatC(TypeCount, format = "d", big.mark = ","),
+    DocumentCount = formatC(DocumentCount, format = "d", big.mark = ",")
+    ) |>
+  ggtexttable(
+    rows = NULL, 
+    cols = cols,
+    theme = ttheme(
+      base_size = 5,
+      colnames.style = colnames_style(
+        fill = "white",
+        hjust = c(0, 0, 0, 1, 1, 1),
+        x = c(.1, .1, .1, .9, .9, .9),
+        ),
+      tbody.style = tbody_style(
+        fill = "white",
+        hjust = as.vector(matrix(c(0, 0, 0, 1, 1, 1), ncol = 6, nrow = nrow(data_summary), byrow = TRUE)),
+        x = as.vector(matrix(c(.1, .1, .1, .9, .9, .9), ncol = 6, nrow = nrow(data_summary), byrow = TRUE)),
+        ),
+      )
+  )
+
+# Add title, subtitle, and footnote, as well as horizontal lines
+tab <- tab |>
+  tab_add_hline(at.row = c(1, 2), row.side = "top", linewidth = 3, linetype = 1) |>  
+  tab_add_title(text = subtitle, face = "plain", size = 14) |>
+  tab_add_title(text = main.title, face = "bold", size = 16, padding = unit(0.5, "line")) |>
+  tab_add_footnote(text = footnote, size = 6) |>
+  tab_add_hline(at.row = 13, row.side = "bottom", linewidth = 3, linetype = 1)
+
+# Save the table as an SVG file with a specified width of 200mm
+invisible(svg("figures/table-2.svg", width = 200 / 25.4, height = 125 / 25.4))
+grid::grid.draw(tab)
+invisible(dev.off())
+
+# Output
+create_kable_table(data_summary, cols)
+```
 
 ```{python}
 #| label: read-raw-db
@@ -450,7 +608,7 @@ def _remove_punctuation(line: str) -> str:
 
 ## 文献調査による翻訳アプローチの分類
 
-本節では、20世紀の古今集注釈書における現代語訳の執筆方針について文献調査を行い、整理する。@Yamamoto2005Mathematical [p. 102] では、訳者の理論的考えを踏まえつつ、それぞれの現代語訳を実際に観察し、「逐語訳 (word-for-word)」「作者の意思の尊重 (intention-oriented)」「字句を補う (supplement for words)」「語順・語法を変える (word change)」「不詳 (not mentioned)」のように分類しているが、「作者の意思の尊重 (intention-oriented)」は翻訳の目標・フォーカスであり、その他は具体的な訳し方である、分類の視座が統一されていない。そのため、基準の統一た分類が必要である。ここでは、@Yamamoto2005Mathematical で採用された @Schramm1954Process のコミュニケーションモデルの観点から翻訳の力点の置き方の分類を行う（Figure 1）。
+本節では、20世紀の古今集注釈書における現代語訳の執筆方針について文献調査を行い、整理する。@Yamamoto2005Mathematical [p. 102] では、訳者の理論的考えを踏まえつつ、それぞれの現代語訳を実際に観察し、「逐語訳 (word-for-word)」「作者の意思の尊重 (intention-oriented)」「字句を補う (supplement for words)」「語順・語法を変える (word change)」「不詳 (not mentioned)」のように分類しているが、「作者の意思の尊重 (intention-oriented)」は翻訳の目標・フォーカスであり、その他は具体的な訳し方である、分類の視座が統一されていない。そのため、基準の統一た分類が必要である。ここでは、@Yamamoto2005Mathematical で採用された @Schramm1954Process のコミュニケーションモデルの観点から翻訳の力点の置き方の分類を行う (@fig-schramm-schema)。
 
 現代語訳のコミュニケーションモデルは、2つのサブプロセスを含んでいる。翻訳者が、10世紀のサブプロセスの受信者でありながら、20世紀のサブプロセスの発信者である。2つのサブプロセスの経験野をコミュニケートする役割を果たしている。
 
@@ -473,7 +631,7 @@ def _remove_punctuation(line: str) -> str:
 
 ## 追加率・不一致率の計算
 
-読者本位や歌人本位の訳文は、解釈や推論の追加が多く含まれる可能性が高く、ノンリテラル要素を多く抽出できると考えられる。しかし、訳者が主観的に読者本位・歌人本位のアプローチを意識しても、翻訳実践と翻訳アプローチの間にずれが生じることがある。そのため、追加率を客観的に調査し、このずれを明確にする必要がある。各訳者が自身の翻訳アプローチにどれほど一貫しているかを、実際の和歌と現代語訳の不一致率で計算する。不一致率の計算方法として、要素の順序や重複を考慮しない集合演算（バッグ法）と、要素の順序や重複を考慮するアライメント（整列法）を用いる。手順は、@Yamamoto2005Mathematical と @Yamamoto2019Analysis でも説明されているが、詳細な手順は示されていなかったため、本稿では計算のプロセスをより明確にする。
+本稿では、訳における追加率は情報の補足の量を操作するものとし、原文における不一致率は原文の情報の欠落の量を操作するものとする。ノンリテラル情報の抽出は、追加率の高く、不一致率の低い訳が望ましい。そのため、追加率を客観的に調査し、このずれを明確にする必要がある。追加率と不一致率の計算方法として、要素の順序や重複を考慮しない集合演算（バッグ法）と、要素の順序や重複を考慮するアライメント（整列法）を用いる。手順は、@Yamamoto2005Mathematical と @Yamamoto2019Analysis でも説明されているが、詳細な手順は示されていなかったため、本稿では計算のプロセスをより明確にする。
 @Yamamoto2005Mathematical と @Yamamoto2019Analysis のアプローチでは、語の複数の意味をメタコードで同時に保持し、不一致率の計算を行っている。デフォルトの分類語彙表番号、または複合語において一致語がある場合、その下位分解やその他の意味の一致可能性については考慮しない。このアプローチのメリットは、複合表現の一致を優先し、多義語のいずれかの意味が一致する可能性を計算に含めることにある。
 計算において、重要な前提は、翻訳者が100%の情報を翻訳に含めようとする努力を行っていると見なすことである。そのため、現代語に形式的に一致する語がない場合でも、原文のいずれかの要素と1対1で対応していると仮定し、追加率からその分を差し引く^[これを純粋なアノテーション (pure annotation) と呼ぶ]。しかし、歌ことばに対応する語が明らかに存在しない場合、それは情報の欠落を訳者が認識していることを意味し、逐語訳の前提が理論的であることを示す。また、対応単位が変動するため、訳語の数のカウントが変わり、訳者ごとの追加率の比較が直感的でなくなることもある。
 本稿では、追加率の計算手順を明確化し、結果の再現性を補足する。計算の調整は、当初の結論に影響を与えない。本稿の計算では、デフォルトの分類語彙表のメタコードと分解された最小単位を統一した上で実施する。^[計算スクリプトは、他の選択肢も提供している。]
@@ -565,8 +723,8 @@ def match_category(s: str, t: str) -> str:
 
 $$
 \begin{align}
-\text{U}_{T}(S,T) &= 1 - \frac{1}{|T|}\text{agreement}_{S}\\
-\text{agreement}_{S} &= \sum_{s_i \in S} \mathbb{I} \left( \exists t_j \in T \text{ such that } \text{match}(s_i, t_j) \notin U \right)
+\text{Addition Rate}(S,T) &= 1 - \frac{1}{|T|}\text{agreement}_{S}\\
+\text{agreement}_{S}(S,T) &= \sum_{s_i \in S} \mathbb{I} \left( \exists t_j \in T \text{ such that } \text{match}(s_i, t_j) \notin U \right)
 \end{align}
 $$
 
@@ -578,7 +736,7 @@ $\text{agreement}_{S}$ は、ソーステキストにおいて一致語をもつ
 
 $$
 \begin{align}
-\text{U}_{S}(S,T) &= 1 - \frac{1}{|S|}\text{agreement}_{S}
+\text{Unmatch Rate}(S,T) &= 1 - \frac{1}{|S|}\text{agreement}_{S}
 \end{align}
 $$
 
@@ -660,15 +818,14 @@ def match_count_bag(poem_lines: List[str], translation_lines: List[str]) -> dict
     return match_counts
 ```
 
-#### 整列法による追加率の計算 {.unnumbered}
+#### 整列法による追加率・不一致率の計算 {.unnumbered}
 
 整列法による計算は、まずアライメント（整列）を推定し、次に整列された2語の一致数をもとに追加率を求める方法である。集合としてではなく、シーケンスとして順序を考慮する計算方法を用いる。
 
 本稿では、分類語彙表番号を用いた動的計画法（Dynamic Programming）に基づきアライメントを行う。動的計画法を用いて2つのシーケンス間のアライメントを計算するスコア関数は、以下のように定義される。
 
 $$
-\begin{align}
-\text{S}_{\text{DP}}(i, j) &=
+\text{S}_{\text{DP}}(i, j) =
 \begin{cases}
 0 & \text{if } i = 0 \text{ or } j = 0 \\
 \max
@@ -677,21 +834,22 @@ $$
 \text{S}_{\text{DP}}(i-1, j-1) + \text{weight}(s_i, t_j) \\
 \text{S}_{\text{DP}}(i, j-1) - \text{gap}
 \end{cases} & i > 0 \text{ and } j > 0
-\end{cases}\\
+\end{cases}
+$$
 
-\text{weight}(s,t) &=
+このスコア関数 $\text{S}_{\text{DP}}(i,j)$ は、ソーステキストのシーケンス $S$ とターゲットテキストのシーケンス $T$ の部分列の位置 $i$ および $j$ までの最適なアライメントスコアを再帰的に計算するものである。重み付け関数 $\text{weight}(s,t)$ は、LCS の値をそのまま使用し、Unmatch の場合は $-1$ のペナルティを与える（次式参照）。
+
+$$
+\text{weight}(s,t) =
 \begin{cases}
 -1, & \text{if } \text{match}(s,t) \in U \\
 10, & \text{if } \text{match}(s,t) \in G \\
 13, & \text{if } \text{match}(s,t) \in F \\
 17, & \text{if } \text{match}(s,t) \in E \\
-\end{cases}\\
-
-\text{gap} &= 0.01
-\end{align}
+\end{cases}
 $$
 
-このスコア関数 $\text{S}_{\text{DP}}(i,j)$ は、ソーステキストのシーケンス $S$ とターゲットテキストのシーケンス $T$ の部分列の位置 $i$ および $j$ までの最適なアライメントスコアを再帰的に計算するものである。重み付け関数 $\text{weight}(s,t)$ は、LCS の値をそのまま使用し、Unmatch の場合は $-1$ のペナルティを与える。ギャップ（空白）の挿入には、ペナルティ (gap penalty) として $0.01$ を設定する。^[和歌の翻訳では、語の対応が遠くなることが多いため、ギャップペナルティを $0.01$ とすることで遠くの語の対応を許容している。] この手法により、最も適したアライメントを探索する。整列後の例は以下の通りである。
+ギャップ（空白）の挿入には、ペナルティ (gap penalty) として $0.01$ を設定する。^[和歌の翻訳では、語の対応が遠くなることが多いため、ギャップペナルティを $0.01$ とすることで遠くの語の対応を許容している。] この手法により、最も適したアライメントを探索する。整列後の例は以下の通りである。
 
 ```
 >| 立田姫ーー手向けるーーーー神のあれ　ばこそーーーーーーー秋の木の葉の幣ーーーと散るーーーらめー [298]
@@ -702,8 +860,9 @@ $$
 
 $$
 \begin{align}
-\text{U}^{\prime}_{T}(S,T) &= 1-\frac{1}{|T|}\text{agreement}^{\prime}_{S}\\
-\text{agreement}^{\prime}_{S}) &= \sum_{s_i \in S^{\prime}} \mathbb{I} \left(\text{match}(s_i^{\prime}, t_i^{\prime}) \notin U \right)
+\text{Addition Rate}^{\prime}(S,T) &= 1-\frac{1}{|T|}\text{agreement}^{\prime}_{S}\\
+\text{Unmatch Rate}^{\prime}(S,T) &= 1-\frac{1}{|S|}\text{agreement}^{\prime}_{S}\\
+\text{agreement}^{\prime}_{S}(S,T) &= \sum_{s_i \in S^{\prime}} \mathbb{I} \left(\text{match}(s_i^{\prime}, t_i^{\prime}) \notin U \right)
 \end{align}
 $$
 
@@ -1062,13 +1221,16 @@ def pipe(poem: str, translation: str, mode: int = 3, level: int = 3, gap_penalty
     print(alignment_output)
 ```
 
-先行研究 [@Yamamoto2005Mathematical; @Yamamoto2019Analysis] では、グループ・フィールド・同義レベルの一致率や、理論的・実験的追加率などの指標を計算しているが、翻訳者別の追加率の平均と標準偏差のみが提示されている。今回、データの更新や計算手順の変更により、結果に変化が生じるため、新たに計算した追加率を対象に統計分析を行う。
 
-訳者の翻訳アプローチが実際の現代語訳における追加率にどのような影響を与えているかを確認するために、統計モデリングを行う。具体的には、翻訳アプローチ（`Focus`）が追加率（`additional_rate`）に与える影響を検討するため、ベータ分布に基づく回帰モデルを採用する。ここでは、前述のバッグ法によって算出された追加率を応答変数として用いる。ベータ分布を用いる理由は、応答変数が $(0, 1)$ の範囲にあり、二項分布の代替として適しているためである。また、訳者（`translator`）と歌（`poem`）の変動を統制するためにランダム効果をモデルに含めている。モデルの詳細については補足資料を参照されたい。
+## 翻訳アプローチによる追加率の差の統計モデリング
+
+読者本位や歌人本位の訳文は、解釈や推論の追加が多く含まれる可能性が高く、ノンリテラル要素を多く抽出できると考えられる。しかし、訳者が主観的に読者本位・歌人本位のアプローチを意識しても、翻訳実践と翻訳アプローチの間にずれが生じることがある。各訳者が自身の翻訳アプローチにどれほど一貫しているかを、現代語訳の追加率と翻訳アプローチの関連の視点から検証する。翻訳アプローチによる追加率の差が統計的に見られない場合、和歌の翻訳実践に必然的に要素の追加が伴うことを意味すると考えている。先行研究 [@Yamamoto2005Mathematical; @Yamamoto2019Analysis] では、グループ・フィールド・同義レベルの一致率や、理論的・実験的追加率などの指標を計算しているが、翻訳者別の追加率の平均と標準偏差のみが提示されている。それぞれの値は訳者の意図・アプローチに沿った結果か、現代語訳において常なる結果かを調査する必要がある。
+
+データの更新や計算手順の変更により、結果に変化が生じるため、新たに計算した追加率を対象に統計分析を行う。具体的には、翻訳アプローチ（`Focus`）が追加率（`Addition Rate`）に与える影響を検討するため、ベータ分布に基づく回帰モデルを採用する。ここでは、前述のバッグ法によって算出された追加率を応答変数として用いる。ベータ分布を用いる理由は、応答変数が $(0, 1)$ の範囲にあり、二項分布の代替として適しているためである。また、訳者（`Translator`）と歌（`Poem ID`）の変動を統制するためにランダム効果をモデルに含めている。モデルの詳細については補足資料を参照されたい。
 
 モデルの推定には Markov Chain Monte Carlo (MCMC) 法を使用し、4 つのチェーンそれぞれで 2000 回のイテレーションを行い、そのうち 1000 回をウォームアップ (burn-in) とする。`R` (`{r} version$version.string`) [@RCoreTeam2024Language] のパッケージ `brms` (`{r} packageVersion("brms")`) [@Burkner2017Brms] を使用してモデルを実装し、事後分布の収束は $\hat{R}$ 指標および有効サンプルサイズ (ESS) により評価する。モデルの推定結果として、各アプローチの追加率の事後分布をサンプリングし、中央値と 95% の信用区間 (CrI) を報告する。なお、信用区間には事後最狭信用区間 (Highest Posterior Density Interval) を用いる。また、アプローチ間の追加率の差についても、事後分布を示す。
 
-可視化と解釈のため、@Yu2020Tradeeffect の手法に基づき、2 群の差の事後分布の 95% CrI が 0 をカバーしているかを確認する。また、2 群の差が 0 より大きい確率も観測する。具体的には、95% CrI が 0 をカバーしていない場合には 2 群の間に差があると判断し、0 をカバーしている場合でも、差が 0 より大きい確率が 95% より大きい、または 5% より小さい場合には、傾向ありと認める。
+事後分布の可視化と解釈は、@Yu2020Tradeeffect の手法を参考とする。2 群の差の事後分布の 95% CrI が 0 をカバーしているかを確認する。また、2 群の差が 0 より大きい確率も観測する。具体的には、95% CrI が 0 をカバーしていない場合には 2 群の間に差があると判断し、0 をカバーしている場合でも、差が 0 より大きい確率が 95% より大きい、または 5% より小さい場合には、傾向ありと認める。
 
 ```{R}
 #| label: data-process
@@ -1443,7 +1605,7 @@ data |>
   xlab("Addition Rate") +
   scale_fill_okabe_ito(order = c(1, 6, 3, 2), guide = "none") +
   labs(
-    fill = "Translation Focus: ",
+    fill = "Translation Approach: ",
     caption = "2.5%, 50%, 97.5% quantiles are shown with red line"
   ) + 
   theme_set_b() +
@@ -1585,7 +1747,7 @@ data |>
   xlab("Unmatch Rate") +
   scale_fill_okabe_ito(order = c(1, 6, 3, 2), guide = "none") +
   labs(
-    fill = "Translation Focus: ",
+    fill = "Translation Approach: ",
     caption = "2.5%, 50%, 97.5% quantiles are shown with red line\n20% line is shown with black dashed line"
   ) + 
   theme_set_b() +
@@ -1608,22 +1770,37 @@ data |>
 #| label: tbl-data-review
 #| tbl-cap: "不一致率・追加率の概要 Summaries of unmatch and addition rates"
 #| tbl-subcap: 
-#|   - "不一致率・追加率の概要 Summary of unmatch and addition rates"
-#|   - "不一致率のもっとも高い歌・訳対 Poems and translations with the highest unmatch rates"
-#|   - "不一致率のもっとも低い歌・訳対 Poems and translations with the lowest unmatch rates"
-#|   - "現代語訳の不一致率のもっとも高い歌 Poem with the highest unmatch rate in contemporary translations"
-#|   - "現代語訳の追加率のもっとも高い歌 Poem with the highest addition rate in contemporary translations"
+#|   - "不一致率・追加率の概要 Data ummary of unmatch and addition rates"
+#|   - "不一致率の最も高い対訳（上位 5 対） Poem-translation pairs with the highest unmatch rates (top 5)"
+#|   - "追加率の最も高い対訳（上位 5 対） Poem-translation pairs with the highest addition rates (top 5)"
+#|   - "平均不一致率の最も高い歌（上位 5 首） Poem with the highest average unmatch rate in contemporary translations (top 5)"
+#|   - "平均追加率の最も高い歌（上位 5 首） Poem with the highest average addition rate in contemporary translations (top 5)"
 #| layout: [[100], [45, -10, 45], [45, -10, 45]]
 
-data |>  
+# subtbl1
+main.title.1 <- "不一致率・追加率の概要"
+subtitle.1 <- "Data summary of unmatch and addition rates"
+cols.1 <- c("", "最小値\nMin.", "最大値\nMax.", "中央値\nMedian", "平均値\nMean", "標準偏差\nsd")
+tab.1 <- data |>  
   get_summary_stats(
     UnmatchRate, AdditionRate,
     type = "full"
   ) |>
-  select(variable, min, max, median, mean, sd) |>
-  kable()
+  mutate(
+    variable = case_when(
+      variable == "UnmatchRate" ~ "不一致率 (Unmatch Rate)",
+      variable == "AdditionRate" ~ "追加率 (Addition Rate)",
+      TRUE ~ variable
+    )
+  ) |>
+  select(variable, min, max, median, mean, sd)
+create_kable_table(tab.1, cols.1)
 
-data |>  
+# subtbl2
+main.title.2 <- "不一致率の最も高い対訳（上位 5 対）"
+subtitle.2 <- "Poem-translation pairs with the highest unmatch rates (top 5)"
+cols.2 <- c("訳者\nTranslator", "歌番\nPoem ID", "不一致率\nUnmatch Rate")
+tab.2 <- data |>  
   mutate(
     UnmatchRate = round(UnmatchRate, 3),
     Translator = translator_labels[Translator],
@@ -1631,21 +1808,29 @@ data |>
   )  |>
   arrange(UnmatchRate) |>
   slice(n():(n()-4)) |>
-  select(Translator, PoemID, UnmatchRate) |>
-  kable()
+  select(Translator, PoemID, UnmatchRate)
+create_kable_table(tab.2, cols.2)
 
-data |>
+# subtbl3
+main.title.3 <- "追加率の最も高い対訳（上位 5 対）"
+subtitle.3 <- "Poem-translation pairs with the highest addition rates (top 5)"
+cols.3 <- c("訳者\nTranslator", "歌番\nPoem ID", "不一致率\nUnmatch Rate")
+tab.3 <- data |>
   mutate(
     AdditionRate = round(AdditionRate, 3),
     Translator = translator_labels[Translator],
     PoemID = as.character(PoemID)
   )  |>
   arrange(AdditionRate) |>
-  slice(1:5) |>
-  select(Translator, PoemID, AdditionRate) |>
-  kable()
+  slice(n():(n()-4)) |>
+  select(Translator, PoemID, AdditionRate)
+create_kable_table(tab.3, cols.3)
 
-data |>
+# subtbl4
+main.title.4 <- "平均不一致率の最も高い歌（上位 5 首）"
+subtitle.4 <- "Poem with the highest average unmatch rate\nin contemporary translations (top 5)"
+cols.4 <- c("歌番\nPoem ID", "平均値\nMean", "標準偏差\nsd")
+tab.4 <- data |>
   mutate(
     Translator = translator_labels[Translator],
     PoemID = as.character(PoemID)
@@ -1657,10 +1842,14 @@ data |>
   ) |>
   arrange(mean) |>
   slice(n():(n()-4)) |>
-  select(PoemID, variable, mean, sd) |>
-  kable()
+  select(PoemID, mean, sd)
+create_kable_table(tab.4, cols.4)
 
-data |> 
+# subtbl5
+main.title.5 <- "平均追加率の最も高い歌（上位 5 首）"
+subtitle.5 <- "Poem with the highest average addition rate\nin contemporary translations (top 5)"
+cols.5 <- c("歌番\nPoem ID", "平均値\nMean", "標準偏差\nsd")
+tab.5 <- data |> 
   mutate(
     Translator = translator_labels[Translator],
     PoemID = as.character(PoemID)
@@ -1672,8 +1861,139 @@ data |>
   ) |>
   arrange(mean) |>
   slice(n():(n()-4)) |>
-  select(PoemID, variable, mean, sd) |>
-  kable()
+  select(PoemID, mean, sd)
+create_kable_table(tab.5, cols.5)
+
+# save tables
+tab.fig.1 <- tab.1 |> ggtexttable(
+  rows = NULL, 
+  cols = cols.1,
+  theme = ttheme(
+    base_size = 8,
+    colnames.style = colnames_style(
+      fill = "white",
+      hjust = c(0, 1, 1, 1, 1, 1),
+      x = c(.1, .9, .9, .9, .9, .9),
+      ),
+    tbody.style = tbody_style(
+      fill = "white",
+      hjust = as.vector(matrix(c(0, 1, 1, 1, 1, 1), ncol = ncol(tab.1), nrow = nrow(tab.1), byrow = TRUE)),
+      x = as.vector(matrix(c(.1, .9, .9, .9, .9, .9), ncol = ncol(tab.1), nrow = nrow(tab.1), byrow = TRUE)),
+      ),
+    )
+  ) |>
+  tab_add_hline(at.row = c(1, 2), row.side = "top", linewidth = 3, linetype = 1) |>
+  tab_add_title(text = subtitle.2, face = "plain", size = 8, padding = unit(0.4, "line")) |>
+  tab_add_title(text = main.title.2, face = "bold", size = 9, padding = unit(0.6, "line")) |>
+  tab_add_hline(at.row = nrow(tab.1)+3, row.side = "bottom", linewidth = 3, linetype = 1)
+
+tab.fig.2 <- tab.2 |> ggtexttable(
+  rows = NULL, 
+  cols = cols.2,
+  theme = ttheme(
+    base_size = 8,
+    colnames.style = colnames_style(
+      fill = "white",
+      hjust = c(0, 1, 1),
+      x = c(.1, .9, .9),
+      ),
+    tbody.style = tbody_style(
+      fill = "white",
+      hjust = as.vector(matrix(c(0, 1, 1), ncol = ncol(tab.2), nrow = nrow(tab.2), byrow = TRUE)),
+      x = as.vector(matrix(c(.1, .9, .9), ncol = ncol(tab.2), nrow = nrow(tab.2), byrow = TRUE)),
+      ),
+    )
+  ) |>
+  tab_add_hline(at.row = c(1, 2), row.side = "top", linewidth = 3, linetype = 1) |>
+  tab_add_title(text = subtitle.2, face = "plain", size = 8, padding = unit(0.4, "line")) |>
+  tab_add_title(text = main.title.2, face = "bold", size = 9, padding = unit(0.6, "line")) |>
+  tab_add_hline(at.row = nrow(tab.2)+3, row.side = "bottom", linewidth = 3, linetype = 1)
+
+tab.fig.3 <- tab.3 |> ggtexttable(
+  rows = NULL, 
+  cols = cols.3,
+  theme = ttheme(
+    base_size = 8,
+    colnames.style = colnames_style(
+      fill = "white",
+      hjust = c(0, 1, 1),
+      x = c(.1, .9, .9),
+      ),
+    tbody.style = tbody_style(
+      fill = "white",
+      hjust = as.vector(matrix(c(0, 1, 1), ncol = ncol(tab.3), nrow = nrow(tab.3), byrow = TRUE)),
+      x = as.vector(matrix(c(.1, .9, .9), ncol = ncol(tab.3), nrow = nrow(tab.3), byrow = TRUE)),
+      ),
+    )
+  ) |>
+  tab_add_hline(at.row = c(1, 2), row.side = "top", linewidth = 3, linetype = 1) |>
+  tab_add_title(text = subtitle.3, face = "plain", size = 8, padding = unit(0.4, "line")) |>
+  tab_add_title(text = main.title.3, face = "bold", size = 9, padding = unit(0.6, "line")) |>
+  tab_add_hline(at.row = nrow(tab.3)+3, row.side = "bottom", linewidth = 3, linetype = 1)
+
+tab.fig.4 <- tab.4 |> ggtexttable(
+  rows = NULL, 
+  cols = cols.4,
+  theme = ttheme(
+    base_size = 8,
+    colnames.style = colnames_style(
+      fill = "white",
+      hjust = c(0, 1, 1),
+      x = c(.1, .9, .9),
+      ),
+    tbody.style = tbody_style(
+      fill = "white",
+      hjust = as.vector(matrix(c(0, 1, 1), ncol = ncol(tab.4), nrow = nrow(tab.4), byrow = TRUE)),
+      x = as.vector(matrix(c(.1, .9, .9), ncol = ncol(tab.4), nrow = nrow(tab.4), byrow = TRUE)),
+      ),
+    )
+  ) |>
+  tab_add_hline(at.row = c(1, 2), row.side = "top", linewidth = 3, linetype = 1) |>
+  tab_add_title(text = subtitle.4, face = "plain", size = 8, padding = unit(0.4, "line")) |>
+  tab_add_title(text = main.title.4, face = "bold", size = 9, padding = unit(0.6, "line")) |>
+  tab_add_hline(at.row = nrow(tab.4)+3, row.side = "bottom", linewidth = 3, linetype = 1)
+
+tab.fig.5 <- tab.5 |> ggtexttable(
+  rows = NULL, 
+  cols = cols.5,
+  theme = ttheme(
+    base_size = 8,
+    colnames.style = colnames_style(
+      fill = "white",
+      hjust = c(0, 1, 1),
+      x = c(.1, .9, .9),
+      ),
+    tbody.style = tbody_style(
+      fill = "white",
+      hjust = as.vector(matrix(c(0, 1, 1), ncol = ncol(tab.5), nrow = nrow(tab.5), byrow = TRUE)),
+      x = as.vector(matrix(c(.1, .9, .9), ncol = ncol(tab.5), nrow = nrow(tab.5), byrow = TRUE)),
+      ),
+    )
+  ) |>
+  tab_add_hline(at.row = c(1, 2), row.side = "top", linewidth = 3, linetype = 1) |>
+  tab_add_title(text = subtitle.5, face = "plain", size = 8, padding = unit(0.4, "line")) |>
+  tab_add_title(text = main.title.5, face = "bold", size = 9, padding = unit(0.6, "line")) |>
+  tab_add_hline(at.row = nrow(tab.5)+3, row.side = "bottom", linewidth = 3, linetype = 1)
+
+invisible(svg("figures/table-3-1.svg", width = 200 / 25.4, height = 40 / 25.4))
+grid::grid.draw(tab.fig.1)
+invisible(dev.off())
+
+invisible(svg("figures/table-3-2.svg", width = 100 / 25.4, height = 60 / 25.4))
+grid::grid.draw(tab.fig.2)
+invisible(dev.off())
+
+invisible(svg("figures/table-3-3.svg", width = 100 / 25.4, height = 60 / 25.4))
+grid::grid.draw(tab.fig.3)
+invisible(dev.off())
+
+invisible(svg("figures/table-3-4.svg", width = 100 / 25.4, height = 60 / 25.4))
+grid::grid.draw(tab.fig.4)
+invisible(dev.off())
+
+invisible(svg("figures/table-3-5.svg", width = 100 / 25.4, height = 60 / 25.4))
+grid::grid.draw(tab.fig.5)
+invisible(dev.off())
 ```
 
 ### 不一致率の高い対訳 {.unnumbered}
@@ -1820,7 +2140,7 @@ ct346 = '''
 pipe(poem=op346, translation=ct346, mode=3, level=3, gap_penalty=0.01,u=10,g=20,e=50)
 ```
 
-和歌と現代語訳の間に見られる回りくどい表現の不一致は、翻訳における「欠落」というよりも、本稿の一致の探し方（アルゴリズムとして一対一で探索する）に課題があると言えるが、一例を挙げる。OKMR (#346) において、奥村の現代語訳は和歌の語をほとんど使用せず、あえて次のように回りくどい表現を用いている：
+和歌と現代語訳の間に見られるまわりくどい表現の不一致は、翻訳における「欠落」というよりも、本稿の一致の探し方（アルゴリズムとして一対一で探索する）に課題があると言えるが、一例を挙げる。OKMR (#346) において、奥村の現代語訳は和歌の語をほとんど使用せず、あえて次のようにまわりくどい表現を用いている：
 
 - 「とりそへて」=「さらにそえて」
 - 「とどめおきて」=「のこしておきましょう」
@@ -2389,9 +2709,12 @@ done
 
 ```{R}
 #| label: tbl-tatsuta-review
-#| tbl-cap: 「立田」歌 298 番の現代語訳の不一致率・追加率の概要 Overview of unmatch and addition rates in contemporary translations of "Tatsuta" Poem #298
+#| tbl-cap: 「立田」歌 298 番の現代語訳の不一致率・追加率の概要 Summary of unmatch and addition rates in contemporary translations of "Tatsuta" Poem #298
 
-read.csv("artifacts/calc_results.csv") |> filter(PoemID==298) |>
+main.title <- "「立田」歌 298 番の現代語訳の不一致率・追加率の概要"
+subtitle <- "Summary of unmatch and addition rates in contemporary translations\nof \"Tatsuta\" Poem #298"
+cols <- c("訳者\nTranslator", "歌番\nPoem ID", "計算手法\nMethod", "一致数\nAgreement Count", "不一致率\nUnmatch Rate", "追加率\nAddition Rate")
+tatsuta_data <- read.csv("artifacts/calc_results.csv") |> filter(PoemID==298) |>
   mutate(
     UnmatchRate_a = round(UnmatchRate_a, 3),
     AdditionRate_a = round(AdditionRate_a, 3),
@@ -2399,13 +2722,37 @@ read.csv("artifacts/calc_results.csv") |> filter(PoemID==298) |>
     PoemID = as.character(PoemID),
     Method = "Alignment" 
   ) |>
-  select(Translator, PoemID, Method, TotalMatch_a, UnmatchRate_a, AdditionRate_a) |> 
-  rename(
-    `TotalMatch` = TotalMatch_a, 
-    `UnmatchRate` = UnmatchRate_a, 
-    `AdditionRate` = AdditionRate_a
+  select(Translator, PoemID, Method, TotalMatch_a, UnmatchRate_a, AdditionRate_a)
+
+tab <- tatsuta_data |> ggtexttable(
+    rows = NULL, 
+    cols = cols,
+    theme = ttheme(
+      base_size = 5,
+      colnames.style = colnames_style(
+        fill = "white",
+        hjust = c(0, 0, 0, 1, 1, 1),
+        x = c(.1, .1, .1, .9, .9, .9),
+        ),
+      tbody.style = tbody_style(
+        fill = "white",
+        hjust = as.vector(matrix(c(0, 0, 0, 1, 1, 1), ncol = 6, nrow = nrow(tatsuta_data), byrow = TRUE)),
+        x = as.vector(matrix(c(.1, .1, .1, .9, .9, .9), ncol = 6, nrow = nrow(tatsuta_data), byrow = TRUE)),
+        ),
+      )
   ) |>
-  kable()
+  tab_add_hline(at.row = c(1, 2), row.side = "top", linewidth = 3, linetype = 1) |>  
+  tab_add_title(text = subtitle, face = "plain", size = 14) |>
+  tab_add_title(text = main.title, face = "bold", size = 16, padding = unit(0.5, "line")) |>
+  tab_add_hline(at.row = 13, row.side = "bottom", linewidth = 3, linetype = 1)
+
+# Save the table as an SVG file with a specified width of 200mm
+invisible(svg("figures/table-4.svg", width = 200 / 25.4, height = 125 / 25.4))
+grid::grid.draw(tab)
+invisible(dev.off())
+
+# Output
+create_kable_table(tatsuta_data, cols)
 ```
 
 ::: {#fig-alignment layout-nrow=2}
@@ -2502,15 +2849,13 @@ K&A、KMCY、KTGR、KBT、TKOK の訳では、要素の追加は見られなか�
 
 ## 追加率からみる翻訳アプローチと翻訳実践とのずれ
 
-## 追加率からみる翻訳アプローチと翻訳実践とのずれ
-
 現代語訳における追加率の階層モデリングの結果、いずれの翻訳アプローチにおいても、相当な割合で追加要素が含まれていることが確認された。また、訳者間の変動よりも、歌による変動のほうが大きいと考えられる。これらの注釈書では、多くの語の解釈がすでに注釈によって詳しく説明されているにもかかわらず、追加率が低いわけではなかった。訳者が翻訳アプローチとしてテキストを重視するにせよ、作者の意図を重視するにせよ、読者の読みやすさを重視するにせよ、基本的に追加せざるをえない要素が存在すると推測できる。
 
 ただし、追加要素の中で、それぞれの訳を具体的に確認すると、OZW が語順の入れ替えを許容したり、TKOK が作者の意図を重視したりする方針は確実にその実践に反映されている。個別の歌を精査することで明確な差が見えてくるものの、全体としてはその差は傾向の域を超えなかった。それらの要素は、翻訳アプローチや訳者の個人差に左右されない量として十分に存在している。また、追加率の平均値が高い上位 10 首の歌を観察したところ、掛詞を用いた歌が顕著であった。掛詞の役割を明確にするには、訳において補足が求められており、現代語と古代語の差分で多くの要素が残ると考えられる。したがって、現代語訳によるノンリテラル要素の可視化は、量的に実現可能である。
 
-一方、歌と現代語訳の差分からノンリテラル情報を抽出する際、訳されていない語がないことが望ましく、これが不一致率の高い歌の調査につながった。その結果、翻訳の「欠落」の多くは序詞や枕詞、回りくどい表現であることが明らかになった。現代語文と歌の差分では、枕詞や序詞に関するノンリテラル要素の抽出が難しいことがわかった。ただし、回りくどい表現については、基本的に歌ことばとその回りくどい言い回しの一部が一致することが確認されたが、回りくどい表現全体との一致は見られなかった。
+一方、歌と現代語訳の差分からノンリテラル情報を抽出する際、訳されていない語がないことが望ましく、これが不一致率の高い歌の調査につながった。その結果、翻訳の「欠落」の多くは序詞や枕詞、まわりくどい表現であることが明らかになった。現代語文と歌の差分では、枕詞や序詞に関するノンリテラル要素の抽出が難しいことがわかった。ただし、まわりくどい表現については、基本的に歌ことばとそのまわりくどい言い回しの一部が一致することが確認されたが、まわりくどい表現全体との一致は見られなかった。
 
-この問題は語の一致の課題として指摘されているが、最初に述べた一対多の訳と同様に、回りくどい表現は元の歌ことばに情報を付加して生成されることが多い。そのため、回りくどい表現で一致しない要素、つまり「訳のあまりもの」は、ノンリテラル要素を調べる上でむしろ貴重なものであるといえる。
+この問題は語の一致の課題として指摘されているが、最初に述べた一対多の訳と同様に、まわりくどい表現は元の歌ことばに情報を付加して生成されることが多い。そのため、まわりくどい表現で一致しない要素、つまり「訳のあまりもの」は、ノンリテラル要素を調べる上でむしろ貴重なものであるといえる。
 
 ## 翻訳における追加要素の類型化
 
@@ -2534,19 +2879,15 @@ K&A、KMCY、KTGR、KBT、TKOK の訳では、要素の追加は見られなか�
 
 ## 翻訳研究の知見による解釈の必要性
 
-## 翻訳研究の知見による解釈の必要性
-
 本研究は、翻訳研究自体を目的としているわけではないが、翻訳における要素の追加や原文における要素の喪失といった現象は、翻訳研究における仮説や理論に基づいて解釈する余地が十分にあると考えられる。
 
 例えば、翻訳普遍性仮説（translation universal hypothesis）における「長さの増加の普遍性」（law of lengthening）や「明示化の普遍性」（law of explicitation）は、現代語訳における追加要素の存在を説明する際に有効である[@Chesterman2004Hypotheses; @Edina2016Translation; @Vinay1958Comparative; @Baker1996Challenges; @Blum-Kulka1986Shifts]。これらの仮説に基づけば、現代語訳における追加要素は、翻訳における普遍的な現象であり、特に明示化の普遍性は本稿で言うノンリテラル要素の追加と深く関係している。翻訳における明示化について、@Blum-Kulka1986Shifts は、翻訳者がソーステキストにはない cohesive marker^[@Nunan1993Introducing [p. 21] によると、cohesive marker とは、書き手や話し手が文や発話の境界を越えて関係を確立し、テキスト内の文を結びつけるのに役立つ語やフレーズのことを指す。例えば、「そして」「しかし」「それ」などが含まれる。]をターゲットテキストに追加することを指摘している。一方で、@Baker1996Challenges [p. 180] は、この問題を、物事を暗黙的に残さずに明確に説明する傾向として捉えている。このような「明示化」はもともと談話標識や cohesive marker の訳文における増加傾向を指しており、本研究における要素の追加の一部はこの仮説から説明できる。ただし、すべての現象をこの仮説で解釈することは難しい。実際、翻訳普遍性仮説には反例も存在し、確率的な傾向として捉えられることが妥当であるとされている[@Pym2008Tourys; @Tymoczko1998Computerized; @Chesterman2004Hypotheses; @Chesterman2010Why]。例えば、談話標識や cohesive marker の追加を取り除いた場合でも、分析事例において多くの追加要素が確認された。したがって、すべての追加要素が翻訳普遍性仮説に基づくものとは言い切れない。
 
 また、翻訳の認知的側面に関連する仮説として、「リテラル翻訳仮説」（literal translation hypothesis）も検討に値する。この仮説では、翻訳者がテキストを処理する際、まずリテラルな（逐語的な）訳を基にし、そこから自由な表現に向かう傾向があるとされる[@Chesterman2011Reflections]。この仮説に基づいて、認知処理と認知負荷の観点からリテラル翻訳の度合いを測定するための指標が提案されており[@Carl2017Measuring]、例えば、1) 原文と訳文の語順の類似性、2) 可能な異なる翻訳表現の数、などが挙げられる。これらの指標は本稿で言及するテキストの追加率や不一致率とは異なる視点を提供するが、特に2点目はノンリテラル要素の可視化に関連する可能性があり、今後の研究課題として検討する価値がある。
 
-さらに、翻訳研究における「単位」と「一致」に関する問題も重要である。従来の翻訳研究では、翻訳等価性（translation equivalence）や翻訳単位（translation unit）に関する議論が多く行われてきた[@Nida1969Theory; @Koller1979Einfuehrung; @Malmkjaer2008Unit]。これらの視点から、翻訳における分析単位がどのように影響するかについての考察が必要であり、さらなる研究の余地がある。
+さらに、翻訳研究における「一致の単位」に関する問題も重要である。従来の翻訳研究では、翻訳等価性（translation equivalence）や翻訳単位（translation unit）に関する議論が多く行われてきた[@Nida1969Theory; @Koller1979Einfuehrung; @Malmkjaer2008Unit]。これらの視点から、翻訳における分析単位がどのように影響するかについての考察が必要であり、さらなる研究の余地がある。
 
 ## 方法論の改善余地
-
-## 翻訳研究の知見による解釈の必要性
 
 本稿での一致率の計算は完全にルールベースの手法に基づいており、一貫性と簡素さの面では優れた方法であると考えられる。しかし、整列法（アライメント）については、動的計画法を用いたアライメントに課題が残る。古語と現代語の間では、一方が低リソース言語であることから、ニューラルネットワークを用いた手法や手動によるアライメントも検討する必要がある。例えば、@Palladino2022Using および @Camilleri2024Evaluating が提案する `Ugarit` プラットフォームを活用したアライメント手法では、一対多の対応関係の分析や、訳出パターンの共通点と分岐点、非対応の品詞情報の分析など、より精緻なコントロールが可能になると期待される。
 
