@@ -1,0 +1,320 @@
+---
+title: "補足資料 Supplementary materials"
+format: html
+execute:
+  echo: false
+  freeze: auto
+  message: false
+---
+
+```{R}
+#| label: libraries
+#| message: false
+
+library(fitdistrplus)
+library(tidyverse)
+library(knitr)
+library(rstatix)
+
+library(brms)
+library(tidybayes)
+library(scales)
+library(ggdist)
+library(ggplot2)
+library(ggpubr)
+library(ggridges)
+library(ggokabeito)
+```
+
+# 附録 Appendix {.appendix .unnumbered}
+
+## 追加率のモデル Model for addition rate {.appendix .unnumbered}
+
+$$
+\begin{aligned}
+&\text{[Likelihood]} \\
+\text{Addition Rate}_i &\sim \operatorname{Beta}(\mu_i \phi_i, (1 - \mu_i) \phi_i) \\
+\ \\
+&\text{[} \mu \text{ part of beta distribution]} \\
+\mu_i &= \operatorname{logit}^{-1}(\eta_i) = \frac{1}{1 + e^{-\eta_i}} \\
+\eta_i &=  \alpha_{\text{translator}[i]} + \gamma_{\text{poem}[i]} + \beta_{\text{translation focus}[i]} \\
+\ \\
+&\text{[} \phi \text{ part of beta distribution]} \\
+\log(\phi_i) &= \gamma^{\phi}_{\text{poem}[i]} \\
+\ \\
+& \text{[Group-specific intercepts]} \\
+\alpha_{j} &\sim \mathcal{N}(\mu_{\alpha_j}, \sigma_{\text{translator}}), \text{ for } j \text{ in translator} 1, 2, \dots, 10 \\
+\gamma_{j} &\sim \mathcal{N}(0, \sigma_{\text{poem}}), \text{ for } j \text{ in poem} 1, 2, \dots, 1000 \\
+\gamma^{\phi}_{j} &\sim \mathcal{N}(\mu_{\gamma^{\phi}_{j}}, \sigma^{\phi}_{\text{poem}}), \text{ for } j \text{ in poem} 1, 2, \dots, 1000 \\
+\ \\
+& \text{[Prior for fixed coefficients]} \\
+\beta_{j} &\sim \text{Student-t}(3, 0, 2.5), \text{ for } j \text{ in translation focus} 1, 2, 3, 4\\
+\ \\
+& \text{[Prior for population-level intercepts]} \\
+\mu_{\alpha_{j}}, \mu_{\gamma^{\phi}_{j}} &\sim \text{Student-t}(3, 0, 2.5) \\
+\ \\
+& \text{[Prior for hyperparameter]} \\
+\sigma_{\text{translator}}, \sigma_{\text{poem}}, \sigma^{\phi}_{\text{poem}} &\sim \text{Student-t}(3, 0, 2.5)
+\end{aligned}
+$$
+
+ここ^[
+モデルの書き方として Centered Parameterization にしているが、`brms` での実装が `Non-Centered Parameterization` になっている点に注意されたい。]では：
+
+- $\text{Addition Rate}_i$ は追加率であり、ベータ分布に従うと仮定する。
+- $\mu_i \phi_i, (1 - \mu_i) \phi_i$ はそれぞれベータ分布のシェープパラメータに相当する。
+- $\mu_i$ はベータ分布の平均値パラメータであり、線形予測子 $\eta_i$ をロジスティック変換することで得られる。
+- $\beta_{\text{traslation focus}[i]}, \text{traslation focus}=1,2,3,4$ は4つの翻訳アプローチの固定効果項であり、翻訳アプローチの種類ごとに異なる効果をモデル化する。
+- $\alpha_{\text{traslator}[i]}, translator=1,2,\dots,10$ は訳者のランダム効果項（ランダム切片）であり、 
+- $\gamma_{\text{poem}[i]}, \text{poem}=1,2,\dots,1000$ は詩（PoemID）のランダム効果項（ランダム切片）である。
+- $\phi_i$ はベータ分布の精度パラメータであり、詩（PoemID）のランダム効果項 $\gamma^{\phi}_{\text{poem}[i]}$ でモデル化する。
+- $\mu_{\alpha_j}$, $\mu_{\gamma^{\phi}_{j}}$ はそれぞれ $\mu$ パートと $\phi$ パートの population-level の切片である。
+
+事前分布の設定について、基本的に`brms`のデフォルト設定に従う：
+- 切片 $\mu_{\alpha_j}$, $\mu_{\gamma^{\phi}_{j}}$ と翻訳アプローチごとの固定効果 $\beta_{\text{traslation focus}}$ のは Student-t 分布の事前分布に従うと仮定する（`brms` のデフォルト事前分布）。
+- $\sigma_{\text{translator}}$, $\sigma_{\text{poem}}$, $\sigma^{\phi}_{\text{poem}}$ はそれぞれ、訳者および詩歌、精度パラメータに対するランダム効果項の標準偏差であり、Student-t 分布に従うと仮定する（`brms` のデフォルト事前分布）。
+
+デフォルト設定が次表を参照する：
+
+Here^[Note that while the model is written in Centered Parameterization, its implementation in `brms` uses Non-Centered Parameterization.]:
+
+- $\text{Addition Rate}_i$ refers to the addition rate and is assumed to follow a beta distribution.
+- $\mu_i \phi_i$ and $(1 - \mu_i) \phi_i$ correspond to the shape parameters of the beta distribution.
+- $\mu_i$ is the mean parameter of the beta distribution, obtained by applying a logistic transformation to the linear predictor $\eta_i$.
+- $\beta_{\text{translation focus}[i]}$, where $\text{translation focus} = 1, 2, 3, 4$, represents the fixed effect for the four translation approaches, modeling a distinct effect for each translation approach.
+- $\alpha_{\text{translator}[i]}$, where $\text{translator} = 1, 2, \dots, 10$, represents the random effect term (random intercept) for the translators.
+- $\gamma_{\text{poem}[i]}$, where $\text{poem} = 1, 2, \dots, 1000$, represents the random effect term (random intercept) for the poems (PoemID).
+- $\phi_i$ is the precision parameter of the beta distribution and is modeled by the random effect term $\gamma^{\phi}_{\text{poem}[i]}$ for the poems (PoemID).
+- $\mu_{\alpha_j}$ and $\mu_{\gamma^{\phi}_{j}}$ are the population-level intercepts for the $\mu$ part and the $\phi$ part, respectively.
+
+Regarding the prior distributions, we generally follow the default settings in `brms`:
+- The intercepts $\mu_{\alpha_j}$, $\mu_{\gamma^{\phi}_{j}}$, and the fixed effects $\beta_{\text{translation focus}}$ for each translation approach are assumed to follow Student-t prior distributions (the default prior distribution in `brms`).
+- $\sigma_{\text{translator}}$, $\sigma_{\text{poem}}$, and $\sigma^{\phi}_{\text{poem}}$ represent the standard deviations of the random effect terms for the translators, poems, and precision parameters, respectively, and are assumed to follow Student-t distributions (the default prior distribution in `brms`).
+
+Refer to the following table for the default priors:
+
+```{r}
+#| label: beta-model
+#| cache: true
+#| messge: false
+
+data <- read.csv("../artifacts/calc_results.csv") |>
+  mutate(
+    Translator = as.factor(Translator),
+    Focus = case_when(
+      Translator %in% c(
+        "kaneko",
+        "kubota",
+        "katagiri"
+      ) ~ "Text-focused",
+      Translator %in% c(
+        "okumura",
+        "takeoka"
+      ) ~ "Poet-focused",
+      Translator %in% c(
+        "ozawa",
+        "kyusojin"
+      ) ~ "Reader-focused",
+      Translator %in% c(
+        "matsuda",
+        "kojimaarai",
+        "komachiya"
+      ) ~ "Others",
+    ),
+    Focus = factor(
+      Focus,
+      levels = c(
+        "Text-focused", 
+        "Poet-focused", 
+        "Reader-focused", 
+        "Others"
+      )
+    ),
+    Translator = factor(
+      Translator,
+      levels = c(
+        "kaneko",
+        "kubota",
+        "katagiri",
+        "okumura",
+        "takeoka",
+        "ozawa",
+        "kyusojin",
+        "matsuda",
+        "kojimaarai",
+        "komachiya"
+      )
+    )
+  ) |>
+  select(
+    Translator,
+    PoemID,
+    Focus,
+    AdditionRate,
+    UnmatchRate
+  )
+
+translator_labels <- c(
+  "kaneko" = "KNK",
+  "kubota" = "KBT",
+  "katagiri" = "KTGR",
+  "okumura" = "OKMR",
+  "takeoka" = "TKOK",
+  "ozawa" = "OZW",
+  "kyusojin" = "KSJ",
+  "matsuda" = "MTD",
+  "kojimaarai" = "K&A",
+  "komachiya" = "KMCY"
+  )
+
+# backend
+options(
+    mc.cores = parallel::detectCores(),
+    brms.backend = "cmdstanr"
+)
+
+# Global setting
+chains <- 4
+iter <- 2000
+warmup <- 1000
+bayes_seed <- 1234
+
+# Formula
+formula <- bf(
+  AdditionRate ~ a + b, 
+  a ~ 1 + (1 | Translator) + (1 | PoemID),
+  b ~ 0 + Focus,
+  phi ~ 1 + (1 | PoemID),
+  nl = TRUE
+)
+
+prior = c(
+  prior(student_t(3, 0, 2.5), nlpar = b),
+  prior(
+    student_t(3, 0, 2.5),
+    class = b,
+    coef = Intercept,
+    nlpar = a
+  ),
+  prior(
+    student_t(3, 0, 2.5),
+    class = sd,
+    group = Translator,
+    nlpar = a
+  ),
+  prior(
+    student_t(3, 0, 2.5),
+    class = sd,
+    group = PoemID,
+    nlpar = a
+  ),
+  prior(
+    student_t(3, 0, 2.5),
+    class = Intercept,
+    dpar = phi
+  ),
+  # Default prior for standard deviation of phi parameter in PoemID group
+  prior(
+    student_t(3, 0, 2.5),
+    class = sd,
+    dpar = phi,
+    group = PoemID
+  )
+)
+
+# Model
+model <- data %>%
+  brm(
+    data = .,
+    formula = formula,
+    family = Beta(), 
+    prior = prior, 
+    chains = chains,
+    iter = iter,
+    warmup = warmup,
+    seed = bayes_seed,
+    silent = 2,
+    adapt_delta = 0.9,
+    control = list(max_treedepth = 12),
+    file = "../artifacts/model_beta_bayes",
+    save_model = TRUE
+  )
+```
+
+```{R}
+#| label: tbl-model-configs
+#| tbl-scap: デフォルト事前分布
+#| warining: false
+
+formula |> get_prior(
+  formula, data=data, family = Beta(),
+  prior= prior
+  ) |> 
+  kable()
+```
+
+モデルの詳細：
+
+```{R}
+#| label: model-info
+
+model |> summary()
+```
+
+## 「立田」 298 Tatsuta 298 {#sec-app-tatsuta .appendix .unnumbered}
+
+```{bash}
+#| label: tatsuta
+#| include: false
+
+cd ..
+tatsuta=$(sh ./scripts/query_poem.sh たつた)
+echo "$tatsuta" > ./cache/tatsuta.txt
+tatsuta_hachidai=$(echo "$tatsuta" | grep -E "^0.:000... \| ")
+echo "Document frequency = "$(echo "$tatsuta_hachidai" | wc -l)
+echo "$tatsuta_hachidai"
+```
+
+```{bash}
+#| label: tatsuta-kokinshu
+
+cd ..
+tatsuta_kokin=$(cat ./cache/tatsuta.txt | grep -E "^01:000... \| ") 
+echo "Document frequency = "$(echo "$tatsuta_kokin" | wc -l)
+echo "$tatsuta_kokin"
+```
+
+```{bash}
+#| label: content-word-count
+
+cd ..
+echo "High frequency content collocates of tatsuta:"
+cat ./cache/tatsuta.txt | grep -vE "\|" | grep -vE "たつた" | awk '$4 <= 60' | awk '{ 
+      suffix = ""
+      if ($2 ~ /^[CE]/) { suffix = suffix "+" }
+      if ($2 !~ ".0.") { suffix = suffix "*" }
+      print $0 suffix
+  }' | awk '{print $3 "|" $6 $10}' | sort | uniq -c | sort -nr | awk '$1 >= 5'|\
+  awk '{printf "%4d. %s\n", NR, $0}'
+```
+
+```{bash}
+#| label: function-word-count
+
+cd ..
+echo "High frequency function collocates of tatsuta:"
+cat ./cache/tatsuta.txt | grep -vE "\|" | grep -vE "たつた" | awk '$4 > 60' | awk '{ 
+      suffix = ""
+      if ($2 ~ /^[CE]/) { suffix = suffix "+" }
+      if ($2 !~ ".0.") { suffix = suffix "*" }
+      print $0 suffix
+  }' | awk '{print $3 "|" $6 $10}' | sort | uniq -c | sort -nr | awk '$1 >= 5'|\
+  awk '{printf "%4d. %s\n", NR, $0}'
+```
+
+```{bash}
+#| label: alignment-results
+
+cd ..
+sh ./scripts/pipe_examples.sh
+```

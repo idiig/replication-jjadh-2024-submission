@@ -1,0 +1,2714 @@
+---
+title: 古今和歌集の現代日本語訳における追加率要素の分析
+author:
+  - name: Xudong Chen
+    corresponding: false
+    roles: []
+    id: jc
+    orcid: 0000-0002-4542-2878
+    email: xchen@shs.ens.titech.ac.jp
+    affiliation:
+      - name: Tokyo Institute of Technology
+        city: Tokyo
+        country: Japan
+        url: 'https://www.titech.ac.jp/english/'
+        isni: 0000000121792105
+        ror: 0112mx960
+  - name: Bor Hodošček
+    corresponding: false
+    roles: []
+    id: jc
+    orcid: 0000-0003-2246-8774
+    email: hodoscek.bor.hmt@osaka-u.ac.jp
+    affiliation:
+      - name: Osaka University
+        city: Osaka
+        country: Japan
+        url: 'https://www.osaka-u.ac.jp/en'
+        isni: 0000000403733971
+        ror: 035t8zc32
+  - name: Hilofumi Yamamoto
+    corresponding: true
+    roles: []
+    id: jc
+    orcid: 0000-0001-6876-139X
+    email: yamagen@lia.titech.ac.jp
+    affiliation:
+      - name: Tokyo Institute of Technology
+        city: Tokyo
+        country: Japan
+        url: 'https://www.titech.ac.jp/english/'
+        isni: 0000000121792105
+        ror: 0112mx960
+date: 2024/09/01
+abstract: | 
+  Previous research has explored the visualization of non-literal information in the Kokinshū’s poetic words (歌語) through the addition of elements in translations found in annotation books. However, detailed analysis of the contemporary Japanese translations in these annotations and the additional elements within them has not been conducted. This paper aims to provide a comprehensive analysis of whether the ten contemporary Japanese translations of the Kokinshū used in earlier studies are suitable for visualizing non-literal elements. 
+  First, the paper reviews the contemporary Japanese translations used in the annotations of the Kokinshū and examines the translators' approaches to their work. It then calculates the unmatch rate—the proportion of poetic words without direct equivalents—and the addition rate—the proportion of additional elements in the translations—to clarify how elements were added and matched. Lastly, specific examples are provided, along with a detailed case analysis of the additional elements in these translations. 
+  The analysis reveals that translators’ subjective approaches can be categorized into four types: intention-focused, text-focused, reader-focused, and unclear. However, from both quantitative and statistical perspectives, despite these differing approaches, the translations include a similar amount of additional elements. In case analysis, it was confirmed that at the sentence level, the addition of elements relied on co-occurrence tendencies at the corpus level, with many supplementary elements added to refine the directional meaning of words. These findings demonstrate that contemporary Japanese translations can be effectively used to visualize non-literal aspects of the original poetic words.
+
+# plain-language-summary: |
+key-points:
+  - A web scraping script was developed to pull data from the Instituto Geogràphico Nacional into a machine-readable form for analysis
+  - Earthquake events on La Palma are consistent with the presence of both mantle and crustal reservoirs.
+citation:
+  container-title: Journal of Japanese Association for Digital Humanities
+  volume: 0
+  issue: 0
+  doi: 10.17928/jjadh.0.0_0
+keywords:
+  - Classic Japanese Poetry
+  - Translation
+  - Alignment
+  - Extended Unit of Meaning
+license: CC BY
+copyright:
+  holder: 'Xudong Chen, Bor Hodošček, Hilofumi Yamamoto'
+  year: 2024
+funding: 'This work was supported by JSPS KAKENHI Grant Number JP18K00528 and JP23KJ0910, JP23K00545.'
+format:
+  html:
+    code-links:
+      - text: Data Import Code
+        icon: file-code
+        href: 'https://github.com/idiig/jjadh-replication/tree/main'
+    theme: default
+    toc: true
+    toc-location: right-body
+    number-sections: true
+    html-math-method: katex
+    fig_caption: true
+    cap-location: margin
+    reference-location: margin
+    citation-location: document
+    code-fold: true
+    fig-path: ../artifacts/figures
+    fig-format: svg
+    fig-width: 6
+    fig-height: 3.71
+  pdf:
+    toc: true
+    number-sections: true
+    fig_caption: true
+    fig-path: ../artifacts/figures
+    fig-format: svg
+    fig-width: 6
+    fig-height: 3.71
+    pdf-engine: xelatex
+    citation-location: document
+  docx:
+    toc: true
+    number-sections: true
+    fig_caption: true
+    fig-path: ../artifacts/figures
+    fig-format: svg
+    fig-width: 6
+    fig-height: 3.71
+    citation-location: document
+execute:
+  echo: false
+  freeze: auto
+  message: false
+bibliography: references.bib
+crossref:
+  fig-title: Figure
+  tbl-title: Table
+  title-delim: ':\quad'
+  fig-prefix: Figure
+  tbl-prefix: Table
+  sec-prefix: Section
+  eq-prefix: Eq.
+---
+
+:::{.callout-important title="Note"}
+```{R}
+#| label: libraries
+#| message: false
+library(fitdistrplus)
+library(tidyverse)
+library(knitr)
+library(rstatix)
+
+library(brms)
+library(tidybayes)
+library(scales)
+library(ggdist)
+library(ggplot2)
+library(ggpubr)
+library(ggridges)
+library(ggokabeito)
+
+library(glossr)
+```
+
+```{R}
+#| label: themes
+theme_set_b <- function() {
+  theme_void() +
+    theme(
+      strip.background = element_rect(
+        color = "white", 
+        fill = "white"
+      ),
+      panel.grid.major.y = element_line(
+        color = "gray80",
+        linetype = "solid"
+      ),
+      strip.text = element_text(
+        color = "black",
+        size = rel(1),
+        angle = 90,
+        vjust = 0.5,
+        hjust = 1
+      ),
+      axis.text.y = element_text(
+        color = "black", 
+        hjust = 0
+      ),
+      strip.text.y.left = element_text(
+        angle = 180
+      ),
+      axis.title.x = element_text(
+        size = rel(1.3)
+      ),
+      axis.title.y = element_text(
+        size = rel(1.3),
+        angle = 90,
+        vjust = 0.5
+      ),
+      legend.position = "bottom",
+      legend.title = element_text(
+        size = rel(1),
+        face = "bold"
+      )
+    )
+}
+```
+:::
+
+# Introduction
+
+## Overview of purpose and findings
+
+This paper aims to demonstrate, from two perspectives—the calculation of the unmatch rate between the original poem and its translation, and the analysis of additional elements in the translation—that contemporary Japanese translations of classic poetry can serve as interpretive tools to supplement and explain non-literal information in poetic words, regardless of the translator’s intent, even when focused on literal or word-for-word translation.
+
+The main contributions of this study are as follows:
+
+1. As source material, the paper presents the first publicly available lexical data of contemporary Japanese translations of the *Kokinshū* (古今和歌集) from @kaneko1933Kokin, whose copyright has expired.
+The paper provides a historical overview of colloquial translations of the Kokinshū, focusing particularly on the translation approaches used in annotation books in the 20th century.
+2. By calculating the unmatch rate at the word level between the original poems and the contemporary Japanese translations, as well as the addition rate in the translations, the study demonstrates that the addition of information in contemporary translations remains consistent across different translation approaches.
+3. Specific examples of contemporary translations confirm whether co-occurring words at the corpus level and their collective semantic preferences are reflected at the sentence level in each translation.
+These findings show that applying contemporary Japanese translations to the visualization of non-literal aspects of the original text is a plausible approach.
+
+## Background
+
+### Non-literal elements in Classical Japanese Poetry
+
+
+As described in the preface of the *Kokinshū*, poets often entrust their inner feelings ("what the heart thinks" 心に思ふもの) to natural phenomena. However, understanding the literal meaning of a poem does not necessarily grant direct access to these deeper emotions. For instance, consider the following love poem from the *Kokinshū*:
+
+> 初雁の鳴きこそわたれ世の中の人の心の秋しうければ  (Kokinshū, Love-5, by Tsurayuki)
+
+```
+Roman: hatsukarino     nakikoso    watare    yononakano          hitono     kokorono  akishi     ukereba
+
+Morph: hatsu+kari=no   nak-i=koso  watar-e   yo+no+naka=no       hito=no    kokoro=no aki=si     u-kere=ba
+
+Gross: first+geese=GEN cry-THM=EMP cross-THM world+of+inside=GEN peaple=GEN heart=GEN autumn=EMP sorrow-THM-REASON
+```
+
+If we grasp the literal meaning of each word, we may only interpret it as a straightforward description^[The first geese cry as they fly across the sky, but sorrow comes with the autumn of people's hearts (author’s translation).]. However, by consulting a poetic word dictionary on the word "autumn" (aki 秋) [@katagiri1983Uta, 3], we realize that there is more non-literal information beyond the surface meaning.
+
+> 秋【あき】 […]「秋」と「飽」を掛け、過ぎ去ってゆく秋と過ぎ去ってゆく愛を惜しむことが多かった。【脚注】[雁の]「鳴く」を人が「泣く」と同列にしか把握しない […]
+
+> Authors' translation: […] "Aki" is often associated with *akiru* "to tire (あきる)," and the passing of autumn is frequently used to lament the fading of love. [In footnote] The cry of the wild geese may be interpreted as a metaphor for human weeping, linking it to the idea of loss.
+zFollowing this interpretation, we infer that the poem speaks of a lover’s heart "tiring" (aki 秋/飽き) and the poet "weeping" (naku 鳴く/泣く) over the loss of love. The association of autumn with the end of love is implicit, or non-literal, and cannot be fully understood from the literal meaning of the words alone.
+
+### Visualizing non-literal elements in poetic words based on additional elements in contemporary Japanese translations
+
+The development of a system for visualizing non-literal information based on ten contemporary Japanese translations of the Kokinshū has been a primary focus of the authors’ previous studies [@Yamamoto2005Mathematical; @Yamamoto2006Extraction; @chin2022Tango; @Chen2024Translationbased]. This research, grounded in a communication model [@Schramm1954Process], argues that the additional elements identified through the comparison between classical Japanese and contemporary translations carry non-literal information embedded within the poetic words.
+
+The process of relativizing the original text with the contemporary translation involves subtracting the elements present in the original from those found in the translation, thereby highlighting the elements unique to the translation. Scholars such as @kondo2001Ngram and @kondo2011Heian refer to this method as "subtraction" (sabun 差分). However, it is crucial to examine the nature of these subtracted elements—specifically, the additional elements in the translation—and determine whether they can be classified as non-literal information.
+
+Regarding the addition of elements in translation, @Koller1979Einfuehrung [p. 249] describes these modifications as "interventions" (Eingriff) by the translator. Such "harmless" interventions, as Koller explains, compensate for the target audience's lack of background knowledge, denotative and connotative nuances, and for any linguistic, socio-cultural, or intertextual references lost in translation [@Koller1979Einfuehrung, p. 249]. Therefore, translations, much like annotations or dictionaries, can be valuable sources for extracting non-literal information.
+
+However, additions in translation can also stem from overestimating or underestimating the reader’s level of comprehension [@Nida1964Science, p. 155; @Koller1979Einfuehrung, pp. 249–250]. It is important not to overlook the variations in the additional elements introduced by different translators. While @Chen2024Translationbased touched on the effectiveness of contemporary translations as interpretative tools for the Kokinshū, the study did not fully address the variability in the added elements. There remains significant scope to re-evaluate the ten translations used, taking into account the translators' individual backgrounds and perspectives.
+
+This paper will analyze the historical context of these ten contemporary translations, focusing on both the quantitative and qualitative aspects of the additional elements they contain. As mentioned earlier, the additions in translation may result from different degrees of overestimation or underestimation of the reader's comprehension, leading each translator to disclose or emphasize varying amounts of information to the contemporary audience. Each translator follows their own approach in determining how much of the original poem’s information should be accessible to modern readers. By organizing and examining these varying approaches, we can objectively assess whether the translators adhere to their intended strategies, providing insight into the broader challenges and limitations of translation as a tool for visualizing non-literal information.
+
+Finally, by building on these findings, we will refine the theoretical basis of the visualization system for non-literal elements and propose directions for its improvement.
+
+## Research questions and structure
+
+As a foundation for visualizing non-literal elements, this paper re-evaluates the topic from the following four perspectives:
+
+1. Investigation of the background of contemporary Japanese translations in annotation books and the classification of translation strategies: How can we categorize the translators' approaches?
+2. Demonstration that the elements of the original text are minimally altered in contemporary translations: To what extent do elements from the original text lack corresponding counterparts in the translations?
+3. Demonstration that additional elements in contemporary translations are consistently present, regardless of translation strategy: How many additional elements are introduced, and are there statistical differences across different translation approaches?
+4. Evidence that additional elements in contemporary translations embed non-literal information: Are there instances where corpus-level and collective co-occurrence data are reflected in the added elements of the translations?
+
+The paper is structured as follows: 
+
+@sec-materials offers an overview of the ten contemporary Japanese translations used as source material, alongside the historical background of colloquial translations of classical poetry in the 20th century. @sec-methods details the methodology for addressing each of the four research questions. @sec-results presents the findings derived from this methodology, and @sec-conclusions discusses the results and the potential challenges they pose. Finally, the paper concludes with a summary of the overall findings.
+
+# The Kokinshū, annotation books, and contemporary translations: data and background {#sec-materials}
+
+In this section, we present an overview of the *Kokinshū*, along with a historical survey of its annotation books and the contemporary translations found within them.
+
+## The *Kokinshū*
+
+As the terms “songs” (*uta* 歌) and “to recite” (*yomu* 詠む) suggest, classical Japanese poetry was originally performed aloud in the imperial court, deeply rooted in the spoken language of the time. The *Kokinshū*—as its title^[Collection of Japanese Poems of Ancient and Modern Times] implies—brings together both ancient and contemporary poems from its era. The ancient poems mainly refer to those included in the *Man'yōshū* (万葉集), which contains works from the 7th and 8th centuries by notable poets in Japanese literary history, such as Yamabe no Akahito (山部赤人), Kakinomoto no Hitomaro (柿本人麻呂), and Nukata no Ōkimi (額田王).
+
+The *Kokinshū* holds a prominent place as the first of the twenty-one imperial anthologies (chokusen wakashū 勅撰和歌集), setting the foundational structure for all subsequent collections. Its preface, written by the editor Ki no Tsurayuki (紀貫之), is regarded as a cornerstone of Japanese poetic theory. As a crucial resource for the study of classical poetry, the *Kokinshū* became a source of inspiration for later literary works that employed "honkadori" (本歌取り)^[the technique of alluding to an older poem within a new one], such as *The Tale of Genji* (Genji monotatari 源氏物語), *Tosa Diary* (Tosa nikki 土佐日記), *The Tale of Ise* (Ise monogatari 伊勢物語), and many other key texts in Japanese literature. Additionally, its connection to the spoken language of its time makes it an invaluable source for understanding the historical evolution of Japanese.
+
+## Annotation books and their contemporary Japanese translations
+
+Throughout the history of Japanese classical literature, the *Kokinshū* has inspired a vast number of annotation books, which have developed a significant scholarly tradition and history of their own [@kubota1960Kokin, 319]. Many of these annotation books include contemporary translations intended to help readers interpret the original poems, with the translators primarily focused on conveying their understanding of the poetry. Although some translations from the early modern period may not fully align with contemporary Japanese, they remain important and cannot be disregarded. Therefore, this section provides a brief overview of annotation books up to the early modern period and examines the contemporary translations included in annotation books.
+
+Before the modern period (1868), many annotation books on the *Kokinshū* were published. More than 70 annotation books were produced between 1600 and 1868 [@kojima1989Kokin, 447--450]. @tbl-annotation lists five of the most notable annotation books from this period.
+
+Kitamura Kigin’s *Hachidaishūshō* (北村季吟『八代集抄』) is a comprehensive annotation covering 108 volumes (50 books) on the eight imperial anthologies^[The eight imperial anthologies include the *Kokinshū*, *Gosen Wakashū*, *Shūi Wakashū*, *Goshūi Wakashū*, *Kin'yō Wakashū*, *Shika Wakashū*, *Senzai Wakashū*, and *ShinKokinshū*.]. Keichū’s (1640–1701) *Kokin Yozaishō* (契沖『古今余材抄』) is recognized as the first practical research book on the *Kokinshū* [@ozawa1971Kikon, p. 36]. Kamo no Mabuchi (1697–1769) expanded upon Keichū’s work with his own *Kokinshū Uchigiki* (賀茂真淵『古今和歌集打聴』), although his primary focus was on earlier poems, such as those in the *Man'yōshū*. Motoori Norinaga’s *Kokin Tōkagami* (本居宣長『古今集遠鏡』) attempted to translate all of the poems into the colloquial language of his time^[However, Norinaga's goal differed from that of other translators. Rather than creating a standard commentary, he sought to highlight the literary value and appeal of the *Kokinshū*. Consequently, his translation is not analyzed in the same way as others in this study. Additionally, as noted by @shiozawa1993, the specific vocabulary and meanings of the colloquial expressions used in *Kokin Tōkagami* remain unclear, making it challenging to include in the visualization project.]. Kagawa Kageki (1768–1843), in his *Kokinshū Seigi* (香川景樹『古今和歌集正義』), offered strong critiques of earlier annotation books [@ozawa1971Kikon, p. 36; @matsuda1968Shinshaku, p. 58].
+
+After 1868, over 30 annotation books on the *Kokinshū*—including reprints and revisions—were published. It is evident that many of the annotation books published after 1868 were influenced, to varying degrees, by these earlier works.
+
+::: {#tbl-annotation}
+
+| Author                       | Year   | Annotation book title                         |
+| ---------------------------- | ------ | --------------------------------------------- |
+| Kitamura Kigin 北村季吟        | 1682   | *Hachidaishūshō* 八代集抄                   |
+| Keichū 契沖                    | 1692   | *Kokin Yozaishō* 古今余材抄                   |
+| Kamo no Mabuchi 賀茂真淵       | 1784   | *Kokinshū Uchigiki* 古今和歌集打聴       |
+| Motoori Norinaga 本居宣長       | 1793?  | *Kokin Tōkagami* 古今集遠鏡                   |
+| Kagawa Kageki 香川景樹         | 1832   | *Kokinshū Seigi* 古今和歌集正義           |
+
+Representative Annotation Books of the *Kokinshū* Before the Modern Period (1600–1868)
+<!-- : 近代前（1600--1868）の古今集の代表的な注釈書 (Representative Annotation Books of the *Kokinshū* Before the Modern Period) -->
+
+:::
+
+## Summary of data: Contemporary translations in 20th century annotation books
+
+
+In the 21st century, many annotation books with contemporary translations continue to be published. However, the data used in previous research on visualization systems primarily includes contemporary translations of the *Kokinshū* from the modern era onwards [@tbl-CT-data], which form the core focus and dataset for this study.
+
+The data format adheres to the space-delimited format introduced by @Hodoscek2022Development. Each token is linked to an identifier based on the old-version Word List of Semantic Principles (WLSP) [@Nakano1994Bunrui]. A key feature of the dataset is its ability to assign multiple lexicon numbers to polysemous words and provide detailed decomposition for compound words, supporting more flexible and nuanced analysis.
+
+However, due to copyright constraints on these contemporary translations—covering translation rights, editorial rights, and reprint rights—the dataset cannot be fully disclosed. For this paper, we are able to release only the data from @kaneko1933Kokin, which is now in the public domain.
+
+|     | Abbr. | Reference          | Manuscript  | Token count | Type count | Document count |
+|-----|-------|--------------------|-------------|------------:|-----------:|---------------:|
+| 1   | KNK   | @kaneko1933Kokin        | Teika       | 42,439      | 3,356      | 1,000          |
+| 2   | KBT   | @kubota1960Kokin          | Teika       | 32,210      | 2,701      | 1,000          |
+| 3   | MTD   | @matsuda1968Shinshaku     | Teika       | 31,860      | 3,007      | 1,000          |
+| 4   | OZW   | @ozawa1971Kikon           | Teika       | 36,173      | 3,384      | 1,000          |
+| 5   | TKOK  | @takeoka1976Kokin         | Teika       | 29,844      | 2,861      | 1,000          |
+| 6   | OKMR  | @okumura1978Kokin         | Teika       | 32,321      | 3,153      | 1,000          |
+| 7   | KSJ   | @kyusojin1979Kokin        | Teika       | 34,050      | 2,770      | 1,000          |
+| 8   | KMCY  | @komachiya1982Kokin       | Teika       | 30,869      | 2,692      | 1,000          |
+| 9   | K&A   | @kojima1989Kokin          | Teika       | 33,867      | 2,955      | 1,000          |
+| 10  | KTGR  | @katagiri1998Kokinhyoshaku| Teika       | 36,362      | 2,882      | 1,000          |
+|     | Total |                           |             | 339,995     | 8,252      | 10,000         |
+
+: 10 Contemporary Translations of the *Kokinshū* from the 20th Century: The token and type counts do not account for the decomposition of compound expressions. {#tbl-CT-data}
+
+<!-- : 古今和歌集の短歌の20世紀の現代語訳10種：トークン・タイプ数の集計においては、複合表現の場合、その下位分解をカウントしていない。 {#tbl-CT-data} -->
+
+```{python}
+#| label: read-raw-db
+
+from typing import List
+
+def poem_mode(poem: str, mode: int = 2) -> List[str]:
+    """
+    Function to filter and output data based on the given mode.
+
+    Mode 1: Original output.
+    Mode 2: Filter rows where the decomposition code starts with 'A' or 'B' or 'D' and the first digit of the number part is '0'.
+    Mode 3: Filter rows where the decomposition code starts with 'A' or 'C' or 'E' and the first digit of the number part is '0',
+            and filter out decompositions of multi-sense words (i.e., if a 'B' or 'D' row is found, skip its 'C' or 'E' blocks).
+
+    :param poem: A string block with multiple lines of input data representing the poems.
+    :param mode: Mode to determine the filtering behavior:
+        - 1: Original output.
+        - 2: Basic sense, ignore decomposition ('A', 'B', 'D' with '0' in decomposition code).
+        - 3: Basic sense, consider decomposition ('A', 'C', 'E' with '0' in decomposition code), and filter multi-sense decompositions.
+    :return: Filtered list of strings based on the mode.
+    """
+    if mode == 1:
+        # If mode is 1, return the original poem string split by lines
+        return poem.strip().splitlines()
+
+    # Split the input string by lines and further split each line by whitespace for other modes
+    data = [line.split() for line in poem.strip().splitlines()]
+    result = []
+
+    skip_decompositions = False  # Flag to skip decompositions related to 'B' or 'D' rows
+
+    for row in data:
+        decomposition_code = row[1]  # Second column represents the decomposition code
+        first_char = decomposition_code[0]  # Get the first character of the decomposition code (A, B, C, D, or E)
+
+        # Ensure the first character is one of 'A', 'B', 'C', 'D', or 'E'
+        assert first_char in ['A', 'B', 'C', 'D', 'E'], f"Unexpected decomposition code: {decomposition_code}"
+
+        # Explanation of decomposition code first_digit:
+        # 0: Basic sense (primary meaning)
+        # Other integers: Other senses (secondary meanings or further decompositions)
+        first_digit = decomposition_code[1]  # Get the first digit of the numeric part (0 for basic sense)
+
+        if mode == 2 and first_char in ['A', 'B', 'D'] and first_digit == '0':
+            # Mode 2: Basic sense, ignore decomposition (A, B, D)
+            result.append(" ".join(row))
+        elif mode == 3:
+            if skip_decompositions and first_char in ['C', 'E']:
+                # Skip 'C' or 'E' decompositions after 'B' or 'D' multi-sense lines
+                continue
+            elif first_char in ['B', 'D'] and first_digit != '0':
+                # If we encounter a multi-sense row (first digit != '0'), we set the flag to skip its decompositions
+                skip_decompositions = True
+            else:
+                skip_decompositions = False  # Reset the flag if we're not in a multi-sense situation
+
+            if first_char in ['A', 'C', 'E'] and first_digit == '0':
+                # Mode 3: Basic sense, consider decomposition (A, C, E)
+                result.append(" ".join(row))
+
+    return result
+  
+
+def translation_mode(translation: str, mode: int = 2) -> List[str]:
+    """
+    Function to filter and output translation data based on the given mode, with an added functionality to number each token
+    and remove punctuation based on the POS column (6th column).
+
+    Mode 1: Original output.
+        - Returns the translation data with numbering, as is.
+
+    Mode 2: Ambiguity set to 1, ignore decomposition.
+        - Filters rows where the first column is 1 (ambiguity set to 1) and the fourth column is 0 or 1 (decomposition ignored),
+          and skips the current row if the next row's fourth column is 3.
+
+    Mode 3: Ambiguity set to 1, consider decomposition.
+        - Filters rows where the first column is 1 (ambiguity set to 1) and the fourth column is 0, 2, or 3 (decomposition considered),
+          and skips the current row if the next row's fourth column is 3.
+
+    Additionally, each token will be numbered based on the decomposition field (4th column) and punctuation will be removed
+    based on the POS column (6th column):
+        - If the POS column is 76 or greater, the line is considered a punctuation and will be skipped.
+        - The number will be added at the end of each line.
+
+    :param translation: A string block with multiple lines of input data, representing the translations.
+    :param mode: Mode to determine the filtering behavior.
+        - 1: Original output
+        - 2: Ambiguity set to 1, ignore decomposition
+        - 3: Ambiguity set to 1, consider decomposition
+    :return: Filtered list of strings with numbered tokens based on the mode.
+    """
+    # First, remove punctuation and add global numbering to the tokens
+    numbered_data = []
+    for line in translation.strip().splitlines():
+        clean_line = _remove_punctuation(line)
+        if clean_line:  # Skip the line if it's a punctuation
+            numbered_data.append(_add_token_numbering(clean_line))
+
+    # If mode is 1, return the data directly without any filtering
+    if mode == 1:
+        return numbered_data
+
+    # Now apply the mode filtering for mode 2 and 3
+    result = []
+    for i, row in enumerate(numbered_data):
+        row_fields = row.split()
+        ambiguity = int(row_fields[0])
+        decomposition = int(row_fields[3])
+
+        # Apply filtering based on mode
+        if mode == 2 and ambiguity == 1 and decomposition in [0, 1]:
+            result.append(row)  # Ambiguity set to 1, ignore decomposition
+        elif mode == 3 and ambiguity == 1 and decomposition in [0, 1, 3]:
+            # Check if the current row's fourth column is 1, and if the next row's fourth column is 3
+            if decomposition == 1 and i + 1 < len(numbered_data) and int(numbered_data[i + 1].split()[3]) == 3:
+                continue  # Skip current row if the next row's fourth column is 3
+            result.append(row)  # Ambiguity set to 1, consider decomposition
+
+    return result
+
+
+def _add_token_numbering(line: str) -> str:
+    """
+    Internal function to add numbering to each line based on the decomposition field (4th column).
+
+    :param line: A single line of the translation data.
+    :return: The line with numbering added to the end of the line.
+    """
+    row = line.split()
+    decomposition_field = row[3]  # The decomposition field (4th column)
+
+    # Static variable to hold the token counter across function calls
+    if not hasattr(_add_token_numbering, "token_counter"):
+        _add_token_numbering.token_counter = 0
+
+    # Check the decomposition field and update the token counter accordingly
+    if decomposition_field != "0" and decomposition_field != "1":
+        row.append(str(_add_token_numbering.token_counter))
+    else:
+        _add_token_numbering.token_counter += 1
+        row.append(str(_add_token_numbering.token_counter))
+
+    return " ".join(row)
+
+
+def _remove_punctuation(line: str) -> str:
+    """
+    Internal function to remove lines that are considered punctuation based on the POS column (6th column).
+
+    :param line: A single line of the translation data.
+    :return: The original line if it is not punctuation, otherwise an empty string.
+    """
+    row = line.split()
+    pos_column = int(row[4])  # POS column is the 5th column
+    polysemy_colomn = row[0]  # Polysemy coloum is first column
+
+    # POS 76 and greater are considered punctuation, so we skip them
+    # When polysemy_colomn is N, the row is un validated, so we skip them
+    if pos_column >= 76 or polysemy_colomn == "N":
+        return ""  # Return an empty string to indicate this line is punctuation and should be skipped
+
+    return line
+```
+
+# Methods {#sec-methods}
+
+
+To assess whether non-literal elements can be efficiently extracted from contemporary translations, this study adopts a two-step approach. First, we clarify the translators' subjective awareness of their translation approaches and examine how they handle non-literal information in their translations. Second, we investigate whether their actual translation practices align with their stated intentions.
+
+To explore the translators' subjective awareness, we conduct a review of their stated translation policies as found in annotation books. We categorize the approaches taken by each translator.
+
+For the analysis of translation practices, we calculate the unmatch rate (the proportion of original text elements that are absent in the translation) and the addition rate (the proportion of added elements in the translation) to assess whether these additions are influenced by the translators' stated intentions. We also examine whether there are statistically significant differences based on their translation strategies. Additionally, we conduct case studies to determine whether the added elements in the translations can reasonably be considered non-literal information.
+
+## Categorization of translation approaches
+
+
+This section organizes and reviews the subjective awareness of translation approaches among the ten authors of *Kokinshū* annotation books discussed in the previous section. In @Yamamoto2005Mathematical [p. 102], the author analyzes each contemporary translation based on the translators' theoretical perspectives and classifies them into categories such as "word-for-word," "intention-oriented," "word-modified," and "not specified." However, while "intention-oriented" reflects the overall translation objective, the other categories focus on specific strategies, leading to inconsistencies in classification criteria. To address this, a unified framework for classification is necessary. Here, we categorize the translation strategies using the communication model by @Schramm1954Process, as employed in @Yamamoto2005Mathematical, and investigate how translators approach paraphrasing and the addition of elements (@fig-schramm-schema).
+
+The communication model for contemporary translations includes two sub-processes. The translator acts as both the recipient in sub-process 1 and the sender in sub-process 2, connecting the two fields of experience in communication. Based on this model, translation approaches can be grouped into the following categories:
+
+1. **Poet-focused**: Emphasizing the poet’s intent, which highlights the source in the 10th-century communication sub-process.
+2. **Text-focused**: Prioritizing the literal meaning of the text, treating it as the signal in the 10th-century communication sub-process.
+3. **Reader-focused**: Focusing on readability for the modern audience, which highlights the destination in the 20th-century communication sub-process.
+
+Another important aspect involves the literary quality of the translation itself, focusing on the signal within the 20th-century context. However, since these translations are intended for annotations, focusing on literary style or entertainment value is less likely. For this reason, such possibilities are excluded from this analysis.
+
+::: {#fig-schramm-schema layout-nrow=2}
+![Basic communication model](figures/fig-process-comm.svg){#fig-schramm-schema-orig}
+
+![Potential categories of translation approaches](figures/fig-schema-op-ct-tikz.svg){#fig-schramm-schema-adap}
+
+Classification of translation approaches based on the communication model
+
+:::
+
+## Calculating Addition Rate and Unmatch Rate
+
+
+When extracting non-literal elements from contemporary translations, it may seem that translations focused on enhancing reader comprehension allow for the extraction of more non-literal elements. However, discrepancies often arise between the translator's stated intent and their actual translation practice. To address this, we objectively examine the addition rate to clarify this issue. The unmatch rate between the original poetic words and their translations will also be calculated to determine how consistently each translator adheres to their stated translation approaches.
+
+We offer two methods for calculating the unmatch rate and addition rate: the "bag method," which conducts set operations without considering the order or repetition of elements, and the "alignment method," which accounts for both the order and repetition of elements. Although these procedures are described in @Yamamoto2005Mathematical and @Yamamoto2019Analysis, some descriptive ambiguities remain. This paper aims to clarify the calculation process, addressing the unclear aspects from previous studies.
+
+The approach outlined in @Yamamoto2005Mathematical and @Yamamoto2019Analysis calculates the unmatch rate while preserving the polysemy of words and the decomposability of compound words. This means that when agreement exists for the default sense and compound words, the calculation excludes the compounds' decompositions or alternative senses. Conversely, when agreement does not exist for the default sense and compound words, the calculation considers decompositions and other potential sense identifiers. Thus, when counting agreements within a poem, the target unit—whether it is the compound word as a whole or a specific meaning of a word—is determined dynamically. The strength of this approach lies in its ability to account for as many potential agreements as possible during intermediate stages of the calculation.
+
+However, this approach operates on a strong premise during the calculation. In @Yamamoto2005Mathematical and @Yamamoto2019Analysis, the assumption is that 100% of the information from the original is captured in the translation^[This premise aligns with the translator's subjective awareness of their work.]. Even when no direct agreement exists in the translation, each element in the poem is assumed to correspond to some latent element in the translation, which is excluded from the addition rate calculation (the remaining portion is termed "pure addition"). However, when it is clear that a given poetic word has no agreement in translation, a weaker assumption acknowledges that some information may be missing.
+
+A further issue arises from the use of compound words by certain translators, which influences the denominator when calculating the number of words in the translation (i.e., the basis for the addition rate), making direct comparisons between individual translators' addition rates less intuitive.
+
+This paper provides further clarification on the calculation and reproducibility of the addition rate. The adjustments made during the calculations do not alter the original conclusions. All calculations in this paper follow a unified approach, utilizing default identifiers and decomposition units for consistency. ^[The calculation scripts offer alternative configurations.]
+
+#### Layering of agreement based on WLSP code {.unnumbered}
+
+
+The agreement ("match/unmatch") between poetic words and their contemporary translations is categorized into four layers—$U$ (Unmatch), $G$ (Group Match), $F$ (Field Match), and $E$ (Exact Match)—determined by the length of the Longest Common Subsequence (LCS) [@Sankoff1972Matching; @Traum2000Generation] between the two words' metacodes (old-version WLSP codes), as outlined in the following formula.
+
+$$
+\text{match}(s,t) \in
+\begin{cases}
+U, & \text{if } \text{LCS}(s,t) < 10 \\
+G, & \text{if } 10 \leq \text{LCS}(s,t) < 13 \\
+F, & \text{if } 13 \leq \text{LCS}(s,t) < 17 \\
+E, & \text{if } \text{LCS}(s,t) \geq 17 \\
+\end{cases}
+$$
+
+In this formula, $s$ represents the metacode of a word in the source text (the poem), and $t$ represents the metacode of a word in the target text (the contemporary translation). $\text{LCS}(s,t)$ refers to the LCS between the two metacodes $s$ and $t$. Below, we provide examples for each classification.
+
+1. **Unmatch** ($\text{match}(s,t) \in U$; $\text{LCS}(s,t)=4$):
+  - $s=$ `[BG-0]1-5520-20-0401` 梅 (plum)
+  - $t=$ `[BG-0]8-0061-07-010-A` の (of, genetive case)
+2. **Group match** ($\text{match}(s,t) \in G$; $\text{LCS}(s,t)=11$):
+  - $s=$ `[BG-01-5520-]20-0401` 梅 (plum)
+  - $t=$ `[BG-01-5520-]19-115-A` 秋萩 (autumn)
+3. **Field match** ($\text{match}(s,t) \in F$; $\text{LCS}(s,t)=11$):
+  - $s=$ `[BG-01-2030-01-]0300` 神 (god)
+  - $t=$ `[BG-01-2030-01-]030-A` 仏 (Buddha)
+4. **Exact match** ($\text{match}(s,t) \in E$; $\text{LCS}(s,t)=17$):
+  - $s=$ `[BG-01-5520-20-040]1` 梅 (plum)
+  - $t=$ `[BG-01-5520-20-040]-A` 梅 (plum)
+
+```{python}
+#| label: match-string
+
+from difflib import SequenceMatcher
+
+def LCS(s: str, t: str) -> int:
+    """
+    Calculate the length of the longest common subsequence (LCS) between two strings.
+
+    This is an internal function that uses a sequence matching algorithm to determine
+    the longest common subsequence between the two input strings.
+
+    :param s: The first input string.
+    :param t: The second input string.
+    :return: The length of the longest common subsequence between the two strings.
+    """
+    seq_matcher = SequenceMatcher(None, s, t)
+    match = seq_matcher.find_longest_match(0, len(s), 0, len(t))
+    return match.size
+
+
+def match_category(s: str, t: str) -> str:
+    """
+    Classify the match between two strings into one of four categories based on the LCS (Longest Common Subsequence) length.
+
+    The function calculates the LCS length between two strings and classifies the match into one of four categories:
+    - 'U': [U]nmatch, when LCS length is less than 10.
+    - 'G': [G]roup match, when LCS length is between 10 and 12.
+    - 'F': [F]ield match, when LCS length is between 13 and 16.
+    - 'E': [E]xact match, when LCS length is 17 or greater.
+
+    :param s: The first input string to compare.
+    :param t: The second input string to compare.
+    :return: A string representing the match category ('U', 'G', 'F', or 'E') based on the LCS length.
+    """
+    # Calculate LCS length using the internal function
+    lcs_length = LCS(s, t)
+
+    # Categorize based on the LCS length
+    if lcs_length < 10:
+        return "U"
+    elif 10 <= lcs_length < 13:
+        return "G"
+    elif 13 <= lcs_length < 17:
+        return "F"
+    else:
+        return "E"
+```
+
+#### Calculation of addition rate using the bag method {.unnumbered}
+
+
+We calculate the addition rate, which represents the proportion of additional elements in the contemporary translation relative to the original poem, using the bag method. In this approach, we treat both texts as sets and base the calculation on the number of agreements without considering their order. Given the source text (poem) $S=(s_i)_{i \in \mathbb{Z}^{+}}$ and the target text (contemporary translation) $T=(t_i)_{i \in \mathbb{Z}^{+}}$, we calculate the addition rate for the target text as follows:
+
+$$
+\begin{align}
+\text{U}_{T}(S,T) &= 1 - \frac{1}{|T|}\text{agreement}_{S}\\
+\text{agreement}_{S} &= \sum_{s_i \in S} \mathbb{I} \left( \exists t_j \in T \text{ such that } \text{match}(s_i, t_j) \notin U \right)
+\end{align}
+$$
+
+Here, $\text{agreement}_{S}$ represents the number of tokens in the source text that have non-repetitive agreements with tokens in the target text. The term $\frac{1}{|T|}\text{agreement}_{S}$ gives the agreement rate (bag method) for the translation, where the denominator is the total number of tokens in the target text. We use $|T|$ to denote the total number of tokens in the target text, and $s_i$, $t_j$ to represent the $i$th and $j$th tokens in the source and target texts, respectively. We calculate the addition rate by subtracting the agreement rate from 1. The indicator function $\mathbb{I}$ returns 1 if the input condition is true (i.e., if $s_i$ has an agreement in the translation), and 0 if it is false (i.e., if $s_i$ has no agreement in the translation). ^[We can adjust the strictness of the agreement rate calculation through the conditions within $\mathbb{I}$. In this case, the function returns 1 if a match exists at any of the $E$, $F$, or $G$ levels.]
+
+One key point is that the numerator of the agreement rate reflects the number of agreements in the source text, not the number of agreements in the translation. This approach allows us to recognize one-to-many translations in the target text, where part of the translation corresponds to elements in the poem, while the rest is considered additional. For example, translating "chiru" 散る (scatter) as "chirimidareru" 散り乱れる (scatter wildly) raises the question of whether this should be treated as a one-to-many translation. To ensure consistency, we assume a one-to-one translation as the default for simplex units. ^[We also provide three input unit options in the database: one that ignores polysemy and focuses only on simplex units, one that prioritizes compound units while ignoring polysemy, and one that retains potential decompositions of compound units. For this paper, we use the simplex unit approach.]
+
+We calculate the unmatch rate similarly, as the proportion of elements in the source text that have no agreement in the translation, using the following formula:
+
+$$
+\begin{align}
+\text{U}_{S}(S,T) &= 1 - \frac{1}{|S|}\text{agreement}_{S}
+\end{align}
+$$
+
+We use the addition rate calculated by the bag method for statistical analysis to examine the influence of the translator's subjective awareness of their translation approach, as detailed in the previous section. We review the unmatch rate using basic descriptive statistics.
+
+```{python}
+#| label: count-match-bag
+
+def match_count_bag(poem_lines: List[str], translation_lines: List[str]) -> dict:
+    """
+    Calculate the total match count between the poem and translation for Exact (E), Field (F), and Group (G) matches.
+
+    The function compares each element in the poem with the elements in the translation.
+    The match is counted with priority: Exact (E) > Field (F) > Group (G), meaning if an E match is found,
+    it will not check for F or G, and similarly for F before G.
+
+    :param poem_lines: A list of strings representing the poem data (already filtered).
+    :param translation_lines: A list of strings representing the translation data (already filtered).
+
+    :return: A dictionary containing the total match counts for 'E', 'F', and 'G' categories.
+
+    Example Usage:
+    --------------
+    poem_data = [
+        "01:000001:0001 A00 BG-01-1630-01-0100 02 年 年 とし 年 とし",
+        "01:000001:0002 A00 BG-08-0061-07-0100 61 の の の の の"
+    ]
+
+    translation_data = [
+        "1 katagiri 0001 1 51 50 07 BG-03-1940-01-010-A 早く はやい 早い 1",
+        "1 katagiri 0001 2 51 50 07 BG-03-1660-03-010-A -- はやい 早い 1"
+    ]
+
+    match_counts = match_count(poem_data, translation_data)
+    print(f"Match counts: {match_counts}")
+    """
+
+    # Initialize counters for E, F, G matches
+    match_counts = {"E": 0, "F": 0, "G": 0}
+
+    # Calculate total match count based on poem as the source
+    for poem_line in poem_lines:
+        s = poem_line.split()[2]  # BG ID string from poem
+        assert len(s) == 18, f"Invalid BG ID string: {s}"
+
+        found_match = False
+
+        # First, search for E match
+        for translation_line in translation_lines:
+            t = translation_line.split()[7]  # BG ID string from translation
+            assert len(t) == 19, f"Invalid BG ID string: {t}"
+
+            if match_category(s, t) == "E":
+                match_counts["E"] += 1
+                found_match = True
+                break  # Stop once an E match is found
+
+        # If no E match is found, search for F match
+        if not found_match:
+            for translation_line in translation_lines:
+                t = translation_line.split()[7]
+                if match_category(s, t) == "F":
+                    match_counts["F"] += 1
+                    found_match = True
+                    break  # Stop once an F match is found
+
+        # If no F match is found, search for G match
+        if not found_match:
+            for translation_line in translation_lines:
+                t = translation_line.split()[7]
+                if match_category(s, t) == "G":
+                    match_counts["G"] += 1
+                    break  # Stop once a G match is found
+
+    # Assert to ensure that the total matches (E + F + G) equal the number of poem lines
+    total_matches = match_counts["E"] + match_counts["F"] + match_counts["G"]
+    assert total_matches <= len(poem_lines), f"Total matches {total_matches} exceed the number of poem lines {len(poem_lines)}"
+
+    return match_counts
+```
+
+#### Calculation of addition rate using the alignment method {.unnumbered}
+
+
+We now explain the calculation method using the alignment approach. Unlike the bag method, which ignores word order, the alignment method estimates aligned word pairs and calculates the number of agreements within the alignment, treating the poem and its translation as sequences rather than sets.
+
+In this paper, we perform the alignment using dynamic programming. The score function for calculating the alignment between two sequences is defined as follows:
+
+$$
+\text{S}_{\text{DP}}(i, j) =
+\begin{cases}
+0 & \text{if } i = 0 \text{ or } j = 0 \\
+\max
+\begin{cases}
+\text{S}_{\text{DP}}(i-1, j) - \text{gap} \\
+\text{S}_{\text{DP}}(i-1, j-1) + \text{weight}(s_i, t_j) \\
+\text{S}_{\text{DP}}(i, j-1) - \text{gap}
+\end{cases} & i > 0 \text{ and } j > 0
+\end{cases}\\
+$$
+
+The matching weight function is based on the LCS value of the two word sense identifiers, i.e., the WLSP codes. For an unmatch, we apply a penalty of $-1$:
+
+$$
+\text{weight}(s,t) =
+\begin{cases}
+-1, & \text{if } \text{match}(s,t) \in U \\
+10, & \text{if } \text{match}(s,t) \in G \\
+13, & \text{if } \text{match}(s,t) \in F \\
+17, & \text{if } \text{match}(s,t) \in E \\
+\end{cases}
+$$
+
+Using the subsequences of the source text $S$ and the target text $T$, we recursively calculate the optimal alignment score $\text{S}_{\text{DP}}(i,j)$ for positions $S_i$ and $T_j$. The gap penalty (for inserting gaps) is set to 0.01, which allows for distant word alignments, a common occurrence in translations of poetry. ^[The gap penalty is set to 0.01 to account for the fact that translations of poems often involve distant agreements between words.] Based on this formula, we search for the most likely alignment. An example of the aligned result is shown below:
+
+```
+>| Tatsutahime give       god exist Reson emp         autumn tree leaf ??     scatter   inference
+>| 立田姫ー手向けるーーーー神のあれ　ばこそーーーーーーー秋の木の葉の幣ーーーと散るーーーらめー [298]
+>| 竜田姫は手向けをするべき神があるのでーーそのつかさどる秋の木の葉が幣のように散るのであろうよ [KBT]
+
+>| Tatsuta+hime.....tamukeru............kami=no.are..=ba=koso.................aki=no.ki=no.ha=no.nusa=to.......chiru.....=rame [298]
+>| Tatsuta+hime=ha..tamuke=wo.suru=beki.kami=ga.aru=node.....sono.tsukasadoru.aki=no.ki=no.ha=ga.nusa=no.yo=ni.chiru=no=dearou [KBT]
+```
+
+With such alignment, we can calculate the agreement and addition rates. Given the aligned sequences $S^{\prime}$ and $T^{\prime}$ ^[Naturally, in alignment, $|S^{\prime}| = |T^{\prime}|$.], the agreement rate $\text{agreement}^{\prime}_{T}(S^{\prime},T^{\prime})$ using the alignment method is calculated as follows:
+
+$$
+\begin{align}
+\text{U}^{\prime}_{T}(S,T) &= 1-\frac{1}{|T|}\text{agreement}^{\prime}_{S}\\
+\text{agreement}^{\prime}_{S} &= \sum_{s_i \in S^{\prime}} \mathbb{I} \left(\text{match}(s_i^{\prime}, t_i^{\prime}) \notin U \right)
+\end{align}
+$$
+
+In this formula, any term with a prime ($\prime$) refers to the aligned text. The indicator function $\mathbb{I}$ returns 1 if the alignment is an agreement and 0 if it is not. Alignments with gaps are excluded from the calculation. For the calculation of the agreement, unmatch, and addition rates, we use the total number of tokens in the source text (before alignment) as the denominator.
+
+Dynamic programming is sensitive to issues such as word/chunk order changes (site swaps) in translations of poems, where phrases and word order are often rearranged. Additionally, the alignment method operates on a strict assumption that the aligned word pairs are exact matches, which may not hold in many cases. For this reason, we do not use the addition rate calculated by the alignment method for general statistical analysis but instead present it as part of case study explanations.
+
+```{python}
+#| label: weight-function
+
+def weight(s: str, t: str, u: int = -1, g: int = 10, f: int = 13, e: int = 17) -> int:
+    """
+    Calculate the weight based on the match category between two strings.
+
+    The function first classifies the match category using the `match_category` function.
+    It allows custom weight values for each match category (U, G, F, E).
+    - 'U' (Unmatch) returns the weight for unmatch (default is -1).
+    - 'G' (Group match) returns the weight for group match (default is 10).
+    - 'F' (Field match) returns the weight for field match (default is 13).
+    - 'E' (Exact match) returns the weight for exact match (default is 17).
+
+    :param s: The first input string to compare.
+    :param t: The second input string to compare.
+    :param u: Weight for unmatch (default is -1).
+    :param g: Weight for group match (default is 10).
+    :param f: Weight for field match (default is 13).
+    :param e: Weight for exact match (default is 17).
+    :return: An integer weight based on the match category.
+    """
+    category = match_category(s, t)
+
+    if category == "U":
+        return u
+    elif category == "G":
+        return g
+    elif category == "F":
+        return f
+    else:  # "E"
+        return e
+```
+
+```{python}
+#| label: alignment
+
+def alignment(poem_lines: List[str], translation_lines: List[str], gap_penalty: float = 0.01, u: int = -1, g: int = 10, f: int = 13, e: int = 17) -> str:
+    """
+    Align the poem and translation sequences using dynamic programming and return the alignment in a formatted output.
+
+    :param poem_lines: A list of strings representing the poem data (already filtered).
+    :param translation_lines: A list of strings representing the translation data (already filtered).
+    :param gap_penalty: Float representing the penalty for inserting gaps (default is 0.01).
+    :param u: Weight for unmatch (default is -1).
+    :param g: Weight for group match (default is 10).
+    :param f: Weight for field match (default is 13).
+    :param e: Weight for exact match (default is 17).
+
+    :return: A formatted string representing the aligned sequences, including matching category and token information.
+    """
+
+    # Get the size of the poem and translation
+    poem_size = len(poem_lines)
+    translation_size = len(translation_lines)
+
+    # m: number of poem lines, n: number of translation lines
+    m, n = poem_size, translation_size
+
+    # Initialize the DP (Dynamic Programming) table and traceback table
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    traceback = [[(0, 0)] * (n + 1) for _ in range(m + 1)]
+
+    # Fill DP table with gap penalties for alignment
+    for i in range(1, m + 1):
+        dp[i][0] = dp[i - 1][0] + gap_penalty  # Penalty for gaps in translation
+        traceback[i][0] = (i - 1, 0)  # Record traceback
+    for j in range(1, n + 1):
+        dp[0][j] = dp[0][j - 1] + gap_penalty  # Penalty for gaps in poem
+        traceback[0][j] = (0, j - 1)  # Record traceback
+
+    # Fill the DP table with alignment scores based on the weight function
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            match_weight = dp[i - 1][j - 1] + weight(poem_lines[i - 1], translation_lines[j - 1], u=u, g=g, f=f, e=e)
+            gap_poem = dp[i - 1][j] + gap_penalty  # Gap in translation
+            gap_translation = dp[i][j - 1] + gap_penalty  # Gap in poem
+
+            dp[i][j] = max(match_weight, gap_poem, gap_translation)
+
+            # Track the source of the best alignment decision (match, gap in poem, gap in translation)
+            if dp[i][j] == match_weight:
+                traceback[i][j] = (i - 1, j - 1)
+            elif dp[i][j] == gap_poem:
+                traceback[i][j] = (i - 1, j)
+            else:
+                traceback[i][j] = (i, j - 1)
+
+    # Traceback step to retrieve the optimal alignment path
+    aligned_poem = []
+    aligned_translation = []
+
+    i, j = m, n
+    while i > 0 or j > 0:
+        prev_i, prev_j = traceback[i][j]
+        if i > 0 and j > 0 and (prev_i, prev_j) == (i - 1, j - 1):
+            aligned_poem.append(poem_lines[i - 1])
+            aligned_translation.append(translation_lines[j - 1])
+        elif i > 0 and (prev_i, prev_j) == (i - 1, j):
+            aligned_poem.append(poem_lines[i - 1])
+            aligned_translation.append("-")  # Gap in translation
+        else:
+            aligned_poem.append("-")  # Gap in poem
+            aligned_translation.append(translation_lines[j - 1])
+        i, j = prev_i, prev_j
+
+    # Reverse the alignments to reflect the original sequence
+    aligned_poem.reverse()
+    aligned_translation.reverse()
+
+    # Initialize output
+    output = []
+
+    # Process each aligned pair for final output
+    for pair_id, (op_token, ct_token) in enumerate(zip(aligned_poem, aligned_translation), 1):
+
+        # Extract necessary fields for poem and translation tokens
+        op_fields = op_token.split() if op_token != "-" else ["-"] * 9  # Handle gaps with placeholder
+        ct_fields = ct_token.split() if ct_token != "-" else ["-"] * 12  # Handle gaps with placeholder
+
+        assert len(op_fields) == 9, f"Invalid op_fields length: {len(op_fields)}. Fields: {op_fields}"
+
+        # Unpack poem fields
+        (
+            token_identifier_op,  # AnthologyID:PoemID:SequentialID
+            polysemy_decomposition_op,
+            bg_id_op,
+            pos_op,
+            surface_op,
+            lemma_kanji_op,
+            lemma_kana_op,
+            conjugation_kanji_op,
+            conjugation_kana_op
+        ) = op_fields
+
+        # Unpack translation fields
+        (
+            polysemy_ct,
+            # Explanation for polysemy_ct:
+            # 1=non-polysemy
+            # 2=polysemy
+            translator,
+            poem_id,
+            polysemy_decomposition_ct,
+            # Explanation for polysemy_decomposition_ct:
+            # 0=default sense(non-polysemy and simplex);
+            # 1=defaut sense(compound);
+            # 2=potential sense; 3=decomposition of compound
+            pos_ct,
+            pos_b_ct,
+            pos_c_ct,
+            bg_id_ct,
+            surface_ct,
+            lemma_kana_ct,
+            lemma_kanji_ct,
+            seq_id_ct
+        ) = ct_fields
+
+        # Handle potential sense and decomposition flags
+        potential_sense_op = "" if (polysemy_decomposition_op == "-" or polysemy_decomposition_op[1] == "0") else "*"
+        potential_sense_ct = "" if (polysemy_decomposition_ct == "-" or (polysemy_ct == "1" and polysemy_decomposition_ct != "2")) else "*"
+        decomposition_op = "+" if (polysemy_decomposition_op[0] == "C" or polysemy_decomposition_op[0] == "E") else ""
+        decomposition_ct = "+" if polysemy_decomposition_ct == "3" else ""
+
+        # Determine match category based on score (Exact, Field, Group)
+        category = match_category(bg_id_op, bg_id_ct) if (op_token != "-" and ct_token != "-") else "-"
+        match_value = category
+
+        # Sequential ID for poem
+        seq_id_op = int(token_identifier_op.split(":")[-1]) if token_identifier_op != "-" else "-"
+
+        # Padding
+        padding_width_op = 7 - 1 * len(surface_op) if surface_op != "-" else 7
+        if padding_width_op < 0:
+            padding_width_op = 0
+        padding_width_ct = 7 - 1 * len(lemma_kanji_ct) if lemma_kanji_ct != "-" else 7
+        if padding_width_ct < 0:
+            padding_width_ct = 0
+
+        # Format the final aligned output with appropriate columns and alignment
+        output.append(
+            f"{pair_id:>2} {match_value:>2} {pos_op:>2} {bg_id_op:>18} {surface_op:>{padding_width_op}} {seq_id_op:>2} {potential_sense_op:>1} "
+            f"{decomposition_op:>1} <-> {decomposition_ct:<1} {potential_sense_ct:<1} {seq_id_ct:<2} {lemma_kanji_ct:<{padding_width_ct}} {bg_id_ct:<18}"
+        )
+
+    # Prepare the formatted output with headers and alignment
+    translator = translation_lines[0].split()[1]
+    poem_id = translation_lines[0].split()[2]
+    header = (
+        f"args: translator:{translator}; poem No.{poem_id}; weight:(U={u}, G={g}, F={f}, E={e}); gap penalty: {gap_penalty}\n"
+        " +------- pair No.\n"
+        " |  +---- matching level (E=Exact, F=Field, G=Group)\n"
+        " |  |  +- pos No.\n"
+        " |  |  |  OP decomposition (+) ----------+     +--------------- CT decomposition\n"
+        " |  |  |  OP potential sense (*) ------+ |     | +------------- CT potential sense\n"
+        " |  |  |  OP token No. --------------+ | |     | | +----------- CT token No.\n"
+        " |  |  |  OP token ---------------+  | | |     | | |  +-------- CT token\n"
+        " |  |  |  OP WLSP code ---+       |  | | |     | | |  |       + CT WLSP code\n"
+        " |  |  |                  |       |  | | |     | | |  |       |"
+    )
+    output = [header] + output
+
+    return "\n".join(output)
+```
+
+```{python}
+#| label: count-match-alignment
+
+def match_count_alignment(alignment_output: str) -> dict:
+    """
+    Count the occurrences of match categories (E, F, G) in the alignment output.
+
+    This function counts only the E (Exact), F (Field), and G (Group) matches in the alignment output.
+    It does not calculate or track unmatched (U) tokens.
+
+    :param alignment_output: A string representing the alignment output, where each line represents a pair.
+
+    :return: A dictionary with counts of E, F, and G matches.
+    """
+    # Initialize the counters for each match category
+    counts = {"E": 0, "F": 0, "G": 0}
+
+    # Extract the total number of OP tokens from the header
+    lines = alignment_output.strip().splitlines()
+
+    # Iterate through the lines and count occurrences of E, F, G
+    for line in lines:
+        # Skip lines that do not contain match category information
+        if len(line.strip()) == 0 or line.strip().startswith('+'):
+            continue
+
+        # Extract the match category from the line (2nd field)
+        match_category = line.split()[1].strip()
+
+        # Count E, F, G and skip lines with "-"
+        if match_category == "E":
+            counts["E"] += 1
+        elif match_category == "F":
+            counts["F"] += 1
+        elif match_category == "G":
+            counts["G"] += 1
+
+    return counts
+```
+
+```{python}
+#| label: count-macth
+
+def match_count(match_counts: dict, level: int = 1) -> int:
+    """
+    Calculate the total match count based on the specified match level.
+
+    The match count is calculated by summing the appropriate categories of matches
+    based on the selected level of strictness:
+
+    - Level 1: Only count Exact (E) matches.
+    - Level 2: Count Exact (E) and Field (F) matches.
+    - Level 3: Count Exact (E), Field (F), and Group (G) matches.
+
+    :param match_counts: A dictionary with counts of E, F, G, and U matches.
+    :param level: Integer representing the matching strictness level (default is 1).
+        - Level 1: Only count Exact matches (E).
+        - Level 2: Count Exact (E) and Field (F) matches.
+        - Level 3: Count Exact (E), Field (F), and Group (G) matches.
+
+    :return: An integer representing the total match count.
+    """
+
+    # Ensure the level is valid
+    assert level in [1, 2, 3], "Invalid level. Must be 1, 2, or 3."
+
+    # Calculate the total match count based on the level
+    if level == 1:
+        total_match_count = match_counts["E"]
+    elif level == 2:
+        total_match_count = match_counts["E"] + match_counts["F"]
+    else:  # level == 3
+        total_match_count = match_counts["E"] + match_counts["F"] + match_counts["G"]
+
+    return total_match_count
+```
+
+```{python}
+#| label: pipe
+
+def pipe(poem: str, translation: str, mode: int = 3, level: int = 3, gap_penalty: float = 0.01, u: int = -1, g: int = 10, f: int = 13, e: int = 17):
+    """
+    A complete pipeline function that processes poem and translation data, computes match counts,
+    alignment results, and rates (addition and unmatch rates), and writes results to a CSV file.
+
+    :param poem: The poem data as a string.
+    :param translation: The translation data as a string.
+    :param mode: The mode to filter the poem and translation (default is 3).
+    :param level: The strictness level for calculating match counts (default is 3).
+    :param gap_penalty: Gap penalty for alignment (default is 0.01).
+    :param u: Weight for unmatch (default is -1).
+    :param g: Weight for group match (default is 10).
+    :param f: Weight for field match (default is 13).
+    :param e: Weight for exact match (default is 17).
+    """
+
+    # Process the poem and translation using poem_mode and translation_mode
+    poem_lines = poem_mode(poem, mode)
+    translation_lines = translation_mode(translation, mode)
+
+    # Calculate poem and translation sizes
+    poem_size = len(poem_lines)
+    translation_size = len(translation_lines)
+
+    # Info
+    translator = translation_lines[0].split()[1]
+    poem_id = translation_lines[0].split()[2]
+
+    # Calculate match counts using the bag method
+    match_count_bag_ = match_count_bag(poem_lines, translation_lines)
+    exact_match_bag = match_count_bag_["E"]
+    field_match_bag = match_count_bag_["F"]
+    group_match_bag = match_count_bag_["G"]
+    unmatch_bag = poem_size - exact_match_bag - field_match_bag - group_match_bag
+    total_match_bag = match_count(match_count_bag_, level)
+
+    # Calculate alignment and match counts from alignment
+    alignment_output = alignment(poem_lines, translation_lines, gap_penalty=gap_penalty, u=u, g=g, f=f, e=e)
+    match_count_alignment_ = match_count_alignment(alignment_output)
+    exact_match_alignment = match_count_alignment_["E"]
+    field_match_alignment = match_count_alignment_["F"]
+    group_match_alignment = match_count_alignment_["G"]
+    unmatch_alignment = poem_size - exact_match_alignment - field_match_alignment - group_match_alignment
+    total_match_alignment = match_count(match_count_alignment_, level)
+
+    # Calculate addition and unmatch rates
+    addition_rate_bag = 1 - total_match_bag / translation_size if translation_size > 0 else 0
+    addition_rate_alignment = 1 - total_match_alignment / translation_size if translation_size > 0 else 0
+    unmatch_rate_bag = unmatch_bag / poem_size if poem_size > 0 else 0
+    unmatch_rate_alignment = unmatch_alignment / poem_size if poem_size > 0 else 0
+
+    # Format the statistics according to the required structure
+    statistics = (
+        f"mode={mode}; level={level}\n"
+        f"OP={poem_size}; CT={translation_size};\n"
+        f"bag (E={exact_match_bag}, F={field_match_bag}, G={group_match_bag}, U={unmatch_bag}, T={total_match_bag}, "
+        f"AddRate={addition_rate_bag:.2%}, UnmatchRate={unmatch_rate_bag:.2%});\n"
+        f"alignment (E={exact_match_alignment}, F={field_match_alignment}, G={group_match_alignment}, U={unmatch_alignment}, "
+        f"T={total_match_alignment}, AddRate={addition_rate_alignment:.2%}, UnmatchRate={unmatch_rate_alignment:.2%})"
+    )
+    
+    # Print alignment output and formatted statistics
+    print("statistics:", statistics)
+    print(alignment_output)
+```
+
+## Statistical modeling of the relationship between translation approach and the addition rate
+
+
+Previous studies [@Yamamoto2005Mathematical; @Yamamoto2019Analysis] have calculated various metrics such as agreement rates (paraphrase rates) at the group, field, and synonym levels, as well as theoretical and practical addition rates. However, they only provided the mean and standard deviation of the addition rate by translator. Given the updates to the data and calculation procedures, the results may differ. Therefore, we conduct a new statistical analysis using the recalculated addition rates.
+
+To assess whether the translators' intended approaches influence the addition rate in contemporary translations, we perform statistical modeling. Specifically, we examine the effect of translation approach on the addition rate^[In this analysis, we use the addition rate calculated via the bag method.]. We employ a hierarchical model based on a beta distribution^[Since the response variable lies within the $(0, 1)$ interval, we considered using a binomial distribution. However, this would require detailed information on the total number of words in the translation and the number of additional elements. Based on @Yamamoto2019Analysis, we use a beta distribution, which does not assume this information.] to analyze this effect. Translator and poem are included as random effects to account for variability across these factors. Details of the statistical model are available in the appendix.
+
+We estimate the model's coefficients using the Markov Chain Monte Carlo (MCMC) method, running 4 chains with 2000 iterations each, with the first 1000 iterations used as warm-up (burn-in). The model is implemented using the `brms` package in R (`{r} version$version.string`) [@???], and we evaluate the convergence of the posterior distribution using the R-hat statistic and effective sample size (ESS). The results will reveal how translation focus influences the addition rate, and we will report the posterior median along with the 95% highest posterior credible interval (HDI).
+
+```{R}
+#| label: data-process
+#| message: false
+
+data <- read.csv("../artifacts/calc_results.csv") |>
+  mutate(
+    Translator = as.factor(Translator),
+    Focus = case_when(
+      Translator %in% c(
+        "kaneko",
+        "kubota",
+        "katagiri"
+      ) ~ "Text-focused",
+      Translator %in% c(
+        "okumura",
+        "takeoka"
+      ) ~ "Poet-focused",
+      Translator %in% c(
+        "ozawa",
+        "kyusojin"
+      ) ~ "Reader-focused",
+      Translator %in% c(
+        "matsuda",
+        "kojimaarai",
+        "komachiya"
+      ) ~ "Others",
+    ),
+    Focus = factor(
+      Focus,
+      levels = c(
+        "Text-focused", 
+        "Poet-focused", 
+        "Reader-focused", 
+        "Others"
+      )
+    ),
+    Translator = factor(
+      Translator,
+      levels = c(
+        "kaneko",
+        "kubota",
+        "katagiri",
+        "okumura",
+        "takeoka",
+        "ozawa",
+        "kyusojin",
+        "matsuda",
+        "kojimaarai",
+        "komachiya"
+      )
+    )
+  ) |>
+  select(
+    Translator,
+    PoemID,
+    Focus,
+    AdditionRate,
+    UnmatchRate
+  )
+
+translator_labels <- c(
+  "kaneko" = "KNK",
+  "kubota" = "KBT",
+  "katagiri" = "KTGR",
+  "okumura" = "OKMR",
+  "takeoka" = "TKOK",
+  "ozawa" = "OZW",
+  "kyusojin" = "KSJ",
+  "matsuda" = "MTD",
+  "kojimaarai" = "K&A",
+  "komachiya" = "KMCY"
+  )
+```
+
+
+```{r}
+#| label: beta-model
+#| cache: true
+#| messge: false
+
+# backend
+options(
+    mc.cores = parallel::detectCores(),
+    brms.backend = "cmdstanr"
+)
+
+# Global setting
+chains <- 4
+iter <- 2000
+warmup <- 1000
+bayes_seed <- 1234
+
+# Formula
+formula <- bf(
+  AdditionRate ~ a + b, 
+  a ~ 1 + (1 | Translator) + (1 | PoemID),
+  b ~ 0 + Focus,
+  phi ~ 1 + (1 | PoemID),
+  nl = TRUE
+)
+
+prior = c(
+  prior(student_t(3, 0, 2.5), nlpar = b),
+  prior(
+    student_t(3, 0, 2.5),
+    class = b,
+    coef = Intercept,
+    nlpar = a
+  ),
+  prior(
+    student_t(3, 0, 2.5),
+    class = sd,
+    group = Translator,
+    nlpar = a
+  ),
+  prior(
+    student_t(3, 0, 2.5),
+    class = sd,
+    group = PoemID,
+    nlpar = a
+  ),
+  prior(
+    student_t(3, 0, 2.5),
+    class = Intercept,
+    dpar = phi
+  ),
+  # Default prior for standard deviation of phi parameter in PoemID group
+  prior(
+    student_t(3, 0, 2.5),
+    class = sd,
+    dpar = phi,
+    group = PoemID
+  )
+)
+
+# Model
+model <- data %>%
+  brm(
+    data = .,
+    formula = formula,
+    family = Beta(), 
+    prior = prior, 
+    chains = chains,
+    iter = iter,
+    warmup = warmup,
+    seed = bayes_seed,
+    silent = 2,
+    adapt_delta = 0.9,
+    control = list(max_treedepth = 12),
+    file = "../artifacts/model_beta_bayes",
+    save_model = TRUE
+  )
+```
+
+## Case Study of the "Tatsuta" Poem, No. 298
+
+
+While we know that contemporary translations of classical Japanese poetry often involve paraphrasing and adding elements, the precise nature of these additions and paraphrases remains unclear. To clarify the characteristics of these elements, we analyze the alignments and examine them from a corpus linguistics perspective. Drawing on Sinclair's Extended Unit of Meaning model [@Sinclair1996Search], this paper explores how the tendencies observed at the corpus level of the original text are reflected in the sentence-level translations.
+
+The extended unit of meaning model describes linguistic units across four levels:
+
+1. **Collocation**: The tendency of words to co-occur with other words [@Sinclair1970English, p. 15].
+2. **Colligation**: The tendency of words to co-occur with specific syntactic patterns or grammatical elements [cf., @Firth1968Selected, p. 183; @Sinclair1996Search, p. 11; @Sinclair2003Reading, p. 171].
+3. **Semantic preference**: The tendency of words to co-occur with particular semantic sets [@Sinclair2003Reading, p. 178].
+4. **Discourse prosody**: The specific attitudinal, emotional, or evaluative tendency expressed by the extended unit of meaning [@Sinclair2004Trust, p. 174].
+
+From the level of collocation to that of discourse prosody, the elements become less explicitly observable and more implicit [@Stubbs2001Words, pp. 87–88].
+
+Given the nature of classical poetry and the limited data available, capturing extended units of meaning with certainty is often challenging. Therefore, we treat the four levels of the extended unit as distinct perspectives. Through these perspectives—co-occurring words, syntactic patterns, and semantic sets—we analyze how the ten different translations handle the tendencies present in the original text.
+
+@Yamamoto2005Mathematical uses poem #298 as an example to illustrate how the word "Tatsuta" is processed in contemporary translations. We analyze the same poem, focusing on how it is handled in the ten translations, each employing different translation approaches, based on the three perspectives mentioned above.
+
+At the level of collocation, we observe that in the *Hachidaishū* dataset, the following content words^[Content words are identified by `chasen`-based PoS number below 60.] frequently appear in the context of "Tatsuta": 山 (*yama*, "mountain") (30 as collocates, 15 as a decomposition of 立田山 *tatsuta-yama*, "Mt. Tatsuta"), 紅葉づ (*momidzu*, "(leaves) turning red") (17), 川 (*kawa*, "river") (15 as a decomposition of 立田川 *Tatsuta-gawa*, "River Tatsuta"), 秋 (*aki*, "autumn") (15), 見る (*miru*, "to see") (12), 葉 (*ha*, "leaves") (9), and 錦 (*nishiki*, "brocade") (9). Words related to gods, such as 神無備 (*Kamnabi*, "Kamnabi (proper noun)") (5) and 姫 (*hime*, "goddess/princess") (8 as a decomposition of 立田姫 *Tatsuta-hime*, "Goddess Tatsuta"), also frequently appear, along with words associated with falling leaves, such as 散る (*chiru*, "scattering") (8), 流る (*nagaru*, "flowing") (5), 吹く (*fuku*, "blowing") (6), 紅葉 (*momidzi*, "red leaves") (5), and 黄葉 (*momidzi*, "yellow leaves") (5).^[See the appendix for details.]
+
+Regarding co-occurring syntactic patterns, we find that poems ending in the conclusive form of a verb are rare (only one in the *Kokinshū* out of twelve poems). Additionally, nine poems in the *Kokinshū* utilize the emphatic grammatical structure "kakarimusubi" (係り結び), which emphasizes a lingering resonance at the poem’s conclusion. We will examine how these distinctive syntactic patterns are handled in the translations.
+
+As for the semantic properties of the co-occurring words, the collocates of content words typically fall into two main groups: those related to place names (e.g., 立田川 *tatsuta-gawa*, "River Tatsuta", 立田の山 *tatsuta-no-yama*, "Mountain of Tatsuta") and those associated with the autumn goddess. These suggest that the poetic word "Tatsuta" is closely tied to a sacred location known for its autumnal colors.
+
+Finally, we examine how the corpus-level and collective elements described above are incorporated into the sentence-level translations of poem #298, highlighting the variations in added elements across the ten translations.
+
+
+# Results {#sec-results}
+
+## Classification of contemporary translation approaches
+
+
+Based on the prefaces and introductions in the annotation books, where the translators express their awareness, understanding, and intent regarding translation approaches, the approaches of the ten translators are classified into three categories according to their focus in the communication process:
+
+1. **Focus on the text's literal meaning (signal)**: @kaneko1933Kokin; @kubota1960Kokin; @katagiri1998Kokinhyoshaku
+2. **Focus on the author's intent (source)**: @okumura1978Kokin; @takeoka1976Kokin
+3. **Focus on the reader's comprehension (destination)**: @ozawa1971Kikon; @kyusojin1979Kokin
+
+The translation approach was not clearly stated in the works of @matsuda1968Shinshaku, @kojima1989Kokin, and @komachiya1982Kokin.
+
+Among these, the translators who focus on the literal meaning of the original text tend to adhere most closely to word-for-word translation. On the other hand, those who prioritize the author’s intent or the reader’s understanding tend to allow for some reordering of words and the supplementation of expressions.
+
+### Text-focused approach: KNK, KBT, KTGR {.unnumbered}
+
+
+The group of translations that emphasize a literal interpretation of the original text focuses on translating as faithfully as possible, minimizing changes in word order or meaning. @kaneko1933Kokin states that he follows a strict word-for-word approach, avoiding the addition or omission of words, and carefully translating to maintain the integrity of the original. He states that, fearing to distort the meaning or rhythm of the poems, he adhered to the *kyōkasuigetsu* (鏡花水月) method^[A classical Chinese expression that suggests presenting the essence of something without explicit explanation, allowing the reader to imagine it.], paying meticulous attention to every word without altering even a single word. Stylistically, Kaneko's translation resembles Motoori Norinaga's *Kokin Tōkagami* in his deliberate inclusion of archaic expressions.
+
+@kubota1960Kokin also emphasizes a strict adherence to word-for-word translation, avoiding changes in word order or word additions. Similarly, @katagiri1998Kokinhyoshaku follows the same approach, performing a literal translation while avoiding omissions or extensive additions, aiming to remain as faithful as possible to the original poems.
+
+### Poet-focused approach: OKMR, TKOK {.unnumbered}
+
+The group of translations that emphasize the poet’s intent focuses more on the underlying meaning and sensibility of the original text than on its surface meaning. @okumura1978Kokin [p. 7] states that the contemporary translation respects the wording and phrasing of the original poem, but rather than strictly interpreting the meaning of each poem, the emphasis is placed on conveying the basic intent of the poet. 
+
+In this approach, understanding the original intent takes precedence over a literal word-for-word translation. @takeoka1976Kokin [p. 21] explains that translation (into contemporary colloquial Japanese) is not a mere introduction or explanation of the plot of the original text, but rather aims to clarify the poet’s way of perceiving and feeling in all aspects, and then transposes these expressions into modern equivalents as faithfully as possible. While synonyms in the original poem are considered important, the emphasis is on preserving the poet’s intent and feelings. As a specific translation strategy, @takeoka1976Kokin [pp. 11–12] proposes the following unique theory:
+
+$$
+S=\left[\left(a+b+c+\dots+n\right)\times X \right]\times Y
+$$
+
+In this formula, $S$ represents the translated poem, $a, b, c, \dots, n$ are the individual words in the poem, $X$ represents the elements included in the translation, and $Y$ represents additional elements effectively included in the translation. Takeoka explains that the general universal meaning of $a, b, c, \dots, n$ can be understood through a dictionary, and the way they are combined (denoted by $+$) can be clarified by referencing grammar books. @takeoka1976Kokin [p. 11] also notes that $Y$ typically has a value of 0, but when effective elements are included in a poem, the translator adds a value to $Y$, such as a final particle (e.g., わ *wa*, ね *ne*, よ *yo*). Therefore, the most important variable for creating a contemporary translation is $X$. Takeoka divides $X$ into seven categories: word segmentation, corresponding modern vocabulary, word order, particles and conjunctions, sentence structure, discourse, and scene. This approach emphasizes fully conveying the poet’s intent rather than just the surface meaning of the poem’s structure.^[This method represents the first integrated analysis of the seven major commentaries on the *Kokinshū* since Keichū’s *Kokinshū Yozaishō*. Takeoka adopts an analytical approach in his literary studies, while rejecting the work of Kamo no Mabuchi and Kagawa Kageki as lacking in analytical foundation. However, he values the annotations of Keichū and Motoori Norinaga. Additionally, he carefully discusses the differences among all seven classical annotation books from the perspectives of the studies of classical Japanese grammar and vocabulary.]
+
+### Reader-focused approach: OZW, KSJ {.unnumbered}
+
+
+The group of translations that prioritize the reader’s understanding focuses more on conveying the meaning and interpretation of the original poem to the reader, rather than strictly adhering to the original text. This often involves changing the word order or inserting additional words. @ozawa1971Kikon does not avoid modify the word order and grammar of the original, prioritizing a translation that is easier for the reader to understand. @ozawa1971Kikon [p. 46] states that he made sure that the translation could stand alone and still be understood, even if it meant changing the word order or grammar of the original text. This highlights a focus on comprehension over literal word-for-word translation. Similarly, @kyusojin1979Kokin adopts a plain and accessible translation, supplementing expressions where necessary to prioritize interpretation. The translation approach is explained that the intent of the poem is expressed in a highly-readable translation based on the original poems, but additional words were added where necessary [@kyusojin1979Kokin, p. 6].
+
+### Approaches that were not specified: KMCY, MTD, K&A {.unnumbered}
+
+
+The translation approach is not explicitly stated in the works of @komachiya1982Kokin, @matsuda1968Shinshaku, and @kojima1989Kokin.
+
+Among these, the contemporary translation in @matsuda1968Shinshaku was produced by ten co-authors. Although the preface of the annotation book mentions that the translation was created based on previous research, it does not clarify the shared understanding or guidelines for translation among the ten co-authors. Additionally, Matsuda states that his interpretation of the *Kokinshū* not only includes the poets' emotions but also the editors' intentions in compiling the anthology [@matsuda1968Shinshaku, p. 9]. Following each poem, the annotation book includes sections titled "General Explanation (通釈 *Tsūshaku*)," "Word Explanation (語釈 *Goshaku*)," "Classical Commentaries (古注 *Kochū*)," and "Evaluations (評 *Hyō*)," providing interpretation and appreciation of the poems.
+
+One distinguishing feature of @kojima1989Kokin is that it incorporates annotations from the medieval period (1392–1600), which were often overlooked in previous annotation books, alongside annotations from the Edo period (1600–1868) (pp. 481--482). Additionally, comparisons and references to *Man'yōshū* poems and terms are frequently made [@kojima1989Kokin, p. 480].
+
+### Summary {.unnumbered}
+
+When examining the translation approaches, most translators aim to maintain the original meaning without altering it, primarily adhering to word-for-word translation, though the emphasis differs slightly. In this paper, we categorized these approaches from the perspective of the communication model into the following groups: text-focused approach, poet-focused approach, reader-focused approach, and approaches that were not specified. Among these, the text-focused approach was the most committed to word-for-word translation. On the other hand, approaches that prioritized the author’s intent or the reader's understanding allowed for some reordering of words and the supplementation of phrases. However, there is likely overlap among these categories. It should also be noted that these approaches are based on the translators' subjective awareness of their own translation strategies.
+
+## Results of unmatch and addition rate estimates
+
+Referring to @fig-data for the calculation results of the addition rate, we can observe that the unmatch rate ranges from 0% to 88% [@tbl-data-review]. TKOK's translation had the lowest unmatch rate at 17.2% (sd = 0.1) [@fig-unmatch-rate], while OZW's translation recorded the highest at 23% (sd = 0.112) [@fig-unmatch-rate]. As mentioned earlier, OZW showed greater flexibility in changing word order, whereas Takeoka adhered strictly to his translation principles, a difference clearly reflected in the data.
+
+Of the 10 contemporary translations analyzed, Poem #697 exhibited the highest unmatch rate at 88.2% [@tbl-data-review], indicating that most of the words in the poem were not literally translated. We will revisit these poems in the "Discussion" section for further analysis.
+
+```{R}
+#| label: fig-data
+#| fig-scap: 訳者別の追加率の確率分布
+#| fig-cap: Probability distribution of addition rates by translator
+#| messge: false
+#| warning: false
+
+by_focus_annotation <- data |> group_by(Focus) |> 
+  get_summary_stats(
+    AdditionRate, 
+    type = "mean_sd"
+  ) |>
+  mutate(
+    annotation = paste0(
+      formatC(mean * 100, format = "f", digits = 1),
+      "*'%'~(N==",
+      n,
+      "*';'~std.==", 
+      formatC(sd, format = "f", digits = 3),
+      ")"
+    ) 
+  ) |>
+  select(annotation) |>
+  pull()
+
+by_translator_annotation <- data |> group_by(Translator) |> 
+  get_summary_stats(
+      AdditionRate, 
+      type = "mean_sd"
+  ) |>
+  mutate(
+    annotation = paste0(
+      formatC(mean * 100, format = "f", digits = 1),
+      "*'%'~(N==",
+      n,
+      "*';'~std.==", 
+      formatC(sd, format = "f", digits = 3),
+      ")"
+    )
+  )|>
+  select(annotation) |>
+  pull()
+
+data |>
+  arrange(Focus, Translator) |>
+  ggplot(
+    aes(
+      x = AdditionRate, 
+      y = Translator, 
+      fill = Focus,
+      )
+    ) + 
+  stat_density_ridges(
+    color = palette_okabe_ito(5),
+    quantile_lines = TRUE, 
+    quantiles = c(0.025, 0.5, 0.975), 
+    jittered_points = TRUE, 
+    position = "raincloud",
+    vline_width = 1, vline_color = "red",
+    point_size = 0.001, 
+    point_alpha = 0.1,
+    point_color = "black",
+    alpha = 0.8,
+    scale = 1,
+    ) +
+  # scale_fill_brewer(palette = "Blues") +  
+  scale_x_continuous(
+    labels = label_percent(),
+    breaks = c(0, 0.25, 0.5, 0.75, 1),
+    limits = c(-0.2, 1.2)
+  ) +  
+  scale_y_discrete(labels = translator_labels) +
+  geom_hline(
+    yintercept = c("matsuda", "ozawa", "okumura", "kaneko"),
+    linetype = "solid", 
+    color = "black",
+    linewidth = 1.5
+    ) + 
+  annotate(
+    geom="text",
+    x = -0.2, y = c("kojimaarai", "kyusojin", "takeoka", "katagiri"),
+    # color = "blue",
+    color = palette_okabe_ito(order=c(2, 3, 6, 1)),
+    vjust = -0.1,
+    hjust = 0,
+    size = 6,
+    label = c(
+      "Others", 
+      "Reader-focused",
+      "Poet-focused",
+      "Text-focused"
+      )
+    ) + 
+  annotate(
+    geom="text",
+    x = -0.2, y = c("kojimaarai", "kyusojin", "takeoka", "katagiri"),
+    color = palette_okabe_ito(order=c(2, 3, 6, 1)),
+    vjust = 1.2,
+    hjust = 0,
+    size = 3,
+    label = by_focus_annotation,
+    parse = TRUE
+    ) + 
+  annotate(
+    geom="text",
+    x = 1.2, y = c(levels(data$Translator)),
+    color = "black",
+    vjust = -0.2,
+    hjust = 1,
+    size = 3,
+    label = by_translator_annotation,
+    parse = TRUE
+    ) +
+  xlab("Addition Rate") +
+  scale_fill_okabe_ito(order = c(1, 6, 3, 2), guide = "none") +
+  labs(
+    fill = "Translation Focus: ",
+    caption = "2.5%, 50%, 97.5% quantiles are shown with red line"
+  ) + 
+  theme_set_b() +
+  theme(
+    axis.text.x = element_text(
+      angle = 0, 
+      hjust = 0.5, 
+      vjust = 0.5
+    ),
+    axis.text.y = element_text(
+      face = "italic"
+    ),
+    legend.title = element_text(size = 12),
+    axis.title.y = element_blank()
+  ) +
+  guides(fill = guide_legend(nrow = 2)) 
+```
+
+```{r}
+#| label: fig-unmatch-rate
+#| fig-scap: 不一致率（明確な対応をもたない要素が和歌原文を占める割合）の概要
+#| fig-cap: Probability distribution of unmatch rates by translator (unmatch rate is the proportion of elements in the original poem without agreement)
+
+by_focus_annotation <- data |> group_by(Focus) |> 
+  get_summary_stats(
+    UnmatchRate, 
+    type = "mean_sd"
+  ) |>
+  mutate(
+    annotation = paste0(
+      formatC(mean * 100, format = "f", digits = 1),
+      "*'%'~(N==",
+      n,
+      "*';'~std.==", 
+      formatC(sd, format = "f", digits = 3),
+      ")"
+    ) 
+  ) |>
+  select(annotation) |>
+  pull()
+
+by_translator_annotation <- data |> group_by(Translator) |> 
+  get_summary_stats(
+      UnmatchRate, 
+      type = "mean_sd"
+  ) |>
+  mutate(
+    annotation = paste0(
+      formatC(mean * 100, format = "f", digits = 1),
+      "*'%'~(N==",
+      n,
+      "*';'~std.==", 
+      formatC(sd, format = "f", digits = 3),
+      ")"
+    )
+  ) |>
+  select(annotation) |>
+  pull()
+
+data |>
+  arrange(Focus, Translator) |>
+  ggplot(
+    aes(
+      x = UnmatchRate, 
+      y = Translator, 
+      fill = Focus,
+    )
+  ) + 
+  stat_density_ridges(
+    color = palette_okabe_ito(5),
+    quantile_lines = TRUE, 
+    quantiles = c(0.025, 0.5, 0.975), 
+    jittered_points = TRUE, 
+    position = "raincloud",
+    vline_width = 1, vline_color = "red",
+    point_size = 0.001, 
+    point_alpha = 0.1,
+    point_color = "black",
+    alpha = 0.8,
+    scale = 1,
+  ) +
+  # scale_fill_brewer(palette = "Blues") +  
+  scale_x_continuous(
+    labels = label_percent(),
+    breaks = c(0, 0.25, 0.5, 0.75, 1),
+    limits = c(-0.2, 1.2)
+  ) + 
+  scale_y_discrete(labels = translator_labels) +
+  geom_hline(
+    yintercept = c("matsuda", "ozawa", "okumura", "kaneko"),
+    linetype = "solid", 
+    color = "black",
+    linewidth = 1.5
+  ) + 
+  annotate(
+    geom = "text",
+    x = 0.4,
+    y = c(
+      "kojimaarai", "kyusojin",
+      "takeoka", "katagiri"
+    ), 
+    # color = "blue",
+    color = palette_okabe_ito(order=c(2, 3, 6, 1)),
+    vjust = -0.1,
+    hjust = 0,
+    size = 5,
+    label = c(
+      "Others", 
+      "Reader-focused",
+      "Poet-focused",
+      "Text-focused"
+    )
+  ) + 
+  annotate(
+    geom = "text",
+    x = 0.4, y = c("kojimaarai", "kyusojin", "takeoka", "katagiri"),
+    color = palette_okabe_ito(order=c(2, 3, 6, 1)),
+    vjust = 1.2,
+    hjust = 0,
+    size = 2.5,
+    label = by_focus_annotation,
+    parse = TRUE
+  ) + 
+  annotate(
+    geom="text",
+    x = 1.2, y = c(levels(data$Translator)),
+    color = "black",
+    vjust = -0.2,
+    hjust = 1,
+    size = 2.5,
+    label = by_translator_annotation,
+    parse = TRUE
+  ) +
+  geom_vline(
+    xintercept = 0.2,
+    color = palette_okabe_ito(9),
+    linewidth = 1
+  ) +
+  xlab("Unmatch Rate") +
+  scale_fill_okabe_ito(order = c(1, 6, 3, 2), guide = "none") +
+  labs(
+    fill = "Translation Focus: ",
+    caption = "2.5%, 50%, 97.5% quantiles are shown with red line\n20% line is shown with black dashed line"
+  ) + 
+  theme_set_b() +
+  theme(
+    axis.text.x = element_text(
+      angle = 0, 
+      hjust = 0.5, 
+      vjust = 0.5
+    ),
+    axis.text.y = element_text(
+      face = "italic"
+    ),
+    legend.title = element_text(size = 12),
+    axis.title.y = element_blank()
+  ) +
+  guides(fill = guide_legend(nrow = 2)) 
+```
+
+```{R}
+#| label: tbl-data-review
+#| tbl-cap: "Summaries of unmatch and addition rates"
+#| tbl-subcap: 
+#|   - "Summary of unmatch and addition rates"
+#|   - "Poems and translations with the highest unmatch rates"
+#|   - "Poems and translations with the lowest unmatch rates"
+#|   - "Poems with the highest unmatch rate in contemporary translations"
+#|   - "Poems with the highest addition rate in contemporary translations"
+#| layout: [[100], [45, -10, 45], [45, -10, 45]]
+
+data |>  
+  get_summary_stats(
+    UnmatchRate, AdditionRate,
+    type = "full"
+  ) |>
+  select(variable, min, max, median, mean, sd) |>
+  kable()
+
+data |>  
+  mutate(
+    UnmatchRate = round(UnmatchRate, 3),
+    Translator = translator_labels[Translator],
+    PoemID = as.character(PoemID)
+  )  |>
+  arrange(UnmatchRate) |>
+  slice(n():(n()-4)) |>
+  select(Translator, PoemID, UnmatchRate) |>
+  kable()
+
+data |>
+  mutate(
+    AdditionRate = round(AdditionRate, 3),
+    Translator = translator_labels[Translator],
+    PoemID = as.character(PoemID)
+  )  |>
+  arrange(AdditionRate) |>
+  slice(1:5) |>
+  select(Translator, PoemID, AdditionRate) |>
+  kable()
+
+data |>
+  mutate(
+    Translator = translator_labels[Translator],
+    PoemID = as.character(PoemID)
+  )  |>
+  group_by(PoemID) |> 
+  get_summary_stats(
+    UnmatchRate,
+    type = "mean_sd"
+  ) |>
+  arrange(mean) |>
+  slice(n():(n()-4)) |>
+  select(PoemID, variable, mean, sd) |>
+  kable()
+
+data |> 
+  mutate(
+    Translator = translator_labels[Translator],
+    PoemID = as.character(PoemID)
+  )  |> 
+  group_by(PoemID) |> 
+  get_summary_stats(
+    AdditionRate,
+    type = "mean_sd"
+  ) |>
+  arrange(mean) |>
+  slice(n():(n()-4)) |>
+  select(PoemID, variable, mean, sd) |>
+  kable()
+```
+
+## Results from statistical modeling: relationship between translation approach and addition rate
+
+The model sampled the addition rates for each translation according to the translation approach [@fig-poster]. The $R^{\hat}$ values for all estimated effects were 1, indicating good convergence, as they remained below the threshold of 1.1 [cf., @Brooks1998General]. Additionally, the effective sample size (ESS) reached approximately 2000 in all cases.
+
+```{r}
+#| label: posterier-data
+#| messge: false
+#| warning: false
+
+set.seed(123)
+
+pred_addition_rate <- model |> 
+  epred_draws(
+    newdata = tibble(
+      Focus = c(
+       'Text-focused', 
+       'Poet-focused',
+       'Reader-focused',
+       'Others'
+      ),
+      PoemID = NA,
+      Translator = NA
+    )
+  ) |>
+  mutate(
+    Focus = factor(
+      Focus,
+      levels = c(
+        "Text-focused", 
+        "Poet-focused", 
+        "Reader-focused", 
+        "Others"
+      )
+    )
+  )
+
+pred_focus_annotation <- pred_addition_rate |>
+  median_hdi(.epred, .width = 0.95) |> 
+  mutate_if(is.numeric, round, digits = 2) |>
+  mutate(median = paste0(
+    "$",
+    .epred*100,
+    "\\%$"
+    )
+  ) |>
+  mutate(annotation = paste0(
+    .epred, 
+    "*'%; '*",
+    .width * 100,
+    "*'% CrI ['*", 
+    .lower, 
+    "*', '*",
+    .upper, 
+    "*']'", 
+    sep = ""
+    )
+  ) |>
+  mutate(description = paste0(
+    "$\\mathrm{posterior\\; median} = ",
+    .epred, 
+    "\\%; ",
+    .width * 100,
+    "\\%\\;\\mathrm{CrI} = [", 
+    .lower, 
+    ", ",
+    .upper, 
+    "]$", 
+    sep = ""
+    )
+  ) |>
+  select(Focus,annotation, description, median)
+
+pred_addition_rate_diff <- pred_addition_rate |> 
+  compare_levels(
+    variable = .epred, 
+    by = Focus
+  ) |>
+  mutate(
+    Focus = factor(
+      Focus,
+      levels = c(
+        "Poet-focused - Text-focused",
+        "Reader-focused - Poet-focused",
+        "Reader-focused - Text-focused",
+        "Others - Poet-focused",
+        "Others - Reader-focused",
+        "Others - Text-focused"
+      )
+    )
+  )
+
+pred_diff_CrI_annotation <- pred_addition_rate_diff |>
+  median_hdi(.width = 0.95) |> 
+  mutate_if(is.numeric, round, digits = 2) |>
+  mutate(median = paste0(
+    "$",
+    .epred*100,
+    "\\%$"
+    ) 
+  ) |>
+  mutate(annotation = paste0(
+    "Delta==",
+    .epred, 
+    "*'%; '*",
+    .width * 100,
+    "*'% CrI ['*", 
+    .lower,  
+    "*', '*",
+    .upper, 
+    "*']'", 
+    sep = ""
+    )
+  ) |>
+  mutate(description = paste0(
+    "$\\mathrm{posterior\\; median} = ",
+    .epred, 
+    "\\%; ",
+    .width * 100,
+    "\\%\\;\\mathrm{CrI} = [", 
+    .lower, 
+    ", ",
+    .upper, 
+    "]$", 
+    sep = ""
+    )
+  ) |>
+  select(Focus, annotation, description, median)
+
+pred_diff_prob_g_0_annotation <- pred_addition_rate_diff |>
+  group_by(Focus) |>
+  summarise(
+    prob_g_0 = mean(.epred > 0) * 100
+  ) |>
+  mutate_if(is.numeric, round, digits = 1) |>
+  mutate(annotation = paste0(
+    "italic(P)(Delta>0)==", 
+    prob_g_0,
+    "*'%'",
+    sep = ""
+    )
+  ) |>
+  mutate(description = paste0(
+    "$P(\\Delta>0) = ",
+    prob_g_0,
+    "\\%$",
+    sep = ""
+    )
+  ) |>
+  select(Focus, annotation, description, prob_g_0)
+```
+
+### No Significant Differences in Addition Rate by Translation Approach {.unnumbered}
+
+For the visualization and interpretation of results from the model, following a method similar to @Yu2020Tradeoff, we observed whether the 95% CrI of the posterior distribution of the difference between two groups included 0, and we assessed the probability that the difference between the two groups was greater than 0. First, if the 95% CrI does not include 0, we conclude that there is a significant difference between the two groups. Even if the 95% CrI includes 0, if the probability that the difference is greater than 0 exceeds 95%, or is lower than 5%, we consider it a notable trend.
+
+The results were as follows: (a) Regardless of the translation approach, approximately 50% of the elements in the translation were additional elements, a finding corroborated by descriptive statistics. (b) When comparing the translation approach groups, the 95% CrI of the posterior distribution for the difference between groups included 0 in all cases, indicating no statistically significant differences in addition rates between the groups.
+
+A trend was observed where the addition rate of the `Other` group was approximately `{r} pred_diff_CrI_annotation |> filter(Focus == "Others - Reader-focused") |> pull(median) |> I()` lower than that of the `Reader-focused` group (`{r} pred_diff_CrI_annotation |> filter(Focus == "Others - Reader-focused") |> pull(description) |> I()`, `{r} pred_diff_prob_g_0_annotation |> filter(Focus == "Others - Reader-focused") |> pull(description) |> I()`). The addition rate for the `Reader-focused` group was approximately `{r} pred_diff_CrI_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(median) |> I()` lower than that of the `Poet-focused` group (`{r} pred_diff_CrI_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(description) |> I()`, `{r} pred_diff_prob_g_0_annotation |> filter(Focus == "Reader-focused - Poet-focused") |> pull(description) |> I()`), although this did not meet the threshold for a significant trend.
+
+```{r}
+#| label: fig-poster
+#| fig-scap: 予測された追加率の事後分布
+#| fig-cap: Posterior distribution of addition rates
+#| fig-subcap: 
+#|   - "Posterior distribution of addition rates for each translation approach"
+#|   - "Posterior distribution of differences in addition rates by translation approach"
+#| messge: false
+#| warning: false
+#| laylayout-nrow: 2
+##| layout: [[61, 27]]
+
+pred_addition_rate |>
+  ggplot(aes(x = .epred, y = Focus)) + 
+  stat_slab(
+    aes(
+      fill = Focus,
+      fill_ramp = after_stat(
+        cut_cdf_qi(cdf, .width = c(0.02, 0.8, 0.95, 1))
+        )
+      ),
+    # height = 4,
+    color = "white",
+    slab_size = 0.05,
+  ) + 
+  stat_pointinterval(
+    .width = c(.95, .8, .2)
+  ) + 
+  scale_fill_okabe_ito(order = c(1, 6, 3, 2), guide = "none") +
+  scale_fill_ramp_discrete(range = c(1, 0.2), guide = "none") +
+  scale_x_continuous(
+    labels = label_percent(),
+    breaks = c(0, 0.25, 0.5, 0.75, 1),
+    limits = c(-0.4, 0.85)
+    ) +  
+  labs(
+    x = "Estimated Addition Rate",
+    y = "Focus",
+    caption = "Posterior medians are shown with points\n 80% and 95% credible intervals (HDI) are shown with inner, outer intervals and shading"
+  ) +
+  annotate(
+    geom="text",
+    x =-0.4, y = c(levels(pred_addition_rate$Focus)),
+    color = palette_okabe_ito(order=c(1, 6, 3, 2)),
+    # color = "black",
+    vjust = -0.2,
+    hjust = 0,
+    size = 5,
+    label = pred_focus_annotation$annotation,
+    parse = TRUE
+  ) + 
+  geom_vline(
+    xintercept = 0.5, 
+    color = palette_okabe_ito(9), 
+    linetype="dashed",
+    linewidth = 1
+  ) +
+  theme_set_b() +
+  theme(
+    axis.text.x = element_text(
+      angle = 0, 
+      hjust = 0.5, 
+      vjust = 0.5
+    ),
+    axis.title.y = element_blank()
+  )
+
+pred_addition_rate_diff  |>
+  separate(
+    Focus, 
+    into = c("FocusA", "FocusB"), 
+    sep = " - ",
+    remove = FALSE
+  ) |>
+  mutate(
+    FocusA = factor(
+      FocusA,
+      levels = c(
+        "Text-focused", 
+        "Poet-focused", 
+        "Reader-focused", 
+        "Others"
+      )
+    ),
+    FocusB = factor(
+      FocusB,
+      levels = c(
+        "Text-focused", 
+        "Poet-focused", 
+        "Reader-focused", 
+        "Others"
+      )
+    )
+  ) |>
+  ggplot(
+    aes(
+      x = .epred, y = Focus
+    )
+  ) + 
+  stat_halfeye(
+    aes(
+      fill = FocusA, 
+      fill_ramp = stat(x < 0)
+    )
+  ) +
+  stat_pointinterval(
+    .width = c(.95, .8, .2)
+  ) + 
+  scale_fill_okabe_ito(order = c(6, 3, 2)) +
+  scale_fill_ramp_discrete(
+    from = "grey95",
+    range = c(1, 0), guide = "none") +
+  scale_x_continuous(
+    labels = label_percent(),
+    breaks = c(-0.25, 0, 0.25, 0.5, 0.75),
+    limits = c(-0.6, .4)
+    )+  
+  labs(
+    x = "Estimated Addition Rate Differences",
+    y = "Focus",
+    caption = "Posterior medians are shown with points\n 80% and 95% credible intervals (HDI) are shown with inner and outer intervals",
+    fill = "Base Translation Focus"
+  ) +
+  annotate(
+    geom="text",
+    x = -0.05, y = c(levels(pred_addition_rate_diff$Focus)),
+    # color = palette_okabe_ito(order=c(1, 6, 3, 2)),
+    # color = "black",
+    vjust = -0.1,
+    hjust = 1,
+    size = 3,
+    label = pred_diff_CrI_annotation$annotation,
+    parse = TRUE
+  ) + 
+  annotate(
+    geom="text",
+    x = 0.1, y = c(levels(pred_addition_rate_diff$Focus)),
+    color = palette_okabe_ito(order=c(6, 3, 3, 2, 2, 2)),
+    # color = "black",
+    vjust = -0.1,
+    hjust = 0,
+    size = 3,
+    label = pred_diff_prob_g_0_annotation$annotation,
+    parse = TRUE
+  ) + 
+  geom_vline(
+    xintercept = 0, 
+    color = palette_okabe_ito(9), 
+    linetype="dashed",
+    linewidth = 1
+  ) +
+  theme_set_b() +
+  theme(
+    axis.text.x = element_text(
+      angle = 0, 
+      hjust = 0.5, 
+      vjust = 0.5
+    ),
+    axis.title.y = element_blank()
+  ) +
+  guides(fill = guide_legend(nrow = 3)) 
+```
+
+### Variation in Addition Rates Is Greater Between Poems Than Between Translators {.unnumbered}
+
+In hierarchical modeling, translators and poems are modeled as random intercepts. The posterior distribution of the standard deviations, which are parameters of the normal distribution shared by each group level, has been visualized [@fig-hyperparameter]. The standard deviation distribution for the translator group was greater than that of the poem group. This suggests that the variation between poems is greater than the variation between translators. In other words, from the perspective of random effects, poems contribute more to the variation in addition rates than translators.
+
+```{r}
+#| label: fig-hyperparameter
+#| fig-scap: グループレベルのハイパーパラメータの事後分布
+#| fig-cap: Posterior distribution of group-level hyperparameters
+#| warning: false
+#| message: false
+
+post <- model |> 
+  as_draws_df() |>
+  select(starts_with("sd")) |>
+  select(-contains("pattern"))
+
+group_labels <- c(
+  "sd_PoemID__a_Intercept" = "Poem",
+  "sd_Translator__a_Intercept" = "Translator"
+  )
+
+post |>
+  pivot_longer(sd_PoemID__a_Intercept:sd_Translator__a_Intercept) |> 
+  mutate(name = factor(name)) |>
+  ggplot(aes(x = value, fill = name)) +
+  geom_density(linewidth = 0, alpha = 3/4, adjust = 2/3, show.legend = F) +
+  annotate(
+    geom = "text", 
+    x = 0.3, y = 20, 
+    label = expression(sigma["Poem"]),
+    color = palette_okabe_ito(7)
+  ) +
+  annotate(
+    geom = "text", 
+    x = 0.1, y = 10, 
+    label = expression(sigma["Translator"]), 
+    color = palette_okabe_ito(5)
+  ) +
+  scale_fill_okabe_ito(order = c(7, 5), guide = "none") + 
+  scale_x_continuous(
+    breaks = c(0.1, 0.2, 0.3),
+    limits = c(0, .4)
+    )+  
+  scale_y_continuous(NULL, breaks = NULL) +
+  labs(
+    x = expression("Group hyperparameter"~sigma~"value"),
+    y = "Group",
+  ) +
+  theme_set_b() +
+  theme(
+    axis.text.x = element_text(
+      angle = 0, 
+      hjust = 0.5, 
+      vjust = 1
+    ),
+    axis.title.y = element_blank(),
+    panel.grid.major.x = element_line(
+      color = "gray80",
+      linetype = "solid"
+    )
+  )
+```
+
+## Case analysis of the translation of "Tatsuta" Poem #298
+
+```{bash}
+#| include: false
+ 
+echo 'Original poem:'
+grep 01:000298 ../data/hachidaishu/hachidai.db |\
+  awk '$2 ~ /^[ABD]0/ {printf "%s", $5}'
+echo ""
+
+echo 'Contemporary translations:'
+translators=("katagiri" "kubota" "matsuda" "okumura" "takeoka" "kaneko" "kojimaarai" "komachiya" "kyusojin" "ozawa")
+
+for translator in "${translators[@]}"
+do
+    echo -n "$translator: "
+    awk -v translator="$translator" '$3 ~ /0298/ && $0 ~ translator && $1 ~ /1/ && $4 ~ /[01]/ {printf "%s", $9}' ../data/translationExamples.txt
+    echo ""
+done
+```
+
+The case analysis of the "Tatsuta" Poem #298 begins by illustrating the alignment.
+
+@tbl-tatsuta-review presents the unmatch rate and addition rate for the translations of "Tatsuta" Poem #298, calculated using the alignment method. Out of the 19 tokens in the poem, all translations except OZW aligned more than 14 word pairs. Due to its sentence reordering, OZW struggled to align effectively. The unmatch rate for elements in the original text remains low, while the addition rate for the translations (excluding OZW) ranges from 50% to 70%. On average, translators used 1.5 to 1.7 words per word in the original. Next, we examine the types of elements added.
+
+@fig-alignment shows the refined alignment from the alignment script output. For the raw output, refer to the supplementary materials (@sec-app-tatsuta).
+
+```{R}
+#| label: tbl-tatsuta-review
+#| tbl-cap: Overview of unmatch and addition rates in contemporary translations of "Tatsuta" Poem #298
+
+read.csv("../artifacts/calc_results.csv") |> filter(PoemID==298) |>
+  mutate(
+    UnmatchRate_a = round(UnmatchRate_a, 3),
+    AdditionRate_a = round(AdditionRate_a, 3),
+    Translator = translator_labels[Translator],
+    PoemID = as.character(PoemID),
+    Method = "Alignment" 
+  ) |>
+  select(Translator, PoemID, Method, TotalMatch_a, UnmatchRate_a, AdditionRate_a) |> 
+  rename(
+    `TotalMatch` = TotalMatch_a, 
+    `UnmatchRate` = UnmatchRate_a, 
+    `AdditionRate` = AdditionRate_a
+  ) |>
+  kable()
+```
+
+:::: {#fig-alignment layout-nrow=2}
+::: {#fig-alignment-1}
+
+```
+#  Tatsutahime (the Goddess of autumn):
+>| ーーーーーーーーーーーーーーーーー立田姫ーーーーーーーーーーーーーーーーーーーーーー [298]
+>| ーーーーーーーー【秋をつかさどる】龍田姫【が旅立ちにあたって】ーーーーーーーーーーー [KTGR]
+>| ーーーーーーーーーーーーーーーーー竜田姫【は】ーーーーーーーーーーーーーーーーーーー [KBT]
+>| ーーーーーーーーーーーーーーーーー竜田姫【には】ーーーーーーーーーーーーーーーーーー [MTD]
+>| ーー【秋も終りに近づき秋の女神の】龍田姫【がお帰りになる】ーーーーーーーーーーーーー [OKMR]
+>| ーーーーーーーーーーーーーーーーー竜田姫【が旅にあって】ーーーーーーーーーーーーーー [TKOK]
+>| ーーーーーーーーーーーーーーーーー立田姫【は秋の神だが】ーーーーーーーーーーーーーー [KNK]
+>| ーーーーーーーーーーーーーーーーー竜田姫【が】ーーーーーーーーーーーーーーーーーーー [K&A]
+>| 【秋の末近くなって帰り道についた】龍田姫【が道中の無事を願って】ーーーーーーーーーー [KMCY]
+>| ーーーーーーー【秋も終りに近づき】竜田姫【がお帰りになる際に】ーーーーーーーーーーー [KSJ]
+>| ーーーーーーー【もはや秋の終りで】龍田姫【が帰り道にお着きになった】ーーーーーーーー [OZW]
+
+
+#  Dedicate something to the god
+>| ーーーーーーーーーーーーーーーーーーー手向けーーーーーーるーーーーーー神ーーーーのー [298]
+>| ーーーーーーーーーーーーーーーーーーー手向けーーー（をする）ーーーーー神ーーーーがー [KTGR]
+>| ーーーーーーーーーーーーーーーーーーー手向けー（をするべき）ーーーーー神ーーーーがー [KBT]
+>| 【旅中】ーーーーーーーーーー（供え物をささげ）ーーーーーるーー【道祖】神ーーーーがー [MTD]
+>| 【姫が道中の安全を祈って】ーーーーーー手向けーー（をなさる）ーーーーー神ーーーーがー [OKMR]
+>| ーーーーーーーーーーーーーーーーーーー手向けーーーーーーるーーーーーー神ーーーーがー [TKOK]
+>| 【それすら暮れて行かれる折には】【お】手向けーーー（なさる）ー【道の】神【様】ーがー [KNK]
+>| ーーーーーーーーーーーーーーーーーーー手向けーーー（をする）ーーーーー神【さま】がー [K&A]
+>| ーーーーーーーーーーーーーーーーーーー手向けーーー（をする）ーーーーー神ーーーーがー [KMCY]
+>| 【旅の安全を祈って】ーーーーーーーーー手向けーーー（られる）ーーーーー神ーーーーがー [KSJ]
+>| 【中略】【道の】（神様）【にそれを】（供えていらっしゃる）＊　　　　　　　　　　　　 [OZW]
+
+#  Exists, so that
+>| ーーーーーあれーーーーーーーーーーーーーーーーーーーーーーーーばーこそーーーーーーー [298]
+>| ーーーーーあるーーーーーーーーーーーーーーーーーーーーーーーからーーーーーーーーーー [KTGR]
+>| ーーーーーあるーーーーーーーーーーーーーーーーーーーーーーーのでーーーーーーーーーー [KBT]
+>| ーーーーーあるーーーーーーーーーーーーーーーーーーーーーーーからーこそーーーーーーー [MTD]
+>| ーーーーーあるーーーーーーーーーーーーーーーーーーーーーーーからーこそ【だろう】ーー [OKMR]
+>| ーーーーーあるーーーーーーーーーーーーーーーーーーーーーーーからーこそーーーーーーー [TKOK]
+>| ーーーーーあるーーーーーーーーーーーーーーーーーーーーーーーからーこそーーーーーーー [KNK]
+>| ーー（おられる）ーーーーーーーーーーーーーーーーーーーーーーからーこそーーーーーーー [K&A]
+>| ーーーーーあるーーーーーーーーーーーーーーーーーーーーーーーからーこそーーーーーーー [K&A]
+>| ーーーーーあるーーーーーーーーーーーーーーーーーーーーーーーからーこそーーーーーーー [KSJ]
+>| 【中略】（のは）【姫が道の神様にそれを供えていらっしゃる】（のだ）【な】＊　　　　　 [OZW]
+```
+
+Alignment (first half): Tatsutahime tamukeru kami no areba koso '[There is the] god exits [for] Tatsutahime to dedicate [things], so that ...'
+
+:::
+
+::: {#fig-alignment-2}
+
+```
+#  Leaves of autumn
+>| ーーーーーーーーーーーーーーーーー秋のーーーーーー木の葉ーーーーーーのーーーーーーー [298]
+>| ーーーーーーーーーーーーーーーーー秋のーーーーーー木の葉ーーーーーーがーーーーーーー [KTGR]
+>| 【そのつかさどる】ーーーーーーーー秋のーーーーーー木の葉ーーーーーーがーーーーーーー [KBT]
+>| ーーーーーーーーーーーーーーーーー秋の【紅葉した】ー（葉）ーーーーーがーーーーーーー [MTD]
+>| ーーーーーーーーーーーーーーーーー・・ーーーーーー（紅葉）ーーーーーがーーーーーーー [OKMR]
+>| 【それであのように】ーーーーーーー秋のーーーーーー木の葉ーーーーーーがーーーーーーー [TKOK]
+>| 【このように御自身お染めなされた】秋のーーーーーー木の葉ーーーーーーがーーーーーーー [KNK]
+>| ーーーーーーーーーーーーーーーーー秋のーーーーーー木の葉【のもみじ】がーーーーーーー [K&A]
+>| ーーーーーーーーーーーーーーーーー秋のーーーーーー木の葉ーーーーーーがーーーーーーー [KMCY]
+>| ーーーーーーーーーーーーーーーーー秋のーーーーーー（紅葉）ーーーーーがーーーーーーー [KSJ]
+>| ーーーーーーーーーーーーーーーーー・・ーー【山の】（紅葉）ーーーーーがーーーーーーー [OZW]
+
+#  Scattered as ritual clothes (which are ritual objects used in Shinto practices)
+>| ーーーーーーーー幣ーーーーーーーーとー散ーーーーるーーーーーーーーらめーーーーーーー [298]
+>| ーーーーーーーー幣【を撒く】（ように）散（っている）ーーーーのーだろうーーーーーーー [KTGR]
+>| ーーーーーーーー幣ーーーー（のように）散ーーーーるーーーーーのであろうーーーー【よ】 [KBT]
+>| ーーーーーーーー幣ーーーー（のように）散（っている）ーーーーのーだろうーーーーーーー [MTD]
+>| ーーーーーーーー幣ーーーー（のように）散（っている）ーーーーー【だろう＊】ーーーーー [OKMR]
+>| ーーーーーーーー幣ーーーーー（として）散（っている）ーーーーのであろうーーーーーーー [TKOK]
+>| ー【手向けの】ー幣ーーーー（のように）散ーーーーるーーーーーのであろうーーーーーーー [KNK]
+>| ー【手向け】（もの）ーーーー（として）散ーーーーるーーーーーのでしょうーーーー【ね】 [K&A]
+>| ーーーーーーーー幣ーーーー（となって）散（っている）ーーーーのーだろうーーーーーーー [KMCY]
+>| ーーーーーーーー幣ーーーー（となって）散（っている）ーーーーのであろうーーーーーーー [KSJ]
+>| 【色とりどりの】幣ーーーー（となって）散（っている）【中略】のだーー・ーーーー【な】 [OZW]
+```
+
+Alignment (second half): aki no konoha no nusa to chiru rame 'leaves of autumn may be scattered as scared papers [which is dedicated to the god]'
+
+:::
+
+Alignment of translations by 10 translators (the author corrected the output of the alignment estimation program): Elements in "【】" are judged as additions, those in "（ ）" are considered paraphrases, "＊" indicates phrases or words aligned through sentence reordering, and "・" represents elements judged not to be translated directly.
+
+::::
+
+#### Additional elements regarding co-occurring words {.unnumbered}
+
+This section examines the translation process for co-occurring words at the corpus level. In the "Tatsuta" poem, content words such as "mountain" (*yama* 山), "river" (*kawa* 川), "to turn colored" (*momidzu* 紅葉づ), "princess/goddess" (*hime* 姫), "to dedicate offerings to the gods" (*tamuku* 手向く), "colored leaf" (*momiji-ba* 紅葉葉), "Kamnabi" (proper noun, *kamnabi* 神無備), "autumn" (*aki* 秋), "ritual paper" (*nusa* 幣), and "to be scattered" (*chiru* 散る) frequently appear. As a typical "Tatsuta" poem, Poem #298 includes "princess/goddess," "to dedicate offerings to the gods," "ritual paper," and "autumn." Most of the words from the original poem are translated directly. Words like "colored leaf" (*momidzi-ba* 紅葉葉) and "to get colored" (*momidzu* 紅葉づ), which do not explicitly appear in Poem #298, are implied by "leaves" (*konoha* 木の葉) and are translated as follows:
+
+- 【紅葉した】葉 *[momiji shita] ha* ("[colored] leaves") [MTD]
+- 木の葉【のもみじ】 *konoha [no momiji]* ("[coloring of] leaves") [K&A] 
+- 紅葉 *[momiji]* ("[colored leaves]") [KSJ, OZW, OKMR]
+
+Translators TKOK, KNK, and KMCY did not address the translation of "leaves."
+
+For the corpus-level co-occurrence of "ritual paper," the following translations added extra elements:
+
+- 【色とりどりの】幣 *[irotoridori no] nusa* ("[colorful] ritual paper") [OZW]
+- 【手向けの】幣 *tamuke no nusa* ("ritual paper [offered to the gods]") [KNK]
+- 幣【を撒くように】 *nusa wo maku yo ni* ("ritual paper [scattered like]") [KTGR]
+
+These additions raise some challenges in determining whether they should be attributed specifically to "Tatsuta." However, interpreting them indirectly within the context of "ritual paper" seems reasonable.
+
+Overall, the process of co-occurring elements in "Tatsuta" either retains the original content or adds more compared to other factors. In cases where words like "leaves" do not explicitly co-occur, translators opted for "colored leaves," considering broader collocations. Regardless of the translator, the approach to translation remained consistent.
+
+The differences between the translations and the original text suggest that co-occurring words at the corpus level may offer important insights into translation choices.
+
+#### Translation of grammatical patterns {.unnumbered}
+
+Co-occurring grammatical patterns in the *Kokinshū* reveal a noticeable scarcity of poems ending in the conclusive form (only 1 out of 12), along with a frequent use of *kakarimusubi* (9 out of 12 poems), which contributes to a lingering tone at the end of the poems. This analysis focuses on how these grammatical patterns were handled in the translation of Poem #298.
+
+In Poem #298, the *kakarimusubi* is formed by the emphasis particle "こそ" (*koso*) and the inferential mood auxiliary verb "らむ" (*ramu*) in its conjugation "らめ" (*rame*). Of the 10 translators, 7 retained *koso*, and 9 used the EMPHASIS "の[でしょう]" (*no*) construction at the end of the sentence. Regarding inferential *ramu*, 9 translators rendered it as "だろう" (*darō*) or "でしょう" (*deshō*) ("likely modality/inferential mood"). OZW, the only translator who did not use "だろう" (*darō*), translated it with the exclamatory "だな" (*da na*). KBT and K&A added the final particles "よ" (*yo*) and "ね" (*ne*), respectively, at the sentence’s end.
+
+This confirms that the translation of this typical grammatical pattern is highly robust. In translations of other "Tatsuta" poems that do not use *kakarimusubi*, no instances were found where this grammatical pattern was added. Thus, the handling of these distinctive co-occurring grammatical patterns was consistently reflected in the translations.
+
+Other grammatical elements, such as the particle "と" (*to*) and the translation of the *-u* verb conjugation, were also observed, though they are not characteristic co-occurring elements of "Tatsuta" at the corpus level. The following variations in translation were noted:
+
+**幣「と」 (*nusa "to"*):**
+
+- 幣を撒く「ように」 *nusa wo maku [youni]* ("[like] scattering ritual paper") [KTGR, KBT, MTD, OKMR, KNK]
+- 幣「として」 *nusa [toshite]* ("[as] ritual paper") [TKOK, K&A]
+- 幣「となって」 *nusa [tonatte]* ("[becomes] ritual paper") [KMCY, KSJ, OZW]
+
+**散「る」 (*chir-[u]*):**
+
+- 散っ「ている」 *chir-[teiru]* ("scatter + [progressive aspect]") [KTGR, MTD, OKMR, TKOK, KMCY, KSJ, OZW]
+- 散「る」 *chir-[u]* ("scatter") [KBT, KNK, K&A]
+
+**手向け「る」 (*tamuker-[u]*):**
+
+- 手向けを「する」 *tamuke wo suru* ("[do] dedicating") [KTGR, K&A, KMCY]
+- 供え物をささげ「る」 *sonaemono wo sasager-[u]* | 手向け「る」 *tamuker-[u]* ("dedicate") [MTD, TKOK]
+- 手向けを「なさる」 *tamuke wo nasaru* | お手向けなさる *o-tamuke nasaru* ("[make+(honorific)] dedicating") [OKMR, KNK]
+- 手向けを「するべき」 *tamuke wo suru [beki]* ("[do + likely mood/modality] dedicating") [KBT]
+- 手向け「られる」 *tamuke [rareru]* ("dedicate + [honorific]") [KSJ]
+- それを供えて「いらっしゃる」 *sore wo sonaete [irassharu]* ("dedicate + [progressive aspect + honorific]") [OZW]
+
+The co-occurring grammatical elements at the corpus level show significant variation in the addition and paraphrasing of translations. The variability in how naked verb phrases are translated has also been reported in @Yamamoto2023Development. These additions and paraphrases likely stem from linguistic change and variation between classical and contemporary Japanese. While they cannot be identified using WLSP codes for identifying agreements, they emerge from the differences between the contemporary translations and the original text. But they are not considered non-literal information.
+
+#### Translation of semantic preferences {.unnumbered}
+
+At the corpus level, the co-occurring words in "Tatsuta" tend to belong to groups like "mountain" and "river" (*yama* and *kawa*), which form place names such as "Tatsutagawa" (Tatsuta River) and "Tatsuta(no)yama" (Mountain of Tatsuta). Additionally, words related to the "gods" of autumn are prominent. These reflect the nature of *utamakura* (poetic place names), which represent sacred locations associated with autumn and autumn leaves. Although this tendency is not directly emphasized in Poem #298 through explicit additions, it was observed indirectly that additional elements often appeared around "Tatsutahime" (Goddess Tatsuta) and "kami" (god) in the translations by the 10 translators.
+
+Seven of the 10 translators added elements related to "Tatsutahime":
+
+- 【秋をつかさどる】龍田姫【が旅立ちにあたって】 *[aki wo tsukasadoru] Tatsutahime [ga tabidachi ni atatte]* ("[Autumn goddess] Tatsutahime [embarks on her journey]") [KTGR]
+- 【秋も終りに近づき秋の女神の】龍田姫【がお帰りになる】 *[aki mo owari ni chikazuki aki no megami no] Tatsutahime [ga okaeri ni naru]* ("[As autumn nears its end, the autumn goddess] Tatsutahime [returns home]") [OKMR]
+- 竜田姫【が旅にあって】 *Tatsutahime [ga tabi ni atte]* ("Tatsutahime [is on a journey]") [TKOK]
+- 立田姫【は秋の神だが】 *Tatsutahime [wa aki no kami da ga]* ("Tatsutahime [is the god of autumn]") [KNK]
+- 【帰り道についた】龍田姫【が道中の無事を願って】 *[kaerimichi ni tsuita] Tatsutahime [ga dōchū no buji wo negatte]* ("[As she reached her way home,] Tatsutahime [prays for a safe journey]") [KMCY]
+- 【秋も終りに近づき】竜田姫【がお帰りになる際に】 *[aki mo owari ni chikazuki] Tatsutahime [ga okaeri ni naru sai ni]* ("[As autumn nears its end,] Tatsutahime [returns home]") [KSJ]
+- 【もはや秋の終りで】龍田姫【が帰り道にお着きになった】 *[mohaya aki no owari de] Tatsutahime [ga kaerimichi ni otsuki ni natta]* ("[With autumn already at its end,] Tatsutahime [has arrived on her journey home]") [OZW]
+
+In the translations by KBT, MTD, and K&A, no additional elements were added around "Tatsutahime."
+
+For the context of "the god to whom offerings are made," additional elements appeared in 5 translations:
+
+- 【旅中】（供え物をささげる）【道祖】神 *[tabi naka] (sonaemono wo sasageru) [dōso] kami* ("[During the journey] (offering a gift) [to the road] god") [MTD]
+- 【姫が道中の安全を祈って】手向け（をなさる）神 *[hime ga dōchū no anzen wo inotte] tamuke (wo nasaru) kami* ("[The goddess prays for safety during the journey] as she offers to the god") [OKMR]
+- 【それすら暮れて行かれる折には】【お】手向け（なさる）【道の】神【様】 *[sore sura kurete ikareru ori ni wa] [o]tamuke (nasaru) [michi no] kami[sama]* ("[At the time of her departure as the day ends,] the offering to the god [of the road]") [KNK]
+- 【旅の安全を祈って】手向け（られる）神 *[tabi no anzen wo inotte] tamuke (rareru) kami* ("[Praying for a safe journey,] the god receives the offering") [KSJ]
+- 【道の】（神様）【にそれを】（供えていらっしゃる）＊ *[michi no] (kamisama) [ni sore wo] (sonaete irassharu)* ("To the god [of the road,] (she is offering) [that]")＊ [OZW]
+
+K&A, KMCY, KTGR, KBT, and TKOK did not add elements in these contexts. It can be inferred that more emphasis is placed on providing additional information related to "Tatsutahime," "offerings," and "gods" than other elements. The differences between the original and contemporary translations suggest that "Tatsutahime" is the "autumn god" or a personification of autumn, the purpose of "offering" by Tatsutahime is for "safe travels," and the god receiving the offering is a road god, a travel god, or *dōsojin* (a deity protecting travelers).
+
+# Discussion {#sec-discussion}
+
+## Gap between translation approaches and practices
+
+The statistical modeling of addition rates in contemporary translations shows that a substantial proportion of additional elements is present, regardless of the translation approach. It appears that variations between poems contribute more to the addition rate than variations between translators. Despite the detailed explanations of many words in annotation books, the addition rate has not significantly decreased. Whether translators focus on the text itself, the poet's intent, or making the translation more accessible to readers, there seem to be elements that inevitably require additions.
+
+Closer examination of individual translations reveals clear reflections of each translator's approach. For instance, OZW allows for changes in word order, while TKOK’s translations emphasize the author's intent. While analyzing specific poems uncovers distinct differences, these differences, when viewed collectively, tend to emerge as general trends rather than significant variations. These factors seem to go beyond the personal viewpoint and style of the translator, leaving room to further clarify the nature of these elements. The non-literal elements in contemporary translations could potentially be visualized more effectively.
+
+## Many "omissions" in contemporary translations involve *jokotoba* and *makurakotoba*
+
+When extracting non-literal information through translation differences, it is preferable for indirect translations to be included, but it becomes problematic when certain words are entirely absent. A high unmatch rate between the original and the translation may indicate that some elements are incorporated in some form, but it is also likely that many elements have been omitted. Several such poem-translation pairs have been identified.
+
+Upon reviewing these pairs, three common omissions were observed across the 10 contemporary translations: *jokotoba* (prefatory phrases), *makurakotoba* (pillow words), and complex expressions. Some translators consciously chose to omit *jokotoba* and *makurakotoba* entirely. For example, in MTD’s translations, four of them are noticeably shorter than the original poems. In MTD (#173) and MTD (#665), the *makurakotoba* "hisakata no" and "mitsushio no" are omitted. In MTD (#684) and MTD (#697), both *makurakotoba* and *jokotoba* are omitted. Naturally, these omissions result in a high unmatch rate. Notably, MTD (#697) is much shorter than the original poem^[KSJ (#404) is also significantly shorter, with the *jokotoba* similarly omitted.]. In MTD (#697), the *makurakotoba* "Shikishima no," referring to "Yamato" (a proper noun), is omitted. In the original poem, there is a *kakekotoba* (pun) on "koromo" (meaning either "time" or "clothes"), but the *jokotoba* linked to "clothes" is also omitted.
+
+Thus, extracting non-literal elements such as *makurakotoba* and *jokotoba* from the differences between contemporary translations and the original poems proves to be a challenging task.
+
+::: {fig-mtd-697}
+```
+mode=2; level=3; elements of poem=16; elements of translation=6;
+bag (E=1, F=0, G=0, U=15, T=1, AddRate=83.33%, UnmatchRate=93.75%);
+alignment (E=1, F=0, G=0, U=15, T=1, AddRate=83.33%, UnmatchRate=93.75%)
+
+>| しきしまのやまとにはあらぬからころもころもへずしてあふーーよしーーーもがな [697]
+>| ーーーーーーーーーーーーーーーーーー絶え間なくーー会いたいものだなあーーー [MTD]
+```
+
+Contemporary translation of Poem #697 by @matsuda1968Shinshaku: The alignment has been revised; the *jokotoba* "Shikishima no Yamato ni wa aranu kara koromo" has been omitted.
+:::
+
+```{python}
+#| include: false
+
+op697 = '''
+01:000697:0001 A00 CH-JP-0000-00-0100 11 敷嶋 敷島 しきしま 敷島 しきしま
+01:000697:0002 A00 BG-08-0061-07-0100 61 の の の の の
+01:000697:0003 A00 BG-01-2590-01-0500 11 やまと 大和 やまと 大和 やまと
+01:000697:0003 A10 CH-29-0000-00-2800 11 やまと 大和 やまと 大和 やまと
+01:000697:0003 A20 CH-JP-0000-00-0300 11 やまと 大和 やまと 大和 やまと
+01:000697:0004 A00 BG-08-0061-05-0100 61 に に に に に
+01:000697:0005 A00 BG-08-0065-07-0100 65 は は は は は
+01:000697:0006 A00 BG-02-1200-01-0102 47 あら 有り あり 有ら あら
+01:000697:0007 A00 BG-03-1200-02-0800 74 ぬ ず ず ぬ ぬ
+01:000697:0007 A10 BG-09-0010-01-0100 74 ぬ ず ず ぬ ぬ
+01:000697:0008 B00 BG-01-4220-06-0800 02 唐衣 唐衣 からころも 唐衣 からころも
+01:000697:0008 C00 BG-01-2590-02-0600 02 唐 唐 から 唐 から
+01:000697:0008 C01 BG-01-4220-02-0200 02 衣 衣 ごろも 衣 ごろも
+01:000697:0009 A00 BG-01-1610-01-0401 02 ころ 頃 ころ 頃 ころ
+01:000697:0010 A00 BG-08-0065-08-0100 65 も も も も も
+01:000697:0011 A00 BG-02-1600-01-0200 47 へ 経 ふ 経 へ
+01:000697:0012 A00 BG-03-1200-02-0800 74 す ず ず ず ず
+01:000697:0012 A10 BG-09-0010-01-0100 74 す ず ず ず ず
+01:000697:0013 A00 BG-08-0064-38-0100 64 して して して して して
+01:000697:0014 A00 BG-02-1556-01-0206 47 逢 逢ふ あふ 逢ふ あふ
+01:000697:0014 A10 BG-02-3510-01-0100 47 逢 逢ふ あふ 逢ふ あふ
+01:000697:0015 A00 BG-01-1020-02-0100 02 よし 由 よし 由 よし
+01:000697:0015 A10 BG-01-3081-01-0800 02 よし 由 よし 由 よし
+01:000697:0015 A20 BG-01-3081-04-1200 02 よし 由 よし 由 よし
+01:000697:0016 A00 BG-03-1330-01-1400 69 もかな もがな もがな もがな もがな
+01:000697:0016 A10 BG-03-3012-03-2700 69 もかな もがな もがな もがな もがな
+01:000697:0016 A20 BG-08-0069-20-0100 69 もかな もがな もがな もがな もがな
+'''
+ct697 = '''
+1 matsuda 0697 1 55 00 00 BG-03-1600-02-140-A 絶え間なく たえまなく 絶え間なく
+1 matsuda 0697 3 55 00 00 BG-02-1240-04-010-A -- たえる 絶える
+1 matsuda 0697 3 55 00 00 BG-01-1610-03-010-A -- ま 間
+1 matsuda 0697 3 55 00 00 BG-09-0010-01-050-A -- ない ない
+1 matsuda 0697 0 47 21 04 BG-02-1556-01-020-A 会い あう 会う
+2 matsuda 0697 2 47 21 04 BG-02-3510-01-010-A 会い あう 会う
+1 matsuda 0697 0 74 53 01 BG-03-3012-03-020-A たい たい たい
+2 matsuda 0697 2 74 53 01 BG-09-0050-03-010-A たい たい たい
+1 matsuda 0697 0 21 00 00 BG-01-1000-03-010-A もの もの もの
+1 matsuda 0697 0 74 55 01 BG-09-0050-01-030-A だ だ だ
+1 matsuda 0697 0 69 00 00 BG-04-3200-03-030-A なあ なあ なあ
+2 matsuda 0697 2 69 00 00 BG-08-0069-11-040-A なあ なあ なあ
+1 matsuda 0697 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+'''
+
+pipe(poem=op697, translation=ct697, mode=2, level=3)
+```
+
+```{bash}
+#| include: false
+
+awk '$1 ~ /01:000346/ && $2 ~ /[ABD]0/ {printf "%s", $5}' ../data/hachidaishu/hachidai.db
+echo ""
+awk -v translator="okumura" '$3 ~ /0346/ && $0 ~ translator && $1 ~ /1/ && $4 ~ /[01]/ {printf "%s", $9}' ../data/translationExamples.txt
+```
+
+```{python}
+#| include: false
+
+op346 = '''
+01:000346:0001 A00 BG-01-2000-01-0102 14 わ 我 わ 我 わ
+01:000346:0002 A00 BG-08-0061-02-0100 61 か が が が が
+01:000346:0003 A00 BG-01-1911-03-0100 02 齢 齢 よはひ 齢 よはひ
+01:000346:0004 A00 BG-01-2000-02-0300 14 君 君 きみ 君 きみ
+01:000346:0005 A00 BG-08-0061-02-0100 61 か が が が が
+01:000346:0006 B00 BG-03-1600-09-1500 02 やちよ 八千世 やちよ 八千世 やちよ
+01:000346:0006 C00 BG-01-1950-04-0900 19 八千 八千 はっせん 八千 はっせん
+01:000346:0006 C01 BG-01-2610-01-0400 02 世 世 よ 世 よ
+01:000346:0007 A00 BG-08-0061-05-0100 61 に に に に に
+01:000346:0008 A00 BG-02-1250-03-1100 47 とり 取る とる 取り とり
+01:000346:0008 A10 BG-02-3061-04-0100 47 とり 取る とる 取り とり
+01:000346:0008 A20 BG-02-3700-04-0100 47 とり 取る とる 取り とり
+01:000346:0009 A00 BG-02-1556-05-0100 47 そへ 添ふ そふ 添へ そへ
+01:000346:0009 A10 BG-02-1580-02-0700 47 そへ 添ふ そふ 添へ そへ
+01:000346:0010 A00 BG-08-0064-16-0100 64 て て て て て
+01:000346:0011 A00 BG-02-1240-01-1300 47 とゝめ 留む とどむ 留め とどめ
+01:000346:0011 A10 BG-02-1512-01-0400 47 とゝめ 留む とどむ 留め とどめ
+01:000346:0012 A00 BG-02-1515-03-0100 47 をき 置く おく 置き おき
+01:000346:0013 A00 BG-09-0010-03-0100 74 て つ つ て て
+01:000346:0014 A00 BG-08-0064-26-0100 64 は ば ば ば ば
+01:000346:0015 A00 BG-02-3060-01-0101 47 思ひ 思ふ おもふ 思ひ おもひ
+01:000346:0016 A00 BG-02-1210-01-0304 47 て 出づ いづ 出で いで
+01:000346:0016 A10 BG-02-1530-01-0101 47 て 出づ いづ 出で いで
+01:000346:0016 A20 BG-02-1540-04-0601 47 て 出づ いづ 出で いで
+01:000346:0017 A00 BG-08-0061-05-0100 61 に に に に に
+01:000346:0018 A00 BG-02-3420-01-0100 47 せよ す す せよ せよ
+'''
+ct346 = '''
+1 okumura 0346 0 14 00 00 BG-01-2000-01-020-A 私 わたし 私
+1 okumura 0346 0 71 00 00 BG-08-0071-01-010-A の の の
+1 okumura 0346 0 02 00 00 BG-01-5800-02-050-A 命数 めいすう 命数
+1 okumura 0346 0 61 00 00 BG-08-0061-10-010-A を を を
+1 okumura 0346 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 okumura 0346 0 14 00 00 BG-01-1730-03-030-A あなた あなた あなた
+2 okumura 0346 2 14 00 00 BG-01-1731-02-030-A あなた あなた あなた
+3 okumura 0346 2 14 00 00 BG-01-2000-02-010-A あなた あなた あなた
+1 okumura 0346 0 71 00 00 BG-08-0071-01-010-A の の の
+1 okumura 0346 0 02 00 00 BG-01-5800-03-020-A 長寿 ちょうじゅ 長寿
+1 okumura 0346 0 71 00 00 BG-08-0071-01-010-A の の の
+1 okumura 0346 0 22 00 00 BG-01-1741-01-030-A 上 うえ 上
+1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
+1 okumura 0346 0 02 00 00 BG-03-1661-01-020-A さら さら さら
+1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
+1 okumura 0346 0 47 21 06 BG-02-1700-02-040-A 沿え そう 沿う
+1 okumura 0346 0 64 00 00 BG-08-0064-16-010-A て て て
+1 okumura 0346 0 47 12 04 BG-02-1240-01-020-A 残し のこす 残す
+1 okumura 0346 0 64 00 00 BG-08-0064-16-010-A て て て
+1 okumura 0346 0 48 08 04 BG-02-1515-03-010-A おき おく おく
+1 okumura 0346 0 74 58 03 BG-09-0030-03-030-A ましょ ます ます
+1 okumura 0346 0 74 70 01 BG-09-0010-02-010-A う う う
+1 okumura 0346 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 okumura 0346 0 57 00 00 BG-03-1000-02-010-A その その その
+1 okumura 0346 0 22 00 00 BG-01-1000-03-040-A 分 ぶん 分
+1 okumura 0346 0 61 00 00 BG-08-0061-10-010-A を を を
+1 okumura 0346 0 43 00 00 BG-05-0070-01-010-A お お お
+1 okumura 0346 0 47 06 04 BG-02-5810-04-010-A 生き いきる 生きる
+1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
+1 okumura 0346 0 47 17 01 BG-02-1220-01-030-A なる なる なる
+1 okumura 0346 0 22 00 00 BG-01-5620-04-110-A とき とき とき
+1 okumura 0346 0 61 00 00 BG-08-0061-05-010-A に に に
+1 okumura 0346 0 65 00 00 BG-08-0065-07-010-A は は は
+1 okumura 0346 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 okumura 0346 0 55 00 00 BG-04-3140-01-040-A どうぞ どうぞ どうぞ
+1 okumura 0346 0 14 00 00 BG-01-2000-01-020-A 私 わたし 私
+1 okumura 0346 0 61 00 00 BG-08-0061-10-010-A を を を
+1 okumura 0346 0 47 12 04 BG-02-3050-03-070-A 思い出し おもいだす 思い出す
+1 okumura 0346 0 64 00 00 BG-08-0064-16-010-A て て て
+1 okumura 0346 1 48 19 09 BG-02-3770-05-030-A 下さい くださる 下さる
+1 okumura 0346 2 48 19 09 BG-02-3770-05-020-A -- くれる くれる
+1 okumura 0346 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+'''
+
+pipe(poem=op346, translation=ct346, mode=3, level=3, gap_penalty=0.01,u=10,g=20,e=50)
+```
+
+It may seem desirable to align the complex expressions found in the original poem with those in the contemporary translation, but achieving this is technically challenging. For example, in OKMR (#346), Okumura’s contemporary translation uses very few words from the original poem, instead opting for the following complex expressions:
+
+- とりそえて *torisoete* = さらにそえて *sarani soete* ("additionally")
+- とどめおきて *todome okite* = のこしておきましょう *nokoshite okimashō* ("let's leave it")
+
+The alignment method struggles to handle expressions like this effectively. Creating a dictionary that pairs a single poetic word with a complex expression of equivalent meaning and achieves a perfect match is difficult. While it is sometimes possible to align certain poetic words with parts of complex expressions, it is rarely feasible to align the entire expression. This issue has been described as a problem of word alignment, and as previously mentioned in relation to one-to-many translations, complex expressions often add additional information to the original poetic words. As a result, the unmatched elements from these complex expressions (i.e., the leftover parts of the translation) are valuable when examining non-literal elements.
+
+## Many additions in contemporary translations involve kakekotoba (pun)
+
+MTD (#629) shows that most words did not align well with the original poem using the alignment method. This poem includes archaic words such as あやなし *ayanashi* ("without reason") and まだき *madaki* ("early"), along with grammatical constructions like なくに *naku ni* (negation with interjection nuance), which are no longer used in contemporary Japanese. These terms cannot be mapped to their modern equivalents using WLSP codes. Additionally, the poem contains a *kakekotoba* (pivot word) involving 名の立つ *na no tatsu* ("to have a rumor") and 立田川 *Tatsutagawa* ("Tatsuta River").
+
+Among the top 10 poems with the highest average addition rates, other poems such as Poem #705, Poem #669, and Poem #617 also have high addition rates. Poem #705 features a *kakekotoba* involving 身 *mi* ("body") and 雨 *ame* ("rain"), with ふる (降る/経) *furu* serving a dual meaning: "(rain) to fall" and "(body) to age." Poem #669 and Poem #617 contain *kakekotoba* involving 海松目/見る目 *mirume* (a pun on "seaweed" and "to meet") and 眺め/長雨 *nagame* (a pun on "gaze/reverie" and "long rain"), respectively. To clarify the role of *kakekotoba*, supplemental information is often required in translations, and many elements likely remain unaligned when comparing contemporary and classical Japanese.
+
+```{bash}
+#| include: false
+#| label: tatsuda-629
+
+awk '$1 ~ /01:000629/ && $2 ~ /[ABD]0/ {printf "%s", $5}' ../data/hachidaishu/hachidai.db
+echo ""
+awk -v translator="matsuda" '$3 ~ /0629/ && $0 ~ translator && $1 ~ /1/ && $4 ~ /[01]/ {printf "%s", $9}' ../data/translationExamples.txt
+```
+
+::: {fig-mtd-629}
+
+```
+mode=2; level=3; elements of poem=15; elements of translation=60;
+bag (E=1, F=2, G=6, U=6, T=9, AddRate=85.00%, UnmatchRate=40.00%);
+alignment (E=1, F=0, G=6, U=8, T=7, AddRate=88.33%, UnmatchRate=53.33%)
+args: translator:matsuda; poem No.0629; weight:(U=-1, G=10, F=13, E=17); gap penalty: 0.01
+
+#  Without any reason,
+1| ーーーーーーーーあやなくーーーてーーーーーーーーーーーーーーーーーーーーーーーーーー　[629]
+1| わけもなくもう無実の評判が立ってしまったいずれ二人の恋は遂げられないではいられないも  [MTD]
+#  soon rumor has spreaded, the River Tatsuta, without crossing, [I cannot] stop,
+2| ーーーーーーーーーーーーまたきなき名のー立田河わたらてやまーーんーー物ーーーーーーー　[629]
+2| のではあるがわけもなくもう無実の評判が立っーーーーーてしまったーいずれ二人の恋は遂げ  [MTD]
+#  It is not possible...
+3| ーーならーーなーーーーーーーくーーにーーーーーーーーーーーーーーーーーーーーーーーー  [629]
+3| られないではいられないものではあるがーーーーーーーーーーーーーーーーーーーーーーーー　[MTD]
+```
+
+Contemporary translation of Poem #629 by @matsuda1968Shinshaku: The alignment results have been modified.
+:::
+
+```{python}
+#| include: false
+
+op629 = '''
+01:000629:0001 A00 BG-01-3072-03-1100 51 あやなく 文無し あやなし 文無く あやなく
+01:000629:0002 A00 BG-08-0064-16-0100 64 て て て て て
+01:000629:0003 A00 BG-03-1660-03-1100 55 またき 夙 まだき 夙 まだき
+01:000629:0004 B00 BG-01-3440-07-0700 02 なき名 無き名 なきな 無き名 なきな
+01:000629:0004 C00 BG-03-1200-02-0100 51 無い 無い ない 無い ない
+01:000629:0004 C01 BG-01-3102-02-0100 28 名 名 めい 名 めい
+01:000629:0005 A00 BG-08-0061-07-0100 61 の の の の の
+01:000629:0006 D00 CH-29-5250-01-0400 11 立田河 立田河 たつたがは 立田河 たつたがは
+01:000629:0006 E00 CH-29-0000-00-1800 11 立田 立田 たつた 立田 たつた
+01:000629:0006 E01 BG-08-0071-01-0100 71 の の の の の
+01:000629:0006 E02 BG-01-5250-01-0100 02 川 川 かわ 川 かわ
+01:000629:0007 A00 BG-02-1503-01-0201 47 わたら 渡る わたる 渡ら わたら
+01:000629:0007 A10 BG-02-1521-04-0100 47 わたら 渡る わたる 渡ら わたら
+01:000629:0007 A20 BG-02-1521-12-0100 47 わたら 渡る わたる 渡ら わたら
+01:000629:0008 A00 BG-08-0064-17-0100 64 て で で で で
+01:000629:0009 A00 BG-02-1502-03-0100 47 やま 止む やむ 止ま やま
+01:000629:0010 A00 BG-03-3012-03-2600 74 ん む む む む
+01:000629:0010 A10 BG-09-0010-02-0102 74 ん む む む む
+01:000629:0011 A00 BG-01-1000-03-0201 02 物 物 もの 物 もの
+01:000629:0011 A10 BG-01-4000-01-0800 02 物 物 もの 物 もの
+01:000629:0012 A00 BG-09-0010-02-0700 74 なら なり なり なら なら
+01:000629:0012 A10 BG-09-0050-01-0100 74 なら なり なり なら なら
+01:000629:0013 A00 BG-03-1200-02-0800 74 な ず ず な な
+01:000629:0013 A10 BG-09-0010-01-0100 74 な ず ず な な
+01:000629:0014 A00 BG-08-0071-05-0100 71 く く く く く
+01:000629:0015 A00 BG-08-0061-05-0100 61 に に に に に
+'''
+ct629 = '''
+1 matsuda 0629 0 02 00 00 BG-01-1113-01-030-A わけ わけ わけ
+2 matsuda 0629 2 02 00 00 BG-01-3070-01-030-A わけ わけ わけ
+1 matsuda 0629 1 65 00 00 BG-08-0065-08-010-A も も も
+1 matsuda 0629 2 65 00 00 BG-04-1130-01-200-A -- も も
+1 matsuda 0629 0 51 50 07 BG-03-1200-02-010-A なく ない ない
+1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 matsuda 0629 0 55 00 00 BG-03-1650-03-010-A もう もう もう
+2 matsuda 0629 2 55 00 00 BG-03-1992-07-030-A もう もう もう
+1 matsuda 0629 0 02 00 00 BG-03-1010-02-060-A 無実 むじつ 無実
+1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
+1 matsuda 0629 0 02 00 00 BG-01-3134-01-210-A 評判 ひょうばん 評判
+2 matsuda 0629 2 02 00 00 BG-01-3142-02-010-A 評判 ひょうばん 評判
+3 matsuda 0629 2 02 00 00 BG-01-3422-04-080-A 評判 ひょうばん 評判
+1 matsuda 0629 0 61 00 00 BG-08-0061-02-010-A が が が
+1 matsuda 0629 0 47 13 05 BG-02-1513-01-010-A 立っ たつ 立つ
+2 matsuda 0629 2 47 13 05 BG-02-1521-06-020-A 立っ たつ 立つ
+3 matsuda 0629 2 47 13 05 BG-02-3330-11-020-A 立っ たつ 立つ
+4 matsuda 0629 2 47 13 05 BG-02-3391-02-110-A 立っ たつ 立つ
+1 matsuda 0629 0 64 00 00 BG-08-0064-16-010-A て て て
+1 matsuda 0629 0 48 21 05 BG-02-1502-02-040-A しまっ しまう しまう
+2 matsuda 0629 2 48 21 05 BG-09-0010-03-050-A しまっ しまう しまう
+1 matsuda 0629 0 74 54 01 BG-09-0010-04-010-A た た た
+1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+1 matsuda 0629 0 14 00 00 BG-01-1000-01-110-A いずれ いずれ いずれ
+1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 matsuda 0629 0 16 00 00 BG-01-1950-13-020-A 二人 ふたり 二人
+1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
+1 matsuda 0629 0 17 00 00 BG-01-3020-11-030-A 恋 こい 恋
+2 matsuda 0629 2 17 00 00 BG-02-3060-03-070-A 恋 こい 恋
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 06 02 BG-02-3420-07-010-A 遂げ とげる 遂げる
+1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
+1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
+1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
+1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 06 02 BG-02-1200-02-010-A い いる いる
+2 matsuda 0629 2 47 06 02 BG-02-1210-03-010-A い いる いる
+3 matsuda 0629 2 47 06 02 BG-02-1530-07-010-A い いる いる
+1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
+1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
+1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
+1 matsuda 0629 0 21 00 00 BG-01-1000-03-010-A もの もの もの
+1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 17 01 BG-02-1200-01-010-A ある ある ある
+1 matsuda 0629 0 64 00 00 BG-08-0064-04-010-A が が が
+1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+1 matsuda 0629 0 02 00 00 BG-01-1113-01-030-A わけ わけ わけ
+2 matsuda 0629 2 02 00 00 BG-01-3070-01-030-A わけ わけ わけ
+1 matsuda 0629 1 65 00 00 BG-08-0065-08-010-A も も も
+1 matsuda 0629 2 65 00 00 BG-04-1130-01-200-A -- も も
+1 matsuda 0629 0 51 50 07 BG-03-1200-02-010-A なく ない ない
+1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 matsuda 0629 0 55 00 00 BG-03-1650-03-010-A もう もう もう
+2 matsuda 0629 2 55 00 00 BG-03-1992-07-030-A もう もう もう
+1 matsuda 0629 0 02 00 00 BG-03-1010-02-060-A 無実 むじつ 無実
+1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
+1 matsuda 0629 0 02 00 00 BG-01-3134-01-210-A 評判 ひょうばん 評判
+2 matsuda 0629 2 02 00 00 BG-01-3142-02-010-A 評判 ひょうばん 評判
+3 matsuda 0629 2 02 00 00 BG-01-3422-04-080-A 評判 ひょうばん 評判
+1 matsuda 0629 0 61 00 00 BG-08-0061-02-010-A が が が
+1 matsuda 0629 0 47 13 05 BG-02-1513-01-010-A 立っ たつ 立つ
+2 matsuda 0629 2 47 13 05 BG-02-1521-06-020-A 立っ たつ 立つ
+3 matsuda 0629 2 47 13 05 BG-02-3330-11-020-A 立っ たつ 立つ
+4 matsuda 0629 2 47 13 05 BG-02-3391-02-110-A 立っ たつ 立つ
+1 matsuda 0629 0 64 00 00 BG-08-0064-16-010-A て て て
+1 matsuda 0629 0 48 21 05 BG-02-1502-02-040-A しまっ しまう しまう
+2 matsuda 0629 2 48 21 05 BG-09-0010-03-050-A しまっ しまう しまう
+1 matsuda 0629 0 74 54 01 BG-09-0010-04-010-A た た た
+1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+1 matsuda 0629 0 14 00 00 BG-01-1000-01-110-A いずれ いずれ いずれ
+1 matsuda 0629 0 79 00 00 BG-16-0079-01-010-A 、 、 、
+1 matsuda 0629 0 16 00 00 BG-01-1950-13-020-A 二人 ふたり 二人
+1 matsuda 0629 0 71 00 00 BG-08-0071-01-010-A の の の
+1 matsuda 0629 0 17 00 00 BG-01-3020-11-030-A 恋 こい 恋
+2 matsuda 0629 2 17 00 00 BG-02-3060-03-070-A 恋 こい 恋
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 06 02 BG-02-3420-07-010-A 遂げ とげる 遂げる
+1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
+1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
+1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
+1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 06 02 BG-02-1200-02-010-A い いる いる
+2 matsuda 0629 2 47 06 02 BG-02-1210-03-010-A い いる いる
+3 matsuda 0629 2 47 06 02 BG-02-1530-07-010-A い いる いる
+1 matsuda 0629 0 49 06 02 BG-02-1110-02-020-A られ られる られる
+1 matsuda 0629 1 74 52 01 BG-09-0010-01-050-A ない ない ない
+1 matsuda 0629 2 74 52 01 BG-03-1200-02-010-A -- ない ない
+1 matsuda 0629 0 21 00 00 BG-01-1000-03-010-A もの もの もの
+1 matsuda 0629 0 74 55 04 BG-09-0050-01-030-A で だ だ
+1 matsuda 0629 0 65 00 00 BG-08-0065-07-010-A は は は
+1 matsuda 0629 0 47 17 01 BG-02-1200-01-010-A ある ある ある
+1 matsuda 0629 0 64 00 00 BG-08-0064-04-010-A が が が
+1 matsuda 0629 0 78 00 00 BG-16-0078-01-010-A 。 。 。
+'''
+
+pipe(poem=op629, translation=ct629, mode=2, level=3)
+```
+
+## Categories of non-literal elements in the case study
+
+Based on the concept of extended meaning units, we analyzed additional elements in translations from three perspectives and propose the following categorization:
+
+1. Additional elements derived from co-occurring words at the corpus level:
+   - Direct additions of co-occurring words: e.g., *momiji* (autumn leaves)
+   - Supplementary or secondary/indirect additions to co-occurring words: e.g., "colorful" or "scattering" in reference to *nusa* (ritual paper)
+
+2. Additional elements that fill gaps caused by language change, particularly grammatical shifts:
+   - Changes in grammatical structures that cannot be matched using WLSP codes: e.g., the translation of *to* (particle)
+   - Extensions of bare verb forms: e.g., the translation of *tamukeru* (to dedicate)
+
+3. Additional elements related to the semantic preference of target words:
+   - Further supplementation of words based on their semantic preference at the corpus level: e.g., additional information surrounding *kami* (god)
+
+Distinguishing these elements is essential when constructing a visualization system. For instance, supplementing "autumn leaves" (*momiji*) to "leaves" (*konoha*) may be considered non-literal at the sentence level but literal at the corpus level, as it represents co-occurring words. This can be identified through difference-based visualization, though word association measures are also effective. As a result, the necessity for difference-based visualization in this case is reduced.
+
+Next, additional elements that bridge gaps caused by grammatical shifts over time should be excluded, as they do not represent non-literal information derived from the original text. 
+
+Moreover, elements related to the collective semantic preference of co-occurring words may not be easily captured through word association measures, which is where difference-based visualization provides unique advantages.
+
+Lastly, this paper did not cover the fourth level of extended meaning units—discourse prosody—in detail. Emotional values related to discourse prosody and the sociolinguistic characteristics of words are considered elements that cannot be captured through additional elements in translation. These attributes are not explicitly conveyed through direct supplementation or additions. In some cases, connotative terms in contemporary Japanese may paraphrase these aspects, but even when such terms are functionally equivalent, they do not provide direct explicitation. Therefore, alternative methods should be considered to evaluate these elements.
+
+## Credibility of Knowledge in Translation
+
+Although this paper does not address the credibility in detail, the system for visualizing differences between the 10 translations and the original text can be seen as a form of meta-analysis, in the sense that it systematically synthesizes the insights of the 10 individual translators regarding each poem.
+
+However, the paper does not explore how much the knowledge included in contemporary translations allows access to the non-literal aspects of the poetic language, or to what extent the translation is valid and reliable. For example, adding excessive interpretation in translation can undermine both validity and coherence. The original text’s simple meaning or intent may become ambiguous due to over-interpretation, making it difficult for readers to accurately understand the text. If such translations are applied to visualization, the visualization itself loses its credibility. This is a concern that must be considered. Finding robust elements within the translators’ choices is therefore a critical challenge for translation-based visualization.
+
+## The Need for Interpretation through Translation Studies Insights
+
+This paper does not primarily position itself within translation studies, but phenomena such as the addition of elements in translation or the omission of elements from the original text can be interpreted through various hypotheses and theories in the field.
+
+For example, the translation universal hypothesis (cf. @Chesterman2004Hypotheses; @Edina2016Translation) introduces concepts like the law of lengthening (cf. @Vinay1958Comparative) and the law of explicitation (cf. @Baker1996Challenges; @Blum-Kulka1986Shifts), which help explain why additional elements appear in contemporary translations. These phenomena are seen as universal within translation. The law of explicitation, in particular, is highly relevant to the non-literal elements discussed in this paper. @Blum-Kulka1986Shifts suggests that translators often introduce cohesive markers absent from the source text when translating into the target text^[According to @Nunan1993Introducing [p. 21], cohesive markers are “words and phrases which enable the writer or speaker to establish relationships across sentence or utterance boundaries, and which help to tie the sentences in a text together.”]. Meanwhile, @Baker1996Challenges [p. 180] expanded the definition of explicitation, describing it as a broader tendency to explain things explicitly, rather than leaving them implicit. Originally, explicitation referred to an increase in discourse markers in translations, and this concept can help interpret some of the added elements discussed in this paper. However, not all phenomena fit into this hypothesis^[Translation universals tend to allow for exceptions, making them more probabilistic tendencies rather than strict universals [cf. @Pym2008Toury; @Tymoczko1998Computerized; @Chesterman2004Hypotheses; @Chesterman2010Why]. While they claim universality, exceptions are recognized.].
+
+For example, while not all added elements involve discourse markers, they still account for a significant proportion of the additional elements observed in the analyzed cases. Thus, not all added elements can be attributed solely to translation universals.
+
+In addition to this, research focusing on the cognitive aspects of translation, such as the literal translation hypothesis^[According to @Chesterman2011Reflections, this hypothesis claims that when processing a given text chunk, translators tend to start with a literal version of the target text, then work towards a freer version.], offers additional insights. This hypothesis suggests that translation literality can be operationalized through 1) word-order similarity between the source and target texts, and 2) the number of potential translation renderings available for a given text [cf. @Carl2017Measuring]. These factors provide a different perspective from the addition and unmatch rates discussed in this paper. The second point, in particular, may provide useful metrics for visualizing non-literal elements and is worth further exploration.
+
+Moreover, translation studies have long discussed the issue of analytical units, focusing on translation equivalence [e.g., @Nida1969Theory] and translation units [cf. @Koller1979Einfuehrung; @Malmkjaer1998Unit]. The impact of these analytical units requires careful consideration and offers significant possibilities for further investigation.
+
+## Room for Methodological Improvement
+
+While this paper’s rule-based approach to calculating the agreement rate offers advantages in simplicity and consistency, challenges remain, particularly in alignment using dynamic programming methods. Although historical Japanese from certain periods qualifies as a low-resource language, it would be valuable to explore neural-based alignment methods alongside manual alignment. For instance, as suggested by @Palladino2022Using and @Camilleri2024Evaluating, the Ugarti platform introduced by @Palladino2022Using offers greater precision. This platform enables detailed analysis of one-to-many and many-to-many correspondence patterns in translations, as well as part-of-speech analysis for non-aligned elements.
+
+## As an application using the WLSP semantic category
+
+In this paper, the calculation of the unmatch and addition rates did not rely on an alignment model from natual language processing but instead used a stable semantic classification metacode system, WLSP. The bag method, in particular, can detect semantic agreements without being influenced by word order changes. The utility of a hierarchical classification system that groups words with the same meaning was reaffirmed in the study of old Japanese. While this study still employs the old-version WLSP codes, the potential for expanded research is promising with the assignment of classification codes to classical Japanese by @Asahara2022CHJWLSP in the Corpus of Historical Japanese. However, as of 2024, the WLSP codes are assigned only at the group level, meaning the CHJ-WLSP cannot currently be used as direct token identifiers. Researchers will need to apply additional tagging to detect semantic agreement, including identifiers for synonyms, homonyms, and orthographic variants, depending on their research goals. The WLSP codes used in this paper will also require ongoing refinement. There remains significant potential to further explore how to build a more effective semantic category code system.
+
+# Conclusion {#sec-conclusions}
+
+In this paper, we analyzed the additional elements in 10 different contemporary translations of the *Kokinshū* to demonstrate their usefulness in visualizing the non-literal elements of the original text.
+
+We specifically outlined the background of contemporary translations of the *Kokinshū* and categorized the various translation approaches of the 20th century based on commentary provided by the translators. These approaches can be grouped into four categories from a communication model perspective: emphasis on the poet’s intent (source), emphasis on the literal meaning of the text (signal), emphasis on the reader (destination), and approaches that were not clearly defined.
+
+To determine whether these subjective awarenesses of translation approaches were reflected in the objective measures of additions and agreement, we recalculated the addition rates using a clearer methodology and updated data, following the procedure established in @Yamamoto2019Analysis. Statistical modeling of the unmatch rates between the original poems and the contemporary translations, along with the addition rates, revealed that information was universally added regardless of the translation approach, and that variations in addition rates between translators were smaller than variations between individual poems.
+
+To assess whether the added elements qualify as non-literal elements, we aligned the contemporary translations of Poem #298 "Tatsuta" across 10 translations and examined how co-occurring words at the corpus level, co-occurring grammatical patterns, and the semantic preferences of these words were handled in the sentence-level translations. The results showed that for units with a strong co-occurrence tendency at the corpus level, sentence-level processing was relatively consistent across the 10 translators. In contrast, elements that did not exhibit a co-occurrence tendency at the corpus level showed greater variation in the additional elements. Notable findings included the use of co-occurring words at the corpus level to inform inference in translation, as well as the tendency to provide supplementary explanations for words related to the semantic preferences of co-occurring words. Meanwhile, additions related to grammatical patterns were primarily used to bridge gaps caused by linguistic changes.
+
+This study demonstrates that even contemporary translations of classical Japanese poetry, which may adhere strictly to literal or word-for-word translation, can serve as valuable interpretive tools, distinct from dictionaries, to supplement non-literal information embedded in poetic language. It also highlights the importance of excluding elements added to address linguistic gaps and emphasizes the need to carefully select reliable elements in translation for further study.
+

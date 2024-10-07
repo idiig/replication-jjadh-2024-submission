@@ -660,7 +660,7 @@ def cli_main():
     args = parser.parse_args()
 
     # Use Hydra to initialize and compose configuration for additional parameters
-    with initialize(version_base=None, config_path="../param", job_name=""):
+    with initialize(version_base=None, config_path="../parameters", job_name=""):
         cfg = compose(config_name="default")
 
     # Call the main function with both argparse and Hydra parameters

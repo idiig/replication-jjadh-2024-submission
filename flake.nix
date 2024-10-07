@@ -1,5 +1,5 @@
 {
-  description = "A nix-shell environment for the replication of the JJADH paper.";
+  description = "A nix-shell environment for the replication of authors' JJADH(ja) paper.";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
@@ -92,7 +92,7 @@
       in
       {
         devShells.default = pkgs.mkShell rec { 
-          name = "jjadh-chen-2024-replication";
+          name = "jjadh-ja-2024-replication";
 
           LOCALE_ARCHIVE = if pkgs.system == "x86_64-linux" then "${pkgs.glibcLocalesUtf8}/lib/locale/locale-archive" else "";
           LANG = "en_US.UTF-8";
@@ -157,13 +157,13 @@
             # cp -r ${pkgs.rPackages.IRkernel}/library/IRkernel/kernelspec/* $TEMPDIR/share/jupyter/kernels/ir
 
             # Message
-            echo "This is a nix-shell environment for the replication of the JJADH paper."
+            echo "This is a nix-shell environment for the replication of authors' JJADH-ja paper."
 
             # Export installed Python packages and their versions to a file
-            pip list > python_dependencies.txt
+            pip list > dependencies/python_dependencies.txt
 
             # Export installed R packages and their versions to a file
-            Rscript -e 'installed.packages()[,c("Package","Version")]' > r_dependencies.txt
+            Rscript -e 'installed.packages()[,c("Package","Version")]' > dependencies/r_dependencies.txt
           '';
         };
       }
