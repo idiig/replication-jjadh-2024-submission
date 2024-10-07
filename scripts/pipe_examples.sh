@@ -44,7 +44,7 @@ poemID=$1
 translator=$2
 
 # Create a log file
-log_file="supplementary-materials/examples.txt"
+log_file="supplementary_materials/examples.txt"
 
 # Helper function to format poemID with leading zeros
 format_poemID() {
