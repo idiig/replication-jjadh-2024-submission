@@ -2954,7 +2954,7 @@ K&A、KMCY、KTGR、KBT、TKOK の訳では、要素の追加は見られなか�
 
 # 補足材料 {.appendix .unnumbered}
 
-補足資料は、[https://github.com/idiig/replication-jjadh-2024-submission/blob/main/supplementary_materials](https://github.com/idiig/replication-jjadh-2024-submission/blob/main/supplementary_materials) を参照する。再現実験について、[https://github.com/idiig/replication-jjadh-2024-submission/tree/main](https://github.com/idiig/replication-jjadh-2024-submission/tree/main) を参照する。
+補足資料は、[https://doi.org/10.17605/OSF.IO/RGW7K](https://doi.org/10.17605/OSF.IO/RGW7K) を参照する。再現実験について、[https://doi.org/10.17605/OSF.IO/NHRPQ](https://doi.org/10.17605/OSF.IO/NHRPQ) を参照する。
 
 # 謝辞 {.appendix .unnumbered}
 
