@@ -90,3 +90,5 @@ sh ./scripts/pipe.sh
 # this generate csv format results in artifacts folder
 sh ./scripts/merge_match.sh
 ```
+
+Figures and tables replacation are performed within Quarto `.qmd` file in the documents folder.

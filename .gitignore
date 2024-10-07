@@ -4,6 +4,9 @@
 /_extensions/
 /.Rhistory
 /main_cache/
+/main_files/
+/supplementary_materials_cache/
+/supplementary_materials_files/
 /log/*.log
 /supplementary_materials/translation_examples.txt
 /supplementary_materials/supplementary_materials_cache/
